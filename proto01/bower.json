@@ -1,0 +1,18 @@
+{
+	"name": "Template",
+	"version": "0.0.1",
+	"homepage": "https://github.com/Makio64/Template",
+	"license": "MIT",
+	"authors": [
+		"david.ronai <david.ronai@gmail.com>"
+	],
+	"dependencies": {
+		"jquery"			: "*",
+		"threejs"			: "dev",
+		"pixi.js"			: "dev",
+		"gsap"				: "*",
+		"raf.js"			: "*",
+		"dat-gui"			: "*",
+		"vue"				: "0.11.0-rc2"
+	}
+}
