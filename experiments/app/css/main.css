@@ -1,0 +1,188 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+main {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: block;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]),
+[hidden] {
+  display: none;
+}
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.module {
+  position: relative;
+  width: 100%;
+  height: 800px;
+  background-color: #9374e8;
+}
+.globe-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.globe {
+  position: relative;
+  display: table;
+  width: 600px;
+  height: 100%;
+  margin: 0 auto;
+}
+.globe-element {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  height: 600px;
+  margin: 0 auto;
+}
+.globe-shadow {
+  position: absolute;
+  width: 862px;
+  height: 862px;
+  background: transparent url("../img/shadow.png") no-repeat;
+  top: 50px;
+  left: -50px;
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+}
+.globe-light {
+  position: absolute;
+  width: 553px;
+  height: 552px;
+  background: transparent url("../img/light.png") no-repeat;
+  top: 123px;
+  left: 23px;
+  opacity: 0.25;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
+  filter: alpha(opacity=25);
+}
+.globe-light2 {
+  position: absolute;
+  width: 553px;
+  height: 552px;
+  background: transparent url("../img/light2.png") no-repeat;
+  left: 36px;
+  top: 121px;
+  opacity: 0.15;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=15)";
+  filter: alpha(opacity=15);
+}

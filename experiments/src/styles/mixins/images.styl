@@ -1,0 +1,19 @@
+bg( img, ratio = 2 )
+  path = "img/" + img
+  size = image-size( path )
+  w = round( size[ 0 ] / ratio )
+  h = round( size[ 1 ] / ratio )
+  background transparent url( path ) no-repeat
+  width w
+  height h
+  background-size w h
+
+w( img, ratio = 2 ) 
+  path = "img/" + img
+  size = image-size( path )
+  round( size[ 0 ] / ratio )
+
+h( img, ratio = 2 ) 
+  path = "img/" + img
+  size = image-size( path )
+  round( size[ 1 ] / ratio )
