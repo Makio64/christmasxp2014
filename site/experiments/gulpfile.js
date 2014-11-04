@@ -13,7 +13,6 @@ var coffee = require( "gulp-coffee" );
 var rename = require( "gulp-rename" );
 var concat = require( "gulp-concat" );
 
-// var browserify = require( "browserify" );
 var browserify = require( "gulp-browserify" );
 var source = require( "vinyl-source-stream" );
 var html = require( "html-browserify" );
@@ -24,6 +23,8 @@ var minifyCss = require( "gulp-minify-css" );
 var uglify = require( "gulp-uglify" );
 var usemin = require( "gulp-usemin" );
 var rev = require( "gulp-rev" );
+
+var sprite = require( "gulp-spritesmith" );
 
 var browserSync = require( "browser-sync" );
   
@@ -119,6 +120,16 @@ gulp.task( "minify", function() {
       .pipe( gulp.dest( "dist/" ) );
 
 });
+
+gulp.task( "sprites", function() {
+
+  gulp.src( "src/imgs/*.png" )
+      .pipe( sprite( {
+          destImg: "app/css/imgs/sprite.png",
+          destCSS: "app/css/sprite.css"
+      } ) );
+
+} );
 
 
 gulp.task( "watch", function() {
