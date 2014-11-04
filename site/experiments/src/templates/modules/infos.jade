@@ -7,18 +7,24 @@
       ul.parts
         block parts
   .infos-menu
-    a.bt-close(href="/")
-    .infos-menu-holder
-      .infos-menu-content
+    .infos-menu-top
+      a.bt-close(href="/")
+        span.bg
+          span.bg-normal
+          span.bg-hover
+        span.icon
+    .infos-menu-middle
+      .infos-menu-holder
         .idx.underline 19
         .title TEMPO
         a.author(href="#") William Mapan
-        a.bt-details(href="#")
-          span.bt-details-cnt.bt-details-cnt--closed
-            span.icon
-          span.bt-details-cnt.bt-details-cnt--opened
-            span.text CLOSE
-            span.icon
+        .bt-cnt
+          a.bt-tce.bt-details(href="#")
+            span.bt-details-cnt.bt-details-cnt--closed
+              span.icon
+            span.bt-details-cnt.bt-details-cnt--opened
+              span.text CLOSE
+              span.icon
     .infos-shares
 
 
