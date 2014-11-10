@@ -1,11 +1,14 @@
 mixin menu-item( idx, hasImg )
   li.menu-item
     a(href="#")
-      span.menu-item-border
-      span.menu-item-text
       if hasImg
-        img(src="img/#{idx}.png")
+        img(src="img/experiments/#{idx}/preview.jpg")
+      span.menu-item-text-holder
+        span.menu-item-text= idx
 
 ul.menu
-  - for ( var i = 0; i < 25; i++ )
+  - var dataCount = experiments.length + 1
+  - for ( var i = 1; i < dataCount; i++ )
+    +menu-item( i, true )
+  - for ( var i = dataCount; i < 26; i++ )
     +menu-item( i, false )

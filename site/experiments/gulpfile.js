@@ -2,6 +2,7 @@ var gulp = require( "gulp" );
 
 var plumber = require( "gulp-plumber" );
 var gutil = require( "gulp-util" );
+var path = require( "path" );
 
 var bower = require( "gulp-bower" );
 var wiredep = require( "wiredep" ).stream;
@@ -12,6 +13,7 @@ var nib = require( "nib" );
 var coffee = require( "gulp-coffee" );
 var rename = require( "gulp-rename" );
 var concat = require( "gulp-concat" );
+var data = require ( "gulp-data" );
 
 var browserify = require( "gulp-browserify" );
 var source = require( "vinyl-source-stream" );
@@ -80,11 +82,11 @@ gulp.task( "styles", function() {
 
 });
 
-
 gulp.task( "templates", function() {
 
   gulp.src( src.templates + "*.jade")
       .pipe( plumber() )
+      .pipe( data( require( "./src/data/data.json" ) ) )
       .pipe( jade( { pretty: true, buffer: true, basedir: "src/templates/" } ) )
         .on( "error", gutil.log )
         .on( "error", gutil.beep )
@@ -131,15 +133,24 @@ gulp.task( "sprites", function() {
 
 } );
 
+gulp.task( "data", function() {
+
+  gulp.src( "src/data/*.json" )
+      .pipe( plumber() )
+      .pipe( gulp.dest( "app/data/" ) );
+ 
+} );
+
 
 gulp.task( "watch", function() {
 
   gulp.watch( "src/styles/**/*.styl", [ "styles" ] );
   gulp.watch( "src/templates/**/*.jade", [ "templates", "scripts" ] );
   gulp.watch( "src/scripts/**/*.coffee", [ "scripts" ] );
+  gulp.watch( "src/data/*.json", [ "data" ] );
 
 });
 
 
-gulp.task( "default", [ "bower-install", "browser-sync", "styles", "templates", "scripts", "watch" ] );
+gulp.task( "default", [ "bower-install", "browser-sync", "styles", "templates", "scripts", "watch", "data" ] );
 // gulp.task( "default", [ "scripts" ] );
