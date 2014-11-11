@@ -1,0 +1,14 @@
+.experiments-content
+  position absolute
+  left 200px
+  width calc( 100% - 200px )
+  height 100%
+  &.error-too-soon
+    .error
+      display table
+    .error-content-text--no-webgl
+      display none
+    .error-content-text--too-soon
+      display block    
+    iframe
+      display none

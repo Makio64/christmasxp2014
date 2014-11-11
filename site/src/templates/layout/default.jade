@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+    meta(name="viewport", content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width, minimal-ui")
+    meta(name="format-detection", content="telephone=no")
+
+    meta(property="og:site_name", content="TemplateSiteName")
+    meta(property="og:title", content="TemplateTitle")
+    meta(property="og:description", content="TemplateDescription")
+    meta(property="og:type", content="TemplateType")
+    meta(property="og:url", content="")
+    meta(property="og:image", content="")
+
+    title Template
+
+    link(rel="stylesheet", href="/css/fonts/fonts.css")
+    link(rel="stylesheet", href="/css/main.css")
+
+  body
+
+    block content
+
+    // build:js /js/vendor.js
+    // bower:js
+    script( src="/js/bower_components/gsap/src/minified/easing/EasePack.min.js" )
+    script( src="/js/bower_components/gsap/src/minified/plugins/CSSPlugin.min.js" )
+    script( src="/js/bower_components/gsap/src/minified/TweenMax.min.js" )
+    // endbower
+    // endbuild
+    // build:js /js/main.js
+    script( src="/js/app.js" )
+    // endbuild

@@ -1,0 +1,29 @@
+{
+    "experiments": [
+        {
+            "author": "David Ronai ",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        }
+    ],
+    "tpl": {
+        "author": "",
+        "title": "",
+        "subtitle": "",
+        "desc": "",
+        "site": "#",
+        "isWebGL": false,
+        "isMobile": false,
+        "details": []
+    }
+}
