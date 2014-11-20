@@ -2,10 +2,13 @@
   position relative
   width 200px
   height 100%
+  overflow-y hidden
   text-align center
   color #2980f8
-  -webkit-font-smoothing antialiased
-  border-right 1px solid #102467
+  border-right 1px solid blueDark
+  a
+    text-decoration none
+    color blueLight
 
 .menu-top
   position relative
@@ -17,6 +20,7 @@
 
 .menu-title
   font normal 14px bold
+  -webkit-font-smoothing antialiased
   color #fff
   letter-spacing 1px
   margin-top 25px
@@ -40,6 +44,7 @@
 .menu-entry
   display block
   font normal 14px bold
+  -webkit-font-smoothing antialiased
   letter-spacing 1px
   &:after
     width 60px
@@ -51,7 +56,29 @@
   position relative
   width 100%
   height 100px
-  padding-top 75px
-  // bottom 0
+  top 55px
   font normal 12px light
   text-transform uppercase
+  a
+    letter-spacing 1px
+    -webkit-font-smoothing auto
+
+.menu-subentry
+  position relative
+  display inline-block
+
+.menu-subentry:not(:first-child)
+  top 8px
+
+.menu-subentry:nth-child( 1 )
+  &:after
+    content ""
+    position relative
+    top -2px
+    margin-left 17px
+    margin-right 8px
+    display inline-block
+    width 4px
+    height 4px
+    background-color blueLight
+    border-radius 2px

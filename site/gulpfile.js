@@ -155,7 +155,7 @@ gulp.task( "data", function() {
 gulp.task( "watch", function() {
 
   gulp.watch( "src/styles/**/*.styl", [ "styles" ] );
-  gulp.watch( "src/templates/**/*.jade", [ "templates", "scripts" ] );
+  gulp.watch( "src/templates/**", [ "templates" ] );
   gulp.watch( "src/scripts/**/*.coffee", [ "scripts" ] );
   gulp.watch( "src/data/*.json", [ "data" ] );
 

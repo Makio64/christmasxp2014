@@ -1,8 +1,50 @@
 .credits
   position absolute
   top 0
-  // left -198px
+  left -198px
   width 200px
   height 100%
   background-color #fff
   text-align center
+
+.credits-close
+  position relative
+  z-index 1
+  width 100%
+  height 100px
+  display block
+  .bt-close
+    top 49px
+
+.credits-title
+  font normal 22px bold
+  color blueDark
+
+.credits-content-holder
+  position relative
+  display table
+  width 100%
+  height calc( 100% - 200px )
+
+.credits-content
+  position relative
+  display table-cell
+  vertical-align middle
+
+.credits-entry:not(:last-child)
+  margin-bottom 25px
+
+.credits-title
+  margin-bottom 80px
+  &:after
+    width 85px
+
+.credits-entry-title
+  font normal 12px regular
+  color blueMedium
+
+.credits-entry-author
+  color red
+  font normal 12px bold
+  text-decoration none
+  border-bottom 1px solid red
