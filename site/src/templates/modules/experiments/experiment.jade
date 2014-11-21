@@ -1,2 +1,14 @@
-.experiment
-  iframe(src="/experiments/#{idxCurrent}/")
+.experiment.experiment--dark
+  iframe(src="/experiments/#{idxCurrent + 1}/")
+  ul.experiment-nav-entries
+    li.experiment-nav-entry 
+      a(href="#") CLOSE
+    li.experiment-nav-entry 
+      a(href="#") INFOS
+  ul.experiment-shares-entries
+    li.experiment-shares-entry
+      a.share.share--fb(href="#")
+        span.icon
+    li.experiment-shares-entry
+      a.share.share--twitter(href="#")
+        span.icon

@@ -12,7 +12,7 @@
     <meta property="og:image" content="">
     <title>Template</title>
     <link rel="stylesheet" href="/css/fonts/fonts.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main-experiment.css">
   </head>
   <body>
     <div class="experiments-content">
@@ -33,12 +33,21 @@
           </div><a href="/" class="error-bt"><span class="error-bt-bg-hover"></span><span class="error-bt-icon"></span><span class="error-bt-text">HOME</span><span class="error-bt-shadow"></span></a>
         </div>
       </div>
-      <div class="experiment">
-        <iframe src="/experiments/0/"></iframe>
+      <div class="experiment experiment--dark">
+        <iframe src="/experiments/1/"></iframe>
+        <ul class="experiment-nav-entries">
+          <li class="experiment-nav-entry"> <a href="#">CLOSE</a></li>
+          <li class="experiment-nav-entry"> <a href="#">INFOS</a></li>
+        </ul>
+        <ul class="experiment-shares-entries">
+          <li class="experiment-shares-entry"><a href="#" class="share share--fb"><span class="icon"></span></a></li>
+          <li class="experiment-shares-entry"><a href="#" class="share share--twitter"><span class="icon"></span></a></li>
+        </ul>
       </div>
     </div>
     <ul class="menu">
-          <li class="menu-item"><a href="/1/"><img src="img/experiments/1/preview.jpg"><span class="menu-item-text-holder"><span class="menu-item-text">1</span></span></a></li>
+      <div class="menu-item-activated"></div>
+          <li class="menu-item"><a href="/1/" class="activated"><span class="menu-item-text-holder"><span class="menu-item-text">1</span></span></a></li>
           <li class="menu-item"><a href="/2/"><span class="menu-item-text-holder"><span class="menu-item-text">2</span></span></a></li>
           <li class="menu-item"><a href="/3/"><span class="menu-item-text-holder"><span class="menu-item-text">3</span></span></a></li>
           <li class="menu-item"><a href="/4/"><span class="menu-item-text-holder"><span class="menu-item-text">4</span></span></a></li>
@@ -65,31 +74,17 @@
           <li class="menu-item"><a href="/25/"><span class="menu-item-text-holder"><span class="menu-item-text">25</span></span></a></li>
     </ul>
     <div class="infos">
-      <div class="infos-details">
-        <div class="infos-details-cnt">
-          <h1 class="title underline">INFOS</h1>
-          <h2 class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-          <div class="desc">Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.</div>
-          <ul class="parts">
-            <li>
-              <h3>controls</h3><span>left/right to navigate<br />space to pause</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="infos-menu">
-        <div class="infos-menu-top"><a href="/" class="infos-menu-bt-close"><span class="bg"><span class="bg-normal"></span><span class="bg-hover"></span></span><span class="icon"></span></a></div>
-        <div class="infos-menu-middle">
-          <div class="infos-menu-holder">
-            <div class="idx underline">1</div>
-            <div class="title">PACK THE FUN 2</div><a href="http://www.makiopolis.com" class="author">David Ronai </a>
-            <div class="bt-cnt"><a href="#" class="bt-tce bt-details"><span class="bt-details-cnt bt-details-cnt--closed"><span class="icon"></span></span><span class="bt-details-cnt bt-details-cnt--opened"><span class="text">CLOSE</span><span class="icon"></span></span></a></div>
-          </div>
-        </div>
-        <div class="infos-shares">
-          <div class="infos-shares-entry infos-shares-entry--fb">FB</div>
-          <div class="infos-shares-entry infos-shares-entry--twitter">TWITTER</div>
-        </div>
+      <div class="infos-bg"></div><a href="#" class="infos-close"><span class="bt-close"><span class="bg"><span class="bg-normal"></span><span class="bg-hover"></span></span><span class="icon"></span></span></a>
+      <div class="infos-content">
+        <div class="infos-idx underline">01</div>
+        <div class="infos-title">PACK THE FUN 2</div><a href="http://www.makiopolis.com" class="infos-author">David Ronai </a>
+        <h2 class="infos-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        <div class="infos-desc">Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.</div>
+        <ul class="infos-parts">
+          <li>
+            <h3>controls</h3><span>left/right to navigate<br />space to pause</span>
+          </li>
+        </ul>
       </div>
     </div>
     <!-- build:js /js/vendor.js-->

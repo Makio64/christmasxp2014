@@ -1,14 +1,14 @@
-mixin menu-item( idx, hasImg )
+mixin menu-item( idx, isActivated )
   li.menu-item
-    a(href="/#{idx}/")
-      if hasImg
-        img(src="img/experiments/#{idx}/preview.jpg")
+    a(href="/#{idx}/", class=isActivated ? "activated" : "")
       span.menu-item-text-holder
         span.menu-item-text= idx
 
 ul.menu
   - var dataCount = experiments.length + 1
-  - for ( var i = 1; i < dataCount; i++ )
-    +menu-item( i, true )
-  - for ( var i = dataCount; i < 26; i++ )
-    +menu-item( i, false )
+  - for ( var i = 1; i < 26; i++ )
+    - if ( i == 1 )
+      .menu-item-activated
+      +menu-item( i, true )
+    -else
+      +menu-item( i, false )

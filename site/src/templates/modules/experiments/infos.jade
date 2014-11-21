@@ -3,38 +3,27 @@
   - experiment = tpl
 
 .infos
-  .infos-details
-    .infos-details-cnt
-      h1.title.underline INFOS
-      h2.subtitle= experiment.subtitle
-      .desc= experiment.desc
-      ul.parts
-        - var details = experiment.details
-        - for( var i = 0; i < details.length; i++ )
-          li
-            h3= details[ i ].title
-            span!= details[ i ].desc
-  .infos-menu
-    .infos-menu-top
-      a.infos-menu-bt-close(href="/")
-        span.bg
-          span.bg-normal
-          span.bg-hover
-        span.icon
-    .infos-menu-middle
-      .infos-menu-holder
-        .idx.underline= idxCurrent + 1
-        .title= experiment.title
-        a.author(href=experiment.site)= experiment.author
-        .bt-cnt
-          a.bt-tce.bt-details(href="#")
-            span.bt-details-cnt.bt-details-cnt--closed
-              span.icon
-            span.bt-details-cnt.bt-details-cnt--opened
-              span.text CLOSE
-              span.icon
-    .infos-shares
-      .infos-shares-entry.infos-shares-entry--fb FB
-      .infos-shares-entry.infos-shares-entry--twitter TWITTER
+  .infos-bg
+  a.infos-close(href="#")
+    span.bt-close
+      span.bg
+        span.bg-normal
+        span.bg-hover
+      span.icon
+  .infos-content
+    - if ( idxCurrent < 10 )
+      .infos-idx.underline 0#{idxCurrent + 1}
+    - else
+      .infos-idx.underline= idxCurrent + 1
+    .infos-title= experiment.title
+    a.infos-author(href=experiment.site)= experiment.author
+    h2.infos-subtitle= experiment.subtitle
+    .infos-desc= experiment.desc
+    ul.infos-parts
+      - var details = experiment.details
+      - for( var i = 0; i < details.length; i++ )
+        li
+          h3= details[ i ].title
+          span!= details[ i ].desc
 
 
