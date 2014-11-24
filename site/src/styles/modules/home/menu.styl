@@ -82,3 +82,32 @@
     height 4px
     background-color blueLight
     border-radius 2px
+
+.menu--light
+  z-index 1
+  background-color rgba( 255, 255, 255, .97 )
+  border-color #e8eaef
+  display none
+  .menu-logo
+    bg( "logo-blue-dark.png" )
+  .menu-title
+    color blueDark
+  .menu-subtitle
+    color red
+  .menu-entry
+    a
+      color blueDark
+    &.activated
+      a
+        color red
+  .underline:after
+    background-image url( "img/underline-blue-dark.png" )
+  .menu-subentry a
+    color blueDark
+  .menu-subentry:nth-child( 1 ):after
+    background-color blueDark
+  .share--twitter .icon
+    bg( "icon-share-twitter-blue-dark.png" )
+  .share--fb .icon
+      bg( "icon-share-fb-blue-dark.png" )
+    

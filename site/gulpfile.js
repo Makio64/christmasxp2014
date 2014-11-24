@@ -106,7 +106,7 @@ gulp.task( "templates", function() {
 
 gulp.task( "scripts", function() {
 
-    gulp.src( src.scripts + "Main.coffee", { read: false } )
+    gulp.src( src.scripts + "experiments/Main.coffee", { read: false } )
       .pipe( browserify( { 
           paths: [ "src/scripts/" ], 
           transform: [ html, "coffeeify" ], 
@@ -114,7 +114,18 @@ gulp.task( "scripts", function() {
         } ) )
         .on( "error", gutil.log )
         .on( "error", gutil.beep )
-      .pipe( rename( "app.js" ) )
+      .pipe( rename( "main-experiment.js" ) )
+      .pipe( gulp.dest( "app/js" ) );
+
+    gulp.src( src.scripts + "home/Main.coffee", { read: false } )
+      .pipe( browserify( { 
+          paths: [ "src/scripts/" ], 
+          transform: [ html, "coffeeify" ], 
+          extensions: [ ".coffee" ] 
+        } ) )
+        .on( "error", gutil.log )
+        .on( "error", gutil.beep )
+      .pipe( rename( "main-home.js" ) )
       .pipe( gulp.dest( "app/js" ) );
 
 } );

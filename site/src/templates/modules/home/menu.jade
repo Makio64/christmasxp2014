@@ -1,20 +1,21 @@
-.menu
-  .menu-top
-    .menu-logo
-    .menu-title CHRISTMAS<br />EXPERIMENTS
-    .menu-subtitle The Digital<br />Advent Calendar
-  .menu-entries-holder
-    ul.menu-entries
-      li.menu-entry.underline.underline--blue 
-        a(href="#") ARTISTS
-      li.menu-entry.underline.underline--blue 
-        a(href="#") ABOUT
-  ul.menu-subentries
-    li.menu-subentry
-      a(href="#") CREDITS
-    li.menu-subentry
-      a.share.share--fb(href="#")
-        span.icon
-    li.menu-subentry
-      a.share.share--twitter(href="#")
-        span.icon
+mixin menu( isLight )
+  .menu(class=isLight ? "menu--light" : "")
+    .menu-top
+      .menu-logo
+      .menu-title CHRISTMAS<br />EXPERIMENTS
+      .menu-subtitle The Digital<br />Advent Calendar
+    .menu-entries-holder
+      ul.menu-entries
+        li.menu-entry.menu-entry--artists.underline.underline--blue 
+          a(href="#") ARTISTS
+        li.menu-entry.menu-entry--about.underline.underline--blue 
+          a(href="#") ABOUT
+    ul.menu-subentries
+      li.menu-subentry
+        a(href="#") CREDITS
+      li.menu-subentry
+        a.share.share--fb(href="#")
+          span.icon
+      li.menu-subentry
+        a.share.share--twitter(href="#")
+          span.icon

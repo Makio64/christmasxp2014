@@ -1,3 +1,38 @@
+.borders
+  position absolute
+  width 100%
+  height 100%
+
+.border
+  position absolute
+  background-color #e8eaef
+
+.border-left
+  @extends .border
+  left 0
+  top 0
+  width 1px
+  height 100%
+
+.border-right
+  @extends .border
+  right 0
+  top 0
+  width 1px
+  height 100%
+
+.border-top
+  @extends .border
+  top 0
+  width 100%
+  height 1px
+
+.border-bottom
+  @extends .border
+  bottom 0
+  width 100%
+  height 1px
+
 .underline
   &:after
     content ""
@@ -11,6 +46,9 @@
   &.underline--blue
     &:after
       background-image url( "img/underline-blue.png" )
+  &.underline--blue-dark
+    &:after
+      background-image url( "img/underline-blue-dark.png" )
 
 .bt-tce
   position relative
@@ -32,8 +70,20 @@
   background transparent url( "img/texture.png" )
   pointer-events none
 
+.pattern-white
+  background transparent url( "img/texture-white.png" )
+
+.bt-close-holder
+  position relative
+  z-index 1
+  width 100%
+  height 100px
+  display block
+  text-align center
+
 .bt-close
   position relative
+  top 49px
   display block
   width 41px
   height 41px
@@ -51,7 +101,7 @@
   .icon
     position relative
     display inline-block
-    top 12px
+    top 13px
     bg( "icon-close-blue.png" )
 
 .share
