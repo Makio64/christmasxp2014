@@ -277,6 +277,19 @@ body {
   -moz-background-size: 6px 11px;
   background-size: 6px 11px;
 }
+.no_ice {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.ice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
 .experiments-content {
   position: absolute;
   left: 45px;

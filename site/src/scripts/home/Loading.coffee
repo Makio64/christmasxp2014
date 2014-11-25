@@ -17,7 +17,10 @@ class Loading extends Emitter
 
     _updatePercent: =>
         @percent = @_percent * 24 >> 0
-        @_domPercent.innerHTML = @percent
+        if @percent < 10
+            @_domPercent.innerHTML = "0" + @percent
+        else
+            @_domPercent.innerHTML = @percent
         if @_percent == 1
             @_onComplete()
 

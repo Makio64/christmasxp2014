@@ -1,5 +1,13 @@
 mixin menu( isLight )
-  .menu(class=isLight ? "menu--light" : "")
+  - if ( isLight )
+    .menu.menu--light
+        +_menu-content()
+  - else 
+    .menu
+        +_menu-content()
+
+mixin _menu-content()
+  .menu-content.ice-content
     .menu-top
       .menu-logo
       .menu-title CHRISTMAS<br />EXPERIMENTS

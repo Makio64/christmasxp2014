@@ -18,19 +18,15 @@ class Interactions
         if !obj[ elt ]
             obj[ elt ] = []
 
-        proxy = ( e ) ->            
-            data = {}
+        proxy = ( e ) ->
             if @_isTouchDevice
-                data.x = e.touches[ 0 ].clientX
-                data.y = e.touches[ 0 ].clientY
+                e.x = e.touches[ 0 ].clientX
+                e.y = e.touches[ 0 ].clientY
             else
-                data.x = e.clientX
-                data.y = e.clientY
+                e.x = e.clientX
+                e.y = e.clientY
 
-            cb.call @, 
-                origin: e
-                x: data.x
-                y: data.y
+            cb.call @, e
 
         obj[ elt ].push
             cb: cb
