@@ -66,7 +66,7 @@ class IceAnim
             delay: delay
             css:
                 alpha: .2
-                rotationX: -20
+                # rotationX: -20
                 rotationY: -20
                 x: -50
                 z: 60
@@ -74,7 +74,7 @@ class IceAnim
             delay: delay
             css:
                 alpha: .45
-                rotationX: -10
+                # rotationX: -10
                 rotationY: -10
                 x: -35
                 z: 45
@@ -83,7 +83,7 @@ class IceAnim
             delay: delay + .05
             css: 
                 alpha: 1
-                rotationX: 0
+                # rotationX: 0
                 rotationY: 0
                 x: 0
                 z: 0
@@ -93,7 +93,7 @@ class IceAnim
             delay: delay
             css:
                 alpha: .2
-                rotationX: 20
+                # rotationX: 20
                 rotationY: 20
                 x: 50
                 z: 60
@@ -101,7 +101,7 @@ class IceAnim
             delay: delay + .05
             css:
                 alpha: .45
-                rotationX: 10
+                # rotationX: 10
                 rotationY: 10
                 x: 35
                 z: 45
@@ -110,7 +110,7 @@ class IceAnim
             delay: delay + .1
             css: 
                 alpha: 1
-                rotationX: 0
+                # rotationX: 0
                 rotationY: 0
                 x: 0
                 z: 0

@@ -80,6 +80,16 @@
   height 100px
   display block
   text-align center
+  &:hover
+    .bg-hover
+      opacity 1
+      transform rotate( 0 )
+    .bg-normal
+      opacity 0
+      transform rotate( 120deg )
+      transition all .25s cubic-bezier(0.250, 0.460, 0.450, 0.940)
+    .icon
+      transform rotate( 180deg )
 
 .bt-close
   position relative
@@ -94,14 +104,27 @@
     position absolute
   .bg-normal
     position absolute
+    transform-origin 50% 50%
+    transform rotate( 0deg )
+    opacity 1
+    transition all .25s cubic-bezier(0.175, 0.885, 0.320, 1.275)
     bg( "bt-close-bg.png" )
+  .ice-content
+    position absolute
   .bg-hover
     position absolute
-    display none
+    opacity 0
+    transform-origin 50% 50%
+    transition all .25s cubic-bezier(0.250, 0.460, 0.450, 0.940)
+    bg( "bt-close-bg-hover.png" )
   .icon
     position relative
     display inline-block
+    left 1px
     top 13px
+    transform-origin 50% 50%
+    transform rotate( 0deg )
+    transition all .25s cubic-bezier(0.175, 0.885, 0.320, 1.275)
     bg( "icon-close-blue.png" )
 
 .share
@@ -112,20 +135,72 @@
     display block
 
 .share--twitter .icon
-    bg( "icon-share-twitter.png" )
+  bg( "icon-share-twitter.png" )
 
+.share--twitter:hover .icon
+  bg( "icon-share-twitter-red.png" )
+  
 .share--fb .icon
-    bg( "icon-share-fb.png" )
+  bg( "icon-share-fb.png" )
 
-.no_ice
+.share--fb:hover .icon
+  bg( "icon-share-fb-red.png" )
+
+.hoverable
   position relative
-  width 100%
-  height 100%
-
-.ice
-  position absolute
-  top 0
-  left 0
-  width 100%
-  height 100%
-  display none
+  display inline-block
+  vertical-align top
+  backface-visibility hidden
+  overflow hidden
+  span
+    display inline-block
+    vertical-align top
+  .normal
+    opacity 1
+    backface-visibility hidden
+    transition opacity .15s cubic-bezier(0.250, 0.460, 0.450, 0.940)
+    transition-delay .025s
+  &:hover
+    .normal
+      opacity 0
+    .hover-mask
+      transition transform .25s cubic-bezier(0.165, 0.840, 0.440, 1.000), opacity .2s cubic-bezier(0.250, 0.460, 0.450, 0.940)
+    .hover-mask--top
+      opacity 1
+      transform translateX( 0 ) translateY( -65% )
+    .hover-mask--bottom
+      opacity 1
+      transform translateX( 0 ) translateY( 35% )
+  .hover-content
+    position absolute
+    left 0
+    top 0
+    width 100%
+    height 100%
+  .hover
+    position absolute
+    left 0
+    top 0
+    backface-visibility hidden
+  .hover-mask
+    position absolute
+    left 0
+    top 0
+    width 100%
+    height 100%
+    overflow hidden
+    // opacity 0
+    backface-visibility hidden
+    transition transform .25s cubic-bezier(0.250, 0.460, 0.450, 0.940), opacity .15s cubic-bezier(0.250, 0.460, 0.450, 0.940)
+  .hover-mask--top
+    transform translateX( -100% ) translateY( -65% )
+    transform-origin 0 0
+    .hover
+      transform-origin 0 0
+      transform translateY( 65% )
+  .hover-mask--bottom
+    transform translateX( 100% ) translateY( 35% )
+    transform-origin 0 0
+    .hover
+      transform-origin 0 0
+      transform translateY( -35% )

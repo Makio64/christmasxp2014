@@ -57,9 +57,8 @@
   position relative
   height 100%
 
-.artists-en tries
-  position relative
-  width 100%
+.artists-entries
+  min-width 580px
 
 .artists-entry
   position relative
@@ -68,7 +67,51 @@
   height 50%
   float left
   text-align center
+  text-decoration none
+  .borders, .borders span
+    display block
+  &:hover
+    .artists-entry-hover-part--left
+      transform translateY( -7px )
+    .artists-entry-hover-part--right
+      transform translateY( 7px )
+
+.artists-entry-hover-parts
+  position relative
+  width 155px
+  height 100%
+  margin 0 auto
+  display inline-block
+
+.artists-entry-hover-part
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
   display table
+  overflow hidden
+  backface-visibility hidden
+  transition transform .25s cubic-bezier(0.165, 0.840, 0.440, 1.000)
+
+.artists-entry-mask
+  position relative
+  width 100%
+  height 100%
+  display table
+
+.artists-entry-hover-part--left
+  display block
+  width 50%
+  overflow hidden
+
+.artists-entry-hover-part--right
+  display block
+  left 50%
+  width 50%
+  overflow hidden
+  .artists-entry-mask
+    left -100%
 
 .artists-entry-holder
   display table-cell
@@ -96,6 +139,7 @@
   color blueDark
   margin-top 20px
   height 40px
+  display block
 
 .artists-entry-day
   position relative
@@ -107,3 +151,4 @@
   border-radius 20px
   font normal 12px/30px bold
   color #fff
+  letter-spacing 1px

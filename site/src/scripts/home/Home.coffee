@@ -1,7 +1,10 @@
 nav = require "common/nav"
+getIndex = require "common/getIndex"
 Menu = require "home/Menu"
 Artists = require "home/Artists"
 About = require "home/About"
+xps = require "home/xps"
+TitleAnim = require "home/TitleAnim"
 
 class Home
 
@@ -12,15 +15,27 @@ class Home
                 alpha: 0
         @dom.style.display = "block"
         
-        @_menu = new Menu    
+        domHomeDetails = document.querySelector( ".home-details" )
+        @_domHomeDetails = domHomeDetails.cloneNode true
+        domHomeDetails.parentNode.removeChild domHomeDetails
+        @_titleAnim = null
+
+        @_menu = new Menu
 
         # modules with show/hide
         @_artists = new Artists
-        @_about = new About        
+        @_about = new About  
 
         @_currentModule = null
 
+        # tmp: will be replaced with the cristal
+        for dom in document.querySelectorAll ".home-bt"
+            dom.addEventListener "mouseover", @_onBtOver
+            dom.addEventListener "mouseout", @_onBtOut
+
         nav.on "change", @_onNavChange
+        xps.on "over", @_onXPOver
+        xps.on "out", @_onXPOut
 
     _onNavChange: ( id ) =>
         if id != ""
@@ -36,6 +51,23 @@ class Home
         else
             @_currentModule.hide()
             @_currentModule = null
+
+    _onBtOver: ( e ) ->
+        e.preventDefault()
+        xps.over getIndex e.currentTarget
+
+    _onBtOut: ( e ) ->
+        e.preventDefault()
+        xps.out()
+
+    _onXPOver: ( idx ) =>
+        if @_titleAnim
+            console.log "need to clean"
+        @_titleAnim = new TitleAnim @_domHomeDetails
+        
+
+    _onXPOut:=>
+        console.log "out"
 
     show: =>
         TweenLite.to @dom, .5,

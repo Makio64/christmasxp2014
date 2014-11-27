@@ -69,10 +69,5 @@ class Menu
         done @_iceAnim.hide( .15 ) * 1000, =>
             @_domMenuLight.style.display = "none"
             @_iceAnim.dispose()
-        # TweenLite.to @_domMenuLight, .4,
-        #     css:
-        #         alpha: 0
-        #     onComplete: =>
-        #         @_domMenuLight.style.display = "none"
 
 module.exports = Menu

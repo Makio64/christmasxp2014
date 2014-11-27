@@ -20,7 +20,7 @@ loading.start();
 
 
 
-},{"home/Home":8,"home/Loading":9}],2:[function(require,module,exports){
+},{"home/Home":9,"home/Loading":10}],2:[function(require,module,exports){
 var IceAnim,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -119,7 +119,6 @@ IceAnim = (function() {
       delay: delay,
       css: {
         alpha: .2,
-        rotationX: -20,
         rotationY: -20,
         x: -50,
         z: 60
@@ -129,7 +128,6 @@ IceAnim = (function() {
       delay: delay,
       css: {
         alpha: .45,
-        rotationX: -10,
         rotationY: -10,
         x: -35,
         z: 45
@@ -140,7 +138,6 @@ IceAnim = (function() {
       delay: delay + .05,
       css: {
         alpha: 1,
-        rotationX: 0,
         rotationY: 0,
         x: 0,
         z: 0
@@ -151,7 +148,6 @@ IceAnim = (function() {
       delay: delay,
       css: {
         alpha: .2,
-        rotationX: 20,
         rotationY: 20,
         x: 50,
         z: 60
@@ -161,7 +157,6 @@ IceAnim = (function() {
       delay: delay + .05,
       css: {
         alpha: .45,
-        rotationX: 10,
         rotationY: 10,
         x: 35,
         z: 45
@@ -172,7 +167,6 @@ IceAnim = (function() {
       delay: delay + .1,
       css: {
         alpha: 1,
-        rotationX: 0,
         rotationY: 0,
         x: 0,
         z: 0
@@ -290,6 +284,20 @@ module.exports = IceAnim;
 
 
 },{}],3:[function(require,module,exports){
+module.exports = function(node) {
+  var i;
+  i = 1;
+  while (node = node.previousElementSibling) {
+    if (node.nodeType === 1) {
+      i++;
+    }
+  }
+  return i;
+};
+
+
+
+},{}],4:[function(require,module,exports){
 var Interactions,
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
@@ -424,7 +432,7 @@ module.exports = new Interactions;
 
 
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var Nav,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -453,16 +461,85 @@ module.exports = new Nav;
 
 
 
-},{}],5:[function(require,module,exports){
-var About;
+},{}],6:[function(require,module,exports){
+var About, IceAnim, interactions, nav;
+
+interactions = require("common/interactions");
+
+nav = require("common/nav");
+
+IceAnim = require("common/anim/IceAnim");
 
 About = (function() {
-  function About() {}
+  function About() {
+    this.dom = document.querySelector(".about");
+    this._domBtClose = this.dom.querySelector(".bt-close-holder");
+    interactions.on(this._domBtClose, "click", this._onBtClose);
+  }
 
-  About.prototype.show = function() {};
+  About.prototype._onBtClose = function(e) {
+    e.preventDefault();
+    return nav.set("");
+  };
+
+  About.prototype.show = function() {
+    var d, dom, domInfos, _i, _len, _results;
+    this.dom.style.display = "block";
+    this._iceAnim = new IceAnim(this.dom, this.dom.offsetWidth, this.dom.offsetHeight);
+    this._iceAnim.show(.1);
+    domInfos = document.querySelectorAll(".about-infos");
+    d = 0;
+    _results = [];
+    for (_i = 0, _len = domInfos.length; _i < _len; _i++) {
+      dom = domInfos[_i];
+      TweenLite.set(dom, {
+        css: {
+          alpha: 0,
+          y: 50,
+          force3D: true
+        }
+      });
+      TweenLite.to(dom, .1, {
+        delay: .15 + d,
+        css: {
+          alpha: .325,
+          y: 35,
+          force3D: true
+        },
+        ease: Quad.easeIn
+      });
+      TweenLite.to(dom, .25, {
+        delay: .15 + .1 + d,
+        css: {
+          alpha: 1,
+          y: 0,
+          force3D: true
+        },
+        ease: Quart.easeOut
+      });
+      _results.push(d += .05);
+    }
+    return _results;
+  };
+
+  About.prototype._getIndex = function(node) {
+    var i;
+    i = 1;
+    while (node = node.previousElementSibling) {
+      if (node.nodeType === 1) {
+        i++;
+      }
+    }
+    return i;
+  };
 
   About.prototype.hide = function() {
-    return done(1000);
+    return done(this._iceAnim.hide() * 1000, (function(_this) {
+      return function() {
+        _this.dom.style.display = "none";
+        return _this._iceAnim.dispose();
+      };
+    })(this));
   };
 
   return About;
@@ -473,7 +550,7 @@ module.exports = About;
 
 
 
-},{}],6:[function(require,module,exports){
+},{"common/anim/IceAnim":2,"common/interactions":4,"common/nav":5}],7:[function(require,module,exports){
 var Artists, IceAnim, interactions, nav;
 
 interactions = require("common/interactions");
@@ -608,7 +685,7 @@ module.exports = Artists;
 
 
 
-},{"common/anim/IceAnim":2,"common/interactions":3,"common/nav":4}],7:[function(require,module,exports){
+},{"common/anim/IceAnim":2,"common/interactions":4,"common/nav":5}],8:[function(require,module,exports){
 var Credits, interactions, nav,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -642,14 +719,14 @@ Credits = (function() {
     TweenLite.set(this._domTitle, {
       css: {
         alpha: 0,
-        x: -200
+        x: -50
       }
     });
     TweenLite.to(this._domTitle, .1, {
       delay: .05,
       css: {
         alpha: .4,
-        x: -130
+        x: -30
       },
       ease: Sine.easeIn
     });
@@ -671,7 +748,7 @@ Credits = (function() {
       TweenLite.set(dom, {
         css: {
           alpha: 0,
-          x: -200,
+          x: -50,
           force3D: true
         }
       });
@@ -679,7 +756,7 @@ Credits = (function() {
         delay: d,
         css: {
           alpha: .4,
-          x: -130,
+          x: -30,
           force3D: true
         },
         ease: Sine.easeIn
@@ -725,11 +802,13 @@ module.exports = Credits;
 
 
 
-},{"common/interactions":3,"common/nav":4}],8:[function(require,module,exports){
-var About, Artists, Home, Menu, nav,
+},{"common/interactions":4,"common/nav":5}],9:[function(require,module,exports){
+var About, Artists, Home, Menu, TitleAnim, getIndex, nav, xps,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 nav = require("common/nav");
+
+getIndex = require("common/getIndex");
 
 Menu = require("home/Menu");
 
@@ -737,10 +816,17 @@ Artists = require("home/Artists");
 
 About = require("home/About");
 
+xps = require("home/xps");
+
+TitleAnim = require("home/TitleAnim");
+
 Home = (function() {
   function Home() {
     this.show = __bind(this.show, this);
+    this._onXPOut = __bind(this._onXPOut, this);
+    this._onXPOver = __bind(this._onXPOver, this);
     this._onNavChange = __bind(this._onNavChange, this);
+    var dom, domHomeDetails, _i, _len, _ref;
     this.dom = document.querySelector(".home");
     TweenLite.set(this.dom, {
       css: {
@@ -748,11 +834,23 @@ Home = (function() {
       }
     });
     this.dom.style.display = "block";
+    domHomeDetails = document.querySelector(".home-details");
+    this._domHomeDetails = domHomeDetails.cloneNode(true);
+    domHomeDetails.parentNode.removeChild(domHomeDetails);
+    this._titleAnim = null;
     this._menu = new Menu;
     this._artists = new Artists;
     this._about = new About;
     this._currentModule = null;
+    _ref = document.querySelectorAll(".home-bt");
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      dom = _ref[_i];
+      dom.addEventListener("mouseover", this._onBtOver);
+      dom.addEventListener("mouseout", this._onBtOut);
+    }
     nav.on("change", this._onNavChange);
+    xps.on("over", this._onXPOver);
+    xps.on("out", this._onXPOut);
   }
 
   Home.prototype._onNavChange = function(id) {
@@ -779,6 +877,27 @@ Home = (function() {
     }
   };
 
+  Home.prototype._onBtOver = function(e) {
+    e.preventDefault();
+    return xps.over(getIndex(e.currentTarget));
+  };
+
+  Home.prototype._onBtOut = function(e) {
+    e.preventDefault();
+    return xps.out();
+  };
+
+  Home.prototype._onXPOver = function(idx) {
+    if (this._titleAnim) {
+      console.log("need to clean");
+    }
+    return this._titleAnim = new TitleAnim(this._domHomeDetails);
+  };
+
+  Home.prototype._onXPOut = function() {
+    return console.log("out");
+  };
+
   Home.prototype.show = function() {
     return TweenLite.to(this.dom, .5, {
       css: {
@@ -797,7 +916,7 @@ module.exports = Home;
 
 
 
-},{"common/nav":4,"home/About":5,"home/Artists":6,"home/Menu":10}],9:[function(require,module,exports){
+},{"common/getIndex":3,"common/nav":5,"home/About":6,"home/Artists":7,"home/Menu":11,"home/TitleAnim":12,"home/xps":13}],10:[function(require,module,exports){
 var Loading,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __hasProp = {}.hasOwnProperty,
@@ -863,7 +982,7 @@ module.exports = Loading;
 
 
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 var Credits, IceAnim, Menu, interactions, nav,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -985,4 +1104,50 @@ module.exports = Menu;
 
 
 
-},{"common/anim/IceAnim":2,"common/interactions":3,"common/nav":4,"home/Credits":7}]},{},[1])
+},{"common/anim/IceAnim":2,"common/interactions":4,"common/nav":5,"home/Credits":8}],12:[function(require,module,exports){
+var IceAnim, TitleAnim;
+
+IceAnim = require("common/anim/IceAnim");
+
+TitleAnim = (function() {
+  function TitleAnim(node) {
+    this.dom = document.querySelector(".home-details-cnt");
+  }
+
+  return TitleAnim;
+
+})();
+
+module.exports = TitleAnim;
+
+
+
+},{"common/anim/IceAnim":2}],13:[function(require,module,exports){
+var Xps,
+  __hasProp = {}.hasOwnProperty,
+  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+Xps = (function(_super) {
+  __extends(Xps, _super);
+
+  function Xps() {
+    Xps.__super__.constructor.apply(this, arguments);
+  }
+
+  Xps.prototype.over = function(idx) {
+    return this.emit("over", idx);
+  };
+
+  Xps.prototype.out = function(idx) {
+    return this.emit("out");
+  };
+
+  return Xps;
+
+})(Emitter);
+
+module.exports = new Xps;
+
+
+
+},{}]},{},[1])

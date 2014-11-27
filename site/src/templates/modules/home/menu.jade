@@ -14,10 +14,22 @@ mixin _menu-content()
       .menu-subtitle The Digital<br />Advent Calendar
     .menu-entries-holder
       ul.menu-entries
-        li.menu-entry.menu-entry--artists.underline.underline--blue 
-          a(href="#") ARTISTS
-        li.menu-entry.menu-entry--about.underline.underline--blue 
-          a(href="#") ABOUT
+        li.menu-entry.menu-entry--artists
+          a.hoverable(href="#")
+            span.normal.underline.underline--blue ARTISTS
+            span.hover-content
+              span.hover-mask.hover-mask--top
+                span.hover.underline.underline ARTISTS
+              span.hover-mask.hover-mask--bottom
+                span.hover.underline.underline ARTISTS
+        li.menu-entry.menu-entry--about
+          a.hoverable(href="#")
+            span.normal.underline.underline--blue ABOUT
+            span.hover-content
+              span.hover-mask.hover-mask--top
+                span.hover.underline.underline ABOUT
+              span.hover-mask.hover-mask--bottom
+                span.hover.underline.underline ABOUT
     ul.menu-subentries
       li.menu-subentry
         a(href="#") CREDITS

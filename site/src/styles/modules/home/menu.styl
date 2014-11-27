@@ -55,11 +55,17 @@
   font normal 14px bold
   -webkit-font-smoothing antialiased
   letter-spacing 1px
-  &:after
-    width 60px
-    margin-top 0
   &:not(:last-child)
     margin-bottom 25px
+  
+  .hover-content
+    color red
+
+.menu-entry--artists .underline:after
+  width 58px
+
+.menu-entry--about .underline:after
+  width 45px
 
 .menu-subentries
   position relative
@@ -71,6 +77,8 @@
   a
     letter-spacing 1px
     -webkit-font-smoothing auto
+    &:hover
+      color red
 
 .menu-subentry
   position relative
@@ -108,10 +116,18 @@
     a
       color blueDark
     &.activated
+      .hover-content
+        display none
       a
         color red
-      &:after
+        &:hover
+          .normal
+            opacity 1
+      span:after
         background-image url( "img/underline.png" ) !important
+  .hover-content
+    .underline:after
+      background-image url( "img/underline.png" )
   .underline:after
     background-image url( "img/underline-blue-dark.png" )
   .menu-subentry a

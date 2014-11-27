@@ -25,12 +25,12 @@ class Credits
         TweenLite.set @_domTitle,
             css:
                 alpha: 0
-                x: -200
+                x: -50
         TweenLite.to @_domTitle, .1,
             delay: .05
             css:
                 alpha: .4
-                x: -130
+                x: -30
             ease: Sine.easeIn
         TweenLite.to @_domTitle, .25,
             delay: .05 + .1
@@ -46,13 +46,13 @@ class Credits
             TweenLite.set dom,
                 css:
                     alpha: 0
-                    x: -200
+                    x: -50
                     force3D: true
             TweenLite.to dom, .1,
                 delay: d
                 css:
                     alpha: .4
-                    x: -130
+                    x: -30
                     force3D: true
                 ease: Sine.easeIn
             TweenLite.to dom, .25,
