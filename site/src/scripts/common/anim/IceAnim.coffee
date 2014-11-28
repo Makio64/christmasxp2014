@@ -8,7 +8,7 @@ class IceAnim
         @_initNode @_nodeA, @_w, @_h
         @_initNode @_nodeB, @_w, @_h
 
-        TweenLite.set @_domContent, { css: { alpha: 0 } }
+        TweenLite.set @_domContent, { css: { alpha: 0, force3D: true } }
 
         @_masks = {}
 
@@ -35,18 +35,22 @@ class IceAnim
             css:
                 alpha: 0
                 rotation: -r
+                force3D: true
         TweenLite.set @_nodeA,
             css:
                 rotation: r
+                force3D: true
 
         r = ( Math.PI * .25 + ( Math.random() * Math.PI * .3 ) - .15) * 180 / Math.PI
         TweenLite.set @_maskB,
             css:
                 alpha: 0
                 rotation: -r
+                force3D: true
         TweenLite.set @_nodeB,
             css:
                 rotation: r
+                force3D: true
 
         @_node.appendChild @_maskA
         @_node.appendChild @_maskB
@@ -70,6 +74,7 @@ class IceAnim
                 rotationY: -20
                 x: -50
                 z: 60
+                force3D: true
         TweenLite.to @_maskA, .05,
             delay: delay
             css:
@@ -78,6 +83,7 @@ class IceAnim
                 rotationY: -10
                 x: -35
                 z: 45
+                force3D: true
             ease: Quad.easeIn
         TweenLite.to @_maskA, .15,
             delay: delay + .05
@@ -87,6 +93,7 @@ class IceAnim
                 rotationY: 0
                 x: 0
                 z: 0
+                force3D: true
             ease: Quart.easeOut
 
         TweenLite.set @_maskB,
@@ -97,6 +104,7 @@ class IceAnim
                 rotationY: 20
                 x: 50
                 z: 60
+                force3D: true
         TweenLite.to @_maskB, .05,
             delay: delay + .05
             css:
@@ -105,6 +113,7 @@ class IceAnim
                 rotationY: 10
                 x: 35
                 z: 45
+                force3D: true
             ease: Quad.easeIn
         TweenLite.to @_maskB, .15,
             delay: delay + .1
@@ -114,6 +123,7 @@ class IceAnim
                 rotationY: 0
                 x: 0
                 z: 0
+                force3D: true
             ease: Quart.easeOut
 
         TweenLite.set @_domContent, 
@@ -121,13 +131,16 @@ class IceAnim
             css: 
                 rotationY: -20
                 z: 20
+                force3D: true
                 alpha: 0
-        TweenLite.to @_domContent, .2, 
+        TweenLite.to @_domContent, .4, 
             delay: delay + .15, 
             css: 
                 rotationY: 0
                 z: 0
                 alpha: 1
+                force3D: true
+            ease: Expo.easeInOut
             onComplete: @_removeIce
 
     _removeIce: =>
@@ -145,6 +158,7 @@ class IceAnim
                 rotationY: 0
                 x: 0
                 z: 0
+                force3D: true
         TweenLite.set @_maskB,
             css: 
                 alpha: 1
@@ -152,11 +166,13 @@ class IceAnim
                 rotationY: 0
                 x: 0
                 z: 0
+                force3D: true
         TweenLite.set @_domContent,
             css: 
                 rotationY: 0
                 z: 0
                 alpha: 1
+                force3D: true
 
         TweenLite.to @_domContent, .1,
             delay: delay
@@ -164,6 +180,7 @@ class IceAnim
                 alpha: .85
                 rotationY: -7
                 z: 20
+                force3D: true
             ease: Quad.easeIn
         TweenLite.to @_domContent, .05,
             delay: delay + .1
@@ -171,6 +188,7 @@ class IceAnim
                 alpha: 0
                 rotationY: -20
                 z: 60
+                force3D: true
             ease: Cubic.easeOut
 
         TweenLite.to @_maskA, .1,
@@ -180,6 +198,7 @@ class IceAnim
                 # rotationX: -7
                 rotationY: -7
                 x: -15
+                force3D: true
                 z: 20
             ease: Quad.easeIn
         TweenLite.to @_maskA, .1,
@@ -190,6 +209,7 @@ class IceAnim
                 rotationY: -20
                 x: -50
                 z: 60
+                force3D: true
             ease: Cubic.easeOut
 
         TweenLite.to @_maskB, .1,
@@ -200,6 +220,7 @@ class IceAnim
                 rotationY: 7
                 x: 15
                 z: 20
+                force3D: true
             ease: Quad.easeIn
         TweenLite.to @_maskB, .1,
             delay: delay + .1 + .1
@@ -209,6 +230,7 @@ class IceAnim
                 rotationY: 20
                 x: 50
                 z: 60
+                force3D: true
             ease: Cubic.easeOut
 
         .4 + delay
@@ -220,6 +242,7 @@ class IceAnim
                 rotationY: 0
                 z: 0
                 alpha: 1
+                force3D: true
 
 
 module.exports = IceAnim

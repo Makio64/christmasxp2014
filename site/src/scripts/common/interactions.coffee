@@ -8,7 +8,7 @@ class Interactions
 
         @_interactions = [ @_downs, @_moves, @_ups, @_clicks ]
 
-        @_isTouchDevice = "ontouchstart" in window || "onmsgesturechange" in window
+        @isTouchDevice = "ontouchstart" of window || "onmsgesturechange" of window
 
     on: ( elt, action, cb ) ->
         evt = @_getEvent action
@@ -18,10 +18,13 @@ class Interactions
         if !obj[ elt ]
             obj[ elt ] = []
 
+        isTouchDevice = @isTouchDevice
         proxy = ( e ) ->
-            if @_isTouchDevice
-                e.x = e.touches[ 0 ].clientX
-                e.y = e.touches[ 0 ].clientY
+            if isTouchDevice
+                touch = e.touches[ 0 ]
+                if touch
+                    e.x = touch.clientX
+                    e.y = touch.clientY
             else
                 e.x = e.clientX
                 e.y = e.clientY
@@ -64,7 +67,7 @@ class Interactions
 
     _getEvent: ( action ) ->
         evt = ""
-        if @_isTouchDevice
+        if @isTouchDevice
             switch action
                 when "down" then evt = "touchstart"
                 when "move" then evt = "touchmove"
@@ -87,3 +90,4 @@ class Interactions
             
 
 module.exports = new Interactions
+    

@@ -230,7 +230,8 @@ IceAnim = (function() {
     this._initNode(this._nodeB, this._w, this._h);
     TweenLite.set(this._domContent, {
       css: {
-        alpha: 0
+        alpha: 0,
+        force3D: true
       }
     });
     this._masks = {};
@@ -267,24 +268,28 @@ IceAnim = (function() {
     TweenLite.set(this._maskA, {
       css: {
         alpha: 0,
-        rotation: -r
+        rotation: -r,
+        force3D: true
       }
     });
     TweenLite.set(this._nodeA, {
       css: {
-        rotation: r
+        rotation: r,
+        force3D: true
       }
     });
     r = (Math.PI * .25 + (Math.random() * Math.PI * .3) - .15) * 180 / Math.PI;
     TweenLite.set(this._maskB, {
       css: {
         alpha: 0,
-        rotation: -r
+        rotation: -r,
+        force3D: true
       }
     });
     TweenLite.set(this._nodeB, {
       css: {
-        rotation: r
+        rotation: r,
+        force3D: true
       }
     });
     this._node.appendChild(this._maskA);
@@ -313,7 +318,8 @@ IceAnim = (function() {
         alpha: .2,
         rotationY: -20,
         x: -50,
-        z: 60
+        z: 60,
+        force3D: true
       }
     });
     TweenLite.to(this._maskA, .05, {
@@ -322,7 +328,8 @@ IceAnim = (function() {
         alpha: .45,
         rotationY: -10,
         x: -35,
-        z: 45
+        z: 45,
+        force3D: true
       },
       ease: Quad.easeIn
     });
@@ -332,7 +339,8 @@ IceAnim = (function() {
         alpha: 1,
         rotationY: 0,
         x: 0,
-        z: 0
+        z: 0,
+        force3D: true
       },
       ease: Quart.easeOut
     });
@@ -342,7 +350,8 @@ IceAnim = (function() {
         alpha: .2,
         rotationY: 20,
         x: 50,
-        z: 60
+        z: 60,
+        force3D: true
       }
     });
     TweenLite.to(this._maskB, .05, {
@@ -351,7 +360,8 @@ IceAnim = (function() {
         alpha: .45,
         rotationY: 10,
         x: 35,
-        z: 45
+        z: 45,
+        force3D: true
       },
       ease: Quad.easeIn
     });
@@ -361,7 +371,8 @@ IceAnim = (function() {
         alpha: 1,
         rotationY: 0,
         x: 0,
-        z: 0
+        z: 0,
+        force3D: true
       },
       ease: Quart.easeOut
     });
@@ -370,16 +381,19 @@ IceAnim = (function() {
       css: {
         rotationY: -20,
         z: 20,
+        force3D: true,
         alpha: 0
       }
     });
-    return TweenLite.to(this._domContent, .2, {
+    return TweenLite.to(this._domContent, .4, {
       delay: delay + .15,
       css: {
         rotationY: 0,
         z: 0,
-        alpha: 1
+        alpha: 1,
+        force3D: true
       },
+      ease: Expo.easeInOut,
       onComplete: this._removeIce
     });
   };
@@ -400,7 +414,8 @@ IceAnim = (function() {
         alpha: 1,
         rotationY: 0,
         x: 0,
-        z: 0
+        z: 0,
+        force3D: true
       }
     });
     TweenLite.set(this._maskB, {
@@ -408,14 +423,16 @@ IceAnim = (function() {
         alpha: 1,
         rotationY: 0,
         x: 0,
-        z: 0
+        z: 0,
+        force3D: true
       }
     });
     TweenLite.set(this._domContent, {
       css: {
         rotationY: 0,
         z: 0,
-        alpha: 1
+        alpha: 1,
+        force3D: true
       }
     });
     TweenLite.to(this._domContent, .1, {
@@ -423,7 +440,8 @@ IceAnim = (function() {
       css: {
         alpha: .85,
         rotationY: -7,
-        z: 20
+        z: 20,
+        force3D: true
       },
       ease: Quad.easeIn
     });
@@ -432,7 +450,8 @@ IceAnim = (function() {
       css: {
         alpha: 0,
         rotationY: -20,
-        z: 60
+        z: 60,
+        force3D: true
       },
       ease: Cubic.easeOut
     });
@@ -442,6 +461,7 @@ IceAnim = (function() {
         alpha: .85,
         rotationY: -7,
         x: -15,
+        force3D: true,
         z: 20
       },
       ease: Quad.easeIn
@@ -452,7 +472,8 @@ IceAnim = (function() {
         alpha: 0,
         rotationY: -20,
         x: -50,
-        z: 60
+        z: 60,
+        force3D: true
       },
       ease: Cubic.easeOut
     });
@@ -462,7 +483,8 @@ IceAnim = (function() {
         alpha: .85,
         rotationY: 7,
         x: 15,
-        z: 20
+        z: 20,
+        force3D: true
       },
       ease: Quad.easeIn
     });
@@ -472,7 +494,8 @@ IceAnim = (function() {
         alpha: 0,
         rotationY: 20,
         x: 50,
-        z: 60
+        z: 60,
+        force3D: true
       },
       ease: Cubic.easeOut
     });
@@ -485,7 +508,8 @@ IceAnim = (function() {
       css: {
         rotationY: 0,
         z: 0,
-        alpha: 1
+        alpha: 1,
+        force3D: true
       }
     });
   };
@@ -513,8 +537,7 @@ module.exports = function(node) {
 
 
 },{}],5:[function(require,module,exports){
-var Interactions,
-  __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+var Interactions;
 
 Interactions = (function() {
   function Interactions() {
@@ -523,11 +546,11 @@ Interactions = (function() {
     this._ups = {};
     this._clicks = {};
     this._interactions = [this._downs, this._moves, this._ups, this._clicks];
-    this._isTouchDevice = __indexOf.call(window, "ontouchstart") >= 0 || __indexOf.call(window, "onmsgesturechange") >= 0;
+    this.isTouchDevice = "ontouchstart" in window || "onmsgesturechange" in window;
   }
 
   Interactions.prototype.on = function(elt, action, cb) {
-    var evt, obj, proxy;
+    var evt, isTouchDevice, obj, proxy;
     evt = this._getEvent(action);
     if (evt === "") {
       return;
@@ -536,10 +559,15 @@ Interactions = (function() {
     if (!obj[elt]) {
       obj[elt] = [];
     }
+    isTouchDevice = this.isTouchDevice;
     proxy = function(e) {
-      if (this._isTouchDevice) {
-        e.x = e.touches[0].clientX;
-        e.y = e.touches[0].clientY;
+      var touch;
+      if (isTouchDevice) {
+        touch = e.touches[0];
+        if (touch) {
+          e.x = touch.clientX;
+          e.y = touch.clientY;
+        }
       } else {
         e.x = e.clientX;
         e.y = e.clientY;
@@ -595,7 +623,7 @@ Interactions = (function() {
   Interactions.prototype._getEvent = function(action) {
     var evt;
     evt = "";
-    if (this._isTouchDevice) {
+    if (this.isTouchDevice) {
       switch (action) {
         case "down":
           return evt = "touchstart";
@@ -766,7 +794,8 @@ module.exports = About;
 
 
 },{"common/anim/IceAnim":3,"common/interactions":5,"common/nav":6}],8:[function(require,module,exports){
-var Artists, IceAnim, interactions, nav;
+var Artists, IceAnim, interactions, nav,
+  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 interactions = require("common/interactions");
 
@@ -776,12 +805,74 @@ IceAnim = require("common/anim/IceAnim");
 
 Artists = (function() {
   function Artists() {
+    this._update = __bind(this._update, this);
+    this._onResize = __bind(this._onResize, this);
+    this._onMouseWheel = __bind(this._onMouseWheel, this);
+    this._onDragStop = __bind(this._onDragStop, this);
+    this._onDragMove = __bind(this._onDragMove, this);
+    this._onDragStart = __bind(this._onDragStart, this);
     this.dom = document.querySelector(".artists");
     this._domEntries = document.querySelector(".artists-entries");
+    this._domEntriesItems = document.querySelectorAll(".artists-entry");
     this._domEntriesHolders = this.dom.querySelectorAll(".artists-entry-holder");
     this._domBtClose = this.dom.querySelector(".bt-close-holder");
+    this._countEntries = this._domEntriesItems.length;
+    this._domEntries.addEventListener("mousewheel", this._onMouseWheel, false);
+    if (interactions.isTouchDevice) {
+      interactions.on(this._domEntries, "down", this._onDragStart, false);
+    }
+    this._py = 0;
+    this._pyCurrent = 0;
+    this._yMaxRelative = Math.round(this._countEntries / 6);
+    this._yMax = -this._yMaxRelative * (document.body.offsetHeight * .5) >> 0;
+    this._lastY = 0;
+    this._idRaf = -1;
     interactions.on(this._domBtClose, "click", this._onBtClose);
+    window.addEventListener("resize", this._onResize, false);
   }
+
+  Artists.prototype._onDragStart = function(e) {
+    e.preventDefault();
+    this._lastY = e.y;
+    interactions.on(this._domEntries, "move", this._onDragMove, false);
+    return interactions.on(this._domEntries, "up", this._onDragStop, false);
+  };
+
+  Artists.prototype._onDragMove = function(e) {
+    var dy;
+    e.preventDefault();
+    dy = e.y - this._lastY;
+    this._py += dy;
+    this._lastY = e.y;
+    return this._onEntriesScroll();
+  };
+
+  Artists.prototype._onDragStop = function(e) {
+    e.preventDefault();
+    interactions.off(this._domEntries, "move", this._onDragMove, false);
+    return interactions.off(this._domEntries, "up", this._onDragStop, false);
+  };
+
+  Artists.prototype._onMouseWheel = function(e) {
+    this._py += e.wheelDeltaY;
+    return this._onEntriesScroll();
+  };
+
+  Artists.prototype._onEntriesScroll = function() {
+    if (this._py > 0) {
+      this._py = 0;
+    }
+    if (this._py < this._yMax) {
+      return this._py = this._yMax;
+    }
+  };
+
+  Artists.prototype._onResize = function(e) {
+    var h;
+    h = document.body.offsetHeight;
+    this._yMax = -this._yMaxRelative * (h * .5) >> 0;
+    return this._onEntriesScroll();
+  };
 
   Artists.prototype._onBtClose = function(e) {
     e.preventDefault();
@@ -789,8 +880,16 @@ Artists = (function() {
   };
 
   Artists.prototype.show = function() {
-    var d, dAdd, dom, domEntriesHolders, domInfos, idx, _i, _j, _len, _len1, _results;
+    var d, dAdd, dom, domEntriesHolders, domInfos, idx, _i, _j, _len, _len1;
     this.dom.style.display = "block";
+    this._py = 0;
+    this._pyCurrent = 0;
+    TweenLite.set(this._domEntries, {
+      css: {
+        y: 0,
+        force3D: true
+      }
+    });
     this._iceAnim = new IceAnim(this.dom, this.dom.offsetWidth, this.dom.offsetHeight);
     this._iceAnim.show(.1);
     domEntriesHolders = document.querySelectorAll(".artists-entry");
@@ -801,16 +900,14 @@ Artists = (function() {
       TweenLite.set(dom, {
         css: {
           alpha: 0,
-          y: 50,
-          force3D: true
+          y: 50
         }
       });
       TweenLite.to(dom, .1, {
         delay: .15 + d,
         css: {
           alpha: .325,
-          y: 35,
-          force3D: true
+          y: 35
         },
         ease: Quad.easeIn
       });
@@ -818,8 +915,7 @@ Artists = (function() {
         delay: .15 + .1 + d,
         css: {
           alpha: 1,
-          y: 0,
-          force3D: true
+          y: 0
         },
         ease: Quart.easeOut
       });
@@ -827,7 +923,6 @@ Artists = (function() {
     }
     d = 0;
     dAdd = .05;
-    _results = [];
     for (_j = 0, _len1 = domEntriesHolders.length; _j < _len1; _j++) {
       dom = domEntriesHolders[_j];
       idx = this._getIndex(dom);
@@ -839,16 +934,14 @@ Artists = (function() {
       TweenLite.set(dom, {
         css: {
           alpha: 0,
-          y: 50,
-          force3D: true
+          y: 50
         }
       });
       TweenLite.to(dom, .1, {
         delay: .1 + d,
         css: {
           alpha: .325,
-          y: 35,
-          force3D: true
+          y: 35
         },
         ease: Quad.easeIn
       });
@@ -856,20 +949,27 @@ Artists = (function() {
         delay: .1 + .1 + d,
         css: {
           alpha: 1,
-          y: 0,
-          force3D: true
+          y: 0
         },
         ease: Quart.easeOut
       });
       d += dAdd;
       dAdd *= .9;
       if (dAdd < .025) {
-        _results.push(dAdd = .025);
-      } else {
-        _results.push(void 0);
+        dAdd = .025;
       }
     }
-    return _results;
+    return this._idTimeout = setTimeout(this._update, 2000);
+  };
+
+  Artists.prototype._update = function() {
+    this._pyCurrent += (this._py - this._pyCurrent) * .1;
+    TweenLite.set(this._domEntries, {
+      css: {
+        y: this._pyCurrent
+      }
+    });
+    return this._idRaf = requestAnimationFrame(this._update);
   };
 
   Artists.prototype._getIndex = function(node) {
@@ -884,6 +984,8 @@ Artists = (function() {
   };
 
   Artists.prototype.hide = function() {
+    clearTimeout(this._idTimeout);
+    cancelAnimationFrame(this._idRaf);
     return done(this._iceAnim.hide() * 1000, (function(_this) {
       return function() {
         _this.dom.style.display = "none";

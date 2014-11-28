@@ -8,10 +8,57 @@ class Artists
         @dom = document.querySelector ".artists"
 
         @_domEntries = document.querySelector ".artists-entries"
+        @_domEntriesItems = document.querySelectorAll ".artists-entry"
         @_domEntriesHolders = @dom.querySelectorAll ".artists-entry-holder"
         @_domBtClose = @dom.querySelector ".bt-close-holder"
 
+        @_countEntries = @_domEntriesItems.length
+        @_domEntries.addEventListener "mousewheel", @_onMouseWheel, false
+        if interactions.isTouchDevice
+            interactions.on @_domEntries, "down", @_onDragStart, false
+        @_py = 0
+        @_pyCurrent = 0
+        @_yMaxRelative = Math.round @_countEntries / 6
+        @_yMax = -@_yMaxRelative * ( document.body.offsetHeight * .5 ) >> 0
+        @_lastY = 0
+
+        @_idRaf = -1
+
         interactions.on @_domBtClose, "click", @_onBtClose
+
+        window.addEventListener "resize", @_onResize, false
+
+    _onDragStart: ( e ) =>
+        e.preventDefault()
+        @_lastY = e.y
+        interactions.on @_domEntries, "move", @_onDragMove, false
+        interactions.on @_domEntries, "up", @_onDragStop, false
+
+    _onDragMove: ( e ) =>
+        e.preventDefault()
+        dy = e.y - @_lastY
+        @_py += dy
+        @_lastY = e.y
+        @_onEntriesScroll()
+
+    _onDragStop: ( e ) =>
+        e.preventDefault()
+        interactions.off @_domEntries, "move", @_onDragMove, false
+        interactions.off @_domEntries, "up", @_onDragStop, false
+
+    _onMouseWheel: ( e ) =>
+        @_py += e.wheelDeltaY
+        @_onEntriesScroll()
+
+    _onEntriesScroll: ->
+        @_py = 0 if @_py > 0
+        @_py = @_yMax if @_py < @_yMax
+        # TweenLite.to @_domEntries, .25, { css: { y: @_py, force3D: true } }
+
+    _onResize: ( e ) =>
+        h = document.body.offsetHeight
+        @_yMax = -@_yMaxRelative * ( h * .5 ) >> 0
+        @_onEntriesScroll()
 
     _onBtClose: ( e ) ->
         e.preventDefault()
@@ -20,8 +67,13 @@ class Artists
     show: ->
         @dom.style.display = "block"
 
+        @_py = 0
+        @_pyCurrent = 0
+        TweenLite.set @_domEntries, { css: { y: 0, force3D: true } }
+
         @_iceAnim = new IceAnim @dom, @dom.offsetWidth, @dom.offsetHeight
         @_iceAnim.show .1
+        # return
 
         domEntriesHolders = document.querySelectorAll ".artists-entry"
         domInfos = document.querySelectorAll ".artists-infos"
@@ -32,20 +84,20 @@ class Artists
                 css:
                     alpha: 0
                     y: 50
-                    force3D: true
+                    # force3D: true
             TweenLite.to dom, .1,
                 delay: .15 + d
                 css:
                     alpha: .325
                     y: 35
-                    force3D: true
+                    # force3D: true
                 ease: Quad.easeIn
             TweenLite.to dom, .25,
                 delay: .15 + .1 + d
                 css:
                     alpha: 1
                     y: 0
-                    force3D: true
+                    # force3D: true
                 ease: Quart.easeOut
             d += .05
 
@@ -61,25 +113,32 @@ class Artists
                 css:
                     alpha: 0
                     y: 50
-                    force3D: true
+                    # force3D: true
             TweenLite.to dom, .1,
                 delay: .1 + d
                 css:
                     alpha: .325
                     y: 35
-                    force3D: true
+                    # force3D: true
                 ease: Quad.easeIn
             TweenLite.to dom, .25,
                 delay: .1 + .1 + d
                 css:
                     alpha: 1
                     y: 0
-                    force3D: true
+                    # force3D: true
                 ease: Quart.easeOut
 
             d += dAdd
             dAdd *= .9
             dAdd = .025 if dAdd < .025
+
+        @_idTimeout = setTimeout @_update, 2000
+
+    _update: =>
+        @_pyCurrent += ( @_py - @_pyCurrent ) * .1
+        TweenLite.set @_domEntries, { css: { y: @_pyCurrent } }
+        @_idRaf = requestAnimationFrame @_update
 
     _getIndex: ( node ) ->
         i = 1
@@ -89,6 +148,8 @@ class Artists
         i
 
     hide: ->
+        clearTimeout @_idTimeout
+        cancelAnimationFrame @_idRaf
         done @_iceAnim.hide() * 1000, =>
             @dom.style.display = "none"
             @_iceAnim.dispose()

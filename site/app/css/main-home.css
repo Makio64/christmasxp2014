@@ -941,10 +941,6 @@ body {
   -o-transform-origin: 0 0;
   -ms-transform-origin: 0 0;
   transform-origin: 0 0;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 .artists-infos {
   position: relative;
@@ -1033,10 +1029,6 @@ position relative {
   height: 100%;
   display: table;
   overflow: hidden;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  backface-visibility: hidden;
   -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
   -moz-transition: -moz-transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
   -o-transition: -o-transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
