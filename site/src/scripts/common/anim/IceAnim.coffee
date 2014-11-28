@@ -138,6 +138,26 @@ class IceAnim
         @_node.appendChild @_maskA
         @_node.appendChild @_maskB
 
+        TweenLite.set @_maskA,
+            css: 
+                alpha: 1
+                # rotationX: 0
+                rotationY: 0
+                x: 0
+                z: 0
+        TweenLite.set @_maskB,
+            css: 
+                alpha: 1
+                # rotationX: 0
+                rotationY: 0
+                x: 0
+                z: 0
+        TweenLite.set @_domContent,
+            css: 
+                rotationY: 0
+                z: 0
+                alpha: 1
+
         TweenLite.to @_domContent, .1,
             delay: delay
             css:

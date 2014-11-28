@@ -1,3 +1,5 @@
+IceAnim = require "common/anim/IceAnim"
+
 class Loading extends Emitter
 
     constructor: ->
@@ -30,11 +32,16 @@ class Loading extends Emitter
     hide: ->
         duration = .5
 
-        TweenLite.to @dom, duration,
-            css: 
-                alpha: 0
+        @_iceAnim = new IceAnim @dom, document.body.offsetWidth, document.body.offsetHeight
+        # iceAnim.show()
+        @_iceAnim.hide()
 
-        done duration * .5 * 1000
+        # TweenLite.to @dom, duration,
+        #     css: 
+        #         alpha: 0
+
+        # done duration * .5 * 1000
+        done 200
 
     dispose: ->
         console.log "dispose"

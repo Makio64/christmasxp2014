@@ -15,11 +15,11 @@ class Menu
 
         @_domBtsArtists = document.querySelectorAll ".menu-entry--artists a"
         @_domBtsAbout = document.querySelectorAll ".menu-entry--about a"
-        @_domBtsCredits = document.querySelector ".menu-subentry a"
+        @_domBtsCredits = document.querySelectorAll ".menu-subentry--credits a"
 
         interactions.on domBtArtists, "click", @_onBtArtists for domBtArtists in @_domBtsArtists
         interactions.on domBtAbout, "click", @_onBtAbout for domBtAbout in @_domBtsAbout
-        interactions.on @_domBtsCredits, "click", @_onBtCredits
+        interactions.on domBtCredits, "click", @_onBtCredits for domBtCredits in @_domBtsCredits
 
         nav.on "change", @_onNavChange
 

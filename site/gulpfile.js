@@ -108,7 +108,7 @@ gulp.task( "scripts", function() {
 
     gulp.src( src.scripts + "experiments/Main.coffee", { read: false } )
       .pipe( browserify( { 
-          paths: [ "src/scripts/" ], 
+          paths: [ "src/scripts/", "src/data/" ], 
           transform: [ html, "coffeeify" ], 
           extensions: [ ".coffee" ] 
         } ) )
@@ -119,7 +119,7 @@ gulp.task( "scripts", function() {
 
     gulp.src( src.scripts + "home/Main.coffee", { read: false } )
       .pipe( browserify( { 
-          paths: [ "src/scripts/" ], 
+          paths: [ "src/scripts/", "src/data/" ], 
           transform: [ html, "coffeeify" ], 
           extensions: [ ".coffee" ] 
         } ) )

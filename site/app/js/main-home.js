@@ -20,7 +20,199 @@ loading.start();
 
 
 
-},{"home/Home":9,"home/Loading":10}],2:[function(require,module,exports){
+},{"home/Home":10,"home/Loading":11}],2:[function(require,module,exports){
+module.exports={
+    "experiments": [
+        {
+            "author": "David Ronai",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        },
+        {
+            "author": "Florian Zumbrunn",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        },
+        {
+            "author": "Florian Zumbrunn",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        },
+        {
+            "author": "Florian Zumbrunn",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        },
+        {
+            "author": "Florian Zumbrunn",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        },
+        {
+            "author": "Florian Zumbrunn",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        },
+        {
+            "author": "Florian Zumbrunn",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        },
+        {
+            "author": "Florian Zumbrunn",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        },
+        {
+            "author": "Florian Zumbrunn",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        },
+        {
+            "author": "Florian Zumbrunn",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        },
+        {
+            "author": "Florian Zumbrunn",
+            "bio": "Lorem ipsum",
+            "title": "PACK THE FUN 2",
+            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
+            "site": "http://www.makiopolis.com",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "left/right to navigate<br />space to pause"
+                }
+            ]
+        }
+    ],
+    "tpl": {
+        "author": "",
+        "title": "",
+        "subtitle": "",
+        "desc": "",
+        "site": "#",
+        "isWebGL": false,
+        "isMobile": false,
+        "details": []
+    }
+}
+
+},{}],3:[function(require,module,exports){
 var IceAnim,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -203,6 +395,29 @@ IceAnim = (function() {
     }
     this._node.appendChild(this._maskA);
     this._node.appendChild(this._maskB);
+    TweenLite.set(this._maskA, {
+      css: {
+        alpha: 1,
+        rotationY: 0,
+        x: 0,
+        z: 0
+      }
+    });
+    TweenLite.set(this._maskB, {
+      css: {
+        alpha: 1,
+        rotationY: 0,
+        x: 0,
+        z: 0
+      }
+    });
+    TweenLite.set(this._domContent, {
+      css: {
+        rotationY: 0,
+        z: 0,
+        alpha: 1
+      }
+    });
     TweenLite.to(this._domContent, .1, {
       delay: delay,
       css: {
@@ -283,7 +498,7 @@ module.exports = IceAnim;
 
 
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports = function(node) {
   var i;
   i = 1;
@@ -297,7 +512,7 @@ module.exports = function(node) {
 
 
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var Interactions,
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
@@ -432,7 +647,7 @@ module.exports = new Interactions;
 
 
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 var Nav,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -461,7 +676,7 @@ module.exports = new Nav;
 
 
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var About, IceAnim, interactions, nav;
 
 interactions = require("common/interactions");
@@ -550,7 +765,7 @@ module.exports = About;
 
 
 
-},{"common/anim/IceAnim":2,"common/interactions":4,"common/nav":5}],7:[function(require,module,exports){
+},{"common/anim/IceAnim":3,"common/interactions":5,"common/nav":6}],8:[function(require,module,exports){
 var Artists, IceAnim, interactions, nav;
 
 interactions = require("common/interactions");
@@ -685,7 +900,7 @@ module.exports = Artists;
 
 
 
-},{"common/anim/IceAnim":2,"common/interactions":4,"common/nav":5}],8:[function(require,module,exports){
+},{"common/anim/IceAnim":3,"common/interactions":5,"common/nav":6}],9:[function(require,module,exports){
 var Credits, interactions, nav,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -802,7 +1017,7 @@ module.exports = Credits;
 
 
 
-},{"common/interactions":4,"common/nav":5}],9:[function(require,module,exports){
+},{"common/interactions":5,"common/nav":6}],10:[function(require,module,exports){
 var About, Artists, Home, Menu, TitleAnim, getIndex, nav, xps,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -834,7 +1049,7 @@ Home = (function() {
       }
     });
     this.dom.style.display = "block";
-    domHomeDetails = document.querySelector(".home-details");
+    domHomeDetails = document.querySelector(".home-details-content");
     this._domHomeDetails = domHomeDetails.cloneNode(true);
     domHomeDetails.parentNode.removeChild(domHomeDetails);
     this._titleAnim = null;
@@ -888,14 +1103,12 @@ Home = (function() {
   };
 
   Home.prototype._onXPOver = function(idx) {
-    if (this._titleAnim) {
-      console.log("need to clean");
-    }
-    return this._titleAnim = new TitleAnim(this._domHomeDetails);
+    this._titleAnim = new TitleAnim(this._domHomeDetails.cloneNode(true), idx);
+    return this._titleAnim.show();
   };
 
   Home.prototype._onXPOut = function() {
-    return console.log("out");
+    return this._titleAnim.hide();
   };
 
   Home.prototype.show = function() {
@@ -916,11 +1129,13 @@ module.exports = Home;
 
 
 
-},{"common/getIndex":3,"common/nav":5,"home/About":6,"home/Artists":7,"home/Menu":11,"home/TitleAnim":12,"home/xps":13}],10:[function(require,module,exports){
-var Loading,
+},{"common/getIndex":4,"common/nav":6,"home/About":7,"home/Artists":8,"home/Menu":12,"home/TitleAnim":13,"home/xps":14}],11:[function(require,module,exports){
+var IceAnim, Loading,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+IceAnim = require("common/anim/IceAnim");
 
 Loading = (function(_super) {
   __extends(Loading, _super);
@@ -961,12 +1176,9 @@ Loading = (function(_super) {
   Loading.prototype.hide = function() {
     var duration;
     duration = .5;
-    TweenLite.to(this.dom, duration, {
-      css: {
-        alpha: 0
-      }
-    });
-    return done(duration * .5 * 1000);
+    this._iceAnim = new IceAnim(this.dom, document.body.offsetWidth, document.body.offsetHeight);
+    this._iceAnim.hide();
+    return done(200);
   };
 
   Loading.prototype.dispose = function() {
@@ -982,7 +1194,7 @@ module.exports = Loading;
 
 
 
-},{}],11:[function(require,module,exports){
+},{"common/anim/IceAnim":3}],12:[function(require,module,exports){
 var Credits, IceAnim, Menu, interactions, nav,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -1000,14 +1212,14 @@ Menu = (function() {
     this._onBtCredits = __bind(this._onBtCredits, this);
     this._onBtAbout = __bind(this._onBtAbout, this);
     this._onBtArtists = __bind(this._onBtArtists, this);
-    var domBtAbout, domBtArtists, _i, _j, _len, _len1, _ref, _ref1;
+    var domBtAbout, domBtArtists, domBtCredits, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
     this.dom = document.querySelector(".menu");
     this._credits = new Credits;
     this._domMenuLight = document.querySelector(".menu--light");
     this._menuLightVisible = false;
     this._domBtsArtists = document.querySelectorAll(".menu-entry--artists a");
     this._domBtsAbout = document.querySelectorAll(".menu-entry--about a");
-    this._domBtsCredits = document.querySelector(".menu-subentry a");
+    this._domBtsCredits = document.querySelectorAll(".menu-subentry--credits a");
     _ref = this._domBtsArtists;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       domBtArtists = _ref[_i];
@@ -1018,7 +1230,11 @@ Menu = (function() {
       domBtAbout = _ref1[_j];
       interactions.on(domBtAbout, "click", this._onBtAbout);
     }
-    interactions.on(this._domBtsCredits, "click", this._onBtCredits);
+    _ref2 = this._domBtsCredits;
+    for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+      domBtCredits = _ref2[_k];
+      interactions.on(domBtCredits, "click", this._onBtCredits);
+    }
     nav.on("change", this._onNavChange);
   }
 
@@ -1104,15 +1320,57 @@ module.exports = Menu;
 
 
 
-},{"common/anim/IceAnim":2,"common/interactions":4,"common/nav":5,"home/Credits":8}],12:[function(require,module,exports){
-var IceAnim, TitleAnim;
+},{"common/anim/IceAnim":3,"common/interactions":5,"common/nav":6,"home/Credits":9}],13:[function(require,module,exports){
+var IceAnim, TitleAnim, datas;
 
 IceAnim = require("common/anim/IceAnim");
 
+datas = require("data.json").experiments;
+
 TitleAnim = (function() {
-  function TitleAnim(node) {
+  function TitleAnim(_node, idx) {
+    var data, day;
+    this._node = _node;
     this.dom = document.querySelector(".home-details-cnt");
+    this._w = 300;
+    this._h = 140;
+    data = datas[idx];
+    day = idx;
+    if (idx < 10) {
+      day = "0" + day;
+    }
+    this._node.querySelector(".home-details-day").innerHTML = day;
+    this._node.querySelector(".home-details-title").innerHTML = data.title;
+    this._node.querySelector(".home-details-author").innerHTML = data.author;
   }
+
+  TitleAnim.prototype.show = function() {
+    this.dom.appendChild(this._node);
+    TweenLite.set(this._node, {
+      css: {
+        alpha: 0
+      }
+    });
+    return TweenLite.to(this._node, .25, {
+      css: {
+        alpha: 1
+      }
+    });
+  };
+
+  TitleAnim.prototype.hide = function() {
+    return TweenLite.to(this._node, .25, {
+      css: {
+        alpha: 0
+      },
+      onComplete: (function(_this) {
+        return function() {
+          console.log("yup");
+          return _this.dom.removeChild(_this._node);
+        };
+      })(this)
+    });
+  };
 
   return TitleAnim;
 
@@ -1122,7 +1380,7 @@ module.exports = TitleAnim;
 
 
 
-},{"common/anim/IceAnim":2}],13:[function(require,module,exports){
+},{"common/anim/IceAnim":3,"data.json":2}],14:[function(require,module,exports){
 var Xps,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };

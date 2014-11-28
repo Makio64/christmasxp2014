@@ -15,7 +15,7 @@ class Home
                 alpha: 0
         @dom.style.display = "block"
         
-        domHomeDetails = document.querySelector( ".home-details" )
+        domHomeDetails = document.querySelector( ".home-details-content" )
         @_domHomeDetails = domHomeDetails.cloneNode true
         domHomeDetails.parentNode.removeChild domHomeDetails
         @_titleAnim = null
@@ -61,13 +61,13 @@ class Home
         xps.out()
 
     _onXPOver: ( idx ) =>
-        if @_titleAnim
-            console.log "need to clean"
-        @_titleAnim = new TitleAnim @_domHomeDetails
-        
+        # if @_titleAnim
+        #     @_titleAnim.hide()
+        @_titleAnim = new TitleAnim @_domHomeDetails.cloneNode( true ), idx
+        @_titleAnim.show()        
 
     _onXPOut:=>
-        console.log "out"
+        @_titleAnim.hide()
 
     show: =>
         TweenLite.to @dom, .5,
