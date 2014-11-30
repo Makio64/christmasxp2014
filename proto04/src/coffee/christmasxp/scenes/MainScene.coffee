@@ -4,6 +4,7 @@ class MainScene extends Scene
 
 		@isReady = false
 		@isImgReady = false
+		@debug = false
 
 		@currentIndex = 1
 
@@ -158,12 +159,21 @@ class MainScene extends Scene
 	createCircles:()->
 		image = new Image()
 		image.onload = ()=>
-			map = new THREE.Texture( image, THREE.UVMapping, THREE.ClampToEdgeWrapping, THREE.ClampToEdgeWrapping, THREE.LinearFilter, THREE.LinearMipMapLinearFilter, THREE.RGBFormat, THREE.UnsignedByteType, 1 )
-			material = new THREE.PointCloudMaterial({color:0,size:64,sizeAttenuation:false,fog:false})
-			mesh = new THREE.PointCloud(@backgroundGeometry,material)
-
-			@container.add(mesh)
+			# not working this way.. todo: not use ImageUtils
+			# map = new THREE.Texture( image )
+			map = THREE.ImageUtils.loadTexture('./3d/textures/circle.png')
+			@bufferGeometry = new THREE.BufferGeometry()
+			@bufferGeometry.fromGeometry(@backgroundGeometry)
+			material = new THREE.PointCloudMaterial({depthTest:false,transparent:true, map:map, color:0xFFFFFF,size:64,sizeAttenuation:true,fog:false})
+			console.log(material)
+			@pointcloud = new THREE.PointCloud(@bufferGeometry,material)
+			@pointcloud.position.z -= 945.999
+			@pointcloud.position.y += 10
+			@container.add(@pointcloud)
 		image.src = './3d/textures/circle.png'
+		return
+
+	createParticles:()->
 		return
 
 	createLight:()=>
@@ -628,6 +638,8 @@ class MainScene extends Scene
 
 		if(@backgroundGeometry)
 			geometry =  @backgroundGeometry
+			if(@bufferGeometry)
+				@bufferGeometry.fromGeometry(@backgroundGeometry)
 			speeds = [800,700,1200]
 			for i in [0...geometry.vertices.length] by 1
 				v = geometry.vertices[i]
