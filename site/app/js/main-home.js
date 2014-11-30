@@ -1247,27 +1247,19 @@ Loading = (function(_super) {
     Loading.__super__.constructor.apply(this, arguments);
     this.dom = document.querySelector(".loading");
     this._domPercent = document.querySelector(".loading-percent");
-    this._percent = 0;
-    this.percent = 0;
+    this._percent = 1;
+    this.percent = 1;
+    this._updatePercent();
   }
 
-  Loading.prototype.start = function() {
-    return TweenLite.to(this, 1, {
-      _percent: 1,
-      onUpdate: this._updatePercent,
-      ease: Linear.easeNone
-    });
-  };
+  Loading.prototype.start = function() {};
 
   Loading.prototype._updatePercent = function() {
     this.percent = this._percent * 24 >> 0;
     if (this.percent < 10) {
-      this._domPercent.innerHTML = "0" + this.percent;
+      return this._domPercent.innerHTML = "0" + this.percent;
     } else {
-      this._domPercent.innerHTML = this.percent;
-    }
-    if (this._percent === 1) {
-      return this._onComplete();
+      return this._domPercent.innerHTML = this.percent;
     }
   };
 
