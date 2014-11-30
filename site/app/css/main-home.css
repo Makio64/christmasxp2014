@@ -851,6 +851,9 @@ body {
 .menu--light .menu-subentry a {
   color: #051d6b;
 }
+.menu--light .menu-subentry a:hover {
+  color: #f75568;
+}
 .menu--light .menu-subentry:nth-child(1 ):after {
   background-color: #051d6b;
 }
@@ -862,6 +865,14 @@ body {
   -moz-background-size: 14px 12px;
   background-size: 14px 12px;
 }
+.menu--light .share--twitter .icon:hover {
+  width: 14px;
+  height: 11px;
+  background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAWCAYAAADTlvzyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4NkQwQUYyMTZDOTUxMUU0OUQ5QUI0MDYzODIyQjQxOSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4NkQwQUYyMjZDOTUxMUU0OUQ5QUI0MDYzODIyQjQxOSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzQjY2MEY0NkM1MDExRTQ5RDlBQjQwNjM4MjJCNDE5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjg2RDBBRjIwNkM5NTExRTQ5RDlBQjQwNjM4MjJCNDE5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+qy2Q9AAAAb5JREFUeNq01j0oRWEcx/FzdQ3KpSgMRBRRYkAoBqWUUAoDYZINi4XFIFLCJKMBCxOFweuEiCRJSSEvA4WE5OX76H/qdLgvD+c+9el27vOc+zvPy3me63quaTX+WUrRgSKE4wYL6MeRtHGhHJsuCaxFEgY0w4bQ7qXuDV2IQQUuUeKWynpUIkSeLJDS5iNMlVBLB07QjPwQ+SJVPvswDo+fsDD0aIzELXaQYgY+WSobsY9qHz9QiEiNwBx0Y8IM3LI1UPM5g215gHBbfbzmXDdg7Hv1yKJJl165vdzwijW1ynCIZPRqBGbiwBqoelSGUSM4JQEXhqVH83jBNeIcDlOvx5V5Yc7hBrKDEGbIVL3bA0fwEaThXLFemIF76AxS4PRvgaoMyhZ37mDYrqzsXwNVycAy7hwK/PHq2AOP0YQoB8LWZfPwGTiFYQfCHmWzNvwFGnK21VvOMt3yIfefBhqoyqRsd3V40AxTe++stwbeAgskVA1xRIBh93LQTvhqpLa2KulNNBJRjFjNYVxEC878NXRL98Pk/MvVCPnEkiz91UBvctn+RKVJj/OQJT31WIbsTI4ndVTN/WWT+BJgAFSeWf+jCO1uAAAAAElFTkSuQmCC") no-repeat;
+  -webkit-background-size: 14px 11px;
+  -moz-background-size: 14px 11px;
+  background-size: 14px 11px;
+}
 .menu--light .share--fb .icon {
   width: 6px;
   height: 12px;
@@ -870,13 +881,21 @@ body {
   -moz-background-size: 6px 12px;
   background-size: 6px 12px;
 }
+.menu--light .share--fb .icon:hover {
+  width: 6px;
+  height: 11px;
+  background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAYAAAD0OH0aAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4NkQwQUYyNTZDOTUxMUU0OUQ5QUI0MDYzODIyQjQxOSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4NkQwQUYyNjZDOTUxMUU0OUQ5QUI0MDYzODIyQjQxOSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjg2RDBBRjIzNkM5NTExRTQ5RDlBQjQwNjM4MjJCNDE5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjg2RDBBRjI0NkM5NTExRTQ5RDlBQjQwNjM4MjJCNDE5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+QPAr6AAAAIVJREFUeNpi/B6awYAFKANxJRB7ArEUkvgbFiyKLYF4FxDzYJETYUITABmwGIdiuAJkYAd1DjJ4D8TngPgLNg06aPwfQKwFxC9gAuhOEkLj30dWjE0DOviFLkBIA1ZP/8cjr48mf41UG+6SquEeWTYwIuFGNAUX0eQnkxxKoxoGhwaAAAMAmVQVOiBWB0QAAAAASUVORK5CYII=") no-repeat;
+  -webkit-background-size: 6px 11px;
+  -moz-background-size: 6px 11px;
+  background-size: 6px 11px;
+}
 .credits {
   position: absolute;
   top: 0;
   left: -198px;
   width: 200px;
   height: 100%;
-  background-color: #fff;
+  background-color: #f5f7fc;
   text-align: center;
   z-index: 10;
 }
@@ -930,6 +949,9 @@ body {
   -moz-perspective: 1000;
   -ms-perspective: 1000;
   perspective: 1000;
+}
+.artists .bt-close .icon {
+  left: 0;
 }
 .artists-content {
   position: absolute;
@@ -1075,6 +1097,7 @@ position relative {
   color: #f75568;
   text-decoration: none;
   border-bottom: 1px solid #f75568;
+  letter-spacing: 1px;
 }
 .artists-entry-desc {
   font: normal 12px "source_sans_proregular";
@@ -1111,6 +1134,9 @@ position relative {
   -moz-perspective: 1000;
   -ms-perspective: 1000;
   perspective: 1000;
+}
+.about .bt-close .icon {
+  left: 0;
 }
 .about-content {
   position: absolute;
