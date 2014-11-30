@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+	head
+		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+		meta(name="viewport", content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width, minimal-ui")
+		meta(name="apple-mobile-web-app-capable" content="yes")
+		meta(name="apple-mobile-web-app-status-bar-style" content="black")
+
+		//- facebook meta
+		meta(property="og:site_name", content="Christmas Experiments 2014")
+		meta(property="og:title", content="Christmas Experiments 2014")
+		meta(property="og:description", content="The digital advent calendar, discover each day a new experiments!")
+		meta(property="og:type", content="website")
+		meta(property="og:url", content="http://christmasexperiments.com/2014/")
+		meta(property="og:image", content="")
+
+		title Christmas Experiments 2014
+		// build:css css/main.css
+		link(rel='stylesheet', href='css/main.css')
+		// endbuild
+	body
+		// build:js js/vendor.js
+		// bower:js
+
+		// endbower
+		//- script(type='text/javascript', src='js/vendors/godray.js')
+		script(type='text/javascript', src='js/vendors/SceneLoader.js')
+		// endbuild
+
+		// build:js js/main.js
+		script(type='text/javascript', src='js/core/3d/Stage3d.js')
+		script(type='text/javascript', src='js/core/scenes/Scene.js')
+		script(type='text/javascript', src='js/core/scenes/SceneTraveler.js')
+
+		script(type='text/javascript', src='js/christmasxp/scenes/MainScene.js')
+
+
+		script(type='text/javascript', src='js/main.js')
+		// endbuild
