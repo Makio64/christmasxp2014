@@ -1,0 +1,41 @@
+mixin menu( isLight )
+  - if ( isLight )
+    .menu.menu--light
+        +_menu-content()
+  - else 
+    .menu
+        +_menu-content()
+
+mixin _menu-content()
+  .menu-content.ice-content
+    .menu-top
+      .menu-logo
+      .menu-title CHRISTMAS<br />EXPERIMENTS
+      .menu-subtitle The Digital<br />Advent Calendar
+    .menu-entries-holder
+      ul.menu-entries
+        li.menu-entry.menu-entry--artists
+          a.hoverable(href="#")
+            span.normal.underline.underline--blue ARTISTS
+            span.hover-content
+              span.hover-mask.hover-mask--top
+                span.hover.underline.underline ARTISTS
+              span.hover-mask.hover-mask--bottom
+                span.hover.underline.underline ARTISTS
+        li.menu-entry.menu-entry--about
+          a.hoverable(href="#")
+            span.normal.underline.underline--blue ABOUT
+            span.hover-content
+              span.hover-mask.hover-mask--top
+                span.hover.underline.underline ABOUT
+              span.hover-mask.hover-mask--bottom
+                span.hover.underline.underline ABOUT
+    ul.menu-subentries
+      li.menu-subentry.menu-subentry--credits
+        a(href="#") CREDITS
+      li.menu-subentry
+        a.share.share--fb(href="#")
+          span.icon
+      li.menu-subentry
+        a.share.share--twitter(href="#")
+          span.icon

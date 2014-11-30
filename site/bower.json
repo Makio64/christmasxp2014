@@ -1,0 +1,16 @@
+{
+    "name": "Template",
+    "version": "0.0.1",
+    "homepage": "https://github.com/Makio64/Template",
+    "license": "MIT",
+    "authors": [
+        "florian.zumbrunn <florian.zumbrunn@gmail.com>"
+    ],
+    "dependencies": {
+        "threejs": "dev",
+        "gsap": "*",
+        "dat-gui": "*",
+        "emitter": "*",
+        "PxLoader": "*"
+    }
+}

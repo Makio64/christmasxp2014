@@ -1,0 +1,16 @@
+extends layout/default
+
+block style
+  link(rel="stylesheet", href="./css/main-home.css")
+
+block content
+  include modules/menu/mobile-navbar
+  include modules/menu/mobile-menu
+  include modules/home/home
+  .pattern
+  include modules/home/artists
+  include modules/home/about
+  include modules/home/loading
+
+block script
+  script( src="./js/main-home.js" )

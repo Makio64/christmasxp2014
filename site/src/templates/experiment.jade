@@ -1,0 +1,11 @@
+extends layout/default
+
+block style
+  link(rel="stylesheet", href="/css/main-experiment.css")
+
+block content
+  .experiments-content(class= isAvailable ? "" : "error-too-soon")
+    include modules/experiments/error
+    include modules/experiments/experiment
+  include modules/experiments/menu
+  include modules/experiments/infos

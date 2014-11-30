@@ -1,0 +1,29 @@
+- var experiment = experiments[ idxCurrent ]
+- if ( !experiment )
+  - experiment = tpl
+
+.infos
+  .infos-bg
+  a.bt-close-holder(href="#")
+    span.bt-close
+      span.bg
+        span.bg-normal
+        span.bg-hover
+      span.icon
+  .infos-content
+    - if ( idxCurrent < 10 )
+      .infos-idx.underline 0#{idxCurrent + 1}
+    - else
+      .infos-idx.underline= idxCurrent + 1
+    .infos-title= experiment.title
+    a.infos-author(href=experiment.site)= experiment.author
+    h2.infos-subtitle= experiment.subtitle
+    .infos-desc= experiment.desc
+    ul.infos-parts
+      - var details = experiment.details
+      - for( var i = 0; i < details.length; i++ )
+        li
+          h3= details[ i ].title
+          span!= details[ i ].desc
+
+

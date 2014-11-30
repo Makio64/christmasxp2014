@@ -1,0 +1,41 @@
+.artists
+  .artists-content.ice-content
+    .artists-infos
+      .borders
+        .border-left
+        .border-right
+      a.bt-close-holder(href="#")
+          span.bt-close
+            span.bg
+              span.bg-normal
+              span.bg-hover
+            span.icon
+      .artists-infos-content-holder
+        .artists-infos-content
+          .artists-infos-title.underline ARTISTS
+          .artists-infos-desc Thanks to all the digital artists<br />who bring love to the 2014 edition!
+    .artists-entries-holder
+      .artists-entries
+        - var n = experiments.length
+        - for( var i = 0; i < n; i++ )
+          a.artists-entry(href=experiments[ i ].site)
+            span.borders
+              span.border-right
+              span.border-bottom
+            span.artists-entry-hover-parts
+              span.artists-entry-hover-part.artists-entry-hover-part--left
+                +_artists-entry-holder( i )
+              span.artists-entry-hover-part.artists-entry-hover-part--right
+                +_artists-entry-holder( i )
+
+mixin _artists-entry-holder( i )
+  span.artists-entry-mask
+    span.artists-entry-holder
+      img.artists-entry-avatar(src="img/avatars/#{i + 1}.png", width="155", height="155")
+      span.artists-entry-content
+        span.artists-entry-author= experiments[ i ].author
+        span.artists-entry-desc= experiments[ i ].bio
+        - if ( i < 10 )
+          span.artists-entry-day 0#{i + 1}
+        - else
+          span.artists-entry-day= i

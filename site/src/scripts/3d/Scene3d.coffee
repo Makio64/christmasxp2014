@@ -1,12 +1,18 @@
-class MainScene extends Scene
+Stage3d = require "3d/Stage3d"
+
+class Scene3d extends Emitter
 
 	constructor:()->
+		super
 
+		@isOver = false
 		@isReady = false
 		@isImgReady = false
 		@debug = true
 
 		@currentIndex = 1
+
+		@globalAlpha = 0
 
 		@mouse = new THREE.Vector2(0,0)
 		@time = 0
@@ -15,7 +21,7 @@ class MainScene extends Scene
 		@opacity = 1
 		@fragments = []
 		@hitboxs = []
-		@maxDate = 13
+		@maxDate = 2
 		@positions = {};
 		@positions.base = {
 			fragments : []
@@ -177,30 +183,27 @@ class MainScene extends Scene
 		return
 
 	createLight:()=>
-		@ambientLight = new THREE.AmbientLight(0x333333)
+		@ambientLight = new THREE.AmbientLight(0)
 		@ambientLight2 = new THREE.AmbientLight(0xFFFFFF)
 		
 		@cameraLight = new THREE.PointLight(0x221199, 2, 2000)
 		@cameraLight.position.set( 0, -1000, 0 );
 
-		@cameraLight3 = new THREE.PointLight(0x2233AA, 2, 2400)
-		@cameraLight3.position.set( 1000, 0, 0 );
-
 		@cameraLight2 = new THREE.PointLight(0x2211AA, 1, 2400)
 		@cameraLight2.position.set( -1500, 0, 0 );
+
+		@cameraLight3 = new THREE.PointLight(0x2233AA, 2, 2400)
+		@cameraLight3.position.set( 1000, 0, 0 );
 
 		@cameraLight4 = new THREE.PointLight(0x222277, 2, 2400)
 		@cameraLight4.position.set( 0, 1000, 0 );
 
-		@cameraLight5 = new THREE.PointLight(0xFFFFFF, 1, 200)
-		@cameraLight5.position.set( 0, 0, 0 );
-
 		Stage3d.add(@ambientLight)
 		Stage3d.add(@cameraLight)
-		Stage3d.add(@cameraLight3)
 		Stage3d.add(@cameraLight2)
+		Stage3d.add(@cameraLight3)
 		Stage3d.add(@cameraLight4)
-		Stage3d.add(@cameraLight5)
+		# Stage3d.add(@cameraLight5)
 
 		Stage3d.add(@ambientLight2,false)
 
@@ -465,15 +468,47 @@ class MainScene extends Scene
 		positions.add(@,'mobile')
 
 		frag = @gui.addFolder('fragments')
-		@movementScale = 1.1
+		@movementScale = 1.3
 		@speedScale = 0.1
 		frag.add(@,'movementScale',0,2)
 		frag.add(@,'speedScale',0,2)
 		frag.add(@,'hitboxVisible').onChange((e)=>
 			for i in [0...24] by 1
 				@hitboxs[i].visible = @hitboxVisible
-			
 		)
+
+		lights = @gui.addFolder('lights')
+		@colorAmbient =  @ambientLight.color.getHex()
+		lights.addColor(@,'colorAmbient').onChange(()=>
+			@ambientLight.color.setHex(@colorAmbient)
+		)
+
+		@light1 =  @cameraLight.color.getHex()
+		lights.addColor(@,'light1').onChange(()=>
+			@cameraLight.color.setHex(@light1)
+		)
+		console.log(@cameraLight)
+		lights.add(@cameraLight,'intensity',0,3).step(0.01).name('intensity 1')
+
+		@light2 =  @cameraLight2.color.getHex()
+		lights.addColor(@,'light2').onChange(()=>
+			@cameraLight2.color.setHex(@light2)
+		)
+		lights.add(@cameraLight2,'intensity',0,3).step(0.01).name('intensity 2')
+
+		@light3 =  @cameraLight3.color.getHex()
+		lights.addColor(@,'light3').onChange(()=>
+			@cameraLight3.color.setHex(@light3)
+		)
+		lights.add(@cameraLight3,'intensity',0,3).step(0.01).name('intensity 3')
+
+		@light4 =  @cameraLight4.color.getHex()
+		lights.addColor(@,'light4').onChange(()=>
+			@cameraLight4.color.setHex(@light4)
+		)
+		lights.add(@cameraLight4,'intensity',0,3).step(0.01).name('intensity 4')
+
+		lights.open()
 
 		# Stage3d.initPostprocessing(@gui)
 
@@ -536,9 +571,17 @@ class MainScene extends Scene
 		geometry.normalsNeedUpdate = true
 		return
 
-	showXP:(index)->
-		if(index == @currentIndex || parseInt(index) > @maxDate)
+	showXP:(index)=>
+		if parseInt(index) > @maxDate
 			return
+
+		if(!@isOver)
+			@isOver = true
+			@emit "over", parseInt(index)
+		
+		if(index == @currentIndex)
+			return
+		
 		@currentIndex = index
 		@globalAlpha = 0.01
 		return
@@ -556,12 +599,12 @@ class MainScene extends Scene
 		if (@isImgReady)
 			@ctx.globalAlpha = @globalAlpha
 			@globalAlpha += .01
-			
-			idx = parseInt( @currentIndex ) - 1
-			if idx <= 14
-				@ctx.drawImage(@images[idx],0,0)
-				@map.needsUpdate = true
-				@envMap.needsUpdate = true
+			if @globalAlpha<1.1
+				idx = parseInt( @currentIndex ) - 1
+				if idx <= @maxDate
+					@ctx.drawImage(@images[idx],0,0)
+					@map.needsUpdate = true
+					@envMap.needsUpdate = true
 
 		vector = new THREE.Vector3( @mouse.x, @mouse.y, .5 )
 		vector.unproject( Stage3d.camera )
@@ -615,6 +658,9 @@ class MainScene extends Scene
 				@currentFragment = frag
 				@showXP(frag.name)
 			else
+				if(@isOver)
+					@isOver = false
+					@emit "out"
 				document.body.style.cursor = 'auto'
 				@currentFragment = null
 
@@ -638,6 +684,7 @@ class MainScene extends Scene
 
 		if(@backgroundGeometry)
 			geometry =  @backgroundGeometry
+			#todo optimize it
 			if(@bufferGeometry)
 				@bufferGeometry.fromGeometry(@backgroundGeometry)
 			speeds = [800,700,1200]
@@ -665,3 +712,5 @@ class MainScene extends Scene
 		# @container.rotation.x += (@mouse.y*Math.PI/16 - @container.rotation.x)*.03
 		# @lightContainer.rotation.x += (@mouse.y*Math.PI/16 - @container.rotation.x)*.03
 		return
+
+module.exports = Scene3d

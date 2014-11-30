@@ -1,0 +1,166 @@
+.artists
+  position absolute
+  width calc( 100% - 200px )
+  height 100%
+  top 0
+  right 0
+  display none
+  perspective-origin 50% 50%
+  perspective 1000
+  // backface-visibility hidden
+
+.artists-content
+  position absolute
+  background-color #fff
+  width 100%
+  height 100%
+  transform-origin 0 0
+  // backface-visibility hidden
+
+.artists-infos
+  position relative
+  width 33%
+  height 100%
+  float left
+  // backface-visibility hidden
+
+.artists-infos-content-holder
+  position relative
+  width 80%
+  padding 0 10%
+  height calc( 100% - 250px )
+  display table
+
+.artists-infos-content
+  display table-cell
+  vertical-align middle
+  text-align center
+
+.artists-infos-title
+  font normal 32px bold
+  color blueDark
+  letter-spacing 1px
+  &:after 
+    width 130px
+    margin-top 3px
+
+.artists-infos-desc
+  margin-top 50px
+  font normal 14px regular
+  color blueDark
+
+.artists-entries-holder
+  width 67% 
+  float left
+  overflow hidden
+
+.artists-entries-holder
+.artists-entries, 
+  position relative
+  height 100%
+  // backface-visibility hidden
+
+.artists-entries
+  min-width 580px
+
+.artists-entry
+  position relative
+  width ( 100 / 3 )%
+  min-width 190px
+  height 50%
+  float left
+  text-align center
+  text-decoration none
+  // backface-visibility hidden
+  .borders, .borders span
+    display block
+  &:hover
+    .artists-entry-hover-part--left
+      transform translateY( -7px )
+    .artists-entry-hover-part--right
+      transform translateY( 7px )
+
+.artists-entry-hover-parts
+  position relative
+  width 155px
+  height 100%
+  margin 0 auto
+  display inline-block
+  // backface-visibility visible
+
+.artists-entry-hover-part
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  display table
+  overflow hidden
+  // backface-visibility hidden
+  transition transform .25s cubic-bezier(0.165, 0.840, 0.440, 1.000)
+
+.artists-entry-mask
+  position relative
+  width 100%
+  height 100%
+  display table
+  // backface-visibility hidden
+
+.artists-entry-hover-part--left
+  display block
+  width 50%
+  overflow hidden
+  // backface-visibility hidden
+
+.artists-entry-hover-part--right
+  display block
+  left 50%
+  width 50%
+  overflow hidden
+  // backface-visibility hidden
+  .artists-entry-mask
+    left -100%
+
+.artists-entry-holder
+  display table-cell
+  vertical-align middle
+  padding-top 15px
+  padding-bottom 15px
+
+.artists-entry-avatar
+  position relative
+  // backface-visibility hidden
+
+.artists-entry-content
+  display block
+
+.artists-entry-author
+  position relative
+  display inline-block
+  margin-top 34px
+  font normal 14px bold
+  color red
+  text-decoration none
+  border-bottom 1px solid red
+  // backface-visibility hidden
+  
+.artists-entry-desc
+  font normal 12px regular
+  color blueDark
+  margin-top 20px
+  height 40px
+  display block
+  // backface-visibility hidden
+
+.artists-entry-day
+  position relative
+  display inline-block
+  margin-top 15px
+  background-color red
+  width 30px
+  height 30px
+  border-radius 20px
+  font normal 12px/30px bold
+  color #fff
+  letter-spacing 1px
+  // backface-visibility hidden

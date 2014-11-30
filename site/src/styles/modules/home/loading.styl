@@ -1,0 +1,108 @@
+.loading
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  overflow hidden
+  color #fff
+
+.loading-ice
+  position relitive
+  width 100%
+  height 100%
+  display block
+  
+.loading-bg
+  position absolute
+  width 100%
+  height 100%
+  background transparent url( "img/loading-bg.jpg" )
+  background-size cover
+  @media screen and (max-width: 640px) {
+    background transparent url( "img/loading-bg-small.jpg" )
+  }
+
+
+.loading-content-holder
+  position relative
+  width 100%
+  height 100%
+  display table
+  text-align center
+
+.loading-percent
+  position absolute
+  margin-top 40px
+  width 100%
+  font normal 340px bold
+  color #152f80
+  opacity .175
+  text-shadow -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
+  @media screen and (max-width: 640px) {
+    font-size 190px 
+    margin-top 80px
+  }
+
+.loading-content
+  position relative
+  display table-cell
+  vertical-align middle
+
+.loading-icon
+  display inline-block
+  margin-bottom 35px
+  bg( "icon-sugar.png" )
+
+.loading-title
+  font normal 14px bold
+  letter-spacing 1px
+
+.loading-subtitle
+  font normal 15px light
+  margin-bottom 50px
+  letter-spacing 1px
+  @media screen and (max-width: 640px) {
+    margin-bottom 35px
+  }
+
+.loading-separator
+  margin-bottom 65px
+  &:after
+    width 90px
+  @media screen and (max-width: 640px) {
+    margin-bottom 55px  
+  }
+
+.loading-baseline
+  bg( "loading-title.png" )
+  opacity .95
+  margin-bottom 5px
+  display inline-block
+  @media screen and (max-width: 640px) {
+    bg( "loading-title-small.png" )
+  }
+  q-small()
+    display none
+
+.loading-details
+  font normal 15px lightItalic
+  letter-spacing 2px
+  margin-bottom 100px
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
+
+.loading-logo
+  display inline-block
+  bg( "logo-red.png" )
+  @media screen and (max-width: 640px) {
+    display block
+    margin 55px auto 0
+  }
+
++q-small()
+  .loading-baseline
+    display none
+
+
