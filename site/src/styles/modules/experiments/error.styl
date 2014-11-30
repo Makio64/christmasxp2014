@@ -5,6 +5,20 @@
   width 100%
   height 100%
   background-color #e9505e
+  
+  @media screen and (max-width: 640px) {
+    display table
+    left 0  
+    z-index 2
+  }
+  
+  &.no-webgl 
+    .error-content-text--no-webgl
+      display block
+  
+  &.no-yet 
+    .error-content-text--too-soon
+      display block
 
 .error-bg
   position absolute
@@ -19,16 +33,26 @@
   vertical-align middle
   bg( "ooops.png" )
   background-position center center
+  
+  @media screen and (max-width: 640px) {
+    bg( "oops-small.png" )
+    background-position center 45%
+  }
 
 .error-content
   position relative
   display table-cell
   vertical-align middle
   text-align center
+  padding 0 20px
+  box-sizing border-box
 
 .error-content-icon
   bg( "icon-sugar.png" )
   display inline-block
+  @media screen and (max-width: 640px) {
+    bg( "santa-head.png" )
+  }
 
 .error-content-text
   position relative
@@ -37,6 +61,12 @@
   color #fff
   -webkit-font-smoothing antialiased
   letter-spacing 2px
+  display none
+  
+  @media screen and (max-width: 640px) {
+    font-size 18px
+    margin 100px 0  
+  }
 
 .error-bt
   position relative
@@ -50,6 +80,10 @@
   span
     display inline-block
     vertical-align top
+  
+  @media screen and (max-width: 640px) {
+    margin 0  
+  }
 
 .error-bt-bg-hover,
 .error-bt-shadow
