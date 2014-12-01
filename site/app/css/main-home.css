@@ -1290,7 +1290,7 @@ position relative {
   background-color: #f75568;
   width: 30px;
   height: 30px;
-  margin: 0 auto;
+  margin: 15px auto 0;
   -webkit-border-radius: 20px;
   border-radius: 20px;
   font: normal 12px/30px "uni_sansheavy_caps";
