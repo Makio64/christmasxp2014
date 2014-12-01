@@ -2946,30 +2946,37 @@ Credits = require("home/Credits");
 Menu = (function() {
   function Menu() {
     this._onNavChange = __bind(this._onNavChange, this);
+    this._onBtLogo = __bind(this._onBtLogo, this);
     this._onBtCredits = __bind(this._onBtCredits, this);
     this._onBtAbout = __bind(this._onBtAbout, this);
     this._onBtArtists = __bind(this._onBtArtists, this);
-    var domBtAbout, domBtArtists, domBtCredits, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+    var domBtAbout, domBtArtists, domBtCredits, domBtLogo, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3;
     this.dom = document.querySelector(".menu");
     this._credits = new Credits;
     this._domMenuLight = document.querySelector(".menu--light");
     this._menuLightVisible = false;
+    this._domBtsLogo = document.querySelectorAll(".menu-top");
     this._domBtsArtists = document.querySelectorAll(".menu-entry--artists a");
     this._domBtsAbout = document.querySelectorAll(".menu-entry--about a");
     this._domBtsCredits = document.querySelectorAll(".menu-subentry--credits a");
-    _ref = this._domBtsArtists;
+    _ref = this._domBtsLogo;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      domBtArtists = _ref[_i];
+      domBtLogo = _ref[_i];
+      interactions.on(domBtLogo, "click", this._onBtLogo);
+    }
+    _ref1 = this._domBtsArtists;
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      domBtArtists = _ref1[_j];
       interactions.on(domBtArtists, "click", this._onBtArtists);
     }
-    _ref1 = this._domBtsAbout;
-    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-      domBtAbout = _ref1[_j];
+    _ref2 = this._domBtsAbout;
+    for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+      domBtAbout = _ref2[_k];
       interactions.on(domBtAbout, "click", this._onBtAbout);
     }
-    _ref2 = this._domBtsCredits;
-    for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-      domBtCredits = _ref2[_k];
+    _ref3 = this._domBtsCredits;
+    for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
+      domBtCredits = _ref3[_l];
       interactions.on(domBtCredits, "click", this._onBtCredits);
     }
     nav.on("change", this._onNavChange);
@@ -2988,6 +2995,11 @@ Menu = (function() {
   Menu.prototype._onBtCredits = function(e) {
     e.preventDefault();
     return this._credits.show();
+  };
+
+  Menu.prototype._onBtLogo = function(e) {
+    e.preventDefault();
+    return nav.set("");
   };
 
   Menu.prototype._onNavChange = function(id) {
@@ -3171,7 +3183,7 @@ MobileMenu = (function() {
   };
 
   MobileMenu.prototype._navigateToHome = function() {
-    nav.set("home");
+    nav.set("");
     this._hide();
     return null;
   };

@@ -8,15 +8,19 @@ class Menu
     constructor: ->
         @dom = document.querySelector ".menu"
 
+
+
         @_credits = new Credits
 
         @_domMenuLight = document.querySelector ".menu--light"
         @_menuLightVisible = false
 
+        @_domBtsLogo = document.querySelectorAll ".menu-top"
         @_domBtsArtists = document.querySelectorAll ".menu-entry--artists a"
         @_domBtsAbout = document.querySelectorAll ".menu-entry--about a"
         @_domBtsCredits = document.querySelectorAll ".menu-subentry--credits a"
 
+        interactions.on domBtLogo, "click", @_onBtLogo for domBtLogo in @_domBtsLogo
         interactions.on domBtArtists, "click", @_onBtArtists for domBtArtists in @_domBtsArtists
         interactions.on domBtAbout, "click", @_onBtAbout for domBtAbout in @_domBtsAbout
         interactions.on domBtCredits, "click", @_onBtCredits for domBtCredits in @_domBtsCredits
@@ -34,6 +38,11 @@ class Menu
     _onBtCredits: ( e ) =>
         e.preventDefault()
         @_credits.show()
+
+    _onBtLogo: ( e ) =>
+        e.preventDefault()
+        nav.set ""
+        
 
     _onNavChange: ( id ) =>
         if id != "credits"

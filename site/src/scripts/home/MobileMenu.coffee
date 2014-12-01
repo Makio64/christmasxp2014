@@ -90,7 +90,7 @@ class MobileMenu
 
 
   _navigateToHome: =>
-    nav.set "home"
+    nav.set ""
     @_hide()
 
     null
