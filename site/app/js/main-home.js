@@ -567,6 +567,7 @@ Scene3d = (function(_super) {
   __extends(Scene3d, _super);
 
   function Scene3d() {
+    this.gotoXP = __bind(this.gotoXP, this);
     this.showXP = __bind(this.showXP, this);
     this.createGUI = __bind(this.createGUI, this);
     this.onFragmentLoaded = __bind(this.onFragmentLoaded, this);
@@ -941,6 +942,26 @@ Scene3d = (function(_super) {
         return _this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
       };
     })(this), false);
+    window.addEventListener('click', (function(_this) {
+      return function(e) {
+        var frag, intersects, raycaster, vector;
+        _this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        _this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        vector = new THREE.Vector3(_this.mouse.x, _this.mouse.y, .5);
+        vector.unproject(Stage3d.camera);
+        raycaster = new THREE.Raycaster(Stage3d.camera.position, vector.sub(Stage3d.camera.position).normalize());
+        if (_this.hitboxs) {
+          console.log('bouboup');
+          intersects = raycaster.intersectObjects(_this.hitboxs, false);
+          if (intersects.length > 0) {
+            document.body.style.cursor = 'pointer';
+            frag = intersects[0].object.fragment;
+            _this.currentFragment = frag;
+            return _this.gotoXP(frag.name);
+          }
+        }
+      };
+    })(this), false);
     if (window.DeviceMotionEvent !== void 0) {
       map = (function(_this) {
         return function(num, min1, max1, min2, max2, round) {
@@ -950,7 +971,7 @@ Scene3d = (function(_super) {
           return num2;
         };
       })(this);
-      return window.ondevicemotion = (function(_this) {
+      window.ondevicemotion = (function(_this) {
         return function(evt) {
           var ax, ay, mx, my;
           ax = event.accelerationIncludingGravity.x;
@@ -1032,8 +1053,8 @@ Scene3d = (function(_super) {
     material.shading = this.shading;
     material.side = THREE.DoubleSide;
     material.combine = THREE.AddOperation;
-    material.reflectivity = .5;
-    material.opacity = 0.65;
+    material.reflectivity = .1;
+    material.opacity = 0.55;
     this.mirror = new THREE.Mesh(geometry, material);
     this.container.add(this.mirror);
     folder = this.gui.addFolder('mirror');
@@ -1295,6 +1316,14 @@ Scene3d = (function(_super) {
     }
     this.currentIndex = index;
     this.globalAlpha = 0.01;
+  };
+
+  Scene3d.prototype.gotoXP = function(index) {
+    console.log(index);
+    if (parseInt(index) > this.maxDate) {
+      return;
+    }
+    window.location = "./experiments/" + parseInt(index);
   };
 
   Scene3d.prototype.pause = function() {};
