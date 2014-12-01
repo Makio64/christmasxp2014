@@ -783,11 +783,11 @@ Scene3d = (function(_super) {
       if (i % 3 === 0) {
         phi = Math.PI * 2 * Math.random();
         theta = Math.PI * 2 * Math.random();
-        radius = 50 + Math.random() * 50;
+        radius = 60 + Math.random() * 60;
       }
       x = radius * Math.sin(phi) * Math.cos(theta) + Math.random() * 2;
       y = radius * Math.cos(phi) + Math.random() * 2;
-      z = radius / 2 * Math.sin(phi) * Math.sin(theta) + Math.random() * 2;
+      z = radius * 0.8 * Math.sin(phi) * Math.sin(theta) + Math.random() * 2 - 30;
       vertices.setXYZ(i, x, y, z);
     }
     geometry.addAttribute('position', vertices);
@@ -795,7 +795,7 @@ Scene3d = (function(_super) {
       color: 0xFFFFFF,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: .4,
+      opacity: .1,
       fog: false
     });
     this.particles = new THREE.Mesh(geometry, material);
