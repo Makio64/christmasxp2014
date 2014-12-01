@@ -118,8 +118,8 @@ class ProtoScene extends Scene
 		return
 
 	createBackScreen:()->
-		material = new THREE.MeshBasicMaterial({color:0xFFFFFF, wireframe:false, transparent: true, opacity:1, fog:false, light:false, map:THREE.ImageUtils.loadTexture( "img/map.jpg" );})
-		geometry =  new THREE.PlaneBufferGeometry(160*10, 90*10, 10, 10)
+		material = new THREE.MeshBasicMaterial({color:0xFFFFFF, wireframe:true, transparent: true, opacity:1, fog:false, light:false, map:THREE.ImageUtils.loadTexture( "img/map.jpg" );})
+		geometry =  new THREE.PlaneBufferGeometry(160*10, 90*100, 10, 10)
 		# for i in [1...geometry.attributes.position.array.length] by 3
 		# 	geometry.attributes.position.array[i+1] += Math.cos(i/120)*20
 		# geometry.attributes.position.needsUpdate = true
