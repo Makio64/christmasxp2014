@@ -1,0 +1,4 @@
+test
+*.min.js
+bower.json
+.travis.yml
