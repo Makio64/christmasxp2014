@@ -927,12 +927,36 @@ Scene3d = (function(_super) {
   };
 
   Scene3d.prototype.addEvent = function() {
+    var map;
     window.addEventListener('mousemove', (function(_this) {
       return function(e) {
         _this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
         return _this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
       };
     })(this), false);
+    if (window.DeviceMotionEvent !== void 0) {
+      map = (function(_this) {
+        return function(num, min1, max1, min2, max2, round) {
+          var num1, num2;
+          num1 = (num - min1) / (max1 - min1);
+          num2 = (num1 * (max2 - min2)) + min2;
+          return num2;
+        };
+      })(this);
+      window.ondevicemotion = (function(_this) {
+        return function(evt) {
+          var ax, mx;
+          ax = event.accelerationIncludingGravity.x;
+          if (ax >= 5) {
+            ax = 5;
+          } else if (ax <= -5) {
+            ax = -5;
+          }
+          mx = map(ax, 5, -5, 0, window.innerWidth);
+          return _this.mouse.x = (mx / window.innerWidth) * 2 - 1;
+        };
+      })(this);
+    }
   };
 
   Scene3d.prototype.onDiamondLoad = function(geometry) {
