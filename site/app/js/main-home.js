@@ -3420,12 +3420,15 @@ Share = (function() {
   }
 
   Share.prototype._onFB = function(e) {
-    var url;
     e.preventDefault();
-    url = "https://www.facebook.com/sharer/sharer.php";
-    url += "?u=" + encodeURIComponent("http://christmasexperiments.com/");
-    url += "&message=" + encodeURIComponent("Christmas Experiments 2014, discover the best experiments of the winter!");
-    this._openPopup(url);
+    FB.ui({
+      method: 'feed',
+      name: "Christmas Experiments - 2014",
+      caption: "Christmas Experiments 2014, discover the best experiments of the winter!",
+      redirect_uri: "http://christmasexperiments.com/",
+      link: "http://christmasexperiments.com/",
+      picture: "http://christmasexperiments.com/share.jpg"
+    }, function(response) {});
   };
 
   Share.prototype._onTwitter = function(e) {

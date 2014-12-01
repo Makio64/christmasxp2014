@@ -20,13 +20,23 @@ class Share
             @_data={}
             @_data.idx = 1
         
-        url = "https://www.facebook.com/sharer/sharer.php"
-        url += "?u=" + encodeURIComponent( "http://christmasexperiments.com/experiments/#{@_data.idx}" )
-        url += "&message=" + encodeURIComponent( "Polar a beautiful experiments by @superguigui for @christmasxp" )
-        @_openPopup url
+        # url = "https://www.facebook.com/sharer/sharer.php"
+        # url += "?u=" + encodeURIComponent( "http://christmasexperiments.com/experiments/#{@_data.idx}" )
+        # url += "&message=" + encodeURIComponent( "Polar a beautiful experiments by @superguigui for @christmasxp" )
+        # @_openPopup url
+        FB.ui
+            method: 'feed'
+            name: "Christmas Experiments - 2014"
+            caption: @_data.title
+            desc: @_data.desc
+            redirect_uri: "http://christmasexperiments.com/"
+            link: "http://christmasexperiments.com/"
+            picture: "http://christmasexperiments.com/experiments/xps/#{@_data.idx}/share.jpg"
+        , ( response ) ->
         # FB.ui({
-        #   method: 'share',
-        #   href: window.location,
+        #   method: 'feed',
+        #   redirect_uri: window.location,
+        #   display: window.location + "/share.jpg"
         # }, function(response){});
 
     _onTwitter: ( e ) =>

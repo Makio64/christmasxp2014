@@ -1157,16 +1157,20 @@ Share = (function() {
   };
 
   Share.prototype._onFB = function(e) {
-    var url;
     e.preventDefault();
     if (!this._data) {
       this._data = {};
       this._data.idx = 1;
     }
-    url = "https://www.facebook.com/sharer/sharer.php";
-    url += "?u=" + encodeURIComponent("http://christmasexperiments.com/experiments/" + this._data.idx);
-    url += "&message=" + encodeURIComponent("Polar a beautiful experiments by @superguigui for @christmasxp");
-    return this._openPopup(url);
+    return FB.ui({
+      method: 'feed',
+      name: "Christmas Experiments - 2014",
+      caption: this._data.title,
+      desc: this._data.desc,
+      redirect_uri: "http://christmasexperiments.com/",
+      link: "http://christmasexperiments.com/",
+      picture: "http://christmasexperiments.com/experiments/xps/" + this._data.idx + "/share.jpg"
+    }, function(response) {});
   };
 
   Share.prototype._onTwitter = function(e) {
