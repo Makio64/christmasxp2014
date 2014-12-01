@@ -7,6 +7,8 @@
   background-color #f5f7fc
   text-align center
   z-index 10
+  
+  
 
 .credits-title
   font normal 22px bold
@@ -41,3 +43,35 @@
   text-decoration none
   border-bottom 1px solid red
   letter-spacing 1px
+
+
+@media screen and (max-width: 640px) {
+    
+  .credits {
+    transition all .3s linear
+    width 100%
+    left 0
+    top 60px
+    height calc( 100% - 60px )
+    opacity 0
+    display none
+    z-index 1
+    
+    .bt-close-holder {
+      display none
+    }
+    
+    .credits-content-holder {
+      height 100%
+    }
+    
+    .credits-title {
+      margin-bottom 30px
+    }
+
+    &.transitionIn {
+      opacity 1
+    }
+  }
+
+}

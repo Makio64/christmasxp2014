@@ -7,7 +7,7 @@
   position fixed
   top 0
   left 0
-  z-index 2
+  z-index 11
   opacity 0
   @media screen and (max-width: 640px) {
     // display table
@@ -42,7 +42,7 @@
     
     .menu-entries
       display inline-block
-      margin 90px 0
+      margin 50px 0
       
       .menu-entry
         transform translateY(7px) translateZ(0)
@@ -54,6 +54,9 @@
         &:nth-child(2)
           transition all .4s ease-out .55s
       
+        &:nth-child(3)
+          transition all .3s ease-out .70s
+          
       span 
         font-size 28px
         color #13076d !important
@@ -134,6 +137,9 @@
         
         &:nth-child(2)
           transition all .3s ease-out .45s
+        
+        &:nth-child(3)
+          transition all .3s ease-out .6s
       
         
         

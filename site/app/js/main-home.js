@@ -1291,6 +1291,18 @@ Credits = (function() {
 
   Credits.prototype.show = function() {
     var d, dAdd, dom, _i, _len, _ref, _results;
+    if (window.innerWidth <= 640) {
+      this.dom.style.display = 'block';
+      if (this._transitionTimer) {
+        clearInterval(this._transitionTimer);
+      }
+      this._transitionTimer = setTimeout((function(_this) {
+        return function() {
+          return _this.dom.classList.add('transitionIn');
+        };
+      })(this), 200);
+      return;
+    }
     TweenLite.to(this.dom, .4, {
       css: {
         x: 198
@@ -1365,6 +1377,18 @@ Credits = (function() {
 
   Credits.prototype.hide = function() {
     var duration;
+    if (window.innerWidth <= 640) {
+      this.dom.classList.remove('transitionIn');
+      if (this._transitionTimer) {
+        clearInterval(this._transitionTimer);
+      }
+      this._transitionTimer = setTimeout((function(_this) {
+        return function() {
+          return _this.dom.style.display = 'none';
+        };
+      })(this), 1300);
+      return;
+    }
     duration = .25;
     TweenLite.to(this.dom, duration, {
       css: {
@@ -1435,7 +1459,7 @@ Home = (function() {
   }
 
   Home.prototype._onNavChange = function(id) {
-    var newModule;
+    var newModule, _base;
     if (id !== "") {
       newModule = this["_" + id];
       if (this._currentModule === newModule) {
@@ -1444,13 +1468,14 @@ Home = (function() {
       if (this._currentModule) {
         return this._currentModule.hide().then((function(_this) {
           return function() {
+            var _base;
             _this._currentModule = newModule;
-            return _this._currentModule.show();
+            return typeof (_base = _this._currentModule).show === "function" ? _base.show() : void 0;
           };
         })(this));
       } else {
         this._currentModule = newModule;
-        return this._currentModule.show();
+        return typeof (_base = this._currentModule).show === "function" ? _base.show() : void 0;
       }
     } else {
       this._currentModule.hide();
@@ -1620,15 +1645,22 @@ Menu = (function() {
   };
 
   Menu.prototype._onNavChange = function(id) {
+    if (id !== "credits") {
+      this._credits.hide();
+    }
     if (id !== "" && id !== "credits") {
       if (id === "artists") {
         this._activate(".menu-entry--artists");
       } else {
         this._activate(".menu-entry--about");
       }
-      return this._showMenuLight();
+      if (window.innerWidth > 640) {
+        return this._showMenuLight();
+      }
     } else {
-      return this._hideMenuLight();
+      if (window.innerWidth > 640) {
+        return this._hideMenuLight();
+      }
     }
   };
 
@@ -1687,10 +1719,14 @@ module.exports = Menu;
 
 
 },{"common/anim/IceAnim":3,"common/interactions":5,"common/nav":6,"home/Credits":9}],13:[function(require,module,exports){
-var MobileMenu, interactions,
+var Credits, MobileMenu, interactions, nav,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 interactions = require("common/interactions");
+
+nav = require("common/nav");
+
+Credits = require("home/Credits");
 
 MobileMenu = (function() {
   MobileMenu.prototype.dom = null;
@@ -1705,18 +1741,43 @@ MobileMenu = (function() {
 
   MobileMenu.prototype._transitionTimer = null;
 
+  MobileMenu.prototype._domArtistsBtn = null;
+
+  MobileMenu.prototype._domAboutBtn = null;
+
+  MobileMenu.prototype._domCreditsBtn = null;
+
   function MobileMenu() {
+    this._navigateToCredits = __bind(this._navigateToCredits, this);
+    this._navigateToAbout = __bind(this._navigateToAbout, this);
+    this._navigateToArtists = __bind(this._navigateToArtists, this);
+    this._navigateToHome = __bind(this._navigateToHome, this);
     this._hide = __bind(this._hide, this);
     this._show = __bind(this._show, this);
     this._toggleMenu = __bind(this._toggleMenu, this);
+    this._onNavChange = __bind(this._onNavChange, this);
     this.dom = document.querySelector('.mobile-menu');
     this.domNavbar = document.querySelector('.mobile-navbar');
     this._domMenuCTA = this.domNavbar.querySelector('.menuCTA');
     this._domCloseBtn = this.dom.querySelector('.bt-close-holder');
+    this._domHomeBtn = this.dom.querySelectorAll('.menu-entry')[0];
+    this._domArtistsBtn = this.dom.querySelectorAll('.menu-entry')[1];
+    this._domAboutBtn = this.dom.querySelectorAll('.menu-entry')[2];
+    this._domCreditsBtn = this.dom.querySelector('.menu-subentry--credits');
     interactions.on(this._domMenuCTA, 'click', this._show);
     interactions.on(this._domCloseBtn, 'click', this._hide);
+    interactions.on(this._domHomeBtn, 'click', this._navigateToHome);
+    interactions.on(this._domArtistsBtn, 'click', this._navigateToArtists);
+    interactions.on(this._domAboutBtn, 'click', this._navigateToAbout);
+    interactions.on(this._domCreditsBtn, 'click', this._navigateToCredits);
+    nav.on("change", this._onNavChange);
     null;
   }
+
+  MobileMenu.prototype._onNavChange = function() {
+    console.log('plop');
+    return null;
+  };
 
   MobileMenu.prototype._toggleMenu = function() {
     this._isVisible = !this._isVisible;
@@ -1759,7 +1820,31 @@ MobileMenu = (function() {
         _this.dom.classList.remove('transitionOut');
         return _this.dom.style.display = 'none';
       };
-    })(this), 1300);
+    })(this), 1500);
+    return null;
+  };
+
+  MobileMenu.prototype._navigateToHome = function() {
+    nav.set("home");
+    this._hide();
+    return null;
+  };
+
+  MobileMenu.prototype._navigateToArtists = function() {
+    nav.set("artists");
+    this._hide();
+    return null;
+  };
+
+  MobileMenu.prototype._navigateToAbout = function() {
+    nav.set("about");
+    this._hide();
+    return null;
+  };
+
+  MobileMenu.prototype._navigateToCredits = function() {
+    nav.set("credits");
+    this._hide();
     return null;
   };
 
@@ -1771,7 +1856,7 @@ module.exports = MobileMenu;
 
 
 
-},{"common/interactions":5}],14:[function(require,module,exports){
+},{"common/interactions":5,"common/nav":6,"home/Credits":9}],14:[function(require,module,exports){
 var IceAnim, TitleAnim, datas;
 
 IceAnim = require("common/anim/IceAnim");
