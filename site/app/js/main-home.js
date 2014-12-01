@@ -708,7 +708,11 @@ Scene3d = (function(_super) {
         return _this.parseAtlas();
       };
     })(this);
-    this.atlas.src = './3d/textures/atlas_low_4096.jpg';
+    if (isMobile.any) {
+      this.atlas.src = './3d/textures/atlas_low_1024.jpg';
+    } else {
+      this.atlas.src = './3d/textures/atlas_low_2048.jpg';
+    }
   };
 
   Scene3d.prototype.loadMesh = function() {
@@ -763,6 +767,9 @@ Scene3d = (function(_super) {
 
   Scene3d.prototype.createCircles = function() {
     var image;
+    if (isMobile.any) {
+      return;
+    }
     image = new Image();
     image.onload = (function(_this) {
       return function() {
@@ -793,6 +800,9 @@ Scene3d = (function(_super) {
     var geometry, i, material, phi, radius, theta, triangles, vertices, x, y, z, _i, _ref;
     geometry = new THREE.BufferGeometry();
     triangles = 400;
+    if (isMobile.any) {
+      triangles = 100;
+    }
     vertices = new THREE.BufferAttribute(new Float32Array(triangles * 3 * 3), 3);
     for (i = _i = 0, _ref = vertices.length; _i < _ref; i = _i += 1) {
       if (i % 3 === 0) {
@@ -1502,9 +1512,12 @@ Stage3d = (function() {
 
   Stage3d.init = function(options) {
     var antialias, h, transparent, w;
-    console.log('init');
     w = window.innerWidth;
     h = window.innerHeight;
+    if (isMobile.any) {
+      w /= 2;
+      h /= 2;
+    }
     this.camera = new THREE.PerspectiveCamera(45, w / h, 1, 10000);
     this.camera.position.set(0, 20, 100);
     this.scene = new THREE.Scene();
@@ -1524,6 +1537,10 @@ Stage3d = (function() {
     this.renderer.sortObjects = false;
     this.renderer.setClearColor(this.bgColor, 0);
     this.renderer.domElement.className = 'home3d';
+    if (isMobile.any) {
+      this.renderer.domElement.style.width = Math.ceil(w * 2) + 'px';
+      this.renderer.domElement.style.height = Math.ceil(h * 2) + 'px';
+    }
     document.body.appendChild(this.renderer.domElement);
   };
 
@@ -1655,10 +1672,17 @@ Stage3d = (function() {
   };
 
   Stage3d.resize = function() {
+    var h, w;
     if (this.renderer) {
-      this.camera.aspect = window.innerWidth / window.innerHeight;
+      w = window.innerWidth;
+      h = window.innerHeight;
+      if (isMobile.any) {
+        w /= 2;
+        h /= 2;
+      }
+      this.camera.aspect = w / h;
       this.camera.updateProjectionMatrix();
-      this.renderer.setSize(window.innerWidth, window.innerHeight);
+      this.renderer.setSize(w, h);
     }
   };
 

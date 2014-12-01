@@ -12,11 +12,14 @@ class Stage3d
 	@renderer = null
 
 	@init = (options)->
-		console.log('init')
 
 		w = window.innerWidth
 		h = window.innerHeight
 
+		if(isMobile.any)
+			w /= 2
+			h /= 2
+		
 		@camera = new THREE.PerspectiveCamera( 45, w / h, 1, 10000 )
 		@camera.position.set(0,20,100)
 
@@ -35,6 +38,9 @@ class Stage3d
 		@renderer.sortObjects = false;
 		@renderer.setClearColor( @bgColor, 0 );
 		@renderer.domElement.className = 'home3d'
+		if(isMobile.any)
+			@renderer.domElement.style.width = Math.ceil(w*2)+'px'
+			@renderer.domElement.style.height = Math.ceil(h*2)+'px'
 
 		document.body.appendChild(@renderer.domElement)
 		return
@@ -200,9 +206,14 @@ class Stage3d
 
 	@resize = ()->
 		if @renderer
-			@camera.aspect = window.innerWidth / window.innerHeight
+			w = window.innerWidth
+			h = window.innerHeight
+			if(isMobile.any)
+				w /=2
+				h /=2
+			@camera.aspect = w / h
 			@camera.updateProjectionMatrix()
-			@renderer.setSize( window.innerWidth, window.innerHeight )
+			@renderer.setSize( w, h )
 		return
 
 module.exports = Stage3d

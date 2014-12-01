@@ -129,7 +129,10 @@ class Scene3d extends Emitter
 		@atlas = new Image()
 		@atlas.onload = ()=>
 			@parseAtlas()
-		@atlas.src = './3d/textures/atlas_low_4096.jpg'
+		if(isMobile.any)
+			@atlas.src = './3d/textures/atlas_low_1024.jpg'
+		else
+			@atlas.src = './3d/textures/atlas_low_2048.jpg'
 		return
 
 	loadMesh:()=>
@@ -188,6 +191,9 @@ class Scene3d extends Emitter
 		return
 
 	createCircles:()->
+		if (isMobile.any)
+			return
+
 		image = new Image()
 		image.onload = ()=>
 			# not working this way.. todo: not use ImageUtils
@@ -207,6 +213,9 @@ class Scene3d extends Emitter
 		geometry = new THREE.BufferGeometry();
 		
 		triangles = 400
+		if (isMobile.any)
+			triangles = 100
+
 		vertices = new THREE.BufferAttribute( new Float32Array( triangles * 3 * 3 ), 3 );
 		
 

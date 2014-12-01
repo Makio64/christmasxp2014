@@ -11,6 +11,7 @@
         "gsap": "*",
         "dat-gui": "*",
         "emitter": "*",
-        "PxLoader": "*"
+        "PxLoader": "*",
+        "isMobile": "*"
     }
 }
