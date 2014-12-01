@@ -25,6 +25,10 @@ module.exports={
                 {
                     "title": "controls",
                     "desc": "Click and drag to clear the window"
+                },
+                {
+                    "title": "Github",
+                    "desc": "<a href='https://github.com/superguigui/polar' target='_blank'>Check the source here!</a>"
                 }
             ]
         },
