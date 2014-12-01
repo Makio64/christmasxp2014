@@ -693,7 +693,7 @@ Scene3d = (function(_super) {
         return _this.parseAtlas();
       };
     })(this);
-    this.atlas.src = './3d/textures/atlas_low_2048.jpg';
+    this.atlas.src = './3d/textures/atlas_low_4096.jpg';
   };
 
   Scene3d.prototype.loadMesh = function() {
@@ -795,7 +795,8 @@ Scene3d = (function(_super) {
       color: 0xFFFFFF,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: .25
+      opacity: .4,
+      fog: false
     });
     this.particles = new THREE.Mesh(geometry, material);
     Stage3d.add(this.particles);
@@ -804,13 +805,13 @@ Scene3d = (function(_super) {
   Scene3d.prototype.createLight = function() {
     this.ambientLight = new THREE.AmbientLight(0);
     this.ambientLight2 = new THREE.AmbientLight(0xFFFFFF);
-    this.cameraLight = new THREE.PointLight(0x1a3a9a, 2.5, 2000);
+    this.cameraLight = new THREE.PointLight(0x192343, 2, 2000);
     this.cameraLight.position.set(0, -1000, 0);
-    this.cameraLight2 = new THREE.PointLight(0x2211AA, 1.3, 2400);
+    this.cameraLight2 = new THREE.PointLight(0x262050, 1.5, 2400);
     this.cameraLight2.position.set(-1500, 0, 0);
-    this.cameraLight3 = new THREE.PointLight(0x2233AA, 1.9, 2400);
+    this.cameraLight3 = new THREE.PointLight(0x11142d, 1.5, 2400);
     this.cameraLight3.position.set(1000, 0, 0);
-    this.cameraLight4 = new THREE.PointLight(0x222277, 2, 2400);
+    this.cameraLight4 = new THREE.PointLight(0x1d1d43, 2, 2400);
     this.cameraLight4.position.set(0, 1000, 0);
     Stage3d.add(this.ambientLight);
     Stage3d.add(this.cameraLight);
