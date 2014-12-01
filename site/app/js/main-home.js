@@ -2666,7 +2666,7 @@ module.exports = Credits;
 
 
 },{"common/interactions":8,"common/nav":9}],13:[function(require,module,exports){
-var About, Artists, Home, Menu, TitleAnim, getIndex, nav, xps,
+var About, Artists, Home, Menu, Share, TitleAnim, getIndex, nav, xps,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 nav = require("common/nav");
@@ -2678,6 +2678,8 @@ Menu = require("home/Menu");
 Artists = require("home/Artists");
 
 About = require("home/About");
+
+Share = require("home/Share");
 
 xps = require("home/xps");
 
@@ -2704,6 +2706,7 @@ Home = (function() {
     this._menu = new Menu;
     this._artists = new Artists;
     this._about = new About;
+    this._share = new Share;
     this._currentModule = null;
     nav.on("change", this._onNavChange);
     scene3d.on("over", this._onXPOver);
@@ -2774,7 +2777,7 @@ module.exports = Home;
 
 
 
-},{"common/getIndex":7,"common/nav":9,"home/About":10,"home/Artists":11,"home/Menu":15,"home/TitleAnim":17,"home/xps":18}],14:[function(require,module,exports){
+},{"common/getIndex":7,"common/nav":9,"home/About":10,"home/Artists":11,"home/Menu":15,"home/Share":17,"home/TitleAnim":18,"home/xps":19}],14:[function(require,module,exports){
 var IceAnim, Loading,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __hasProp = {}.hasOwnProperty,
@@ -3111,6 +3114,62 @@ module.exports = MobileMenu;
 
 
 },{"common/interactions":8,"common/nav":9,"home/Credits":12}],17:[function(require,module,exports){
+var Share, interactions,
+  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+interactions = require("common/interactions");
+
+Share = (function() {
+  function Share() {
+    this._onTwitter = __bind(this._onTwitter, this);
+    this._onFB = __bind(this._onFB, this);
+    var dom, _i, _j, _len, _len1, _ref, _ref1;
+    this._domShareFb = document.querySelectorAll(".share--fb");
+    this._domShareTwitter = document.querySelectorAll(".share--twitter");
+    _ref = this._domShareFb;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      dom = _ref[_i];
+      interactions.on(dom, "click", this._onFB);
+    }
+    _ref1 = this._domShareTwitter;
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      dom = _ref1[_j];
+      interactions.on(dom, "click", this._onTwitter);
+    }
+  }
+
+  Share.prototype._onFB = function(e) {
+    var url;
+    e.preventDefault();
+    url = "https://www.facebook.com/sharer/sharer.php";
+    url += "?u=" + encodeURIComponent("http://christmasexperiments/");
+    url += "&message=" + encodeURIComponent("Discover Christmas Experiments 2014");
+    return this._openPopup(url);
+  };
+
+  Share.prototype._onTwitter = function(e) {
+    var url;
+    e.preventDefault();
+    console.log("YO");
+    url = "https://twitter.com/share?";
+    url += "text=" + encodeURIComponent("Discover Christmas Experiments 2014");
+    url += "&url=" + encodeURIComponent("http://christmasexperiments/") + "/";
+    return this._openPopup(url);
+  };
+
+  Share.prototype._openPopup = function(url) {
+    return window.open(url, "", "top=100, left=200, width=600, height = 500");
+  };
+
+  return Share;
+
+})();
+
+module.exports = Share;
+
+
+
+},{"common/interactions":8}],18:[function(require,module,exports){
 var IceAnim, TitleAnim, datas;
 
 IceAnim = require("common/anim/IceAnim");
@@ -3170,7 +3229,7 @@ module.exports = TitleAnim;
 
 
 
-},{"common/anim/IceAnim":6,"data.json":2}],18:[function(require,module,exports){
+},{"common/anim/IceAnim":6,"data.json":2}],19:[function(require,module,exports){
 var Xps,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
