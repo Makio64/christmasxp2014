@@ -8,9 +8,13 @@ class Scene3d extends Emitter
     @isOver = false
     @isReady = false
     @isImgReady = false
-    @debug = true
+    @debug = /debug/i.test(window.location)
+    console.log(@debug)
+
+    @hitboxVisible = false
 
     @currentIndex = 1
+    @globalOpacity = 1
 
     @globalAlpha = 0
     @cameraMoveY = true
@@ -18,6 +22,10 @@ class Scene3d extends Emitter
     @containerMovYScale = 1
     @cameraMoveYScale = 1.5
     @backgroundFix = false
+
+    #move from fragments
+    @movementScale = 1.3
+    @speedScale = 0.1
 
     @mouse = new THREE.Vector2(0,0)
     @time = 0
@@ -95,7 +103,8 @@ class Scene3d extends Emitter
       @parseAtlas()
       @createCanvas()
       @loadMesh()
-      @createGUI()
+      if(@debug)
+        @createGUI()
       @loadImagesHight()
     @atlas.src = './3d/textures/atlas_low_512.jpg'
     return
@@ -399,7 +408,7 @@ class Scene3d extends Emitter
 
         @mouse.x = (mx / window.innerWidth) * 2 - 1
         @mouse.y = (my / window.innerHeight) * 2 - 1
-
+        
     return
 
 
@@ -421,16 +430,17 @@ class Scene3d extends Emitter
     @diamond = new THREE.Mesh(geometry,material)
     @container.add(@diamond)
 
-    folder = @gui.addFolder('diamond')
-    folder.add(material, 'depthWrite')
-    folder.add(material, 'depthTest')
-    folder.add(material, 'opacity', 0, 1)
-    folder.add(material, 'reflectivity',0,1)
-    @diamondColor = 0xffffff
-    folder.add(@diamond.material, 'combine', {multiply:THREE.Multiply,mix:THREE.MixOperation,add:THREE.AddOperation})
-    folder.addColor(@, 'diamondColor').onChange(()=>
-      @diamond.material.color.setHex(@diamondColor)
-    )
+    if @debug
+      folder = @gui.addFolder('diamond')
+      folder.add(material, 'depthWrite')
+      folder.add(material, 'depthTest')
+      folder.add(material, 'opacity', 0, 1)
+      folder.add(material, 'reflectivity',0,1)
+      @diamondColor = 0xffffff
+      folder.add(@diamond.material, 'combine', {multiply:THREE.Multiply,mix:THREE.MixOperation,add:THREE.AddOperation})
+      folder.addColor(@, 'diamondColor').onChange(()=>
+        @diamond.material.color.setHex(@diamondColor)
+      )
 
     @positions.base.diamond = @diamond.position.clone()
     return
@@ -453,17 +463,18 @@ class Scene3d extends Emitter
     @mirror = new THREE.Mesh(geometry,material)
     @container.add(@mirror)
 
-    folder = @gui.addFolder('mirror')
-    folder.add(@mirror.material, 'depthWrite')
-    folder.add(@mirror.material, 'depthTest')
-    folder.add(@mirror.material, 'opacity', 0, 1)
-    folder.add(@mirror.material, 'reflectivity',0,1)
+    if(@debug)
+      folder = @gui.addFolder('mirror')
+      folder.add(@mirror.material, 'depthWrite')
+      folder.add(@mirror.material, 'depthTest')
+      folder.add(@mirror.material, 'opacity', 0, 1)
+      folder.add(@mirror.material, 'reflectivity',0,1)
 
-    @mirrorColor = 0xffffff
-    folder.add(@mirror.material, 'combine', {multiply:THREE.Multiply,mix:THREE.MixOperation,add:THREE.AddOperation})
-    folder.addColor(@, 'mirrorColor').onChange(()=>
-      @mirror.material.color.setHex(@mirrorColor)
-    )
+      @mirrorColor = 0xffffff
+      folder.add(@mirror.material, 'combine', {multiply:THREE.Multiply,mix:THREE.MixOperation,add:THREE.AddOperation})
+      folder.addColor(@, 'mirrorColor').onChange(()=>
+        @mirror.material.color.setHex(@mirrorColor)
+      )
 
     @positions.base.mirror = @mirror.position.clone()
     
@@ -537,7 +548,6 @@ class Scene3d extends Emitter
 
     global = @gui.addFolder('global')
 
-    @globalOpacity = 1
     # global.add(@,'globalOpacity',0,1).step(0.01).onChange(()=>
     #   document.getElementById('webgl').style.opacity = @globalOpacity
     # )
@@ -548,7 +558,6 @@ class Scene3d extends Emitter
     global.add(@,'containerMovY')
     global.add(@,'containerMovYScale',-2,2).step(0.01)
 
-    @hitboxVisible = false
     global.add(@,'offsetX',-30,30).step(0.1)
 
     positions = @gui.addFolder('positions')
@@ -561,8 +570,6 @@ class Scene3d extends Emitter
     positions.add(@,'mobile')
 
     frag = @gui.addFolder('fragments')
-    @movementScale = 1.3
-    @speedScale = 0.1
     frag.add(@,'movementScale',0,2)
     frag.add(@,'speedScale',0,2)
     frag.add(@,'hitboxVisible').onChange((e)=>
