@@ -233,7 +233,7 @@ module.exports={
             "idx": 12,
             "isAvailable": false,
             "author": "Mat Groves",
-            "bio": "Maker of things, mostly games! Co-founder of @goodboydigital and creator of pixi.js the open source 2D webGL / Canvas renderer",
+            "bio": "Co-founder of @goodboydigital and creator of pixi.js",
             "title": "Polar",
             "subtitle": "",
             "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
