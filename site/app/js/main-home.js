@@ -1,14 +1,19 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var Home, Loading, loading;
+var Home, Loading, MobileMenu, loading;
 
 Loading = require("home/Loading");
 
 Home = require("home/Home");
 
+MobileMenu = require("home/MobileMenu");
+
 loading = new Loading;
 
 loading.on("complete", function() {
-  var home;
+  var home, mobileMenu;
+  if (window.innerWidth <= 640) {
+    mobileMenu = new MobileMenu();
+  }
   home = new Home();
   return loading.hide().then(function() {
     loading.dispose();
@@ -20,7 +25,7 @@ loading.start();
 
 
 
-},{"home/Home":10,"home/Loading":11}],2:[function(require,module,exports){
+},{"home/Home":10,"home/Loading":11,"home/MobileMenu":13}],2:[function(require,module,exports){
 module.exports={
     "experiments": [
         {
@@ -692,6 +697,9 @@ Artists = (function() {
   }
 
   Artists.prototype._onDragStart = function(e) {
+    if (window.innerWidth <= 640) {
+      return;
+    }
     e.preventDefault();
     this._lastY = e.y;
     interactions.on(this._domEntries, "move", this._onDragMove, false);
@@ -1091,7 +1099,7 @@ module.exports = Home;
 
 
 
-},{"common/getIndex":4,"common/nav":6,"home/About":7,"home/Artists":8,"home/Menu":12,"home/TitleAnim":13,"home/xps":14}],11:[function(require,module,exports){
+},{"common/getIndex":4,"common/nav":6,"home/About":7,"home/Artists":8,"home/Menu":12,"home/TitleAnim":14,"home/xps":15}],11:[function(require,module,exports){
 var IceAnim, Loading,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __hasProp = {}.hasOwnProperty,
@@ -1283,6 +1291,91 @@ module.exports = Menu;
 
 
 },{"common/anim/IceAnim":3,"common/interactions":5,"common/nav":6,"home/Credits":9}],13:[function(require,module,exports){
+var MobileMenu, interactions,
+  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+interactions = require("common/interactions");
+
+MobileMenu = (function() {
+  MobileMenu.prototype.dom = null;
+
+  MobileMenu.prototype.domNavbar = null;
+
+  MobileMenu.prototype._domMenuCTA = null;
+
+  MobileMenu.prototype._domCloseBtn = null;
+
+  MobileMenu.prototype._isVisible = false;
+
+  MobileMenu.prototype._transitionTimer = null;
+
+  function MobileMenu() {
+    this._hide = __bind(this._hide, this);
+    this._show = __bind(this._show, this);
+    this._toggleMenu = __bind(this._toggleMenu, this);
+    this.dom = document.querySelector('.mobile-menu');
+    this.domNavbar = document.querySelector('.mobile-navbar');
+    this._domMenuCTA = this.domNavbar.querySelector('.menuCTA');
+    this._domCloseBtn = this.dom.querySelector('.bt-close-holder');
+    interactions.on(this._domMenuCTA, 'click', this._show);
+    interactions.on(this._domCloseBtn, 'click', this._hide);
+    null;
+  }
+
+  MobileMenu.prototype._toggleMenu = function() {
+    this._isVisible = !this._isVisible;
+    if (this._isVisible) {
+      this._show();
+    } else {
+      this._hide();
+    }
+    return null;
+  };
+
+  MobileMenu.prototype._show = function(evt) {
+    if (evt) {
+      evt.preventDefault();
+    }
+    this.dom.style.display = 'table';
+    if (this._transitionTimer) {
+      clearInterval(this._transitionTimer);
+    }
+    this._transitionTimer = setTimeout((function(_this) {
+      return function() {
+        _this.dom.classList.add('transitionIn');
+        return document.body.scrollTop = 200;
+      };
+    })(this), 100);
+    return null;
+  };
+
+  MobileMenu.prototype._hide = function(evt) {
+    if (evt) {
+      evt.preventDefault();
+    }
+    this.dom.classList.add('transitionOut');
+    if (this._transitionTimer) {
+      clearInterval(this._transitionTimer);
+    }
+    this._transitionTimer = setTimeout((function(_this) {
+      return function() {
+        _this.dom.classList.remove('transitionIn');
+        _this.dom.classList.remove('transitionOut');
+        return _this.dom.style.display = 'none';
+      };
+    })(this), 1300);
+    return null;
+  };
+
+  return MobileMenu;
+
+})();
+
+module.exports = MobileMenu;
+
+
+
+},{"common/interactions":5}],14:[function(require,module,exports){
 var IceAnim, TitleAnim, datas;
 
 IceAnim = require("common/anim/IceAnim");
@@ -1342,7 +1435,7 @@ module.exports = TitleAnim;
 
 
 
-},{"common/anim/IceAnim":3,"data.json":2}],14:[function(require,module,exports){
+},{"common/anim/IceAnim":3,"data.json":2}],15:[function(require,module,exports){
 var Xps,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };

@@ -1,0 +1,6 @@
+bower_components
+.sass-cache
+.DS_STORE
+node_modules/
+.git
+.gitignore
