@@ -591,14 +591,19 @@ Scene3d = (function(_super) {
     this.isOver = false;
     this.isReady = false;
     this.isImgReady = false;
-    this.debug = true;
+    this.debug = /debug/i.test(window.location);
+    console.log(this.debug);
+    this.hitboxVisible = false;
     this.currentIndex = 1;
+    this.globalOpacity = 1;
     this.globalAlpha = 0;
     this.cameraMoveY = true;
     this.containerMovY = true;
     this.containerMovYScale = 1;
     this.cameraMoveYScale = 1.5;
     this.backgroundFix = false;
+    this.movementScale = 1.3;
+    this.speedScale = 0.1;
     this.mouse = new THREE.Vector2(0, 0);
     this.time = 0;
     this.useMap = true;
@@ -663,7 +668,9 @@ Scene3d = (function(_super) {
         _this.parseAtlas();
         _this.createCanvas();
         _this.loadMesh();
-        _this.createGUI();
+        if (_this.debug) {
+          _this.createGUI();
+        }
         return _this.loadImagesHight();
       };
     })(this);
@@ -1016,22 +1023,24 @@ Scene3d = (function(_super) {
     geometry.applyMatrix(matrix);
     this.diamond = new THREE.Mesh(geometry, material);
     this.container.add(this.diamond);
-    folder = this.gui.addFolder('diamond');
-    folder.add(material, 'depthWrite');
-    folder.add(material, 'depthTest');
-    folder.add(material, 'opacity', 0, 1);
-    folder.add(material, 'reflectivity', 0, 1);
-    this.diamondColor = 0xffffff;
-    folder.add(this.diamond.material, 'combine', {
-      multiply: THREE.Multiply,
-      mix: THREE.MixOperation,
-      add: THREE.AddOperation
-    });
-    folder.addColor(this, 'diamondColor').onChange((function(_this) {
-      return function() {
-        return _this.diamond.material.color.setHex(_this.diamondColor);
-      };
-    })(this));
+    if (this.debug) {
+      folder = this.gui.addFolder('diamond');
+      folder.add(material, 'depthWrite');
+      folder.add(material, 'depthTest');
+      folder.add(material, 'opacity', 0, 1);
+      folder.add(material, 'reflectivity', 0, 1);
+      this.diamondColor = 0xffffff;
+      folder.add(this.diamond.material, 'combine', {
+        multiply: THREE.Multiply,
+        mix: THREE.MixOperation,
+        add: THREE.AddOperation
+      });
+      folder.addColor(this, 'diamondColor').onChange((function(_this) {
+        return function() {
+          return _this.diamond.material.color.setHex(_this.diamondColor);
+        };
+      })(this));
+    }
     this.positions.base.diamond = this.diamond.position.clone();
   };
 
@@ -1057,22 +1066,24 @@ Scene3d = (function(_super) {
     material.opacity = 0.55;
     this.mirror = new THREE.Mesh(geometry, material);
     this.container.add(this.mirror);
-    folder = this.gui.addFolder('mirror');
-    folder.add(this.mirror.material, 'depthWrite');
-    folder.add(this.mirror.material, 'depthTest');
-    folder.add(this.mirror.material, 'opacity', 0, 1);
-    folder.add(this.mirror.material, 'reflectivity', 0, 1);
-    this.mirrorColor = 0xffffff;
-    folder.add(this.mirror.material, 'combine', {
-      multiply: THREE.Multiply,
-      mix: THREE.MixOperation,
-      add: THREE.AddOperation
-    });
-    folder.addColor(this, 'mirrorColor').onChange((function(_this) {
-      return function() {
-        return _this.mirror.material.color.setHex(_this.mirrorColor);
-      };
-    })(this));
+    if (this.debug) {
+      folder = this.gui.addFolder('mirror');
+      folder.add(this.mirror.material, 'depthWrite');
+      folder.add(this.mirror.material, 'depthTest');
+      folder.add(this.mirror.material, 'opacity', 0, 1);
+      folder.add(this.mirror.material, 'reflectivity', 0, 1);
+      this.mirrorColor = 0xffffff;
+      folder.add(this.mirror.material, 'combine', {
+        multiply: THREE.Multiply,
+        mix: THREE.MixOperation,
+        add: THREE.AddOperation
+      });
+      folder.addColor(this, 'mirrorColor').onChange((function(_this) {
+        return function() {
+          return _this.mirror.material.color.setHex(_this.mirrorColor);
+        };
+      })(this));
+    }
     this.positions.base.mirror = this.mirror.position.clone();
   };
 
@@ -1146,13 +1157,11 @@ Scene3d = (function(_super) {
     this.maps = [];
     this.envMaps = [];
     global = this.gui.addFolder('global');
-    this.globalOpacity = 1;
     global.add(this, 'backgroundFix');
     global.add(this, 'cameraMoveY');
     global.add(this, 'cameraMoveYScale', -3, 3).step(0.01);
     global.add(this, 'containerMovY');
     global.add(this, 'containerMovYScale', -2, 2).step(0.01);
-    this.hitboxVisible = false;
     global.add(this, 'offsetX', -30, 30).step(0.1);
     positions = this.gui.addFolder('positions');
     positions.add(this, 'noGrid');
@@ -1163,8 +1172,6 @@ Scene3d = (function(_super) {
     positions.add(this, 'portrait');
     positions.add(this, 'mobile');
     frag = this.gui.addFolder('fragments');
-    this.movementScale = 1.3;
-    this.speedScale = 0.1;
     frag.add(this, 'movementScale', 0, 2);
     frag.add(this, 'speedScale', 0, 2);
     frag.add(this, 'hitboxVisible').onChange((function(_this) {
