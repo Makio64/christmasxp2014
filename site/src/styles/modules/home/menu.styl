@@ -25,12 +25,21 @@
 .menu-top
   position relative
   padding-top 50px
+  display block
+  
+  &:hover {
+    .menu-title {
+      color #ff265d
+    }
+  }
 
 .menu-logo
   bg( "logo-blue.png" )
-  display inline-block
+  margin 0 auto
+  
 
 .menu-title
+  transition all .15s linear
   font normal 14px bold
   -webkit-font-smoothing antialiased
   color #fff
