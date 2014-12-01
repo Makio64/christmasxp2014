@@ -30,7 +30,7 @@
       .artists-entries
         - var n = experiments.length
         - for( var i = 0; i < n; i++ )
-          a.artists-entry(href=experiments[ i ].site)
+          a.artists-entry(href=experiments[ i ].site target="_blank")
             span.borders
               span.border-right
               span.border-bottom
@@ -47,10 +47,10 @@ mixin _artists-entry-holder( i )
       span.artists-entry-content
         span.artists-entry-author= experiments[ i ].author
         span.artists-entry-desc= experiments[ i ].bio
-        - if ( i < 10 )
+        - if ( i <= 10 )
           span.artists-entry-day 0#{i + 1}
         - else
-          span.artists-entry-day= i
+          span.artists-entry-day= i + 1
 
 mixin _mobile-artists-entry-holder( i )
   img.artists-entry-avatar(src="img/avatars/#{i + 1}.png", width="155", height="155")
@@ -61,4 +61,4 @@ mixin _mobile-artists-entry-holder( i )
     - if ( i < 10 )
       span.artists-entry-day 0#{i + 1}
     - else
-      span.artists-entry-day= i
+      span.artists-entry-day= i + 1
