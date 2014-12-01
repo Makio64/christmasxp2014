@@ -612,7 +612,7 @@ Scene3d = (function(_super) {
       diamond: new THREE.Vector3(),
       mirror: new THREE.Vector3()
     };
-    this.offsetX = 10;
+    this.offsetX = window.innerWidth <= 640 ? 0 : 10;
     this.currentPosition = {
       fragments: [],
       diamond: null,

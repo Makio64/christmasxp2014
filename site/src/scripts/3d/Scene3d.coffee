@@ -34,7 +34,7 @@ class Scene3d extends Emitter
 			mirror : new THREE.Vector3()
 		}
 
-		@offsetX = 10
+		@offsetX = if window.innerWidth <= 640 then 0 else 10
 
 		@currentPosition = {
 			fragments : []
