@@ -651,7 +651,7 @@ module.exports = Experiments;
 
 
 
-},{"data.json":2,"experiments/Infos":5,"experiments/Menu":6,"experiments/XP":7}],5:[function(require,module,exports){
+},{"data.json":2,"experiments/Infos":5,"experiments/Menu":6,"experiments/XP":8}],5:[function(require,module,exports){
 var Infos, interactions,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -758,15 +758,20 @@ module.exports = Infos;
 
 
 },{"common/interactions":3}],6:[function(require,module,exports){
-var Menu, interactions,
+var Menu, Preview, interactions,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 interactions = require("common/interactions");
 
+Preview = require("experiments/Preview");
+
 Menu = (function() {
   function Menu() {
+    this._onOut = __bind(this._onOut, this);
+    this._onOver = __bind(this._onOver, this);
     this._onClick = __bind(this._onClick, this);
     var domItem, _i, _len, _ref;
+    this._preview = new Preview;
     this._domCnt = document.querySelector(".menu");
     this._domItems = document.querySelectorAll(".menu-item");
     this._domItemActivated = document.querySelector(".menu-item-activated");
@@ -774,6 +779,8 @@ Menu = (function() {
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       domItem = _ref[_i];
       interactions.on(domItem, "click", this._onClick);
+      domItem.addEventListener("mouseenter", this._onOver, false);
+      domItem.addEventListener("mouseleave", this._onOut, false);
     }
   }
 
@@ -785,7 +792,17 @@ Menu = (function() {
       page("/experiments/404");
       return;
     }
-    return page("/experiments/" + (idx + 1));
+    page("/experiments/" + (idx + 1));
+    return this._preview.hide();
+  };
+
+  Menu.prototype._onOver = function(e) {
+    this._preview.update(this._indexOf(e.currentTarget));
+    return this._preview.show();
+  };
+
+  Menu.prototype._onOut = function(e) {
+    return this._preview.hide();
   };
 
   Menu.prototype.update = function(idx) {
@@ -818,19 +835,99 @@ module.exports = Menu;
 
 
 
-},{"common/interactions":3}],7:[function(require,module,exports){
+},{"common/interactions":3,"experiments/Preview":7}],7:[function(require,module,exports){
+var Preview, datas;
+
+datas = require("data.json").experiments;
+
+Preview = (function() {
+  function Preview() {
+    this._dom = document.querySelector(".preview");
+    this._domTitle = this._dom.querySelector(".preview-title");
+    this._domAuthor = this._dom.querySelector(".preview-author");
+  }
+
+  Preview.prototype.update = function(idx) {
+    var data;
+    data = datas[idx];
+    this._domTitle.innerHTML = data.isAvailable ? data.title : "NOT RELEASED YET";
+    return this._domAuthor.innerHTML = data.author;
+  };
+
+  Preview.prototype.show = function() {
+    return TweenLite.to(this._dom, .5, {
+      css: {
+        autoAlpha: 1
+      },
+      ease: Cubic.easeInOut
+    });
+  };
+
+  Preview.prototype.hide = function() {
+    return TweenLite.to(this._dom, .5, {
+      css: {
+        autoAlpha: 0
+      },
+      ease: Cubic.easeInOut
+    });
+  };
+
+  return Preview;
+
+})();
+
+module.exports = Preview;
+
+
+
+},{"data.json":2}],8:[function(require,module,exports){
 var XP;
 
 XP = (function() {
   function XP(_data) {
     this._data = _data;
-    this._domCnt = document.querySelector(".experiment-iframe-holder");
-    this._createIframe();
+    this._domCnt = document.querySelector(".experiment-holder");
+    this._createXP();
   }
 
+  XP.prototype._createXP = function() {
+    this._domXP = document.createElement("div");
+    this._domXP.classList.add("experiment-entry");
+    if (this._data.isAvailable) {
+      if (this._data.isWebGL) {
+        if (window.WebGLRenderingContext) {
+          return this._createIframe();
+        } else {
+          return this._createNoWebGL();
+        }
+      } else {
+        return this._createIframe();
+      }
+    } else {
+      return this._createNotReleased();
+    }
+  };
+
   XP.prototype._createIframe = function() {
-    this._domIframe = document.createElement("iframe");
-    return this._domIframe.src = "./" + this._data.idx + "/";
+    var dom;
+    dom = document.createElement("iframe");
+    dom.src = "./" + this._data.idx + "/";
+    return this._domXP.appendChild(dom);
+  };
+
+  XP.prototype._createNoWebGL = function() {
+    var dom;
+    dom = document.querySelector(".error.no-webgl").cloneNode(true);
+    dom.classList.add("visible");
+    return this._domXP.appendChild(dom);
+  };
+
+  XP.prototype._createNotReleased = function() {
+    var dom;
+    dom = document.querySelector(".not-released").cloneNode(true);
+    dom.classList.add("visible");
+    dom.querySelector(".not-released-author").innerHTML = this._data.author;
+    return this._domXP.appendChild(dom);
   };
 
   XP.prototype.show = function(animated) {
@@ -838,27 +935,28 @@ XP = (function() {
       animated = false;
     }
     if (!animated) {
-      return this._domCnt.appendChild(this._domIframe);
+      return this._domCnt.appendChild(this._domXP);
     } else {
-      TweenLite.set(this._domIframe, {
+      console.log(document.body.offsetWidth);
+      TweenLite.set(this._domXP, {
         css: {
           x: -document.body.offsetWidth,
           force3D: true
         }
       });
-      TweenLite.to(this._domIframe, .6, {
+      TweenLite.to(this._domXP, .6, {
         css: {
           x: 0,
           force3D: true
         },
         ease: Cubic.easeInOut
       });
-      return this._domCnt.appendChild(this._domIframe);
+      return this._domCnt.appendChild(this._domXP);
     }
   };
 
   XP.prototype.hide = function() {
-    return TweenLite.to(this._domIframe, .6, {
+    return TweenLite.to(this._domXP, .6, {
       css: {
         x: document.body.offsetWidth,
         force3D: true
@@ -866,7 +964,7 @@ XP = (function() {
       ease: Cubic.easeInOut,
       onComplete: (function(_this) {
         return function() {
-          return _this._domCnt.removeChild(_this._domIframe);
+          return _this._domCnt.removeChild(_this._domXP);
         };
       })(this)
     });

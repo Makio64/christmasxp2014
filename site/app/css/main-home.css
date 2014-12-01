@@ -946,6 +946,9 @@ body {
   text-align: center;
   z-index: 10;
 }
+.credits p {
+  margin-bottom: 5px;
+}
 .credits-title {
   font: normal 22px "uni_sansheavy_caps";
   color: #051d6b;
