@@ -556,12 +556,14 @@ module.exports = Main3d;
 
 
 },{"3d/Scene3d":4,"3d/Stage3d":5}],4:[function(require,module,exports){
-var Scene3d, Stage3d,
+var Scene3d, Stage3d, nav,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 Stage3d = require("3d/Stage3d");
+
+nav = require("common/nav");
 
 Scene3d = (function(_super) {
   __extends(Scene3d, _super);
@@ -586,6 +588,7 @@ Scene3d = (function(_super) {
     this.loadImagesHight = __bind(this.loadImagesHight, this);
     this.parseAtlas = __bind(this.parseAtlas, this);
     this.loadImagesLow = __bind(this.loadImagesLow, this);
+    this.onNavChange = __bind(this.onNavChange, this);
     var i, xp, xps, _i, _j, _len;
     Scene3d.__super__.constructor.apply(this, arguments);
     this.isOver = false;
@@ -611,6 +614,7 @@ Scene3d = (function(_super) {
     this.opacity = 1;
     this.fragments = [];
     this.hitboxs = [];
+    this.canShowPointer = true;
     this.maxDate = 0;
     xps = require("data.json").experiments;
     for (_i = 0, _len = xps.length; _i < _len; _i++) {
@@ -655,8 +659,18 @@ Scene3d = (function(_super) {
     this.createParticles();
     this.addEvent();
     this.loadImagesLow();
+    nav.on("change", this.onNavChange);
     return;
   }
+
+  Scene3d.prototype.onNavChange = function(id) {
+    if (id === 'about' || id === 'artists' || id === 'credits') {
+      this.canShowPointer = false;
+    } else {
+      this.canShowPointer = true;
+    }
+    return null;
+  };
 
   Scene3d.prototype.createCanvas = function() {
     this.canvas = document.createElement('canvas');
@@ -1403,7 +1417,7 @@ Scene3d = (function(_super) {
       this.fragments[i].position.x = this.hitboxs[i].position.x + Math.cos(t / 450 * this.speedScale) * .5 * this.movementScale;
       this.fragments[i].position.z = this.hitboxs[i].position.z;
     }
-    if (this.hitboxs) {
+    if (this.hitboxs && this.canShowPointer) {
       intersects = raycaster.intersectObjects(this.hitboxs, false);
       if (intersects.length > 0) {
         document.body.style.cursor = 'pointer';
@@ -1492,7 +1506,7 @@ module.exports = Scene3d;
 
 
 
-},{"3d/Stage3d":5,"data.json":2}],5:[function(require,module,exports){
+},{"3d/Stage3d":5,"common/nav":9,"data.json":2}],5:[function(require,module,exports){
 var Scene3d, Stage3d;
 
 Scene3d = require("home/Home");

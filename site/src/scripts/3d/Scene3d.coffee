@@ -1,4 +1,5 @@
 Stage3d = require "3d/Stage3d"
+nav = require "common/nav"
 
 class Scene3d extends Emitter
 
@@ -34,6 +35,8 @@ class Scene3d extends Emitter
     @opacity = 1
     @fragments = []
     @hitboxs = []
+
+    @canShowPointer = true
 
     @maxDate = 0
     xps = require( "data.json" ).experiments
@@ -84,8 +87,19 @@ class Scene3d extends Emitter
     @createParticles()
     @addEvent()
     @loadImagesLow()
+
+    nav.on "change", @onNavChange
     
     return
+
+
+  onNavChange: ( id ) =>
+    if id is 'about' or id is 'artists' or id is 'credits'
+      @canShowPointer = false
+    else 
+      @canShowPointer = true
+
+    null
 
 
   createCanvas:()->
@@ -776,7 +790,7 @@ class Scene3d extends Emitter
       @fragments[i].position.x = @hitboxs[i].position.x+Math.cos(t/450*@speedScale)*.5*@movementScale
       @fragments[i].position.z = @hitboxs[i].position.z
     
-    if(@hitboxs)
+    if(@hitboxs and @canShowPointer )
       intersects = raycaster.intersectObjects( @hitboxs, false )
       if( intersects.length > 0 )
         document.body.style.cursor = 'pointer'
