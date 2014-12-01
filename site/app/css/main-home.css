@@ -1265,8 +1265,8 @@ position relative {
   letter-spacing: 1px;
 }
 .artists-entry-author:hover {
-  color: #bb4250;
-  border-color: #bb4250;
+  color: #051d6b;
+  border-color: #051d6b;
 }
 .artists-entry-desc {
   font: normal 12px "source_sans_proregular";
@@ -1313,7 +1313,7 @@ position relative {
 .artists-entry-day .artists-entry-day-holder {
   position: absolute;
   top: 0;
-  left: -139px;
+  left: -135px;
   width: 185px;
   -webkit-transition: left 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
   -moz-transition: left 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1331,10 +1331,10 @@ position relative {
   margin-left: 2px;
 }
 .artists-entry-day:hover {
-  width: 185px;
+  width: 155px;
 }
 .artists-entry-day:hover .artists-entry-day-holder {
-  left: 0;
+  left: -15px;
 }
 .artists-entry-day:hover .name {
   opacity: 1;
@@ -1345,10 +1345,13 @@ position relative {
   background-color: #e0e0e0;
 }
 .artists-entry-day.not-released .artists-entry-day-holder {
-  left: -126px;
+  left: -125px;
+}
+.artists-entry-day.not-released:hover {
+  width: 145px;
 }
 .artists-entry-day.not-released:hover .artists-entry-day-holder {
-  left: 0;
+  left: -19px;
 }
 @media screen and (max-width: 640px) {
   .artists {

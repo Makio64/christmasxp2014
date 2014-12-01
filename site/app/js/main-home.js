@@ -3425,7 +3425,6 @@ Share = (function() {
       method: 'feed',
       name: "Christmas Experiments - 2014",
       caption: "Christmas Experiments 2014, discover the best experiments of the winter!",
-      redirect_uri: "http://christmasexperiments.com/",
       link: "http://christmasexperiments.com/",
       picture: "http://christmasexperiments.com/share.jpg"
     }, function(response) {});

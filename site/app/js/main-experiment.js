@@ -1167,7 +1167,6 @@ Share = (function() {
       name: "Christmas Experiments - 2014",
       caption: this._data.title,
       desc: this._data.desc,
-      redirect_uri: "http://christmasexperiments.com/",
       link: "http://christmasexperiments.com/",
       picture: "http://christmasexperiments.com/experiments/xps/" + this._data.idx + "/share.jpg"
     }, function(response) {});

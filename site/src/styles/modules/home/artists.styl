@@ -205,8 +205,8 @@
   border-bottom 1px solid red
   letter-spacing 1px
   &:hover
-    color #bb4250
-    border-color #bb4250
+    color #051d6b
+    border-color #051d6b
   // backface-visibility hidden
   
 .artists-entry-desc
@@ -245,7 +245,7 @@
   .artists-entry-day-holder
     position absolute
     top 0
-    left -139px
+    left -135px
     width 185px
     transition left .15s cubic-bezier(0.645, 0.045, 0.355, 1.000)
   .name
@@ -254,18 +254,19 @@
   .idx 
     margin-left 2px
   &:hover
-    width 185px
+    width 155px
     .artists-entry-day-holder
-      left 0
+      left -15px
     .name
       opacity 1
   &.not-released
     background-color #e0e0e0
     .artists-entry-day-holder
-      left -126px
+      left -125px
     &:hover
+      width 145px
       .artists-entry-day-holder
-        left 0
+        left -19px
 
 @media screen and (max-width: 640px) {
   

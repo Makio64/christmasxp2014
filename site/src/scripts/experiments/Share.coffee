@@ -29,7 +29,7 @@ class Share
             name: "Christmas Experiments - 2014"
             caption: @_data.title
             desc: @_data.desc
-            redirect_uri: "http://christmasexperiments.com/"
+            # redirect_uri: "http://christmasexperiments.com/"
             link: "http://christmasexperiments.com/"
             picture: "http://christmasexperiments.com/experiments/xps/#{@_data.idx}/share.jpg"
         , ( response ) ->
