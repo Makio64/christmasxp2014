@@ -1281,7 +1281,7 @@ position relative {
   display: inline-block;
   margin-top: 15px;
   background-color: #f75568;
-  width: 31px;
+  width: 30px;
   height: 30px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
@@ -1289,7 +1289,6 @@ position relative {
   color: #fff;
   letter-spacing: 1px;
   text-decoration: none;
-  overflow: hidden;
   -webkit-transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   -moz-transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   -o-transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1302,7 +1301,7 @@ position relative {
 .artists-entry-day .artists-entry-day-holder {
   position: absolute;
   top: 0;
-  left: -138px;
+  left: -139px;
   width: 185px;
   -webkit-transition: left 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
   -moz-transition: left 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1334,7 +1333,7 @@ position relative {
   background-color: #e0e0e0;
 }
 .artists-entry-day.not-released .artists-entry-day-holder {
-  left: -125px;
+  left: -126px;
 }
 .artists-entry-day.not-released:hover .artists-entry-day-holder {
   left: 0;
