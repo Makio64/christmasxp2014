@@ -968,6 +968,7 @@ body {
   height: 100%;
   top: 0;
   right: 0;
+  display: none;
   -webkit-perspective-origin: 50% 50%;
   -moz-perspective-origin: 50% 50%;
   -ms-perspective-origin: 50% 50%;
