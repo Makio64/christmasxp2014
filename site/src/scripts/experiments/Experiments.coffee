@@ -13,11 +13,15 @@ class Experiments
 
         page( "/experiments/", @_showPage )
         page( "/experiments/:id", @_showPage )
-        page( "/experiments/404", @_show404 )
+        page( "/2014/experiments/", @_showPage )
+        page( "/2014/experiments/:id", @_showPage )
+        page( "/2014_/experiments/", @_showPage )
+        page( "/2014_/experiments/:id", @_showPage )
+        # page( "/experiments/404", @_show404 )
         page()
 
     _showPage: ( data ) =>
-        if !data.params.id
+        if !data.params.id || data.params.id < 1 || data.params.id > 24
             page "/experiments/1"
             return
 

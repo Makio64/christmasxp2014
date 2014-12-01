@@ -21,7 +21,7 @@ class XP
 
     _createIframe: ->
         dom = document.createElement "iframe"
-        dom.src = "./#{@_data.idx}/"
+        dom.src = "./xps/#{@_data.idx}/"
         @_domXP.appendChild dom
 
     _createNoWebGL: ->
