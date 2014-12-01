@@ -5,7 +5,8 @@ class Interactions
         @_moves = {}
         @_ups = {}
         @_clicks = {}
-
+        @_mouseleaves = {}
+        
         @_interactions = [ @_downs, @_moves, @_ups, @_clicks ]
 
         @isTouchDevice = "ontouchstart" of window || "onmsgesturechange" of window
@@ -73,12 +74,15 @@ class Interactions
                 when "move" then evt = "touchmove"
                 when "up" then evt = "touchend"
                 when "click" then evt = "touchstart"
+                when "mouseleave" then evt = "mouseleave"
         else
             switch action
                 when "down" then evt = "mousedown"
                 when "move" then evt = "mousemove"
                 when "up" then evt = "mouseup"
                 when "click" then evt = "click"
+                when "mouseleave" then evt = "mouseleave"
+        return evt
 
     _getObj: ( action ) ->
         obj = @[ "_#{action}s" ]

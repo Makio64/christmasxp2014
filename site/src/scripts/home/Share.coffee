@@ -18,13 +18,12 @@ class Share
 
     _onTwitter: ( e ) =>
         e.preventDefault()
-        console.log "YO"
         url = "https://twitter.com/share?"
         url += "text="  + encodeURIComponent( "Discover Christmas Experiments 2014" )
         url += "&url=" + encodeURIComponent( "http://christmasexperiments/" ) + "/"
         @_openPopup url
 
     _openPopup: ( url ) ->
-         window.open( url, "", "top=100, left=200, width=600, height = 500" );
+        window.open( url, "", "top=100, left=200, width=600, height = 500" );
 
 module.exports = Share

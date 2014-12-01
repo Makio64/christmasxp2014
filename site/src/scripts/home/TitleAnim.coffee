@@ -28,7 +28,6 @@ class TitleAnim
             css:
                 alpha: 0
             onComplete: =>
-                console.log "yup"
                 @dom.removeChild @_node
 
 module.exports = TitleAnim

@@ -44,7 +44,6 @@ class Loading extends Emitter
         done 200
 
     dispose: ->
-        console.log "dispose"
         document.body.removeChild @dom
 
 module.exports = Loading

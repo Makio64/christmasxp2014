@@ -9,7 +9,7 @@ TitleAnim = require "home/TitleAnim"
 
 class Home
 
-    constructor:(scene3d)->
+    constructor:(@scene3d)->
         @dom = document.querySelector ".home"
         TweenLite.set @dom,
             css:
@@ -35,12 +35,15 @@ class Home
         #     dom.addEventListener "mouseover", @_onBtOver
         #     dom.addEventListener "mouseout", @_onBtOut
 
+        @scene3d.isActivate = true
+
         nav.on "change", @_onNavChange
         scene3d.on "over", @_onXPOver
         scene3d.on "out", @_onXPOut
 
     _onNavChange: ( id ) =>
         if id != ""
+            @scene3d.isActivate = false
             newModule = @[ "_#{id}" ]
             return if @_currentModule == newModule
             if @_currentModule
@@ -51,6 +54,7 @@ class Home
                 @_currentModule = newModule
                 @_currentModule.show?()
         else
+            @scene3d.isActivate = true
             @_currentModule.hide()
             @_currentModule = null
 
@@ -76,7 +80,10 @@ class Home
         TweenLite.to @dom, .5,
             css:
                 alpha: 1
+            onComplete:()=>
+                @scene3d.isActivate = true
 
     hide: ->
+        @scene3d.isActivate = false
 
 module.exports = Home

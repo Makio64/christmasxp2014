@@ -11,6 +11,7 @@ class Credits
         @_domEntries = @dom.querySelectorAll ".credits-entry"
 
         interactions.on @_domBtClose, "click", @_onBtClose
+        interactions.on @dom, "mouseleave", @_onBtClose
 
     _onBtClose: ( e ) =>
         e.preventDefault()

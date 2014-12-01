@@ -464,6 +464,7 @@ Interactions = (function() {
     this._moves = {};
     this._ups = {};
     this._clicks = {};
+    this._mouseleaves = {};
     this._interactions = [this._downs, this._moves, this._ups, this._clicks];
     this.isTouchDevice = "ontouchstart" in window || "onmsgesturechange" in window;
   }
@@ -545,26 +546,39 @@ Interactions = (function() {
     if (this.isTouchDevice) {
       switch (action) {
         case "down":
-          return evt = "touchstart";
+          evt = "touchstart";
+          break;
         case "move":
-          return evt = "touchmove";
+          evt = "touchmove";
+          break;
         case "up":
-          return evt = "touchend";
+          evt = "touchend";
+          break;
         case "click":
-          return evt = "touchstart";
+          evt = "touchstart";
+          break;
+        case "mouseleave":
+          evt = "mouseleave";
       }
     } else {
       switch (action) {
         case "down":
-          return evt = "mousedown";
+          evt = "mousedown";
+          break;
         case "move":
-          return evt = "mousemove";
+          evt = "mousemove";
+          break;
         case "up":
-          return evt = "mouseup";
+          evt = "mouseup";
+          break;
         case "click":
-          return evt = "click";
+          evt = "click";
+          break;
+        case "mouseleave":
+          evt = "mouseleave";
       }
     }
+    return evt;
   };
 
   Interactions.prototype._getObj = function(action) {

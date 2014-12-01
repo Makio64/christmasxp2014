@@ -26,6 +26,6 @@ class Share
         @_openPopup url
 
     _openPopup: ( url ) ->
-         window.open( url, "", "top=100, left=200, width=600, height = 500" );
+        window.open( url, "", "top=100, left=200, width=600, height = 500" );
 
 module.exports = Share

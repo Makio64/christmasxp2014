@@ -33,6 +33,23 @@
     <link rel="stylesheet" href="./css/main-home.css">
   </head>
   <body>
+    <script>
+      console.log('%c Ho Ho Ho! ', 'background:#99F; color:  #F00');
+      window.fbAsyncInit = function() {
+      FB.init({
+      appId : '1543530425886036',
+      xfbml : true,
+      version : 'v2.2'
+      });
+      };
+      (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     <div class="mobile-navbar">
       <div class="logo"></div>
       <div class="title">
@@ -231,8 +248,8 @@
               <div class="about-infos-title underline">ABOUT</div>
               <div class="about-infos-desc">Christmas Experiments is an advent calendar which feature each day a digital artist from the creative coding community and his web experiment. </div>
               <div class="about-infos-old">
-                You can see the previous edition <a href="#">2012</a> and <a href="#">2013</a>
-                Feel free to contact us via <a href="#">twitter</a> or send an email to happy@christmasexperiments.com
+                You can see the previous edition <a href="http://christmasexperiments.com/2012" target="_blank">2012</a> and <a href="http://christmasexperiments.com/2013" target="_blank">2013</a>
+                Feel free to contact us via <a href="https://twitter.com/christmasxp" >twitter</a> or send an email to happy@christmasexperiments.com
               </div>
               <div class="about-infos-thanks">Merry Christmas!</div>
             </div>

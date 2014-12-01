@@ -593,6 +593,7 @@ Scene3d = (function(_super) {
     this.isOver = false;
     this.isReady = false;
     this.isImgReady = false;
+    this.isActivate = false;
     this.debug = /debug/i.test(window.location);
     this.hitboxVisible = false;
     this.currentIndex = 1;
@@ -736,7 +737,9 @@ Scene3d = (function(_super) {
     var geometry, i, material, v, _i, _ref;
     material = new THREE.MeshLambertMaterial({
       wireframe: false,
-      color: 0xFFFFFF
+      color: 0xFFFFFF,
+      transparent: true,
+      opacity: 0
     });
     material.shading = THREE.FlatShading;
     geometry = new THREE.PlaneGeometry(7000, 7000, 8, 8);
@@ -757,18 +760,26 @@ Scene3d = (function(_super) {
     geometry.tangentsNeedUpdate = true;
     this.backgroundFlat = new THREE.Mesh(geometry, material);
     this.backgroundFlat.position.z = -1000;
+    TweenLite.to(material, .4, {
+      opacity: 1,
+      delay: 0.01
+    });
     Stage3d.add(this.backgroundFlat);
     material = new THREE.MeshBasicMaterial({
       wireframe: true,
       color: 0,
       transparent: true,
-      opacity: .1
+      opacity: 0
     });
     material.shading = THREE.FlatShading;
     this.backgroundLine = new THREE.Mesh(geometry, material);
     this.backgroundLine.position.z = -950;
     this.backgroundLine.position.y += 10;
     Stage3d.add(this.backgroundLine);
+    TweenLite.to(material, .4, {
+      opacity: .1,
+      delay: 0.01
+    });
     this.backgroundGeometry = geometry;
   };
 
@@ -792,6 +803,9 @@ Scene3d = (function(_super) {
           size: 64,
           sizeAttenuation: true,
           fog: false,
+          opacity: 0
+        });
+        TweenLite.to(material, 1.5, {
           opacity: .1
         });
         _this.pointcloud = new THREE.PointCloud(_this.bufferGeometry, material);
@@ -971,6 +985,9 @@ Scene3d = (function(_super) {
         var frag, intersects, raycaster, vector;
         _this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
         _this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        if (!_this.isActivate) {
+          return;
+        }
         vector = new THREE.Vector3(_this.mouse.x, _this.mouse.y, .5);
         vector.unproject(Stage3d.camera);
         raycaster = new THREE.Raycaster(Stage3d.camera.position, vector.sub(Stage3d.camera.position).normalize());
@@ -1002,9 +1019,12 @@ Scene3d = (function(_super) {
           return num2;
         };
       })(this);
-      window.ondevicemotion = (function(_this) {
+      return window.ondevicemotion = (function(_this) {
         return function(evt) {
           var ax, ay, mx, my;
+          if (!_this.isActivate) {
+            return;
+          }
           ax = event.accelerationIncludingGravity.x;
           ay = event.accelerationIncludingGravity.y;
           if (ax >= 5) {
@@ -1020,7 +1040,7 @@ Scene3d = (function(_super) {
           mx = map(ax, 5, -5, 0, window.innerWidth);
           my = map(ay, 6, -6, 0, window.innerHeight);
           _this.mouse.x = (mx / window.innerWidth) * 2 - 1;
-          return _this.mouse.y = (my / window.innerHeight) * 2 - 1;
+          _this.mouse.y = (my / window.innerHeight) * 2 - 1;
         };
       })(this);
     }
@@ -1039,7 +1059,7 @@ Scene3d = (function(_super) {
     });
     material.map = this.map;
     material.shading = this.shading;
-    material.opacity = .65;
+    material.opacity = 0;
     material.side = THREE.DoubleSide;
     material.combine = THREE.MixOperation;
     matrix = new THREE.Matrix4();
@@ -1065,6 +1085,17 @@ Scene3d = (function(_super) {
         };
       })(this));
     }
+    this.diamond.scale.set(0.8, 0.8, 0.8);
+    TweenLite.to(this.diamond.material, .8, {
+      ease: Quad.easeIn,
+      opacity: .65
+    });
+    TweenLite.to(this.diamond.scale, .8, {
+      ease: Quad.easeOut,
+      x: 1,
+      y: 1,
+      z: 1
+    });
     this.positions.base.diamond = this.diamond.position.clone();
   };
 
@@ -1087,7 +1118,7 @@ Scene3d = (function(_super) {
     material.side = THREE.DoubleSide;
     material.combine = THREE.AddOperation;
     material.reflectivity = .1;
-    material.opacity = 0.55;
+    material.opacity = 0;
     this.mirror = new THREE.Mesh(geometry, material);
     this.container.add(this.mirror);
     if (this.debug) {
@@ -1108,11 +1139,22 @@ Scene3d = (function(_super) {
         };
       })(this));
     }
+    this.mirror.scale.set(0.8, 0.8, 0.8);
+    TweenLite.to(this.mirror.material, .8, {
+      ease: Quad.easeIn,
+      opacity: .55
+    });
+    TweenLite.to(this.mirror.scale, .8, {
+      ease: Quad.easeOut,
+      x: 1,
+      y: 1,
+      z: 1
+    });
     this.positions.base.mirror = this.mirror.position.clone();
   };
 
   Scene3d.prototype.onFragmentLoaded = function(scene) {
-    var hitbox, hitboxGeo, hitboxMaterial, i, k, material, matrix, o, v, _i, _ref;
+    var d, delay, duration, hitbox, hitboxGeo, hitboxMaterial, i, k, material, matrix, o, v, _i, _ref;
     this.fragments = [];
     this.hitboxs = [];
     hitboxGeo = new THREE.SphereGeometry(4);
@@ -1123,9 +1165,11 @@ Scene3d = (function(_super) {
       transparent: true
     });
     this.basePosition = [];
+    d = 0;
     _ref = scene.objects;
     for (k in _ref) {
       v = _ref[k];
+      d += 0.025;
       o = v;
       o.name = o.name.substring(o.name.length - 2);
       this.computeGeometry(o.geometry);
@@ -1140,7 +1184,7 @@ Scene3d = (function(_super) {
       material.side = THREE.DoubleSide;
       material.combine = THREE.AddOperation;
       material.reflectivity = .41;
-      material.opacity = 0.8;
+      material.opacity = 0;
       o.material = material;
       matrix = new THREE.Matrix4();
       matrix.makeScale(.2, .2, .2);
@@ -1148,9 +1192,26 @@ Scene3d = (function(_super) {
       o.position.multiplyScalar(.21);
       o.position.y -= 20;
       o.position.z += 5;
+      delay = Math.random() * .6;
+      duration = .6 + Math.random() * .6;
       if (parseInt(o.name) > this.maxDate) {
-        o.material.opacity = 0.1;
+        TweenLite.to(o.material, duration, {
+          opacity: .1,
+          delay: delay
+        });
+      } else {
+        TweenLite.to(o.material, duration, {
+          opacity: .8,
+          delay: delay
+        });
       }
+      o.scale.set(1.4, 1.4, 1.4);
+      TweenLite.to(o.scale, duration, {
+        x: 1,
+        y: 1,
+        z: 1,
+        delay: delay
+      });
       hitbox = new THREE.Mesh(hitboxGeo, hitboxMaterial);
       hitbox.position.copy(o.position);
       hitbox.visible = this.hitboxVisible;
@@ -1364,6 +1425,9 @@ Scene3d = (function(_super) {
 
   Scene3d.prototype.update = function(dt) {
     var distance, dx, dy, dz, f, frag, geometry, i, idx, intersects, raycaster, s, speeds, t, v, vector, _i, _j, _k, _l, _ref, _ref1, _ref2, _ref3;
+    if (!this.isActivate) {
+      return;
+    }
     this.time += dt;
     if (this.isImgReady) {
       this.ctx.globalAlpha = this.globalAlpha;
@@ -2063,6 +2127,7 @@ Interactions = (function() {
     this._moves = {};
     this._ups = {};
     this._clicks = {};
+    this._mouseleaves = {};
     this._interactions = [this._downs, this._moves, this._ups, this._clicks];
     this.isTouchDevice = "ontouchstart" in window || "onmsgesturechange" in window;
   }
@@ -2144,26 +2209,39 @@ Interactions = (function() {
     if (this.isTouchDevice) {
       switch (action) {
         case "down":
-          return evt = "touchstart";
+          evt = "touchstart";
+          break;
         case "move":
-          return evt = "touchmove";
+          evt = "touchmove";
+          break;
         case "up":
-          return evt = "touchend";
+          evt = "touchend";
+          break;
         case "click":
-          return evt = "touchstart";
+          evt = "touchstart";
+          break;
+        case "mouseleave":
+          evt = "mouseleave";
       }
     } else {
       switch (action) {
         case "down":
-          return evt = "mousedown";
+          evt = "mousedown";
+          break;
         case "move":
-          return evt = "mousemove";
+          evt = "mousemove";
+          break;
         case "up":
-          return evt = "mouseup";
+          evt = "mouseup";
+          break;
         case "click":
-          return evt = "click";
+          evt = "click";
+          break;
+        case "mouseleave":
+          evt = "mouseleave";
       }
     }
+    return evt;
   };
 
   Interactions.prototype._getObj = function(action) {
@@ -2540,6 +2618,7 @@ Credits = (function() {
     this._domTitle = this.dom.querySelector(".credits-title");
     this._domEntries = this.dom.querySelectorAll(".credits-entry");
     interactions.on(this._domBtClose, "click", this._onBtClose);
+    interactions.on(this.dom, "mouseleave", this._onBtClose);
   }
 
   Credits.prototype._onBtClose = function(e) {
@@ -2687,11 +2766,12 @@ TitleAnim = require("home/TitleAnim");
 
 Home = (function() {
   function Home(scene3d) {
+    var domHomeDetails;
+    this.scene3d = scene3d;
     this.show = __bind(this.show, this);
     this._onXPOut = __bind(this._onXPOut, this);
     this._onXPOver = __bind(this._onXPOver, this);
     this._onNavChange = __bind(this._onNavChange, this);
-    var domHomeDetails;
     this.dom = document.querySelector(".home");
     TweenLite.set(this.dom, {
       css: {
@@ -2708,6 +2788,7 @@ Home = (function() {
     this._about = new About;
     this._share = new Share;
     this._currentModule = null;
+    this.scene3d.isActivate = true;
     nav.on("change", this._onNavChange);
     scene3d.on("over", this._onXPOver);
     scene3d.on("out", this._onXPOut);
@@ -2716,6 +2797,7 @@ Home = (function() {
   Home.prototype._onNavChange = function(id) {
     var newModule, _base;
     if (id !== "") {
+      this.scene3d.isActivate = false;
       newModule = this["_" + id];
       if (this._currentModule === newModule) {
         return;
@@ -2733,6 +2815,7 @@ Home = (function() {
         return typeof (_base = this._currentModule).show === "function" ? _base.show() : void 0;
       }
     } else {
+      this.scene3d.isActivate = true;
       this._currentModule.hide();
       return this._currentModule = null;
     }
@@ -2763,11 +2846,18 @@ Home = (function() {
     return TweenLite.to(this.dom, .5, {
       css: {
         alpha: 1
-      }
+      },
+      onComplete: (function(_this) {
+        return function() {
+          return _this.scene3d.isActivate = true;
+        };
+      })(this)
     });
   };
 
-  Home.prototype.hide = function() {};
+  Home.prototype.hide = function() {
+    return this.scene3d.isActivate = false;
+  };
 
   return Home;
 
@@ -2830,7 +2920,6 @@ Loading = (function(_super) {
   };
 
   Loading.prototype.dispose = function() {
-    console.log("dispose");
     return document.body.removeChild(this.dom);
   };
 
@@ -3150,7 +3239,6 @@ Share = (function() {
   Share.prototype._onTwitter = function(e) {
     var url;
     e.preventDefault();
-    console.log("YO");
     url = "https://twitter.com/share?";
     url += "text=" + encodeURIComponent("Discover Christmas Experiments 2014");
     url += "&url=" + encodeURIComponent("http://christmasexperiments/") + "/";
@@ -3214,7 +3302,6 @@ TitleAnim = (function() {
       },
       onComplete: (function(_this) {
         return function() {
-          console.log("yup");
           return _this.dom.removeChild(_this._node);
         };
       })(this)

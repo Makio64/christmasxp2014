@@ -9,6 +9,7 @@ class Scene3d extends Emitter
 		@isOver = false
 		@isReady = false
 		@isImgReady = false
+		@isActivate = false
 		@debug = /debug/i.test(window.location)
 
 		@hitboxVisible = false
@@ -152,7 +153,7 @@ class Scene3d extends Emitter
 		return
 
 	createBackground:()=>
-		material = new THREE.MeshLambertMaterial({ wireframe:false,color:0xFFFFFF})
+		material = new THREE.MeshLambertMaterial({ wireframe:false,color:0xFFFFFF, transparent:true, opacity:0})
 		material.shading = THREE.FlatShading
 
 		geometry =  new THREE.PlaneGeometry(7000, 7000, 8, 8)
@@ -181,14 +182,16 @@ class Scene3d extends Emitter
 
 		@backgroundFlat = new THREE.Mesh(geometry, material)
 		@backgroundFlat.position.z = -1000
+		TweenLite.to(material, .4, {opacity:1, delay:0.01})
 		Stage3d.add(@backgroundFlat)
 
-		material = new THREE.MeshBasicMaterial({ wireframe:true,color:0,transparent:true,opacity:.1})
+		material = new THREE.MeshBasicMaterial({ wireframe:true,color:0,transparent:true,opacity:0})
 		material.shading = THREE.FlatShading
 		@backgroundLine = new THREE.Mesh(geometry, material)
 		@backgroundLine.position.z = -950
 		@backgroundLine.position.y += 10
 		Stage3d.add(@backgroundLine)
+		TweenLite.to(material, .4, {opacity:.1, delay:0.01})
 
 		@backgroundGeometry = geometry
 
@@ -205,7 +208,8 @@ class Scene3d extends Emitter
 			map = THREE.ImageUtils.loadTexture('./3d/textures/circle.png')
 			@bufferGeometry = new THREE.BufferGeometry()
 			@bufferGeometry.fromGeometry(@backgroundGeometry)
-			material = new THREE.PointCloudMaterial({depthTest:false,transparent:true, map:map, color:0xFFFFFF,size:64,sizeAttenuation:true,fog:false,opacity:.1})
+			material = new THREE.PointCloudMaterial({depthTest:false,transparent:true, map:map, color:0xFFFFFF,size:64,sizeAttenuation:true,fog:false,opacity:0})
+			TweenLite.to(material, 1.5, {opacity:.1})
 			@pointcloud = new THREE.PointCloud(@bufferGeometry,material)
 			@pointcloud.position.z -= 945.999
 			@pointcloud.position.y += 10
@@ -377,8 +381,12 @@ class Scene3d extends Emitter
 			@mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
 		,false)
 		window.addEventListener( 'click', (e)=>
+
 			@mouse.x = (e.clientX / window.innerWidth) * 2 - 1
 			@mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
+			if(!@isActivate)
+				return
+
 			vector = new THREE.Vector3( @mouse.x, @mouse.y, .5 )
 			vector.unproject( Stage3d.camera )
 			raycaster = new THREE.Raycaster( Stage3d.camera.position, vector.sub( Stage3d.camera.position ).normalize() )
@@ -410,21 +418,24 @@ class Scene3d extends Emitter
 				return num2
 
 			window.ondevicemotion = ( evt ) =>
-		        ax = event.accelerationIncludingGravity.x
-		        ay = event.accelerationIncludingGravity.y
-		        # console.log ax
-		        if ax >= 5 then ax = 5
-		        else if ax <= -5 then ax = -5
+				if(!@isActivate)
+					return
+				
+				ax = event.accelerationIncludingGravity.x
+				ay = event.accelerationIncludingGravity.y
+				# console.log ax
+				if ax >= 5 then ax = 5
+				else if ax <= -5 then ax = -5
 
-		        if ay >= 6 then ay = 6
-		        else if ay <= -6 then ay = -6
+				if ay >= 6 then ay = 6
+				else if ay <= -6 then ay = -6
 
-		        mx = map ax, 5, -5, 0, window.innerWidth
-		        my = map ay, 6, -6, 0, window.innerHeight
+				mx = map ax, 5, -5, 0, window.innerWidth
+				my = map ay, 6, -6, 0, window.innerHeight
 
-		        @mouse.x = (mx / window.innerWidth) * 2 - 1
-		        @mouse.y = (my / window.innerHeight) * 2 - 1
-		        
+				@mouse.x = (mx / window.innerWidth) * 2 - 1
+				@mouse.y = (my / window.innerHeight) * 2 - 1
+				
 				return
 
 	onDiamondLoad:(geometry)=>
@@ -434,7 +445,7 @@ class Scene3d extends Emitter
 		
 		material.map = @map
 		material.shading = @shading
-		material.opacity = .65
+		material.opacity = 0
 		material.side = THREE.DoubleSide
 		material.combine = THREE.MixOperation
 
@@ -456,6 +467,10 @@ class Scene3d extends Emitter
 				@diamond.material.color.setHex(@diamondColor)
 			)
 
+		@diamond.scale.set(0.8,0.8,0.8)
+		TweenLite.to(@diamond.material,.8,{ease:Quad.easeIn,opacity:.65})
+		TweenLite.to(@diamond.scale,.8,{ease:Quad.easeOut,x:1,y:1,z:1})
+
 		@positions.base.diamond = @diamond.position.clone()
 		return
 
@@ -472,7 +487,7 @@ class Scene3d extends Emitter
 		material.side = THREE.DoubleSide
 		material.combine = THREE.AddOperation
 		material.reflectivity = .1
-		material.opacity = 0.55
+		material.opacity = 0
 
 		@mirror = new THREE.Mesh(geometry,material)
 		@container.add(@mirror)
@@ -490,6 +505,10 @@ class Scene3d extends Emitter
 				@mirror.material.color.setHex(@mirrorColor)
 			)
 
+		@mirror.scale.set(0.8,0.8,0.8)
+		TweenLite.to(@mirror.material,.8,{ease:Quad.easeIn,opacity:.55})
+		TweenLite.to(@mirror.scale,.8,{ease:Quad.easeOut,x:1,y:1,z:1})
+
 		@positions.base.mirror = @mirror.position.clone()
 		
 		return
@@ -503,8 +522,9 @@ class Scene3d extends Emitter
 
 		@basePosition = []
 
+		d = 0
 		for k, v of scene.objects
-
+			d+=0.025
 			o = v
 			o.name = o.name.substring(o.name.length-2)
 
@@ -514,7 +534,7 @@ class Scene3d extends Emitter
 			material.side = THREE.DoubleSide
 			material.combine = THREE.AddOperation
 			material.reflectivity = .41
-			material.opacity = 0.8
+			material.opacity = 0
 
 			o.material = material
 			matrix = new THREE.Matrix4()
@@ -523,11 +543,23 @@ class Scene3d extends Emitter
 			o.position.multiplyScalar(.21)
 			o.position.y -= 20
 			o.position.z += 5
+
+			delay = Math.random()*.6
+			duration = .6+Math.random()*.6
+
 			if parseInt(o.name) > @maxDate
-				o.material.opacity = 0.1
+				TweenLite.to(o.material,duration,{opacity:.1,delay:delay})
+			else 
+				TweenLite.to(o.material,duration,{opacity:.8, delay:delay})
+
+			o.scale.set(1.4,1.4,1.4)
+			TweenLite.to(o.scale,duration,{x:1,y:1,z:1, delay:delay})
+
+
 			# else
 			# 	material.map = THREE.ImageUtils.loadTexture("./3d/textures/preview"+o.name+".jpg")
 			
+
 			hitbox = new THREE.Mesh(hitboxGeo,hitboxMaterial)
 			hitbox.position.copy(o.position)
 			hitbox.visible = @hitboxVisible
@@ -536,6 +568,7 @@ class Scene3d extends Emitter
 			Stage3d.add(hitbox)
 
 			@positions.base.fragments.push(o.position.clone())
+			# TweenLite.from(o.position,duration,{z:o.position.z-100-50*Math.random(),ease:Back.easeOut,delay:delay})
 
 			@computeGeometry(o.geometry)
 			@fragments.push(o)
@@ -729,6 +762,9 @@ class Scene3d extends Emitter
 		return
 
 	update:(dt)->
+
+		if(!@isActivate)
+			return
 
 		@time += dt
 
