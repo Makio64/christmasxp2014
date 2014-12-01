@@ -26,7 +26,14 @@ class Scene3d extends Emitter
     @opacity = 1
     @fragments = []
     @hitboxs = []
-    @maxDate = 2
+
+    @maxDate = 0
+    xps = require( "datas.json" ).experiments
+    for xp in xps
+      if(xp.isAvailable)
+        @maxDate++
+    
+    
     @positions = {};
     @positions.base = {
       fragments : []
@@ -366,22 +373,7 @@ class Scene3d extends Emitter
         mx = map ax, 5, -5, 0, window.innerWidth
 
         @mouse.x = (mx / window.innerWidth) * 2 - 1
-      # @mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
-
-        # console.log map ax, 6, -6, 0, window.innerWidth
-
-
-        # if evt.rotationRate 
-          # console.log evt.rotationRate.gamma
-        # document.getElementById("rotationBeta").innerHTML = evt.rotationRate.beta;
-        # document.getElementById("rotationGamma").innerHTML = evt.rotationRate.gamma;
-
-    
-
-    
-
-    return
-
+      
 
   onDiamondLoad:(geometry)=>
     @computeGeometry(geometry)
@@ -426,8 +418,8 @@ class Scene3d extends Emitter
     material.shading = @shading
     material.side = THREE.DoubleSide
     material.combine = THREE.AddOperation
-    material.reflectivity = .41
-    material.opacity = 0.77
+    material.reflectivity = .5
+    material.opacity = 0.65
 
     @mirror = new THREE.Mesh(geometry,material)
     @container.add(@mirror)
