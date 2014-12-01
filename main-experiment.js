@@ -613,16 +613,15 @@ Experiments = (function() {
     this._infos = new Infos();
     this._menu = new Menu();
     page("/experiments/", this._showPage);
-    page("/experiments/:id", this._showPage);
     page("/2014/experiments/", this._showPage);
+    page("/experiments/:id", this._showPage);
     page("/2014/experiments/:id", this._showPage);
-    page("/2014_/experiments/", this._showPage);
-    page("/2014_/experiments/:id", this._showPage);
+    page("/experiments/404", this._show404);
     page();
   }
 
   Experiments.prototype._showPage = function(data) {
-    if (!data.params.id || data.params.id < 1 || data.params.id > 24) {
+    if (!data.params.id) {
       page("/experiments/1");
       return;
     }
@@ -929,7 +928,7 @@ XP = (function() {
   XP.prototype._createIframe = function() {
     var dom;
     dom = document.createElement("iframe");
-    dom.src = "./xps/" + this._data.idx + "/";
+    dom.src = "./" + this._data.idx + "/";
     return this._domXP.appendChild(dom);
   };
 
