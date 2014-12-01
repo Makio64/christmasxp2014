@@ -14,7 +14,7 @@ class Share
     _onFB: ( e ) =>
         e.preventDefault()
         url = "https://www.facebook.com/sharer/sharer.php"
-        url += "?u=" + encodeURIComponent( "http://christmasexperiments/" )
+        url += "?u=" + encodeURIComponent( "http://christmasexperiments.com/" )
         url += "&message=" + encodeURIComponent( "Christmas Experiments 2014, discover the best experiments of the winter!" )
         @_openPopup url
         return
@@ -23,7 +23,7 @@ class Share
         e.preventDefault()
         url = "https://twitter.com/share?"
         url += "text="  + encodeURIComponent( "Christmas Experiments 2014, discover the best experiments of the winter!" )
-        url += "&url=" + encodeURIComponent( "http://christmasexperiments/" ) + "/"
+        url += "&url=" + encodeURIComponent( "http://christmasexperiments.com/" )
         @_openPopup url
         return
 

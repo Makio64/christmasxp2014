@@ -28,8 +28,9 @@ class Main3d
 			return
 
 		Stage3d.init({transparent:false,antialias:false, background:0xFFFFFF})
-		
+
 		@scene = new Scene3d()
+
 		
 		requestAnimationFrame( @update )
 		return
@@ -52,7 +53,7 @@ class Main3d
 		width 	= window.innerWidth
 		height 	= window.innerHeight
 		Stage3d.resize()
-		@scene.resize()
+		# @scene.resize()
 		return
 
 

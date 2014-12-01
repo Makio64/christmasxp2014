@@ -179,7 +179,7 @@ module.exports={
         {
             "idx": 10,
             "isAvailable": false,
-            "author": "Muroicci",
+            "author": "eiji muroichi",
             "bio": "Visual Designer & Technologist @prty_ny",
             "title": "Polar",
             "subtitle": "",
@@ -958,7 +958,7 @@ Share = (function() {
       this._data.idx = 1;
     }
     url = "https://www.facebook.com/sharer/sharer.php";
-    url += "?u=" + encodeURIComponent("http://christmasexperiments/experiments/" + this._data.idx);
+    url += "?u=" + encodeURIComponent("http://christmasexperiments.com/experiments/" + this._data.idx);
     url += "&message=" + encodeURIComponent("Polar a beautiful experiments by @superguigui for @christmasxp");
     return this._openPopup(url);
   };
@@ -972,7 +972,7 @@ Share = (function() {
     }
     url = "https://twitter.com/share?";
     url += "text=" + encodeURIComponent("Polar a beautiful experiments by @superguigui for @christmasxp");
-    url += "&url=" + encodeURIComponent("http://christmasexperiments/experiments/" + this._data.idx) + "/";
+    url += "&url=" + encodeURIComponent("http://christmasexperiments.com/experiments/1/");
     return this._openPopup(url);
   };
 

@@ -21,7 +21,7 @@ class Share
             @_data.idx = 1
         
         url = "https://www.facebook.com/sharer/sharer.php"
-        url += "?u=" + encodeURIComponent( "http://christmasexperiments/experiments/#{@_data.idx}" )
+        url += "?u=" + encodeURIComponent( "http://christmasexperiments.com/experiments/#{@_data.idx}" )
         url += "&message=" + encodeURIComponent( "Polar a beautiful experiments by @superguigui for @christmasxp" )
         @_openPopup url
         # FB.ui({
@@ -38,7 +38,7 @@ class Share
 
         url = "https://twitter.com/share?"
         url += "text="  + encodeURIComponent( "Polar a beautiful experiments by @superguigui for @christmasxp" )
-        url += "&url=" + encodeURIComponent( "http://christmasexperiments/experiments/#{@_data.idx}" ) + "/"
+        url += "&url=" + encodeURIComponent( "http://christmasexperiments.com/experiments/1/" )
         @_openPopup url
 
     _openPopup: ( url ) ->

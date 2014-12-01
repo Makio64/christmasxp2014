@@ -200,7 +200,7 @@ module.exports={
         {
             "idx": 10,
             "isAvailable": false,
-            "author": "Muroicci",
+            "author": "eiji muroichi",
             "bio": "Visual Designer & Technologist @prty_ny",
             "title": "Polar",
             "subtitle": "",
@@ -548,7 +548,6 @@ Main3d = (function() {
     width = window.innerWidth;
     height = window.innerHeight;
     Stage3d.resize();
-    this.scene.resize();
   };
 
   return Main3d;
@@ -3248,7 +3247,7 @@ Share = (function() {
     var url;
     e.preventDefault();
     url = "https://www.facebook.com/sharer/sharer.php";
-    url += "?u=" + encodeURIComponent("http://christmasexperiments/");
+    url += "?u=" + encodeURIComponent("http://christmasexperiments.com/");
     url += "&message=" + encodeURIComponent("Christmas Experiments 2014, discover the best experiments of the winter!");
     this._openPopup(url);
   };
@@ -3258,7 +3257,7 @@ Share = (function() {
     e.preventDefault();
     url = "https://twitter.com/share?";
     url += "text=" + encodeURIComponent("Christmas Experiments 2014, discover the best experiments of the winter!");
-    url += "&url=" + encodeURIComponent("http://christmasexperiments/") + "/";
+    url += "&url=" + encodeURIComponent("http://christmasexperiments.com/");
     this._openPopup(url);
   };
 
