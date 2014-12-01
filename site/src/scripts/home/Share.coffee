@@ -13,10 +13,18 @@ class Share
         
     _onFB: ( e ) =>
         e.preventDefault()
-        url = "https://www.facebook.com/sharer/sharer.php"
-        url += "?u=" + encodeURIComponent( "http://christmasexperiments.com/" )
-        url += "&message=" + encodeURIComponent( "Christmas Experiments 2014, discover the best experiments of the winter!" )
-        @_openPopup url
+        # url = "https://www.facebook.com/sharer/sharer.php"
+        # url += "?u=" + encodeURIComponent( "http://christmasexperiments.com/" )
+        # url += "&message=" + encodeURIComponent( "Christmas Experiments 2014, discover the best experiments of the winter!" )
+        # @_openPopup url
+        FB.ui
+            method: 'feed',
+            name: "Christmas Experiments - 2014",
+            caption: "Christmas Experiments 2014, discover the best experiments of the winter!",
+            redirect_uri: "http://christmasexperiments.com/",
+            link: "http://christmasexperiments.com/"
+            picture: "http://christmasexperiments.com/share.jpg"
+        , ( response ) ->
         return
 
     _onTwitter: ( e ) =>

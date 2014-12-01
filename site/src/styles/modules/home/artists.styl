@@ -180,6 +180,7 @@
   vertical-align middle
   padding-top 15px
   padding-bottom 15px
+  overflow hidden
   
   @media screen and (max-width: 640px) {
     display block  
@@ -203,14 +204,18 @@
   text-decoration none
   border-bottom 1px solid red
   letter-spacing 1px
+  &:hover
+    color #bb4250
+    border-color #bb4250
   // backface-visibility hidden
   
 .artists-entry-desc
   font normal 12px regular
   color blueDark
-  margin-top 20px
   height 40px
   display block
+  width 155px
+  margin 20px auto 0
   // backface-visibility hidden
 
 .artists-entry-day
@@ -218,13 +223,41 @@
   display inline-block
   margin-top 15px
   background-color red
-  width 30px
+  width 31px
   height 30px
   border-radius 20px
   font normal 12px/30px bold
   color #fff
   letter-spacing 1px
-  // backface-visibility hidden
+  text-decoration none
+  overflow hidden
+  transition width .25s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+  span
+    display inline-block
+  .artists-entry-day-holder
+    position absolute
+    top 0
+    left -138px
+    width 185px
+    transition left .15s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+  .name
+    font normal 12px regular
+    opacity 0
+  .idx 
+    margin-left 2px
+  &:hover
+    width 185px
+    .artists-entry-day-holder
+      left 0
+    .name
+      opacity 1
+  &.not-released
+    background-color #e0e0e0
+    .artists-entry-day-holder
+      left -125px
+    &:hover
+      .artists-entry-day-holder
+        left 0
 
 @media screen and (max-width: 640px) {
   
