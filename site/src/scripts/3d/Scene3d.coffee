@@ -26,7 +26,14 @@ class Scene3d extends Emitter
 		@opacity = 1
 		@fragments = []
 		@hitboxs = []
-		@maxDate = 2
+
+		@maxDate = 0
+		xps = require( "datas.json" ).experiments
+		for xp in xps
+			if(xp.isAvailable)
+				@maxDate++
+		
+		
 		@positions = {};
 		@positions.base = {
 			fragments : []
