@@ -44,10 +44,10 @@ class Home
             if @_currentModule
                 @_currentModule.hide().then =>
                     @_currentModule = newModule
-                    @_currentModule.show()
+                    @_currentModule.show?()
             else
                 @_currentModule = newModule
-                @_currentModule.show()
+                @_currentModule.show?()
         else
             @_currentModule.hide()
             @_currentModule = null

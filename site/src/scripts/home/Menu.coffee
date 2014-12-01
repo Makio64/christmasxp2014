@@ -36,14 +36,17 @@ class Menu
         @_credits.show()
 
     _onNavChange: ( id ) =>
+
         if id != "" && id != "credits"
             if id == "artists"
                 @_activate ".menu-entry--artists"
+                @_credits.hide()
             else
                 @_activate ".menu-entry--about"
-            @_showMenuLight()
+                @_credits.hide()
+            @_showMenuLight() if ( window.innerWidth > 640 )
         else
-            @_hideMenuLight()
+            @_hideMenuLight() if ( window.innerWidth > 640 )
 
     _activate: ( c ) ->
         @_deactivate()

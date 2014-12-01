@@ -962,6 +962,38 @@ body {
   border-bottom: 1px solid #f75568;
   letter-spacing: 1px;
 }
+@media screen and (max-width: 640px) {
+  .credits {
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    width: 100%;
+    left: 0;
+    top: 60px;
+    height: calc(100% - 60px);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    display: none;
+    z-index: 1;
+  }
+  .credits .bt-close-holder {
+    display: none;
+  }
+  .credits .credits-content-holder {
+    height: 100%;
+  }
+  .credits .credits-title {
+    margin-bottom: 30px;
+  }
+  .credits.transitionIn {
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+  }
+}
 .artists {
   position: absolute;
   width: calc(100% - 200px);
@@ -1463,7 +1495,7 @@ position relative {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 10;
 }
 @media screen and (max-width: 640px) {
   .mobile-navbar {
@@ -1532,7 +1564,7 @@ position relative {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 11;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -1584,7 +1616,7 @@ position relative {
 }
 .mobile-menu .inner .menu-entries {
   display: inline-block;
-  margin: 90px 0;
+  margin: 50px 0;
 }
 .mobile-menu .inner .menu-entries .menu-entry {
   -webkit-transform: translateY(7px) translateZ(0);
@@ -1609,6 +1641,13 @@ position relative {
   -o-transition: all 0.4s ease-out 0.55s;
   -ms-transition: all 0.4s ease-out 0.55s;
   transition: all 0.4s ease-out 0.55s;
+}
+.mobile-menu .inner .menu-entries .menu-entry:nth-child(3) {
+  -webkit-transition: all 0.3s ease-out 0.7s;
+  -moz-transition: all 0.3s ease-out 0.7s;
+  -o-transition: all 0.3s ease-out 0.7s;
+  -ms-transition: all 0.3s ease-out 0.7s;
+  transition: all 0.3s ease-out 0.7s;
 }
 .mobile-menu .inner .menu-entries span {
   font-size: 28px;
@@ -1733,6 +1772,13 @@ tran
   -o-transition: all 0.3s ease-out 0.45s;
   -ms-transition: all 0.3s ease-out 0.45s;
   transition: all 0.3s ease-out 0.45s;
+}
+.mobile-menu.transitionOut .inner .menu-entries .menu-entry:nth-child(3) {
+  -webkit-transition: all 0.3s ease-out 0.6s;
+  -moz-transition: all 0.3s ease-out 0.6s;
+  -o-transition: all 0.3s ease-out 0.6s;
+  -ms-transition: all 0.3s ease-out 0.6s;
+  transition: all 0.3s ease-out 0.6s;
 }
 html,
 body {
