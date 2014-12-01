@@ -67,6 +67,8 @@
     a
       color blueDark
       opacity .7
+      &:hover
+        color #fff
     &:not(:last-child):after
       background-color blueDark
       opacity .4
@@ -76,18 +78,28 @@
       opacity .4
   .share--twitter .icon
       bg( "icon-share-twitter-dark.png" )
+      &:hover
+        bg( "icon-share-twitter-light.png" )
   .share--fb .icon
       bg( "icon-share-fb-dark.png" )
+      &:hover
+        bg( "icon-share-fb-light.png" )
 
 .experiment--light
   .experiment-nav-entry 
     a
       color #fff
       opacity .5
+      &:hover
+        color blueDark
     &:not(:last-child):after
       background-color #fff
       opacity .5
   .share--twitter .icon
       bg( "icon-share-twitter-light.png" )
+      &:hover
+        bg( "icon-share-twitter-dark.png" )
   .share--fb .icon
       bg( "icon-share-fb-light.png" )
+      &:hover
+        bg( "icon-share-fb-dark.png" )

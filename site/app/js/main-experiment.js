@@ -31,7 +31,403 @@ module.exports={
         {
             "idx": 2,
             "isAvailable": false,
-            "author": "Guillaume Gouessan",
+            "author": "Felix Turner",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 3,
+            "isAvailable": false,
+            "author": "Nathan Gordon",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 4,
+            "isAvailable": false,
+            "author": "David Rosser",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 5,
+            "isAvailable": false,
+            "author": "Bruno Simon",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 6,
+            "isAvailable": false,
+            "author": "Hector Arellano",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 7,
+            "isAvailable": false,
+            "author": "Michael Anthony",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 8,
+            "isAvailable": false,
+            "author": "Lin Yi-Wen",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 9,
+            "isAvailable": false,
+            "author": "Klas",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 10,
+            "isAvailable": false,
+            "author": "Muroicci",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 11,
+            "isAvailable": false,
+            "author": "Damien Mortini",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 12,
+            "isAvailable": false,
+            "author": "Mat Groves",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 13,
+            "isAvailable": false,
+            "author": "William Mapan",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 14,
+            "isAvailable": false,
+            "author": "Matt DesLauriers",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 15,
+            "isAvailable": false,
+            "author": "Floz",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 16,
+            "isAvailable": false,
+            "author": "Silvio",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 17,
+            "isAvailable": false,
+            "author": "Nicolas Barradeau",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 18,
+            "isAvailable": false,
+            "author": "David Li",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 19,
+            "isAvailable": false,
+            "author": "Makio64",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 20,
+            "isAvailable": false,
+            "author": "Grgrdvrt",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 21,
+            "isAvailable": false,
+            "author": "Is_real",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 22,
+            "isAvailable": false,
+            "author": "Edan Kwan",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 23,
+            "isAvailable": false,
+            "author": "Bartek",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 24,
+            "isAvailable": false,
+            "author": "Cabibbo / The Spite",
             "bio": "Interactive Developer @hellohikimori",
             "title": "Polar",
             "subtitle": "",
@@ -215,11 +611,11 @@ Experiments = (function() {
     this._showPage = __bind(this._showPage, this);
     this._xp = null;
     this._infos = new Infos();
+    this._menu = new Menu();
     page("/experiments/", this._showPage);
     page("/experiments/:id", this._showPage);
     page("/experiments/404", this._show404);
     page();
-    this._menu = new Menu();
   }
 
   Experiments.prototype._showPage = function(data) {
@@ -234,6 +630,7 @@ Experiments = (function() {
     var data;
     data = datas[idx - 1];
     this._infos.update(data);
+    this._menu.update(idx);
     if (this._xp) {
       this._xp.hide();
       this._xp = new XP(data);
@@ -265,6 +662,7 @@ Infos = (function() {
     this._onClose = __bind(this._onClose, this);
     this._onOpen = __bind(this._onOpen, this);
     this._dom = document.querySelector(".infos");
+    this._domLayer = document.querySelector(".infos-layer");
     this._domBtOpen = document.querySelector(".experiment-nav-entry--infos");
     this._domBtClose = this._dom.querySelector(".bt-close");
     interactions.on(this._domBtOpen, "click", this._onOpen);
@@ -318,9 +716,16 @@ Infos = (function() {
   };
 
   Infos.prototype.show = function() {
-    return TweenLite.to(this._dom, .5, {
+    TweenLite.to(this._dom, .5, {
       css: {
         x: 360,
+        force3D: true
+      },
+      ease: Cubic.easeInOut
+    });
+    return TweenLite.to(this._domLayer, .5, {
+      css: {
+        autoAlpha: .5,
         force3D: true
       },
       ease: Cubic.easeInOut
@@ -328,9 +733,16 @@ Infos = (function() {
   };
 
   Infos.prototype.hide = function() {
-    return TweenLite.to(this._dom, .5, {
+    TweenLite.to(this._dom, .5, {
       css: {
         x: 0,
+        force3D: true
+      },
+      ease: Cubic.easeInOut
+    });
+    return TweenLite.to(this._domLayer, .5, {
+      css: {
+        autoAlpha: 0,
         force3D: true
       },
       ease: Cubic.easeInOut
@@ -355,7 +767,9 @@ Menu = (function() {
   function Menu() {
     this._onClick = __bind(this._onClick, this);
     var domItem, _i, _len, _ref;
+    this._domCnt = document.querySelector(".menu");
     this._domItems = document.querySelectorAll(".menu-item");
+    this._domItemActivated = document.querySelector(".menu-item-activated");
     _ref = this._domItems;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       domItem = _ref[_i];
@@ -372,6 +786,11 @@ Menu = (function() {
       return;
     }
     return page("/experiments/" + (idx + 1));
+  };
+
+  Menu.prototype.update = function(idx) {
+    this._domCnt.removeChild(this._domItemActivated);
+    return this._domCnt.insertBefore(this._domItemActivated, this._domItems[idx - 1]);
   };
 
   Menu.prototype._indexOf = function(target) {

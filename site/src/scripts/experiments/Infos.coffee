@@ -4,6 +4,7 @@ class Infos
 
     constructor: ->
         @_dom = document.querySelector ".infos"
+        @_domLayer = document.querySelector ".infos-layer"
         @_domBtOpen = document.querySelector ".experiment-nav-entry--infos"
         @_domBtClose = @_dom.querySelector ".bt-close"
         interactions.on @_domBtOpen, "click", @_onOpen
@@ -56,10 +57,22 @@ class Infos
                 force3D: true
             ease: Cubic.easeInOut
 
+        TweenLite.to @_domLayer, .5,
+            css:
+                autoAlpha: .5
+                force3D: true
+            ease: Cubic.easeInOut
+
     hide: ->
         TweenLite.to @_dom, .5,
             css:
                 x: 0
+                force3D: true
+            ease: Cubic.easeInOut
+
+        TweenLite.to @_domLayer, .5,
+            css:
+                autoAlpha: 0
                 force3D: true
             ease: Cubic.easeInOut
 

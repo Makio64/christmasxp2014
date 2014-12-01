@@ -9,13 +9,12 @@ class Experiments
         @_xp = null
 
         @_infos = new Infos()
+        @_menu = new Menu()
 
         page( "/experiments/", @_showPage )
         page( "/experiments/:id", @_showPage )
         page( "/experiments/404", @_show404 )
         page()
-
-        @_menu = new Menu()
 
     _showPage: ( data ) =>
         if !data.params.id
@@ -28,6 +27,7 @@ class Experiments
         data = datas[ idx - 1 ]
 
         @_infos.update data
+        @_menu.update idx
 
         if @_xp 
             @_xp.hide()
