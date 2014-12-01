@@ -113,7 +113,7 @@ class Scene3d extends Emitter
 		@atlas = new Image()
 		@atlas.onload = ()=>
 			@parseAtlas()
-		@atlas.src = './3d/textures/atlas_low_2048.jpg'
+		@atlas.src = './3d/textures/atlas_low_4096.jpg'
 		return
 
 	loadMesh:()=>
@@ -198,17 +198,17 @@ class Scene3d extends Emitter
 			if(i%3==0)
 				phi = Math.PI*2*Math.random();
 				theta = Math.PI*2*Math.random();
-				radius = 50+Math.random()*50
+				radius = 60+Math.random()*60
 
 			x = radius * Math.sin( phi ) * Math.cos( theta ) + Math.random()*2
 			y = radius * Math.cos( phi ) + Math.random()*2
-			z = radius/2 * Math.sin( phi ) * Math.sin( theta ) + Math.random()*2
+			z = radius*0.8 * Math.sin( phi ) * Math.sin( theta ) + Math.random()*2-30
 
 			vertices.setXYZ( i, x, y, z );
 
 		geometry.addAttribute( 'position', vertices )
 
-		material = new THREE.MeshBasicMaterial({color:0xFFFFFF, side:THREE.DoubleSide, transparent: true, opacity:.25})
+		material = new THREE.MeshBasicMaterial({color:0xFFFFFF, side:THREE.DoubleSide, transparent: true, opacity:.1, fog:false})
 		
 		@particles = new THREE.Mesh(geometry,material)
 		Stage3d.add(@particles)
@@ -218,16 +218,16 @@ class Scene3d extends Emitter
 		@ambientLight = new THREE.AmbientLight(0)
 		@ambientLight2 = new THREE.AmbientLight(0xFFFFFF)
 		
-		@cameraLight = new THREE.PointLight(0x1a3a9a, 2.5, 2000)
+		@cameraLight = new THREE.PointLight(0x192343, 2, 2000)
 		@cameraLight.position.set( 0, -1000, 0 );
 
-		@cameraLight2 = new THREE.PointLight(0x2211AA, 1.3, 2400)
+		@cameraLight2 = new THREE.PointLight(0x262050, 1.5, 2400)
 		@cameraLight2.position.set( -1500, 0, 0 );
 
-		@cameraLight3 = new THREE.PointLight(0x2233AA, 1.9, 2400)
+		@cameraLight3 = new THREE.PointLight(0x11142d, 1.5, 2400)
 		@cameraLight3.position.set( 1000, 0, 0 );
 
-		@cameraLight4 = new THREE.PointLight(0x222277, 2, 2400)
+		@cameraLight4 = new THREE.PointLight(0x1d1d43, 2, 2400)
 		@cameraLight4.position.set( 0, 1000, 0 );
 
 		Stage3d.add(@ambientLight)
