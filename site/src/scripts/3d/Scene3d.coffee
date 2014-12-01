@@ -392,8 +392,8 @@ class Scene3d extends Emitter
 		material.shading = @shading
 		material.side = THREE.DoubleSide
 		material.combine = THREE.AddOperation
-		material.reflectivity = .41
-		material.opacity = 0.77
+		material.reflectivity = .5
+		material.opacity = 0.65
 
 		@mirror = new THREE.Mesh(geometry,material)
 		@container.add(@mirror)
