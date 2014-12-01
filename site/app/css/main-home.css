@@ -1321,6 +1321,9 @@ position relative {
     background: #fafafa;
   }
 }
+.about-content.mobile {
+  display: none;
+}
 .about-content {
   position: absolute;
   background-color: #fff;
@@ -1343,9 +1346,6 @@ position relative {
   .about-content.mobile {
     display: table;
   }
-}
-.about-content.mobile {
-  display: none;
 }
 .about-infos {
   position: relative;
