@@ -30,7 +30,8 @@
     <meta name="msapplication-config" content="http://christmasexperiments.com/2014/browserconfig.xml">
     <title>Christmas Experiments</title>
     <link rel="stylesheet" href="./css/fonts/fonts.css">
-    <link rel="stylesheet" href="/css/main-experiment.css">
+    <link rel="stylesheet" href="../css/fonts/fonts.css">
+    <link rel="stylesheet" href="../css/main-experiment.css">
   </head>
   <body>
     <div class="experiments-content">
@@ -49,7 +50,7 @@
         </div>
       </div>
       <div class="experiment experiment--light">
-        <iframe src="/experiments/1/"></iframe>
+        <div class="experiment-iframe-holder"></div>
         <ul class="experiment-nav-entries">
           <li class="experiment-nav-entry"> <a href="#">CLOSE</a></li>
           <li class="experiment-nav-entry"> <a href="#">INFOS</a></li>
@@ -91,17 +92,23 @@
     <div class="infos">
       <div class="infos-bg"></div><a href="#" class="bt-close-holder"><span class="bt-close"><span class="bg"><span class="bg-normal"></span><span class="bg-hover"></span></span><span class="icon"></span></span></a>
       <div class="infos-content">
-        <div class="infos-idx underline">01</div>
-        <div class="infos-title">PACK THE FUN</div><a href="http://www.makiopolis.com" class="infos-author">David Ronai</a>
-        <h2 class="infos-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-        <div class="infos-desc">Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.</div>
+        <div class="infos-idx underline">NaN</div>
+        <div class="infos-title"></div><a href="#" class="infos-author"></a>
+        <h2 class="infos-subtitle"></h2>
+        <div class="infos-desc"></div>
         <ul class="infos-parts">
-          <li>
-            <h3>controls</h3><span>left/right to navigate<br />space to pause</span>
-          </li>
         </ul>
       </div>
     </div>
+<<<<<<< HEAD
+    <script src="../js/vendors/done.js"></script>
+    <script src="../js/bower_components/emitter/emitter.js"></script>
+    <script src="../js/bower_components/gsap/src/minified/easing/EasePack.min.js"></script>
+    <script src="../js/bower_components/gsap/src/minified/plugins/CSSPlugin.min.js"></script>
+    <script src="../js/bower_components/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="../js/vendors/page.js"></script>
+    <script src="../js/main-experiment.js"></script>
+=======
     <!-- build:js ./js/vendor.js-->
     <!-- bower:js-->
     <script src="./js/vendors/done.js"></script>
@@ -113,5 +120,6 @@
     <!-- endbuild-->
     <!-- build:js ./js/main.js-->
     <!-- endbuild-->
+>>>>>>> dcbe93faceec80a844ca6262f200c17bcdf22f65
   </body>
 </html>

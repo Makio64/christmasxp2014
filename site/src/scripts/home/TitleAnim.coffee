@@ -8,7 +8,7 @@ class TitleAnim
         @_w = 300
         @_h = 140
 
-        data = datas[ idx ]
+        data = datas[ idx - 1 ]
         day = idx
         if idx < 10
             day = "0" + day
