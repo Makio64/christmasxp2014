@@ -28,7 +28,7 @@ class Scene3d extends Emitter
 		@hitboxs = []
 
 		@maxDate = 0
-		xps = require( "datas.json" ).experiments
+		xps = require( "data.json" ).experiments
 		for xp in xps
 			if(xp.isAvailable)
 				@maxDate++
@@ -354,6 +354,21 @@ class Scene3d extends Emitter
 			@mouse.x = (e.clientX / window.innerWidth) * 2 - 1
 			@mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
 		,false)
+		window.addEventListener( 'click', (e)=>
+			@mouse.x = (e.clientX / window.innerWidth) * 2 - 1
+			@mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
+			vector = new THREE.Vector3( @mouse.x, @mouse.y, .5 )
+			vector.unproject( Stage3d.camera )
+			raycaster = new THREE.Raycaster( Stage3d.camera.position, vector.sub( Stage3d.camera.position ).normalize() )
+			if(@hitboxs)
+				console.log('bouboup')
+				intersects = raycaster.intersectObjects( @hitboxs, false )
+				if( intersects.length > 0 )
+					document.body.style.cursor = 'pointer'
+					frag = intersects[0].object.fragment
+					@currentFragment = frag
+					@gotoXP(frag.name)
+		, false)
 		return
 
 	onDiamondLoad:(geometry)=>
@@ -399,8 +414,8 @@ class Scene3d extends Emitter
 		material.shading = @shading
 		material.side = THREE.DoubleSide
 		material.combine = THREE.AddOperation
-		material.reflectivity = .5
-		material.opacity = 0.65
+		material.reflectivity = .1
+		material.opacity = 0.55
 
 		@mirror = new THREE.Mesh(geometry,material)
 		@container.add(@mirror)
@@ -642,6 +657,15 @@ class Scene3d extends Emitter
 		@currentIndex = index
 		@globalAlpha = 0.01
 		return
+
+	gotoXP:(index)=>
+		console.log(index)
+		if parseInt(index) > @maxDate
+			return
+
+		window.location = "./experiments/"+parseInt(index)
+		return
+		
 
 	pause:()->
 		return
