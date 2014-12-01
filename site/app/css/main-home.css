@@ -1615,6 +1615,9 @@ position relative {
   vertical-align: middle;
   text-align: center;
 }
+.mobile-menu .inner .menu-subentry--credits {
+  padding: 30px;
+}
 .mobile-menu .inner .bt-close-holder .bt-close {
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
