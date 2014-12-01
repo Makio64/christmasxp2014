@@ -13,6 +13,11 @@ class Scene3d extends Emitter
 		@currentIndex = 1
 
 		@globalAlpha = 0
+		@cameraMoveY = true
+		@containerMovY = true
+		@containerMovYScale = 1
+		@cameraMoveYScale = 1.5
+		@backgroundFix = false
 
 		@mouse = new THREE.Vector2(0,0)
 		@time = 0
@@ -29,7 +34,7 @@ class Scene3d extends Emitter
 			mirror : new THREE.Vector3()
 		}
 
-		@offsetX = 0
+		@offsetX = 10
 
 		@currentPosition = {
 			fragments : []
@@ -47,12 +52,16 @@ class Scene3d extends Emitter
 		@container = new THREE.Object3D();
 		Stage3d.add(@container,false)
 
+		@containerFrontcamera = new THREE.Object3D();
+		@container.add(@containerFrontcamera)
+
 		@lightContainer = new THREE.Object3D();
-		@container.add(@lightContainer)
+		Stage3d.add(@lightContainer)
 
 		@createLight()
 		@createBackground()
 		@createCircles()
+		@createParticles()
 		@addEvent()
 		@loadImagesLow()
 		
@@ -147,16 +156,16 @@ class Scene3d extends Emitter
 		# bufferGeometry.normalizeNormals()
 		# bufferGeometry = geometry
 
-		mesh = new THREE.Mesh(geometry, material)
-		mesh.position.z = -1000
-		Stage3d.add(mesh)
+		@backgroundFlat = new THREE.Mesh(geometry, material)
+		@backgroundFlat.position.z = -1000
+		Stage3d.add(@backgroundFlat)
 
 		material = new THREE.MeshBasicMaterial({ wireframe:true,color:0,transparent:true,opacity:.1})
 		material.shading = THREE.FlatShading
-		mesh = new THREE.Mesh(geometry, material)
-		mesh.position.z = -950
-		mesh.position.y += 10
-		Stage3d.add(mesh)
+		@backgroundLine = new THREE.Mesh(geometry, material)
+		@backgroundLine.position.z = -950
+		@backgroundLine.position.y += 10
+		Stage3d.add(@backgroundLine)
 
 		@backgroundGeometry = geometry
 
@@ -171,28 +180,51 @@ class Scene3d extends Emitter
 			@bufferGeometry = new THREE.BufferGeometry()
 			@bufferGeometry.fromGeometry(@backgroundGeometry)
 			material = new THREE.PointCloudMaterial({depthTest:false,transparent:true, map:map, color:0xFFFFFF,size:64,sizeAttenuation:true,fog:false})
-			console.log(material)
 			@pointcloud = new THREE.PointCloud(@bufferGeometry,material)
 			@pointcloud.position.z -= 945.999
 			@pointcloud.position.y += 10
-			@container.add(@pointcloud)
+			Stage3d.add(@pointcloud)
 		image.src = './3d/textures/circle.png'
 		return
 
 	createParticles:()->
+		geometry = new THREE.BufferGeometry();
+		
+		triangles = 200
+		vertices = new THREE.BufferAttribute( new Float32Array( triangles * 3 * 3 ), 3 );
+		
+
+		for i in [0...vertices.length] by 1
+			if(i%3==0)
+				phi = Math.PI*2*Math.random();
+				theta = Math.PI*2*Math.random();
+				radius = 50+Math.random()*50
+
+			x = radius * Math.sin( phi ) * Math.cos( theta ) + Math.random()*2
+			y = radius * Math.cos( phi ) + Math.random()*2
+			z = radius * Math.sin( phi ) * Math.sin( theta ) + Math.random()*2
+
+			vertices.setXYZ( i, x, y, z );
+
+		geometry.addAttribute( 'position', vertices )
+
+		material = new THREE.MeshBasicMaterial({color:0xFFFFFF, side:THREE.DoubleSide, transparent: true, opacity:.25})
+		
+		@particles = new THREE.Mesh(geometry,material)
+		Stage3d.add(@particles)
 		return
 
 	createLight:()=>
 		@ambientLight = new THREE.AmbientLight(0)
 		@ambientLight2 = new THREE.AmbientLight(0xFFFFFF)
 		
-		@cameraLight = new THREE.PointLight(0x221199, 2, 2000)
+		@cameraLight = new THREE.PointLight(0x1a3a9a, 2.5, 2000)
 		@cameraLight.position.set( 0, -1000, 0 );
 
-		@cameraLight2 = new THREE.PointLight(0x2211AA, 1, 2400)
+		@cameraLight2 = new THREE.PointLight(0x2211AA, 1.3, 2400)
 		@cameraLight2.position.set( -1500, 0, 0 );
 
-		@cameraLight3 = new THREE.PointLight(0x2233AA, 2, 2400)
+		@cameraLight3 = new THREE.PointLight(0x2233AA, 1.9, 2400)
 		@cameraLight3.position.set( 1000, 0, 0 );
 
 		@cameraLight4 = new THREE.PointLight(0x222277, 2, 2400)
@@ -329,7 +361,7 @@ class Scene3d extends Emitter
 		material.combine = THREE.MixOperation
 
 		matrix = new THREE.Matrix4()
-		matrix.makeScale( .2, .2, .2 )
+		matrix.makeScale( .23, .23, .23 )
 		geometry.applyMatrix ( matrix )
 		@diamond = new THREE.Mesh(geometry,material)
 		@container.add(@diamond)
@@ -352,7 +384,7 @@ class Scene3d extends Emitter
 		@computeGeometry(geometry)
 		
 		matrix = new THREE.Matrix4()
-		matrix.makeScale( .2, .2, .2 )
+		matrix.makeScale( .23, .23, .23 )
 		geometry.applyMatrix ( matrix )
 
 		material = new THREE.MeshLambertMaterial({color: 0xffffff, light:false, transparent:true, envMap:@envMap, depthWrite:true, depthTest:true})
@@ -406,7 +438,7 @@ class Scene3d extends Emitter
 
 			o.material = material
 			matrix = new THREE.Matrix4()
-			matrix.makeScale( .23, .23, .23 )
+			matrix.makeScale( .2, .2, .2 )
 			o.geometry.applyMatrix( matrix )
 			o.position.multiplyScalar(.21)
 			o.position.y -= 20
@@ -451,9 +483,15 @@ class Scene3d extends Emitter
 		global = @gui.addFolder('global')
 
 		@globalOpacity = 1
-		global.add(@,'globalOpacity',0,1).step(0.01).onChange(()=>
-			document.getElementById('webgl').style.opacity = @globalOpacity
-		)
+		# global.add(@,'globalOpacity',0,1).step(0.01).onChange(()=>
+		# 	document.getElementById('webgl').style.opacity = @globalOpacity
+		# )
+
+		global.add(@,'backgroundFix')
+		global.add(@,'cameraMoveY')
+		global.add(@,'cameraMoveYScale',-3,3).step(0.01)
+		global.add(@,'containerMovY')
+		global.add(@,'containerMovYScale',-2,2).step(0.01)
 
 		@hitboxVisible = false
 		global.add(@,'offsetX',-30,30).step(0.1)
@@ -485,26 +523,38 @@ class Scene3d extends Emitter
 
 		@light1 =  @cameraLight.color.getHex()
 		lights.addColor(@,'light1').onChange(()=>
-			@cameraLight.color.setHex(@light1)
+			if(@light1)
+				@cameraLight.color.setHex(@light1)
+			else 
+				@light1 = @cameraLight.color.getHex()
 		)
-		console.log(@cameraLight)
 		lights.add(@cameraLight,'intensity',0,3).step(0.01).name('intensity 1')
 
 		@light2 =  @cameraLight2.color.getHex()
 		lights.addColor(@,'light2').onChange(()=>
-			@cameraLight2.color.setHex(@light2)
+			if @light2
+				@cameraLight2.color.setHex(@light2)
+			else 
+				@light2 = @cameraLight2.color.getHex()
+
 		)
 		lights.add(@cameraLight2,'intensity',0,3).step(0.01).name('intensity 2')
 
 		@light3 =  @cameraLight3.color.getHex()
 		lights.addColor(@,'light3').onChange(()=>
-			@cameraLight3.color.setHex(@light3)
+			if @light3
+				@cameraLight3.color.setHex(@light3)
+			else 
+				@light3 = @cameraLight3.color.getHex()
 		)
 		lights.add(@cameraLight3,'intensity',0,3).step(0.01).name('intensity 3')
 
 		@light4 =  @cameraLight4.color.getHex()
 		lights.addColor(@,'light4').onChange(()=>
-			@cameraLight4.color.setHex(@light4)
+			if @light4
+				@cameraLight4.color.setHex(@light4)
+			else 
+				@light4 = @cameraLight4.color.getHex()
 		)
 		lights.add(@cameraLight4,'intensity',0,3).step(0.01).name('intensity 4')
 
@@ -614,6 +664,9 @@ class Scene3d extends Emitter
 		if(@diamond && @currentPosition.diamond)
 			@diamond.position.copy(@currentPosition.diamond)
 			@diamond.position.x += @offsetX
+
+		if(@particles)
+			@particles.position.x = 10
 	
 		if(@mirror && @currentPosition.mirror)
 			@mirror.position.copy(@currentPosition.mirror)
@@ -634,10 +687,10 @@ class Scene3d extends Emitter
 			distance.set(Math.sqrt(dx*dx),Math.sqrt(dy*dy),Math.sqrt(dz*dz))
 			# @currentPosition.fragments[i].z =
 			@hitboxs[i].position.copy(@currentPosition.fragments[i] )
-			if(distance.x < 17.5)
-				@hitboxs[i].position.z = Math.max(@hitboxs[i].position.z,14)
-			else if(distance.x < 29)
-				@hitboxs[i].position.z = Math.max(@hitboxs[i].position.z,(1-(distance.x-14)/15)*14+2)
+			if(distance.x < 28.5)
+				@hitboxs[i].position.z = Math.max(@hitboxs[i].position.z,15)
+			else if(distance.x < 100)
+				@hitboxs[i].position.z = Math.max(@hitboxs[i].position.z,(1-(distance.x-10.5)/10.5)*15+2)
 			# @hitboxs[i].position.x += (@currentPosition.fragments[i].x - @hitboxs[i].position.x)*.05
 			# @hitboxs[i].position.y += (@currentPosition.fragments[i].y - @hitboxs[i].position.y)*.05
 			# @hitboxs[i].position.z += (@currentPosition.fragments[i].z - @hitboxs[i].position.z)*.05
@@ -676,12 +729,6 @@ class Scene3d extends Emitter
 				f.scale.y = f.scale.x
 				f.scale.z = f.scale.x
 
-		# @cameraLight.position.x = Math.cos(@time*0.001)*100
-		# @cameraLight2.position.x = Math.cos(@time*0.0015)*120
-		# @cameraLight2.position.y = Math.sin(@time*0.0015)*120
-		# @container.rotation.y += (@mouse.x*Math.PI/16 - @container.rotation.y)*.09
-		# @container.rotation.x += (-@mouse.y*Math.PI/16 - @container.rotation.x)*.09
-
 		if(@backgroundGeometry)
 			geometry =  @backgroundGeometry
 			#todo optimize it
@@ -696,17 +743,52 @@ class Scene3d extends Emitter
 			# geometry.attributes.positionneedsUpdate = true
 			# geometry.attributes.normal.needsUpdate = true
 			# geometry.normalizeNormals()
-			geometry.computeTangents();
+			geometry.computeTangents()
 			geometry.computeVertexNormals()
 			geometry.computeFaceNormals()
 			geometry.computeVertexNormals()
 			geometry.computeTangents()
 			geometry.verticesNeedUpdate = true
 			geometry.normalsNeedUpdate = true
-			geometry.elementsNeedUpdate = true;
-			geometry.tangentsNeedUpdate = true;
+			geometry.elementsNeedUpdate = true
+			geometry.tangentsNeedUpdate = true
 
 		Stage3d.camera.position.x += (@mouse.x*30 - Stage3d.camera.position.x)*.03
+
+		# if @mouseChangePosition
+		# 	Stage3d.camera.position.y += (@mouse.y*30 - Stage3d.camera.position.y)*.03
+
+		if @cameraMoveY
+			Stage3d.camera.position.y += (@mouse.y*@cameraMoveYScale+18 - Stage3d.camera.position.y)*.03
+
+		if @containerMovY
+			@container.rotation.x += (@mouse.y*Math.PI/16*@containerMovYScale - @container.rotation.x)*.09
+			# @container.rotation.x += (-@mouse.y*Math.PI/16 - @container.rotation.x)*.09
+
+		if(@backgroundFix)
+			if(@backgroundFlat)
+				vector = new THREE.Vector3( 1, 1, -1000 )
+				vector.applyQuaternion( Stage3d.camera.quaternion )
+				@backgroundFlat.position.copy(vector)
+				@backgroundFlat.lookAt(Stage3d.camera.position)
+
+				vector = new THREE.Vector3( 1, 1, -950 )
+				vector.applyQuaternion( Stage3d.camera.quaternion )
+				@backgroundLine.position.copy(vector)
+				@backgroundLine.position.y += 10
+				@backgroundLine.lookAt(Stage3d.camera.position)
+
+				vector = new THREE.Vector3( 1, 1, 1 )
+				vector.applyQuaternion( Stage3d.camera.quaternion )
+				@lightContainer.position.copy(vector)
+				@lightContainer.lookAt(Stage3d.camera.position)
+		
+			if @pointcloud
+				vector = new THREE.Vector3( 1, 1, -945 )
+				vector.applyQuaternion( Stage3d.camera.quaternion )
+				@pointcloud.position.copy(vector)
+				@pointcloud.lookAt(Stage3d.camera.position)
+
 		
 		# Stage3d.camera.position.y += (@mouse.y*2+20 - Stage3d.camera.position.y)*.03
 		# @container.rotation.x += (@mouse.y*Math.PI/16 - @container.rotation.x)*.03

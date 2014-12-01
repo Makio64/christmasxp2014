@@ -287,8 +287,8 @@ Main3d = (function() {
     var height, width;
     width = window.innerWidth;
     height = window.innerHeight;
-    this.scene.resize();
     Stage3d.resize();
+    this.scene.resize();
   };
 
   return Main3d;
@@ -337,6 +337,11 @@ Scene3d = (function(_super) {
     this.debug = true;
     this.currentIndex = 1;
     this.globalAlpha = 0;
+    this.cameraMoveY = true;
+    this.containerMovY = true;
+    this.containerMovYScale = 1;
+    this.cameraMoveYScale = 1.5;
+    this.backgroundFix = false;
     this.mouse = new THREE.Vector2(0, 0);
     this.time = 0;
     this.useMap = true;
@@ -351,7 +356,7 @@ Scene3d = (function(_super) {
       diamond: new THREE.Vector3(),
       mirror: new THREE.Vector3()
     };
-    this.offsetX = 0;
+    this.offsetX = 10;
     this.currentPosition = {
       fragments: [],
       diamond: null,
@@ -365,11 +370,14 @@ Scene3d = (function(_super) {
     this.currentPosition.mirror = new THREE.Vector3();
     this.container = new THREE.Object3D();
     Stage3d.add(this.container, false);
+    this.containerFrontcamera = new THREE.Object3D();
+    this.container.add(this.containerFrontcamera);
     this.lightContainer = new THREE.Object3D();
-    this.container.add(this.lightContainer);
+    Stage3d.add(this.lightContainer);
     this.createLight();
     this.createBackground();
     this.createCircles();
+    this.createParticles();
     this.addEvent();
     this.loadImagesLow();
     return;
@@ -443,7 +451,7 @@ Scene3d = (function(_super) {
   };
 
   Scene3d.prototype.createBackground = function() {
-    var geometry, i, material, mesh, v, _i, _ref;
+    var geometry, i, material, v, _i, _ref;
     material = new THREE.MeshLambertMaterial({
       wireframe: false,
       color: 0xFFFFFF
@@ -465,9 +473,9 @@ Scene3d = (function(_super) {
     geometry.normalsNeedUpdate = true;
     geometry.elementsNeedUpdate = true;
     geometry.tangentsNeedUpdate = true;
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.z = -1000;
-    Stage3d.add(mesh);
+    this.backgroundFlat = new THREE.Mesh(geometry, material);
+    this.backgroundFlat.position.z = -1000;
+    Stage3d.add(this.backgroundFlat);
     material = new THREE.MeshBasicMaterial({
       wireframe: true,
       color: 0,
@@ -475,10 +483,10 @@ Scene3d = (function(_super) {
       opacity: .1
     });
     material.shading = THREE.FlatShading;
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.z = -950;
-    mesh.position.y += 10;
-    Stage3d.add(mesh);
+    this.backgroundLine = new THREE.Mesh(geometry, material);
+    this.backgroundLine.position.z = -950;
+    this.backgroundLine.position.y += 10;
+    Stage3d.add(this.backgroundLine);
     this.backgroundGeometry = geometry;
   };
 
@@ -500,26 +508,50 @@ Scene3d = (function(_super) {
           sizeAttenuation: true,
           fog: false
         });
-        console.log(material);
         _this.pointcloud = new THREE.PointCloud(_this.bufferGeometry, material);
         _this.pointcloud.position.z -= 945.999;
         _this.pointcloud.position.y += 10;
-        return _this.container.add(_this.pointcloud);
+        return Stage3d.add(_this.pointcloud);
       };
     })(this);
     image.src = './3d/textures/circle.png';
   };
 
-  Scene3d.prototype.createParticles = function() {};
+  Scene3d.prototype.createParticles = function() {
+    var geometry, i, material, phi, radius, theta, triangles, vertices, x, y, z, _i, _ref;
+    geometry = new THREE.BufferGeometry();
+    triangles = 200;
+    vertices = new THREE.BufferAttribute(new Float32Array(triangles * 3 * 3), 3);
+    for (i = _i = 0, _ref = vertices.length; _i < _ref; i = _i += 1) {
+      if (i % 3 === 0) {
+        phi = Math.PI * 2 * Math.random();
+        theta = Math.PI * 2 * Math.random();
+        radius = 50 + Math.random() * 50;
+      }
+      x = radius * Math.sin(phi) * Math.cos(theta) + Math.random() * 2;
+      y = radius * Math.cos(phi) + Math.random() * 2;
+      z = radius * Math.sin(phi) * Math.sin(theta) + Math.random() * 2;
+      vertices.setXYZ(i, x, y, z);
+    }
+    geometry.addAttribute('position', vertices);
+    material = new THREE.MeshBasicMaterial({
+      color: 0xFFFFFF,
+      side: THREE.DoubleSide,
+      transparent: true,
+      opacity: .25
+    });
+    this.particles = new THREE.Mesh(geometry, material);
+    Stage3d.add(this.particles);
+  };
 
   Scene3d.prototype.createLight = function() {
     this.ambientLight = new THREE.AmbientLight(0);
     this.ambientLight2 = new THREE.AmbientLight(0xFFFFFF);
-    this.cameraLight = new THREE.PointLight(0x221199, 2, 2000);
+    this.cameraLight = new THREE.PointLight(0x1a3a9a, 2.5, 2000);
     this.cameraLight.position.set(0, -1000, 0);
-    this.cameraLight2 = new THREE.PointLight(0x2211AA, 1, 2400);
+    this.cameraLight2 = new THREE.PointLight(0x2211AA, 1.3, 2400);
     this.cameraLight2.position.set(-1500, 0, 0);
-    this.cameraLight3 = new THREE.PointLight(0x2233AA, 2, 2400);
+    this.cameraLight3 = new THREE.PointLight(0x2233AA, 1.9, 2400);
     this.cameraLight3.position.set(1000, 0, 0);
     this.cameraLight4 = new THREE.PointLight(0x222277, 2, 2400);
     this.cameraLight4.position.set(0, 1000, 0);
@@ -662,7 +694,7 @@ Scene3d = (function(_super) {
     material.side = THREE.DoubleSide;
     material.combine = THREE.MixOperation;
     matrix = new THREE.Matrix4();
-    matrix.makeScale(.2, .2, .2);
+    matrix.makeScale(.23, .23, .23);
     geometry.applyMatrix(matrix);
     this.diamond = new THREE.Mesh(geometry, material);
     this.container.add(this.diamond);
@@ -689,7 +721,7 @@ Scene3d = (function(_super) {
     var folder, material, matrix;
     this.computeGeometry(geometry);
     matrix = new THREE.Matrix4();
-    matrix.makeScale(.2, .2, .2);
+    matrix.makeScale(.23, .23, .23);
     geometry.applyMatrix(matrix);
     material = new THREE.MeshLambertMaterial({
       color: 0xffffff,
@@ -758,7 +790,7 @@ Scene3d = (function(_super) {
       material.opacity = 0.8;
       o.material = material;
       matrix = new THREE.Matrix4();
-      matrix.makeScale(.23, .23, .23);
+      matrix.makeScale(.2, .2, .2);
       o.geometry.applyMatrix(matrix);
       o.position.multiplyScalar(.21);
       o.position.y -= 20;
@@ -797,11 +829,11 @@ Scene3d = (function(_super) {
     this.envMaps = [];
     global = this.gui.addFolder('global');
     this.globalOpacity = 1;
-    global.add(this, 'globalOpacity', 0, 1).step(0.01).onChange((function(_this) {
-      return function() {
-        return document.getElementById('webgl').style.opacity = _this.globalOpacity;
-      };
-    })(this));
+    global.add(this, 'backgroundFix');
+    global.add(this, 'cameraMoveY');
+    global.add(this, 'cameraMoveYScale', -3, 3).step(0.01);
+    global.add(this, 'containerMovY');
+    global.add(this, 'containerMovYScale', -2, 2).step(0.01);
     this.hitboxVisible = false;
     global.add(this, 'offsetX', -30, 30).step(0.1);
     positions = this.gui.addFolder('positions');
@@ -837,29 +869,44 @@ Scene3d = (function(_super) {
     this.light1 = this.cameraLight.color.getHex();
     lights.addColor(this, 'light1').onChange((function(_this) {
       return function() {
-        return _this.cameraLight.color.setHex(_this.light1);
+        if (_this.light1) {
+          return _this.cameraLight.color.setHex(_this.light1);
+        } else {
+          return _this.light1 = _this.cameraLight.color.getHex();
+        }
       };
     })(this));
-    console.log(this.cameraLight);
     lights.add(this.cameraLight, 'intensity', 0, 3).step(0.01).name('intensity 1');
     this.light2 = this.cameraLight2.color.getHex();
     lights.addColor(this, 'light2').onChange((function(_this) {
       return function() {
-        return _this.cameraLight2.color.setHex(_this.light2);
+        if (_this.light2) {
+          return _this.cameraLight2.color.setHex(_this.light2);
+        } else {
+          return _this.light2 = _this.cameraLight2.color.getHex();
+        }
       };
     })(this));
     lights.add(this.cameraLight2, 'intensity', 0, 3).step(0.01).name('intensity 2');
     this.light3 = this.cameraLight3.color.getHex();
     lights.addColor(this, 'light3').onChange((function(_this) {
       return function() {
-        return _this.cameraLight3.color.setHex(_this.light3);
+        if (_this.light3) {
+          return _this.cameraLight3.color.setHex(_this.light3);
+        } else {
+          return _this.light3 = _this.cameraLight3.color.getHex();
+        }
       };
     })(this));
     lights.add(this.cameraLight3, 'intensity', 0, 3).step(0.01).name('intensity 3');
     this.light4 = this.cameraLight4.color.getHex();
     lights.addColor(this, 'light4').onChange((function(_this) {
       return function() {
-        return _this.cameraLight4.color.setHex(_this.light4);
+        if (_this.light4) {
+          return _this.cameraLight4.color.setHex(_this.light4);
+        } else {
+          return _this.light4 = _this.cameraLight4.color.getHex();
+        }
       };
     })(this));
     lights.add(this.cameraLight4, 'intensity', 0, 3).step(0.01).name('intensity 4');
@@ -980,6 +1027,9 @@ Scene3d = (function(_super) {
       this.diamond.position.copy(this.currentPosition.diamond);
       this.diamond.position.x += this.offsetX;
     }
+    if (this.particles) {
+      this.particles.position.x = 10;
+    }
     if (this.mirror && this.currentPosition.mirror) {
       this.mirror.position.copy(this.currentPosition.mirror);
       this.mirror.position.x += this.offsetX;
@@ -998,10 +1048,10 @@ Scene3d = (function(_super) {
       dz = this.currentPosition.fragments[i].z - this.diamond.position.z;
       distance.set(Math.sqrt(dx * dx), Math.sqrt(dy * dy), Math.sqrt(dz * dz));
       this.hitboxs[i].position.copy(this.currentPosition.fragments[i]);
-      if (distance.x < 17.5) {
-        this.hitboxs[i].position.z = Math.max(this.hitboxs[i].position.z, 14);
-      } else if (distance.x < 29) {
-        this.hitboxs[i].position.z = Math.max(this.hitboxs[i].position.z, (1 - (distance.x - 14) / 15) * 14 + 2);
+      if (distance.x < 28.5) {
+        this.hitboxs[i].position.z = Math.max(this.hitboxs[i].position.z, 15);
+      } else if (distance.x < 100) {
+        this.hitboxs[i].position.z = Math.max(this.hitboxs[i].position.z, (1 - (distance.x - 10.5) / 10.5) * 15 + 2);
       }
       this.hitboxs[i].position.x += this.offsetX;
     }
@@ -1062,6 +1112,35 @@ Scene3d = (function(_super) {
       geometry.tangentsNeedUpdate = true;
     }
     Stage3d.camera.position.x += (this.mouse.x * 30 - Stage3d.camera.position.x) * .03;
+    if (this.cameraMoveY) {
+      Stage3d.camera.position.y += (this.mouse.y * this.cameraMoveYScale + 18 - Stage3d.camera.position.y) * .03;
+    }
+    if (this.containerMovY) {
+      this.container.rotation.x += (this.mouse.y * Math.PI / 16 * this.containerMovYScale - this.container.rotation.x) * .09;
+    }
+    if (this.backgroundFix) {
+      if (this.backgroundFlat) {
+        vector = new THREE.Vector3(1, 1, -1000);
+        vector.applyQuaternion(Stage3d.camera.quaternion);
+        this.backgroundFlat.position.copy(vector);
+        this.backgroundFlat.lookAt(Stage3d.camera.position);
+        vector = new THREE.Vector3(1, 1, -950);
+        vector.applyQuaternion(Stage3d.camera.quaternion);
+        this.backgroundLine.position.copy(vector);
+        this.backgroundLine.position.y += 10;
+        this.backgroundLine.lookAt(Stage3d.camera.position);
+        vector = new THREE.Vector3(1, 1, 1);
+        vector.applyQuaternion(Stage3d.camera.quaternion);
+        this.lightContainer.position.copy(vector);
+        this.lightContainer.lookAt(Stage3d.camera.position);
+      }
+      if (this.pointcloud) {
+        vector = new THREE.Vector3(1, 1, -945);
+        vector.applyQuaternion(Stage3d.camera.quaternion);
+        this.pointcloud.position.copy(vector);
+        this.pointcloud.lookAt(Stage3d.camera.position);
+      }
+    }
   };
 
   return Scene3d;
