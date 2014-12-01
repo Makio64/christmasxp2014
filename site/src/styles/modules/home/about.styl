@@ -7,6 +7,18 @@
   display none
   perspective-origin 50% 50%
   perspective 1000
+  .bt-close .icon
+    left 0
+  @media screen and (max-width: 640px) {
+    width 100%
+    height calc(100% - 60px)
+    top 60px
+    background #fafafa
+  }
+
+.about-content.mobile {
+  display none
+}
 
 .about-content
   position absolute
@@ -15,6 +27,17 @@
   height 100%
   transform-origin 0 0
   backface-visibility hidden
+  
+  @media screen and (max-width: 640px) {
+    &.no-mobile {
+      display none  
+    }
+    &.mobile {
+      display table
+    }
+  }
+
+
 
 .about-infos
   position relative
@@ -124,3 +147,55 @@
   vertical-align middle
   font normal 12px regular
   color blueDark
+
+.about-content.mobile 
+  position absolute
+  top 50%
+  width 100%
+  transform translateY(-50%)
+  vertical-align middle
+  background none
+  text-align center
+  height auto
+  
+  
+  .about-infos-title
+    font normal 26px bold
+    &:after 
+      width 88px
+  
+  p 
+    padding 0 30px
+    border-sizing border-box
+  
+    &.desc 
+      font normal 1em normal
+      color blueDark
+      margin 50px 0 0 0
+    
+    &.previous
+      font normal .8em normal
+      color #ff265d
+      
+      &:before,
+      &:after
+        content ""
+        width 6px
+        height 6px 
+        background #ff265d
+        margin 40px auto 20px
+        display block
+        border-radius 5px
+      
+      &:after 
+        margin 20px auto 40px
+  
+  span 
+    display block 
+    width 100%
+    font normal 1em normal
+    color blueDark
+
+
+
+

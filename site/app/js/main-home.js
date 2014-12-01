@@ -32,178 +32,434 @@ loading.start();
 module.exports={
     "experiments": [
         {
-            "author": "David Ronai",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 1,
+            "isAvailable": true,
+            "author": "Guillaume Gouessan",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 2,
+            "isAvailable": false,
+            "author": "Felix Turner",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 3,
+            "isAvailable": false,
+            "author": "Nathan Gordon",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 4,
+            "isAvailable": false,
+            "author": "David Rosser",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 5,
+            "isAvailable": false,
+            "author": "Bruno Simon",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 6,
+            "isAvailable": false,
+            "author": "Hector Arellano",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 7,
+            "isAvailable": false,
+            "author": "Michael Anthony",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 8,
+            "isAvailable": false,
+            "author": "Lin Yi-Wen",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 9,
+            "isAvailable": false,
+            "author": "Klas",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 10,
+            "isAvailable": false,
+            "author": "Muroicci",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 11,
+            "isAvailable": false,
+            "author": "Damien Mortini",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 12,
+            "isAvailable": false,
+            "author": "Mat Groves",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 13,
+            "isAvailable": false,
+            "author": "William Mapan",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 14,
+            "isAvailable": false,
+            "author": "Matt DesLauriers",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 15,
+            "isAvailable": false,
+            "author": "Floz",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 16,
+            "isAvailable": false,
+            "author": "Silvio",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 17,
+            "isAvailable": false,
+            "author": "Nicolas Barradeau",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 18,
+            "isAvailable": false,
+            "author": "David Li",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 19,
+            "isAvailable": false,
+            "author": "Makio64",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 20,
+            "isAvailable": false,
+            "author": "Grgrdvrt",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 21,
+            "isAvailable": false,
+            "author": "Is_real",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 22,
+            "isAvailable": false,
+            "author": "Edan Kwan",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 23,
+            "isAvailable": false,
+            "author": "Bartek",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
+                }
+            ]
+        },
+        {
+            "idx": 24,
+            "isAvailable": false,
+            "author": "Cabibbo / The Spite",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
+            "isWebGL": true,
+            "isMobile": false,
+            "details": [
+                {
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         }
@@ -1958,6 +2214,9 @@ Artists = (function() {
   }
 
   Artists.prototype._onDragStart = function(e) {
+    if (window.innerWidth <= 640) {
+      return;
+    }
     e.preventDefault();
     this._lastY = e.y;
     interactions.on(this._domEntries, "move", this._onDragMove, false);
@@ -2153,6 +2412,18 @@ Credits = (function() {
 
   Credits.prototype.show = function() {
     var d, dAdd, dom, _i, _len, _ref, _results;
+    if (window.innerWidth <= 640) {
+      this.dom.style.display = 'block';
+      if (this._transitionTimer) {
+        clearInterval(this._transitionTimer);
+      }
+      this._transitionTimer = setTimeout((function(_this) {
+        return function() {
+          return _this.dom.classList.add('transitionIn');
+        };
+      })(this), 200);
+      return;
+    }
     TweenLite.to(this.dom, .4, {
       css: {
         x: 198
@@ -2227,6 +2498,18 @@ Credits = (function() {
 
   Credits.prototype.hide = function() {
     var duration;
+    if (window.innerWidth <= 640) {
+      this.dom.classList.remove('transitionIn');
+      if (this._transitionTimer) {
+        clearInterval(this._transitionTimer);
+      }
+      this._transitionTimer = setTimeout((function(_this) {
+        return function() {
+          return _this.dom.style.display = 'none';
+        };
+      })(this), 1300);
+      return;
+    }
     duration = .25;
     TweenLite.to(this.dom, duration, {
       css: {
@@ -2291,7 +2574,7 @@ Home = (function() {
   }
 
   Home.prototype._onNavChange = function(id) {
-    var newModule;
+    var newModule, _base;
     if (id !== "") {
       newModule = this["_" + id];
       if (this._currentModule === newModule) {
@@ -2300,13 +2583,14 @@ Home = (function() {
       if (this._currentModule) {
         return this._currentModule.hide().then((function(_this) {
           return function() {
+            var _base;
             _this._currentModule = newModule;
-            return _this._currentModule.show();
+            return typeof (_base = _this._currentModule).show === "function" ? _base.show() : void 0;
           };
         })(this));
       } else {
         this._currentModule = newModule;
-        return this._currentModule.show();
+        return typeof (_base = this._currentModule).show === "function" ? _base.show() : void 0;
       }
     } else {
       this._currentModule.hide();
@@ -2478,15 +2762,22 @@ Menu = (function() {
   };
 
   Menu.prototype._onNavChange = function(id) {
+    if (id !== "credits") {
+      this._credits.hide();
+    }
     if (id !== "" && id !== "credits") {
       if (id === "artists") {
         this._activate(".menu-entry--artists");
       } else {
         this._activate(".menu-entry--about");
       }
-      return this._showMenuLight();
+      if (window.innerWidth > 640) {
+        return this._showMenuLight();
+      }
     } else {
-      return this._hideMenuLight();
+      if (window.innerWidth > 640) {
+        return this._hideMenuLight();
+      }
     }
   };
 
@@ -2545,10 +2836,14 @@ module.exports = Menu;
 
 
 },{"common/anim/IceAnim":6,"common/interactions":8,"common/nav":9,"home/Credits":12}],16:[function(require,module,exports){
-var MobileMenu, interactions,
+var Credits, MobileMenu, interactions, nav,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 interactions = require("common/interactions");
+
+nav = require("common/nav");
+
+Credits = require("home/Credits");
 
 MobileMenu = (function() {
   MobileMenu.prototype.dom = null;
@@ -2563,20 +2858,43 @@ MobileMenu = (function() {
 
   MobileMenu.prototype._transitionTimer = null;
 
+  MobileMenu.prototype._domArtistsBtn = null;
+
+  MobileMenu.prototype._domAboutBtn = null;
+
+  MobileMenu.prototype._domCreditsBtn = null;
+
   function MobileMenu() {
+    this._navigateToCredits = __bind(this._navigateToCredits, this);
+    this._navigateToAbout = __bind(this._navigateToAbout, this);
+    this._navigateToArtists = __bind(this._navigateToArtists, this);
+    this._navigateToHome = __bind(this._navigateToHome, this);
     this._hide = __bind(this._hide, this);
     this._show = __bind(this._show, this);
     this._toggleMenu = __bind(this._toggleMenu, this);
-    console.log('[MobileMenu constructor]');
+    this._onNavChange = __bind(this._onNavChange, this);
     this.dom = document.querySelector('.mobile-menu');
     this.domNavbar = document.querySelector('.mobile-navbar');
     this._domMenuCTA = this.domNavbar.querySelector('.menuCTA');
     this._domCloseBtn = this.dom.querySelector('.bt-close-holder');
-    console.log(this.dom.querySelector('.bt-close-holder'));
+    this._domHomeBtn = this.dom.querySelectorAll('.menu-entry')[0];
+    this._domArtistsBtn = this.dom.querySelectorAll('.menu-entry')[1];
+    this._domAboutBtn = this.dom.querySelectorAll('.menu-entry')[2];
+    this._domCreditsBtn = this.dom.querySelector('.menu-subentry--credits');
     interactions.on(this._domMenuCTA, 'click', this._show);
     interactions.on(this._domCloseBtn, 'click', this._hide);
+    interactions.on(this._domHomeBtn, 'click', this._navigateToHome);
+    interactions.on(this._domArtistsBtn, 'click', this._navigateToArtists);
+    interactions.on(this._domAboutBtn, 'click', this._navigateToAbout);
+    interactions.on(this._domCreditsBtn, 'click', this._navigateToCredits);
+    nav.on("change", this._onNavChange);
     null;
   }
+
+  MobileMenu.prototype._onNavChange = function() {
+    console.log('plop');
+    return null;
+  };
 
   MobileMenu.prototype._toggleMenu = function() {
     this._isVisible = !this._isVisible;
@@ -2593,9 +2911,13 @@ MobileMenu = (function() {
       evt.preventDefault();
     }
     this.dom.style.display = 'table';
+    if (this._transitionTimer) {
+      clearInterval(this._transitionTimer);
+    }
     this._transitionTimer = setTimeout((function(_this) {
       return function() {
-        return _this.dom.classList.add('transitionIn');
+        _this.dom.classList.add('transitionIn');
+        return document.body.scrollTop = 200;
       };
     })(this), 100);
     return null;
@@ -2606,6 +2928,9 @@ MobileMenu = (function() {
       evt.preventDefault();
     }
     this.dom.classList.add('transitionOut');
+    if (this._transitionTimer) {
+      clearInterval(this._transitionTimer);
+    }
     this._transitionTimer = setTimeout((function(_this) {
       return function() {
         _this.dom.classList.remove('transitionIn');
@@ -2613,6 +2938,30 @@ MobileMenu = (function() {
         return _this.dom.style.display = 'none';
       };
     })(this), 1500);
+    return null;
+  };
+
+  MobileMenu.prototype._navigateToHome = function() {
+    nav.set("home");
+    this._hide();
+    return null;
+  };
+
+  MobileMenu.prototype._navigateToArtists = function() {
+    nav.set("artists");
+    this._hide();
+    return null;
+  };
+
+  MobileMenu.prototype._navigateToAbout = function() {
+    nav.set("about");
+    this._hide();
+    return null;
+  };
+
+  MobileMenu.prototype._navigateToCredits = function() {
+    nav.set("credits");
+    this._hide();
     return null;
   };
 
@@ -2624,7 +2973,7 @@ module.exports = MobileMenu;
 
 
 
-},{"common/interactions":8}],17:[function(require,module,exports){
+},{"common/interactions":8,"common/nav":9,"home/Credits":12}],17:[function(require,module,exports){
 var IceAnim, TitleAnim, datas;
 
 IceAnim = require("common/anim/IceAnim");
@@ -2638,7 +2987,7 @@ TitleAnim = (function() {
     this.dom = document.querySelector(".home-details-cnt");
     this._w = 300;
     this._h = 140;
-    data = datas[idx];
+    data = datas[idx - 1];
     day = idx;
     if (idx < 10) {
       day = "0" + day;

@@ -7,7 +7,21 @@
   display none
   perspective-origin 50% 50%
   perspective 1000
+  .bt-close .icon
+    left 0
   // backface-visibility hidden
+  @media screen and (max-width: 640px) {
+    width 100%  
+    background #fafafa
+    
+    .bt-close-holder {
+      display none
+    }
+    
+    .borders {
+      display none !important
+    }
+  }
 
 .artists-content
   position absolute
@@ -16,6 +30,16 @@
   height 100%
   transform-origin 0 0
   // backface-visibility hidden
+  &.mobile
+    display none
+  @media screen and (max-width: 640px) {
+    &.no-mobile {
+      display none
+    }
+    &.mobile {
+      display block
+    }  
+  }
 
 .artists-infos
   position relative
@@ -23,6 +47,12 @@
   height 100%
   float left
   // backface-visibility hidden
+  @media screen and (max-width: 640px) {
+    width 100%  
+    height auto 
+    padding 100px 0
+    float none
+  }
 
 .artists-infos-content-holder
   position relative
@@ -53,6 +83,11 @@
   width 67% 
   float left
   overflow hidden
+  @media screen and (max-width: 640px) {
+    width 100%  
+    overflow visible
+    float none
+  }
 
 .artists-entries-holder
 .artists-entries, 
@@ -62,6 +97,10 @@
 
 .artists-entries
   min-width 580px
+  @media screen and (max-width: 640px) {
+    min-width 100%
+    width 100% 
+  }
 
 .artists-entry
   position relative
@@ -79,6 +118,11 @@
       transform translateY( -7px )
     .artists-entry-hover-part--right
       transform translateY( 7px )
+  
+  @media screen and (max-width: 640px) {
+    width 100% !important  
+    float none
+  }
 
 .artists-entry-hover-parts
   position relative
@@ -87,6 +131,9 @@
   margin 0 auto
   display inline-block
   // backface-visibility visible
+  @media screen and (max-width: 640px) {
+    width 100%  
+  }
 
 .artists-entry-hover-part
   position absolute
@@ -98,6 +145,10 @@
   overflow hidden
   // backface-visibility hidden
   transition transform .25s cubic-bezier(0.165, 0.840, 0.440, 1.000)
+  @media screen and (max-width: 640px) {
+    display none  
+    width 100%
+  }
 
 .artists-entry-mask
   position relative
@@ -111,6 +162,9 @@
   width 50%
   overflow hidden
   // backface-visibility hidden
+  @media screen and (max-width: 640px) {
+    width 100%  
+  }
 
 .artists-entry-hover-part--right
   display block
@@ -126,6 +180,12 @@
   vertical-align middle
   padding-top 15px
   padding-bottom 15px
+  
+  @media screen and (max-width: 640px) {
+    display block  
+    padding-top 0
+    padding-bottom 0
+  }
 
 .artists-entry-avatar
   position relative
@@ -142,6 +202,7 @@
   color red
   text-decoration none
   border-bottom 1px solid red
+  letter-spacing 1px
   // backface-visibility hidden
   
 .artists-entry-desc
@@ -164,3 +225,36 @@
   color #fff
   letter-spacing 1px
   // backface-visibility hidden
+
+@media screen and (max-width: 640px) {
+  
+  .artists {
+    margin-top 60px
+  }
+
+  .artists-entries {
+    background #fff
+    height auto !important
+  }
+
+  .artists-entry {
+    display block
+    background #fff
+    padding 40px 0 0
+    height auto
+    
+    &:before {
+      content ""
+      display block
+      width 80%
+      margin 0 auto 40px
+      height 1px 
+      background rgba(0, 0, 0, .1)
+    }
+    
+    &:last-child {
+      padding-bottom 100px
+    }
+  }
+
+}

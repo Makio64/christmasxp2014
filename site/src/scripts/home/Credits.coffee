@@ -17,6 +17,18 @@ class Credits
         @hide()
 
     show: ->
+        if window.innerWidth <= 640
+
+            @dom.style.display = 'block'
+
+            if ( @_transitionTimer ) then clearInterval( @_transitionTimer )
+
+            @_transitionTimer = setTimeout =>
+              @dom.classList.add 'transitionIn'
+            , 200
+
+            return
+
         TweenLite.to @dom, .4,
             css:
                 x: 198
@@ -69,6 +81,16 @@ class Credits
             dAdd = .02 if dAdd < .02
 
     hide: ->
+        if( window.innerWidth <= 640 )
+            @dom.classList.remove 'transitionIn'
+
+            if ( @_transitionTimer ) then clearInterval( @_transitionTimer )
+
+            @_transitionTimer = setTimeout =>
+              @dom.style.display = 'none'
+            , 1300
+
+            return
         duration = .25
 
         TweenLite.to @dom, duration,

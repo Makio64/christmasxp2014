@@ -29,7 +29,8 @@ class Artists
         window.addEventListener "resize", @_onResize, false
 
     _onDragStart: ( e ) =>
-        e.preventDefault()
+        if ( window.innerWidth <= 640 ) then return
+        e.preventDefault() 
         @_lastY = e.y
         interactions.on @_domEntries, "move", @_onDragMove, false
         interactions.on @_domEntries, "up", @_onDragStop, false
