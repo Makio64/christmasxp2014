@@ -10,7 +10,6 @@ class Scene3d extends Emitter
 		@isReady = false
 		@isImgReady = false
 		@debug = /debug/i.test(window.location)
-		console.log(@debug)
 
 		@hitboxVisible = false
 
@@ -248,16 +247,16 @@ class Scene3d extends Emitter
 		@ambientLight = new THREE.AmbientLight(0)
 		@ambientLight2 = new THREE.AmbientLight(0xFFFFFF)
 		
-		@cameraLight = new THREE.PointLight(0x192343, 2, 2000)
+		@cameraLight = new THREE.PointLight(0x1a3a9a, 1.5, 2000)
 		@cameraLight.position.set( 0, -1000, 0 );
 
-		@cameraLight2 = new THREE.PointLight(0x262050, 1.5, 2400)
+		@cameraLight2 = new THREE.PointLight(0x2211aa, 1, 2400)
 		@cameraLight2.position.set( -1500, 0, 0 );
 
-		@cameraLight3 = new THREE.PointLight(0x11142d, 1.5, 2400)
+		@cameraLight3 = new THREE.PointLight(0x2233aa, 0.4, 2400)
 		@cameraLight3.position.set( 1000, 0, 0 );
 
-		@cameraLight4 = new THREE.PointLight(0x1d1d43, 2, 2400)
+		@cameraLight4 = new THREE.PointLight(0x222277, 1.7, 2400)
 		@cameraLight4.position.set( 0, 1000, 0 );
 
 		Stage3d.add(@ambientLight)
@@ -392,8 +391,11 @@ class Scene3d extends Emitter
 				else if(@diamond && @mirror)
 					intersects = raycaster.intersectObjects([@diamond,@mirror] , false )
 					if intersects.length > 0
-						console.log('touche',@currentFragment,@currentFragment.name)
-						@gotoXP(@currentFragment.name)
+						if(@currentFragment)
+							@gotoXP(@currentFragment.name)
+						else if @lastFragment
+							@gotoXP(@lastFragment.name)
+
 
 					
 		, false)
@@ -522,7 +524,7 @@ class Scene3d extends Emitter
 			o.position.y -= 20
 			o.position.z += 5
 			if parseInt(o.name) > @maxDate
-				o.material.opacity = 0.3
+				o.material.opacity = 0.1
 			# else
 			# 	material.map = THREE.ImageUtils.loadTexture("./3d/textures/preview"+o.name+".jpg")
 			
@@ -537,8 +539,8 @@ class Scene3d extends Emitter
 
 			@computeGeometry(o.geometry)
 			@fragments.push(o)
-			@currentFragment = o
-			Stage3d.add(o)
+			@lastFragment = @currentFragment = o
+			Stage3d.add(o,false)
 		
 		for i in [0...24] by 1
 			@currentPosition.fragments[i].copy(@hitboxs[i].position)
@@ -797,29 +799,35 @@ class Scene3d extends Emitter
 				frag = intersects[0].object.fragment
 				if parseInt(frag.name) < @maxDate
 					@currentFragment = frag
+				if(!@isOver)
 					@showXP(frag.name)
-				else if(@isOver)
-					@isOver = false
-					@emit "out"
-			else
-				if(@isOver)
-					@isOver = false
-					@emit "out"
-				if @diamond && @mirror
-					intersects = raycaster.intersectObjects([@diamond,@mirror] , false )
-					if intersects.length > 0
-						document.body.style.cursor = 'pointer'
-					else
-						document.body.style.cursor = 'auto'
-						# @currentFragment = null
+			else if @diamond && @mirror
+				intersects = raycaster.intersectObjects([@diamond,@mirror] , false )
+				if intersects.length > 0
+					if(@currentFragment && !@isOver)
+						@isOver = true
+						@showXP(@currentFragment.name)
+					else if(@lastFragment)
+						@showXP(@lastFragment.name)
+					document.body.style.cursor = 'pointer'
 				else
+					if(@isOver )
+						@isOver = false
+						@emit "out"
 					document.body.style.cursor = 'auto'
-					# @currentFragment = null
+					@lastFragment = @currentFragment
+					@currentFragment = null
+			else if(@isOver)
+				@isOver = false
+				@emit "out"
+				document.body.style.cursor = 'auto'
+				@lastFragment = @currentFragment
+				@currentFragment = null
 				
 
 
-		if @currentFragment
-			@currentFragment.scale.x += (1.4-@currentFragment.scale.x)*.05
+		if @currentFragment && @isOver
+			@currentFragment.scale.x += (1.2-@currentFragment.scale.x)*.05
 			@currentFragment.scale.y = @currentFragment.scale.x
 			@currentFragment.scale.z = @currentFragment.scale.x
 

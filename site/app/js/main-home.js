@@ -594,7 +594,6 @@ Scene3d = (function(_super) {
     this.isReady = false;
     this.isImgReady = false;
     this.debug = /debug/i.test(window.location);
-    console.log(this.debug);
     this.hitboxVisible = false;
     this.currentIndex = 1;
     this.globalOpacity = 1;
@@ -838,13 +837,13 @@ Scene3d = (function(_super) {
   Scene3d.prototype.createLight = function() {
     this.ambientLight = new THREE.AmbientLight(0);
     this.ambientLight2 = new THREE.AmbientLight(0xFFFFFF);
-    this.cameraLight = new THREE.PointLight(0x192343, 2, 2000);
+    this.cameraLight = new THREE.PointLight(0x1a3a9a, 1.5, 2000);
     this.cameraLight.position.set(0, -1000, 0);
-    this.cameraLight2 = new THREE.PointLight(0x262050, 1.5, 2400);
+    this.cameraLight2 = new THREE.PointLight(0x2211aa, 1, 2400);
     this.cameraLight2.position.set(-1500, 0, 0);
-    this.cameraLight3 = new THREE.PointLight(0x11142d, 1.5, 2400);
+    this.cameraLight3 = new THREE.PointLight(0x2233aa, 0.4, 2400);
     this.cameraLight3.position.set(1000, 0, 0);
-    this.cameraLight4 = new THREE.PointLight(0x1d1d43, 2, 2400);
+    this.cameraLight4 = new THREE.PointLight(0x222277, 1.7, 2400);
     this.cameraLight4.position.set(0, 1000, 0);
     Stage3d.add(this.ambientLight);
     Stage3d.add(this.cameraLight);
@@ -984,8 +983,11 @@ Scene3d = (function(_super) {
           } else if (_this.diamond && _this.mirror) {
             intersects = raycaster.intersectObjects([_this.diamond, _this.mirror], false);
             if (intersects.length > 0) {
-              console.log('touche', _this.currentFragment, _this.currentFragment.name);
-              return _this.gotoXP(_this.currentFragment.name);
+              if (_this.currentFragment) {
+                return _this.gotoXP(_this.currentFragment.name);
+              } else if (_this.lastFragment) {
+                return _this.gotoXP(_this.lastFragment.name);
+              }
             }
           }
         }
@@ -1147,7 +1149,7 @@ Scene3d = (function(_super) {
       o.position.y -= 20;
       o.position.z += 5;
       if (parseInt(o.name) > this.maxDate) {
-        o.material.opacity = 0.3;
+        o.material.opacity = 0.1;
       }
       hitbox = new THREE.Mesh(hitboxGeo, hitboxMaterial);
       hitbox.position.copy(o.position);
@@ -1158,8 +1160,8 @@ Scene3d = (function(_super) {
       this.positions.base.fragments.push(o.position.clone());
       this.computeGeometry(o.geometry);
       this.fragments.push(o);
-      this.currentFragment = o;
-      Stage3d.add(o);
+      this.lastFragment = this.currentFragment = o;
+      Stage3d.add(o, false);
     }
     for (i = _i = 0; _i < 24; i = _i += 1) {
       this.currentPosition.fragments[i].copy(this.hitboxs[i].position);
@@ -1427,30 +1429,39 @@ Scene3d = (function(_super) {
         frag = intersects[0].object.fragment;
         if (parseInt(frag.name) < this.maxDate) {
           this.currentFragment = frag;
+        }
+        if (!this.isOver) {
           this.showXP(frag.name);
-        } else if (this.isOver) {
-          this.isOver = false;
-          this.emit("out");
         }
-      } else {
-        if (this.isOver) {
-          this.isOver = false;
-          this.emit("out");
-        }
-        if (this.diamond && this.mirror) {
-          intersects = raycaster.intersectObjects([this.diamond, this.mirror], false);
-          if (intersects.length > 0) {
-            document.body.style.cursor = 'pointer';
-          } else {
-            document.body.style.cursor = 'auto';
+      } else if (this.diamond && this.mirror) {
+        intersects = raycaster.intersectObjects([this.diamond, this.mirror], false);
+        if (intersects.length > 0) {
+          if (this.currentFragment && !this.isOver) {
+            this.isOver = true;
+            this.showXP(this.currentFragment.name);
+          } else if (this.lastFragment) {
+            this.showXP(this.lastFragment.name);
           }
+          document.body.style.cursor = 'pointer';
         } else {
+          if (this.isOver) {
+            this.isOver = false;
+            this.emit("out");
+          }
           document.body.style.cursor = 'auto';
+          this.lastFragment = this.currentFragment;
+          this.currentFragment = null;
         }
+      } else if (this.isOver) {
+        this.isOver = false;
+        this.emit("out");
+        document.body.style.cursor = 'auto';
+        this.lastFragment = this.currentFragment;
+        this.currentFragment = null;
       }
     }
-    if (this.currentFragment) {
-      this.currentFragment.scale.x += (1.4 - this.currentFragment.scale.x) * .05;
+    if (this.currentFragment && this.isOver) {
+      this.currentFragment.scale.x += (1.2 - this.currentFragment.scale.x) * .05;
       this.currentFragment.scale.y = this.currentFragment.scale.x;
       this.currentFragment.scale.z = this.currentFragment.scale.x;
     }
