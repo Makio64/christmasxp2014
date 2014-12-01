@@ -955,15 +955,19 @@ Share = (function() {
     }
     url = "https://www.facebook.com/sharer/sharer.php";
     url += "?u=" + encodeURIComponent("http://christmasexperiments/experiments/" + this._data.idx);
-    url += "&message=" + encodeURIComponent("Come and discover this Christmas Experiment!");
+    url += "&message=" + encodeURIComponent("Polar a beautiful experiments by @superguigui for @christmasxp");
     return this._openPopup(url);
   };
 
   Share.prototype._onTwitter = function(e) {
     var url;
     e.preventDefault();
+    if (!this._data) {
+      this._data = {};
+      this._data.idx = 1;
+    }
     url = "https://twitter.com/share?";
-    url += "text=" + encodeURIComponent("Come and discover this Christmas Experiment!");
+    url += "text=" + encodeURIComponent("Polar a beautiful experiments by @superguigui for @christmasxp");
     url += "&url=" + encodeURIComponent("http://christmasexperiments/experiments/" + this._data.idx) + "/";
     return this._openPopup(url);
   };

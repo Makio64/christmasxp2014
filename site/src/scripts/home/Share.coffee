@@ -15,14 +15,14 @@ class Share
         e.preventDefault()
         url = "https://www.facebook.com/sharer/sharer.php"
         url += "?u=" + encodeURIComponent( "http://christmasexperiments/" )
-        url += "&message=" + encodeURIComponent( "Discover Christmas Experiments 2014" )
+        url += "&message=" + encodeURIComponent( "Christmas Experiments 2014, discover the best experiments of the winter!" )
         @_openPopup url
         return
 
     _onTwitter: ( e ) =>
         e.preventDefault()
         url = "https://twitter.com/share?"
-        url += "text="  + encodeURIComponent( "Discover Christmas Experiments 2014" )
+        url += "text="  + encodeURIComponent( "Christmas Experiments 2014, discover the best experiments of the winter!" )
         url += "&url=" + encodeURIComponent( "http://christmasexperiments/" ) + "/"
         @_openPopup url
         return

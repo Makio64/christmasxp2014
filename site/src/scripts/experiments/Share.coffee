@@ -22,13 +22,22 @@ class Share
         
         url = "https://www.facebook.com/sharer/sharer.php"
         url += "?u=" + encodeURIComponent( "http://christmasexperiments/experiments/#{@_data.idx}" )
-        url += "&message=" + encodeURIComponent( "Come and discover this Christmas Experiment!" )
+        url += "&message=" + encodeURIComponent( "Polar a beautiful experiments by @superguigui for @christmasxp" )
         @_openPopup url
+        # FB.ui({
+        #   method: 'share',
+        #   href: window.location,
+        # }, function(response){});
 
     _onTwitter: ( e ) =>
         e.preventDefault()
+        
+        if !@_data
+            @_data={}
+            @_data.idx = 1
+
         url = "https://twitter.com/share?"
-        url += "text="  + encodeURIComponent( "Come and discover this Christmas Experiment!" )
+        url += "text="  + encodeURIComponent( "Polar a beautiful experiments by @superguigui for @christmasxp" )
         url += "&url=" + encodeURIComponent( "http://christmasexperiments/experiments/#{@_data.idx}" ) + "/"
         @_openPopup url
 
