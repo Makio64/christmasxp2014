@@ -1428,7 +1428,7 @@ Scene3d = (function(_super) {
         document.body.style.cursor = 'pointer';
         frag = intersects[0].object.fragment;
         if (parseInt(frag.name) < this.maxDate) {
-          this.currentFragment = frag;
+          this.lastFragment = this.currentFragment = frag;
         }
         if (!this.isOver) {
           this.showXP(frag.name);
@@ -1436,8 +1436,7 @@ Scene3d = (function(_super) {
       } else if (this.diamond && this.mirror) {
         intersects = raycaster.intersectObjects([this.diamond, this.mirror], false);
         if (intersects.length > 0) {
-          if (this.currentFragment && !this.isOver) {
-            this.isOver = true;
+          if (this.currentFragment) {
             this.showXP(this.currentFragment.name);
           } else if (this.lastFragment) {
             this.showXP(this.lastFragment.name);
@@ -1449,14 +1448,12 @@ Scene3d = (function(_super) {
             this.emit("out");
           }
           document.body.style.cursor = 'auto';
-          this.lastFragment = this.currentFragment;
           this.currentFragment = null;
         }
       } else if (this.isOver) {
         this.isOver = false;
         this.emit("out");
         document.body.style.cursor = 'auto';
-        this.lastFragment = this.currentFragment;
         this.currentFragment = null;
       }
     }

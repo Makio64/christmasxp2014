@@ -798,14 +798,13 @@ class Scene3d extends Emitter
 				document.body.style.cursor = 'pointer'
 				frag = intersects[0].object.fragment
 				if parseInt(frag.name) < @maxDate
-					@currentFragment = frag
+					@lastFragment = @currentFragment = frag
 				if(!@isOver)
 					@showXP(frag.name)
 			else if @diamond && @mirror
 				intersects = raycaster.intersectObjects([@diamond,@mirror] , false )
 				if intersects.length > 0
-					if(@currentFragment && !@isOver)
-						@isOver = true
+					if(@currentFragment)
 						@showXP(@currentFragment.name)
 					else if(@lastFragment)
 						@showXP(@lastFragment.name)
@@ -815,13 +814,11 @@ class Scene3d extends Emitter
 						@isOver = false
 						@emit "out"
 					document.body.style.cursor = 'auto'
-					@lastFragment = @currentFragment
 					@currentFragment = null
 			else if(@isOver)
 				@isOver = false
 				@emit "out"
 				document.body.style.cursor = 'auto'
-				@lastFragment = @currentFragment
 				@currentFragment = null
 				
 
