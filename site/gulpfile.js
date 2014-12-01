@@ -85,22 +85,34 @@ var getDataJSON = function() {
   return require( "./src/data/data.json" );
 }
 
-var getDataXPs = function ( idx, isAvailable ) {
+var getDataXPs = function () {
   var dataXPs = getDataJSON();
-  dataXPs.idxCurrent = idx;
-  dataXPs.isAvailable = isAvailable;
+  dataXPs.basePath = "./"
   return dataXPs;
 }
 
-gulp.task( "templates", function() {
+gulp.task( "template-home", function() {
 
-  gulp.src( src.templates + "*.jade")
+  gulp.src( src.templates + "index.jade")
       .pipe( plumber() )
-      .pipe( data( getDataXPs( 0, true ) ) )
+      .pipe( data( getDataXPs() ) )
       .pipe( jade( { pretty: true, buffer: true, basedir: "src/templates/" } ) )
         .on( "error", gutil.log )
         .on( "error", gutil.beep )
       .pipe( gulp.dest( "app/" ) );
+
+});
+
+gulp.task( "template-experiments", function() {
+
+  gulp.src( src.templates + "experiment.jade")
+      .pipe( plumber() )
+      .pipe( data( getDataXPs() ) )
+      .pipe( jade( { pretty: true, buffer: true, basedir: "src/templates/" } ) )
+        .on( "error", gutil.log )
+        .on( "error", gutil.beep )
+      .pipe( rename( "index.html" ) )
+      .pipe( gulp.dest( "app/experiments/" ) );
 
 });
 
@@ -166,51 +178,56 @@ gulp.task( "data", function() {
 gulp.task( "watch", function() {
 
   gulp.watch( "src/styles/**/*.styl", [ "styles" ] );
-  gulp.watch( "src/templates/**", [ "templates" ] );
+  gulp.watch( "src/templates/**", [ "template-home", "template-experiments" ] );
   gulp.watch( "src/scripts/**/*.coffee", [ "scripts" ] );
   gulp.watch( "src/data/*.json", [ "data" ] );
 
 });
 
 
-gulp.task( "default", [ "bower-install", "browser-sync", "styles", "templates", "scripts", "watch", "data" ] );
+gulp.task( "default", [ "bower-install", "browser-sync", "styles", "template-home", "template-experiments", "scripts", "watch", "data" ] );
 
-// Generate all pages
 
-var generateTaskPage = function( idx, isAvailable ) {
-  gulp.task( "taskPage" + idx, function( cb, err ) {
 
-    setTimeout( function() {
-      gulp.src( src.templates + "experiment.jade" )
-          .pipe( plumber() )
-          .pipe( data( getDataXPs( idx, isAvailable ) ) )
-          .pipe( jade( { pretty: true, buffer: true, basedir: "src/templates/" } ) )
-            .on( "error", gutil.log )
-            .on( "error", gutil.beep )
-          .pipe( rename(  ( idx + 1 ) + ".html" ) )
-          .pipe( gulp.dest( "app/" ) );
 
-      cb( err );
-    }, idx * 100 );
 
-  });
-}
 
-var tasksPage = [];
+// // Generate all pages
 
-var datasXPs = getDataXPs();
-var dataJSON = getDataJSON();
-var n = dataJSON.experiments.length;
-for( var i = 0; i < 25; i++ ) {
-  generateTaskPage( i, i < n );
-  tasksPage.push( "taskPage" + i );
-}
+// var generateTaskPage = function( idx, isAvailable ) {
+//   gulp.task( "taskPage" + idx, function( cb, err ) {
 
-gulp.task( "templates-all", tasksPage, function( cb, err ) {
+//     setTimeout( function() {
+//       gulp.src( src.templates + "experiment.jade" )
+//           .pipe( plumber() )
+//           .pipe( data( getDataXPs( idx, isAvailable ) ) )
+//           .pipe( jade( { pretty: true, buffer: true, basedir: "src/templates/" } ) )
+//             .on( "error", gutil.log )
+//             .on( "error", gutil.beep )
+//           .pipe( rename(  ( idx + 1 ) + ".html" ) )
+//           .pipe( gulp.dest( "app/" ) );
 
-  setTimeout( function() {
-    cb( err );
-  }, 1000 );
+//       cb( err );
+//     }, idx * 100 );
 
-} );
+//   });
+// }
+
+// var tasksPage = [];
+
+// var datasXPs = getDataXPs();
+// var dataJSON = getDataJSON();
+// var n = dataJSON.experiments.length;
+// for( var i = 0; i < 25; i++ ) {
+//   generateTaskPage( i, i < n );
+//   tasksPage.push( "taskPage" + i );
+// }
+
+// gulp.task( "templates-all", tasksPage, function( cb, err ) {
+
+//   setTimeout( function() {
+//     cb( err );
+//   }, 1000 );
+
+// } );
 

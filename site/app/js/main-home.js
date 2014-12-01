@@ -24,178 +24,38 @@ loading.start();
 module.exports={
     "experiments": [
         {
-            "author": "David Ronai",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 1,
+            "isAvailable": true,
+            "author": "Guillaume Gouessan",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
         {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
+            "idx": 2,
+            "isAvailable": false,
+            "author": "Guillaume Gouessan",
+            "bio": "Interactive Developer @hellohikimori",
+            "title": "Polar",
+            "subtitle": "",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
-                }
-            ]
-        },
-        {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
-            "isWebGL": true,
-            "isMobile": false,
-            "details": [
-                {
-                    "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
-                }
-            ]
-        },
-        {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
-            "isWebGL": true,
-            "isMobile": false,
-            "details": [
-                {
-                    "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
-                }
-            ]
-        },
-        {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
-            "isWebGL": true,
-            "isMobile": false,
-            "details": [
-                {
-                    "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
-                }
-            ]
-        },
-        {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
-            "isWebGL": true,
-            "isMobile": false,
-            "details": [
-                {
-                    "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
-                }
-            ]
-        },
-        {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
-            "isWebGL": true,
-            "isMobile": false,
-            "details": [
-                {
-                    "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
-                }
-            ]
-        },
-        {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
-            "isWebGL": true,
-            "isMobile": false,
-            "details": [
-                {
-                    "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
-                }
-            ]
-        },
-        {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
-            "isWebGL": true,
-            "isMobile": false,
-            "details": [
-                {
-                    "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
-                }
-            ]
-        },
-        {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
-            "isWebGL": true,
-            "isMobile": false,
-            "details": [
-                {
-                    "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
-                }
-            ]
-        },
-        {
-            "author": "Florian Zumbrunn",
-            "bio": "Lorem ipsum",
-            "title": "PACK THE FUN 2",
-            "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "desc": "Etiam neque ex, lobortis quis magna sed, varius lacinia lectus. Quisque auctor justo justo, eu suscipit nisi congue vitae. Nulla rhoncus a lacus vel pretium. Praesent sit amet elit ullamcorper diam ornare rhoncus. Integer efficitur maximus justo sed dictum.",
-            "site": "http://www.makiopolis.com",
-            "isWebGL": true,
-            "isMobile": false,
-            "details": [
-                {
-                    "title": "controls",
-                    "desc": "left/right to navigate<br />space to pause"
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         }
@@ -1436,7 +1296,7 @@ TitleAnim = (function() {
     this.dom = document.querySelector(".home-details-cnt");
     this._w = 300;
     this._h = 140;
-    data = datas[idx];
+    data = datas[idx - 1];
     day = idx;
     if (idx < 10) {
       day = "0" + day;
