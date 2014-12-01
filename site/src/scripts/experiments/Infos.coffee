@@ -9,6 +9,7 @@ class Infos
         @_domBtClose = @_dom.querySelector ".bt-close-holder"
         interactions.on @_domBtOpen, "click", @_onOpen
         interactions.on @_domBtClose, "click", @_onClose
+        interactions.on @_dom, "mouseleave", @_onClose
 
         @_domIdx = document.querySelector ".infos-idx"
         @_domTitle = document.querySelector ".infos-title"

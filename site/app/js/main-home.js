@@ -3225,6 +3225,7 @@ Share = (function() {
       dom = _ref1[_j];
       interactions.on(dom, "click", this._onTwitter);
     }
+    return;
   }
 
   Share.prototype._onFB = function(e) {
@@ -3233,7 +3234,7 @@ Share = (function() {
     url = "https://www.facebook.com/sharer/sharer.php";
     url += "?u=" + encodeURIComponent("http://christmasexperiments/");
     url += "&message=" + encodeURIComponent("Discover Christmas Experiments 2014");
-    return this._openPopup(url);
+    this._openPopup(url);
   };
 
   Share.prototype._onTwitter = function(e) {
@@ -3242,11 +3243,11 @@ Share = (function() {
     url = "https://twitter.com/share?";
     url += "text=" + encodeURIComponent("Discover Christmas Experiments 2014");
     url += "&url=" + encodeURIComponent("http://christmasexperiments/") + "/";
-    return this._openPopup(url);
+    this._openPopup(url);
   };
 
   Share.prototype._openPopup = function(url) {
-    return window.open(url, "", "top=100, left=200, width=600, height = 500");
+    window.open(url, "", "top=100, left=200, width=600, height = 500");
   };
 
   return Share;

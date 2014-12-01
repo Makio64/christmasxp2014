@@ -3,16 +3,23 @@ interactions = require "common/interactions"
 class Share
 
     constructor: ->
-        @_domShareFb = document.querySelector ".share--fb"
-        @_domShareTwitter = document.querySelector ".share--twitter"
+        @_domShareFb = document.querySelectorAll ".share--fb"
+        @_domShareTwitter = document.querySelectorAll ".share--twitter"
 
-        interactions.on @_domShareFb, "click", @_onFB
-        interactions.on @_domShareTwitter, "click", @_onTwitter
+        interactions.on dom, "click", @_onFB for dom in @_domShareFb
+        interactions.on dom, "click", @_onTwitter for dom in @_domShareTwitter
+        return
 
     update: ( @_data ) ->
+        return
 
     _onFB: ( e ) =>
         e.preventDefault()
+        
+        if !@_data
+            @_data={}
+            @_data.idx = 1
+        
         url = "https://www.facebook.com/sharer/sharer.php"
         url += "?u=" + encodeURIComponent( "http://christmasexperiments/experiments/#{@_data.idx}" )
         url += "&message=" + encodeURIComponent( "Come and discover this Christmas Experiment!" )

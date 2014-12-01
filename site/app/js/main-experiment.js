@@ -687,6 +687,7 @@ Infos = (function() {
     this._domBtClose = this._dom.querySelector(".bt-close-holder");
     interactions.on(this._domBtOpen, "click", this._onOpen);
     interactions.on(this._domBtClose, "click", this._onClose);
+    interactions.on(this._dom, "mouseleave", this._onClose);
     this._domIdx = document.querySelector(".infos-idx");
     this._domTitle = document.querySelector(".infos-title");
     this._domAuthor = document.querySelector(".infos-author");
@@ -925,10 +926,20 @@ Share = (function() {
   function Share() {
     this._onTwitter = __bind(this._onTwitter, this);
     this._onFB = __bind(this._onFB, this);
-    this._domShareFb = document.querySelector(".share--fb");
-    this._domShareTwitter = document.querySelector(".share--twitter");
-    interactions.on(this._domShareFb, "click", this._onFB);
-    interactions.on(this._domShareTwitter, "click", this._onTwitter);
+    var dom, _i, _j, _len, _len1, _ref, _ref1;
+    this._domShareFb = document.querySelectorAll(".share--fb");
+    this._domShareTwitter = document.querySelectorAll(".share--twitter");
+    _ref = this._domShareFb;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      dom = _ref[_i];
+      interactions.on(dom, "click", this._onFB);
+    }
+    _ref1 = this._domShareTwitter;
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      dom = _ref1[_j];
+      interactions.on(dom, "click", this._onTwitter);
+    }
+    return;
   }
 
   Share.prototype.update = function(_data) {
@@ -938,6 +949,10 @@ Share = (function() {
   Share.prototype._onFB = function(e) {
     var url;
     e.preventDefault();
+    if (!this._data) {
+      this._data = {};
+      this._data.idx = 1;
+    }
     url = "https://www.facebook.com/sharer/sharer.php";
     url += "?u=" + encodeURIComponent("http://christmasexperiments/experiments/" + this._data.idx);
     url += "&message=" + encodeURIComponent("Come and discover this Christmas Experiment!");
