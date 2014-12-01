@@ -48,8 +48,12 @@ class Scene3d extends Emitter
 			diamond : new THREE.Vector3()
 			mirror : new THREE.Vector3()
 		}
-
-		@offsetX = if window.innerWidth <= 640 then 0 else 10
+		if window.innerWidth <= 640
+			@offsetX = 0 
+			@offsetY = 0 
+		else 
+			@offsetX = 10 
+			@offsetY = 5
 
 		@currentPosition = {
 			fragments : []
@@ -739,13 +743,16 @@ class Scene3d extends Emitter
 		if(@diamond && @currentPosition.diamond)
 			@diamond.position.copy(@currentPosition.diamond)
 			@diamond.position.x += @offsetX
+			@diamond.position.y -= @offsetY
 
 		if(@particles)
 			@particles.position.x = 10
-	
+
 		if(@mirror && @currentPosition.mirror)
 			@mirror.position.copy(@currentPosition.mirror)
 			@mirror.position.x += @offsetX
+			@mirror.position.y -= @offsetY
+
 
 		if(@mirror && @diamond)
 			s = 1 + Math.cos(t/1250)*.02

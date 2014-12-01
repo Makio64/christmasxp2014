@@ -625,7 +625,13 @@ Scene3d = (function(_super) {
       diamond: new THREE.Vector3(),
       mirror: new THREE.Vector3()
     };
-    this.offsetX = window.innerWidth <= 640 ? 0 : 10;
+    if (window.innerWidth <= 640) {
+      this.offsetX = 0;
+      this.offsetY = 0;
+    } else {
+      this.offsetX = 10;
+      this.offsetY = 5;
+    }
     this.currentPosition = {
       fragments: [],
       diamond: null,
@@ -1369,6 +1375,7 @@ Scene3d = (function(_super) {
     if (this.diamond && this.currentPosition.diamond) {
       this.diamond.position.copy(this.currentPosition.diamond);
       this.diamond.position.x += this.offsetX;
+      this.diamond.position.y -= this.offsetY;
     }
     if (this.particles) {
       this.particles.position.x = 10;
@@ -1376,6 +1383,7 @@ Scene3d = (function(_super) {
     if (this.mirror && this.currentPosition.mirror) {
       this.mirror.position.copy(this.currentPosition.mirror);
       this.mirror.position.x += this.offsetX;
+      this.mirror.position.y -= this.offsetY;
     }
     if (this.mirror && this.diamond) {
       s = 1 + Math.cos(t / 1250) * .02;
