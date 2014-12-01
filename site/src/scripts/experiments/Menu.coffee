@@ -1,13 +1,19 @@
 interactions = require "common/interactions"
+Preview = require "experiments/Preview"
 
 class Menu
 
     constructor: ->
+        @_preview = new Preview
+
         @_domCnt = document.querySelector ".menu"
         @_domItems = document.querySelectorAll ".menu-item"
         @_domItemActivated = document.querySelector ".menu-item-activated"
-        interactions.on domItem, "click", @_onClick for domItem in @_domItems
-
+        for domItem in @_domItems
+            interactions.on domItem, "click", @_onClick 
+            domItem.addEventListener "mouseenter", @_onOver, false
+            domItem.addEventListener "mouseleave", @_onOut, false
+    
     _onClick: ( e ) =>
         e.preventDefault()
         idx = @_indexOf e.currentTarget
@@ -15,6 +21,14 @@ class Menu
             page( "/experiments/404" )
             return
         page( "/experiments/#{idx + 1}" )
+        @_preview.hide()
+
+    _onOver: ( e ) =>
+        @_preview.update @_indexOf e.currentTarget
+        @_preview.show()
+
+    _onOut: ( e ) =>
+        @_preview.hide()
 
     update: ( idx ) ->
         @_domSelected.classList.remove "activated" if @_domSelected
