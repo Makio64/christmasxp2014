@@ -1,6 +1,7 @@
 Menu = require "experiments/Menu"
 XP = require "experiments/XP"
 Infos = require "experiments/Infos"
+Share = require "experiments/Share"
 datas = require( "data.json" ).experiments
 
 class Experiments
@@ -10,6 +11,7 @@ class Experiments
 
         @_infos = new Infos()
         @_menu = new Menu()
+        @_share = new Share()
 
         page( "/experiments/", @_showPage )
         page( "/experiments/:id", @_showPage )

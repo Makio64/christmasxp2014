@@ -595,7 +595,7 @@ module.exports = new Interactions;
 
 
 },{}],4:[function(require,module,exports){
-var Experiments, Infos, Menu, XP, datas,
+var Experiments, Infos, Menu, Share, XP, datas,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 Menu = require("experiments/Menu");
@@ -603,6 +603,8 @@ Menu = require("experiments/Menu");
 XP = require("experiments/XP");
 
 Infos = require("experiments/Infos");
+
+Share = require("experiments/Share");
 
 datas = require("data.json").experiments;
 
@@ -612,6 +614,7 @@ Experiments = (function() {
     this._xp = null;
     this._infos = new Infos();
     this._menu = new Menu();
+    this._share = new Share();
     page("/experiments/", this._showPage);
     page("/experiments/:id", this._showPage);
     page("/2014/experiments/", this._showPage);
@@ -654,7 +657,7 @@ module.exports = Experiments;
 
 
 
-},{"data.json":2,"experiments/Infos":5,"experiments/Menu":6,"experiments/XP":8}],5:[function(require,module,exports){
+},{"data.json":2,"experiments/Infos":5,"experiments/Menu":6,"experiments/Share":8,"experiments/XP":9}],5:[function(require,module,exports){
 var Infos, interactions,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -899,6 +902,56 @@ module.exports = Preview;
 
 
 },{"data.json":2}],8:[function(require,module,exports){
+var Share, interactions,
+  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+interactions = require("common/interactions");
+
+Share = (function() {
+  function Share() {
+    this._onTwitter = __bind(this._onTwitter, this);
+    this._onFB = __bind(this._onFB, this);
+    this._domShareFb = document.querySelector(".share--fb");
+    this._domShareTwitter = document.querySelector(".share--twitter");
+    interactions.on(this._domShareFb, "click", this._onFB);
+    interactions.on(this._domShareTwitter, "click", this._onTwitter);
+  }
+
+  Share.prototype.update = function(_data) {
+    this._data = _data;
+  };
+
+  Share.prototype._onFB = function(e) {
+    var url;
+    e.preventDefault();
+    url = "https://www.facebook.com/sharer/sharer.php";
+    url += "?u=" + encodeURIComponent("http://christmasexperiments/experiments/" + this._data.idx);
+    url += "&message=" + encodeURIComponent("Come and discover this Christmas Experiment!");
+    return this._openPopup(url);
+  };
+
+  Share.prototype._onTwitter = function(e) {
+    var url;
+    e.preventDefault();
+    url = "https://twitter.com/share?";
+    url += "text=" + encodeURIComponent("Come and discover this Christmas Experiment!");
+    url += "&url=" + encodeURIComponent("http://christmasexperiments/experiments/" + this._data.idx) + "/";
+    return this._openPopup(url);
+  };
+
+  Share.prototype._openPopup = function(url) {
+    return window.open(url, "", "top=100, left=200, width=600, height = 500");
+  };
+
+  return Share;
+
+})();
+
+module.exports = Share;
+
+
+
+},{"common/interactions":3}],9:[function(require,module,exports){
 var XP;
 
 XP = (function() {

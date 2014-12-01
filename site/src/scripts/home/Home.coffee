@@ -3,6 +3,7 @@ getIndex = require "common/getIndex"
 Menu = require "home/Menu"
 Artists = require "home/Artists"
 About = require "home/About"
+Share = require "home/Share"
 xps = require "home/xps"
 TitleAnim = require "home/TitleAnim"
 
@@ -25,6 +26,7 @@ class Home
         # modules with show/hide
         @_artists = new Artists
         @_about = new About  
+        @_share = new Share
 
         @_currentModule = null
 
