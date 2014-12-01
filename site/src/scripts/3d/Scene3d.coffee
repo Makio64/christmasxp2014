@@ -26,7 +26,14 @@ class Scene3d extends Emitter
 		@opacity = 1
 		@fragments = []
 		@hitboxs = []
-		@maxDate = 2
+
+		@maxDate = 0
+		xps = require( "data.json" ).experiments
+		for xp in xps
+			if(xp.isAvailable)
+				@maxDate++
+		
+		
 		@positions = {};
 		@positions.base = {
 			fragments : []
@@ -347,7 +354,50 @@ class Scene3d extends Emitter
 			@mouse.x = (e.clientX / window.innerWidth) * 2 - 1
 			@mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
 		,false)
+		window.addEventListener( 'click', (e)=>
+			@mouse.x = (e.clientX / window.innerWidth) * 2 - 1
+			@mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
+			vector = new THREE.Vector3( @mouse.x, @mouse.y, .5 )
+			vector.unproject( Stage3d.camera )
+			raycaster = new THREE.Raycaster( Stage3d.camera.position, vector.sub( Stage3d.camera.position ).normalize() )
+			if(@hitboxs)
+				console.log('bouboup')
+				intersects = raycaster.intersectObjects( @hitboxs, false )
+				if( intersects.length > 0 )
+					document.body.style.cursor = 'pointer'
+					frag = intersects[0].object.fragment
+					@currentFragment = frag
+					@gotoXP(frag.name)
+		, false)
+
+		if window.DeviceMotionEvent != undefined
+
+			map = ( num, min1, max1, min2, max2, round ) =>
+
+				num1 = ( num - min1 ) / ( max1 - min1 )
+				num2 = ( num1 * ( max2 - min2 ) ) + min2
+
+				return num2
+
+			window.ondevicemotion = ( evt ) =>
+        ax = event.accelerationIncludingGravity.x
+        ay = event.accelerationIncludingGravity.y
+        # console.log ax
+        if ax >= 5 then ax = 5
+        else if ax <= -5 then ax = -5
+
+        if ay >= 6 then ay = 6
+        else if ay <= -6 then ay = -6
+
+        mx = map ax, 5, -5, 0, window.innerWidth
+        my = map ay, 6, -6, 0, window.innerHeight
+
+        @mouse.x = (mx / window.innerWidth) * 2 - 1
+        @mouse.y = (my / window.innerHeight) * 2 - 1
+        
 		return
+
+
 
 	onDiamondLoad:(geometry)=>
 		@computeGeometry(geometry)
@@ -392,8 +442,8 @@ class Scene3d extends Emitter
 		material.shading = @shading
 		material.side = THREE.DoubleSide
 		material.combine = THREE.AddOperation
-		material.reflectivity = .5
-		material.opacity = 0.65
+		material.reflectivity = .1
+		material.opacity = 0.55
 
 		@mirror = new THREE.Mesh(geometry,material)
 		@container.add(@mirror)
@@ -635,6 +685,15 @@ class Scene3d extends Emitter
 		@currentIndex = index
 		@globalAlpha = 0.01
 		return
+
+	gotoXP:(index)=>
+		console.log(index)
+		if parseInt(index) > @maxDate
+			return
+
+		window.location = "./experiments/"+parseInt(index)
+		return
+		
 
 	pause:()->
 		return
