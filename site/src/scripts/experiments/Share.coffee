@@ -33,11 +33,6 @@ class Share
             link: "http://christmasexperiments.com/"
             picture: "http://christmasexperiments.com/experiments/xps/#{@_data.idx}/share.jpg"
         , ( response ) ->
-        # FB.ui({
-        #   method: 'feed',
-        #   redirect_uri: window.location,
-        #   display: window.location + "/share.jpg"
-        # }, function(response){});
 
     _onTwitter: ( e ) =>
         e.preventDefault()
