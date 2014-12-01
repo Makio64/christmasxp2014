@@ -179,7 +179,7 @@ class Scene3d extends Emitter
 			map = THREE.ImageUtils.loadTexture('./3d/textures/circle.png')
 			@bufferGeometry = new THREE.BufferGeometry()
 			@bufferGeometry.fromGeometry(@backgroundGeometry)
-			material = new THREE.PointCloudMaterial({depthTest:false,transparent:true, map:map, color:0xFFFFFF,size:64,sizeAttenuation:true,fog:false})
+			material = new THREE.PointCloudMaterial({depthTest:false,transparent:true, map:map, color:0xFFFFFF,size:64,sizeAttenuation:true,fog:false,opacity:.1})
 			@pointcloud = new THREE.PointCloud(@bufferGeometry,material)
 			@pointcloud.position.z -= 945.999
 			@pointcloud.position.y += 10

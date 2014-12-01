@@ -506,7 +506,8 @@ Scene3d = (function(_super) {
           color: 0xFFFFFF,
           size: 64,
           sizeAttenuation: true,
-          fog: false
+          fog: false,
+          opacity: .1
         });
         _this.pointcloud = new THREE.PointCloud(_this.bufferGeometry, material);
         _this.pointcloud.position.z -= 945.999;
