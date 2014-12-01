@@ -664,7 +664,7 @@ Infos = (function() {
     this._dom = document.querySelector(".infos");
     this._domLayer = document.querySelector(".infos-layer");
     this._domBtOpen = document.querySelector(".experiment-nav-entry--infos");
-    this._domBtClose = this._dom.querySelector(".bt-close");
+    this._domBtClose = this._dom.querySelector(".bt-close-holder");
     interactions.on(this._domBtOpen, "click", this._onOpen);
     interactions.on(this._domBtClose, "click", this._onClose);
     this._domIdx = document.querySelector(".infos-idx");
@@ -673,6 +673,7 @@ Infos = (function() {
     this._domSubtitle = document.querySelector(".infos-subtitle");
     this._domDesc = document.querySelector(".infos-desc");
     this._domParts = document.querySelector(".infos-parts");
+    this._domExperiment = document.querySelector(".experiment");
   }
 
   Infos.prototype._onOpen = function(e) {
@@ -723,6 +724,13 @@ Infos = (function() {
       },
       ease: Cubic.easeInOut
     });
+    TweenLite.to(this._domExperiment, .5, {
+      css: {
+        x: 230,
+        force3D: true
+      },
+      ease: Cubic.easeInOut
+    });
     return TweenLite.to(this._domLayer, .5, {
       css: {
         autoAlpha: .5,
@@ -734,6 +742,13 @@ Infos = (function() {
 
   Infos.prototype.hide = function() {
     TweenLite.to(this._dom, .5, {
+      css: {
+        x: 0,
+        force3D: true
+      },
+      ease: Cubic.easeInOut
+    });
+    TweenLite.to(this._domExperiment, .5, {
       css: {
         x: 0,
         force3D: true

@@ -6,7 +6,7 @@ class Infos
         @_dom = document.querySelector ".infos"
         @_domLayer = document.querySelector ".infos-layer"
         @_domBtOpen = document.querySelector ".experiment-nav-entry--infos"
-        @_domBtClose = @_dom.querySelector ".bt-close"
+        @_domBtClose = @_dom.querySelector ".bt-close-holder"
         interactions.on @_domBtOpen, "click", @_onOpen
         interactions.on @_domBtClose, "click", @_onClose
 
@@ -16,6 +16,8 @@ class Infos
         @_domSubtitle = document.querySelector ".infos-subtitle"
         @_domDesc = document.querySelector ".infos-desc"
         @_domParts = document.querySelector ".infos-parts"
+
+        @_domExperiment = document.querySelector ".experiment"
 
     _onOpen: ( e ) =>
         e.preventDefault()
@@ -57,6 +59,12 @@ class Infos
                 force3D: true
             ease: Cubic.easeInOut
 
+        TweenLite.to @_domExperiment, .5,
+            css:
+                x: 230
+                force3D: true
+            ease: Cubic.easeInOut
+
         TweenLite.to @_domLayer, .5,
             css:
                 autoAlpha: .5
@@ -65,6 +73,12 @@ class Infos
 
     hide: ->
         TweenLite.to @_dom, .5,
+            css:
+                x: 0
+                force3D: true
+            ease: Cubic.easeInOut
+
+        TweenLite.to @_domExperiment, .5,
             css:
                 x: 0
                 force3D: true
