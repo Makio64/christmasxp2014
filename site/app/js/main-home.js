@@ -1249,13 +1249,14 @@ Menu = (function() {
   };
 
   Menu.prototype._onNavChange = function(id) {
+    if (id !== "credits") {
+      this._credits.hide();
+    }
     if (id !== "" && id !== "credits") {
       if (id === "artists") {
         this._activate(".menu-entry--artists");
-        this._credits.hide();
       } else {
         this._activate(".menu-entry--about");
-        this._credits.hide();
       }
       if (window.innerWidth > 640) {
         return this._showMenuLight();
@@ -1322,12 +1323,14 @@ module.exports = Menu;
 
 
 },{"common/anim/IceAnim":3,"common/interactions":5,"common/nav":6,"home/Credits":9}],13:[function(require,module,exports){
-var MobileMenu, interactions, nav,
+var Credits, MobileMenu, interactions, nav,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 interactions = require("common/interactions");
 
 nav = require("common/nav");
+
+Credits = require("home/Credits");
 
 MobileMenu = (function() {
   MobileMenu.prototype.dom = null;
@@ -1457,7 +1460,7 @@ module.exports = MobileMenu;
 
 
 
-},{"common/interactions":5,"common/nav":6}],14:[function(require,module,exports){
+},{"common/interactions":5,"common/nav":6,"home/Credits":9}],14:[function(require,module,exports){
 var IceAnim, TitleAnim, datas;
 
 IceAnim = require("common/anim/IceAnim");

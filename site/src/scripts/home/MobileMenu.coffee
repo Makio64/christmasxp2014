@@ -1,5 +1,6 @@
 interactions = require "common/interactions"
 nav = require "common/nav"
+Credits = require "home/Credits"
 
 class MobileMenu 
 
