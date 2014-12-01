@@ -9,12 +9,13 @@ class Artists
         @domNoMobile = @dom.querySelector ".artists-content.no-mobile"
 
         @_domEntries = @domNoMobile.querySelector ".artists-entries"
+        @_domEntriesHolder = @domNoMobile.querySelector ".artists-entries-holder"
         @_domEntriesItems = @domNoMobile.querySelectorAll ".artists-entry"
         @_domEntriesHolders = @domNoMobile.querySelectorAll ".artists-entry-holder"
         @_domBtClose = @domNoMobile.querySelector ".bt-close-holder"
 
         @_countEntries = @_domEntriesItems.length
-        @_domEntries.addEventListener "mousewheel", @_onMouseWheel, false
+        @_domEntriesHolder.addEventListener "mousewheel", @_onMouseWheel, false
         if interactions.isTouchDevice
             interactions.on @_domEntries, "down", @_onDragStart, false
         @_py = 0

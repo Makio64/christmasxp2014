@@ -47,7 +47,15 @@ mixin _artists-entry-holder( i )
       span.artists-entry-content
         a.artists-entry-author(href=artists[ i ].site, target="_blank")= artists[ i ].author
         span.artists-entry-desc= artists[ i ].bio
-        a.artists-entry-day(href="/experiments/#{artists[ i ].idx}", target="_blank")= artists[ i ].idx
+        a.artists-entry-day(href="/experiments/#{artists[ i ].idx}", target="_blank", class= artists[ i ].idx > idx ? "not-released" : "" )
+          - if ( artists[ i ].idx > idx )
+            span.artists-entry-day-holder
+              span.name NOT RELEASED - 
+              span.idx= artists[ i ].idx
+          - else 
+            span.artists-entry-day-holder
+              span.name VIEW EXPERIMENTS - 
+              span.idx= artists[ i ].idx
 
 mixin _mobile-artists-entry-holder( i )
   img.artists-entry-avatar(src="img/avatars/#{artists[ i ].preview}", width="155", height="155")

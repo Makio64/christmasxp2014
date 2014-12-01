@@ -1239,6 +1239,7 @@ position relative {
   vertical-align: middle;
   padding-top: 15px;
   padding-bottom: 15px;
+  overflow: hidden;
 }
 @media screen and (max-width: 640px) {
   .artists-entry-holder {
@@ -1263,6 +1264,10 @@ position relative {
   border-bottom: 1px solid #f75568;
   letter-spacing: 1px;
 }
+.artists-entry-author:hover {
+  color: #bb4250;
+  border-color: #bb4250;
+}
 .artists-entry-desc {
   font: normal 12px "source_sans_proregular";
   color: #051d6b;
@@ -1276,7 +1281,7 @@ position relative {
   display: inline-block;
   margin-top: 15px;
   background-color: #f75568;
-  width: 30px;
+  width: 31px;
   height: 30px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
@@ -1284,6 +1289,55 @@ position relative {
   color: #fff;
   letter-spacing: 1px;
   text-decoration: none;
+  overflow: hidden;
+  -webkit-transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -moz-transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -ms-transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.artists-entry-day span {
+  display: inline-block;
+}
+.artists-entry-day .artists-entry-day-holder {
+  position: absolute;
+  top: 0;
+  left: -138px;
+  width: 185px;
+  -webkit-transition: left 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -moz-transition: left 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: left 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -ms-transition: left 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: left 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.artists-entry-day .name {
+  font: normal 12px "source_sans_proregular";
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+.artists-entry-day .idx {
+  margin-left: 2px;
+}
+.artists-entry-day:hover {
+  width: 185px;
+}
+.artists-entry-day:hover .artists-entry-day-holder {
+  left: 0;
+}
+.artists-entry-day:hover .name {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.artists-entry-day.not-released {
+  background-color: #e0e0e0;
+}
+.artists-entry-day.not-released .artists-entry-day-holder {
+  left: -125px;
+}
+.artists-entry-day.not-released:hover .artists-entry-day-holder {
+  left: 0;
 }
 @media screen and (max-width: 640px) {
   .artists {

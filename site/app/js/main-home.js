@@ -30,6 +30,7 @@ loading.start();
 
 },{"3d/Main3d":3,"home/Home":13,"home/Loading":14,"home/MobileMenu":16}],2:[function(require,module,exports){
 module.exports={
+    "idx": 1,
     "experiments": [
         {
             "idx": 1,
@@ -2587,11 +2588,12 @@ Artists = (function() {
     this.dom = document.querySelector(".artists");
     this.domNoMobile = this.dom.querySelector(".artists-content.no-mobile");
     this._domEntries = this.domNoMobile.querySelector(".artists-entries");
+    this._domEntriesHolder = this.domNoMobile.querySelector(".artists-entries-holder");
     this._domEntriesItems = this.domNoMobile.querySelectorAll(".artists-entry");
     this._domEntriesHolders = this.domNoMobile.querySelectorAll(".artists-entry-holder");
     this._domBtClose = this.domNoMobile.querySelector(".bt-close-holder");
     this._countEntries = this._domEntriesItems.length;
-    this._domEntries.addEventListener("mousewheel", this._onMouseWheel, false);
+    this._domEntriesHolder.addEventListener("mousewheel", this._onMouseWheel, false);
     if (interactions.isTouchDevice) {
       interactions.on(this._domEntries, "down", this._onDragStart, false);
     }
