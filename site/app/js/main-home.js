@@ -837,6 +837,9 @@ Artists = (function() {
   }
 
   Artists.prototype._onDragStart = function(e) {
+    if (window.innerWidth <= 640) {
+      return;
+    }
     e.preventDefault();
     this._lastY = e.y;
     interactions.on(this._domEntries, "move", this._onDragMove, false);
@@ -1450,12 +1453,10 @@ MobileMenu = (function() {
     this._hide = __bind(this._hide, this);
     this._show = __bind(this._show, this);
     this._toggleMenu = __bind(this._toggleMenu, this);
-    console.log('[MobileMenu constructor]');
     this.dom = document.querySelector('.mobile-menu');
     this.domNavbar = document.querySelector('.mobile-navbar');
     this._domMenuCTA = this.domNavbar.querySelector('.menuCTA');
     this._domCloseBtn = this.dom.querySelector('.bt-close-holder');
-    console.log(this.dom.querySelector('.bt-close-holder'));
     interactions.on(this._domMenuCTA, 'click', this._show);
     interactions.on(this._domCloseBtn, 'click', this._hide);
     null;
@@ -1476,9 +1477,13 @@ MobileMenu = (function() {
       evt.preventDefault();
     }
     this.dom.style.display = 'table';
+    if (this._transitionTimer) {
+      clearInterval(this._transitionTimer);
+    }
     this._transitionTimer = setTimeout((function(_this) {
       return function() {
-        return _this.dom.classList.add('transitionIn');
+        _this.dom.classList.add('transitionIn');
+        return document.body.scrollTop = 200;
       };
     })(this), 100);
     return null;
@@ -1489,13 +1494,16 @@ MobileMenu = (function() {
       evt.preventDefault();
     }
     this.dom.classList.add('transitionOut');
+    if (this._transitionTimer) {
+      clearInterval(this._transitionTimer);
+    }
     this._transitionTimer = setTimeout((function(_this) {
       return function() {
         _this.dom.classList.remove('transitionIn');
         _this.dom.classList.remove('transitionOut');
         return _this.dom.style.display = 'none';
       };
-    })(this), 1500);
+    })(this), 1300);
     return null;
   };
 

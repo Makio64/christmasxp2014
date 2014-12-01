@@ -12,19 +12,14 @@ class MobileMenu
   _transitionTimer: null
 
   constructor: ->
-    console.log '[MobileMenu constructor]'
-
     @dom    = document.querySelector '.mobile-menu'
     @domNavbar = document.querySelector '.mobile-navbar'
 
     @_domMenuCTA = @domNavbar.querySelector '.menuCTA'
     @_domCloseBtn = @dom.querySelector '.bt-close-holder'
 
-    console.log @dom.querySelector '.bt-close-holder'
-
     interactions.on @_domMenuCTA, 'click', @_show
     interactions.on @_domCloseBtn, 'click', @_hide
-
 
     null
 
@@ -42,30 +37,30 @@ class MobileMenu
 
     @dom.style.display = 'table'
 
+    if ( @_transitionTimer ) then clearInterval( @_transitionTimer )
+
     @_transitionTimer = setTimeout =>
       @dom.classList.add 'transitionIn'
+      document.body.scrollTop = 200
     , 100
 
     null
 
 
   _hide: ( evt ) =>
+    
     if ( evt ) then evt.preventDefault()
 
-    
-    
     @dom.classList.add 'transitionOut'
+
+    if ( @_transitionTimer ) then clearInterval( @_transitionTimer )
 
     @_transitionTimer = setTimeout =>
       @dom.classList.remove 'transitionIn'
       @dom.classList.remove 'transitionOut'
       @dom.style.display = 'none'
-    , 1500
+    , 1300
     
-    
-
-    
-
     null
 
 
