@@ -997,10 +997,9 @@ body {
   -ms-perspective: 1000;
   perspective: 1000;
 }
-<<<<<<< HEAD
 .artists .bt-close .icon {
   left: 0;
-=======
+}
 @media screen and (max-width: 640px) {
   .artists {
     width: 100%;
@@ -1012,7 +1011,6 @@ body {
   .artists .borders {
     display: none !important;
   }
->>>>>>> dcbe93faceec80a844ca6262f200c17bcdf22f65
 }
 .artists-content {
   position: absolute;
@@ -1280,10 +1278,9 @@ position relative {
   -ms-perspective: 1000;
   perspective: 1000;
 }
-<<<<<<< HEAD
 .about .bt-close .icon {
   left: 0;
-=======
+}
 @media screen and (max-width: 640px) {
   .about {
     width: 100%;
@@ -1291,7 +1288,6 @@ position relative {
     top: 60px;
     background: #fafafa;
   }
->>>>>>> dcbe93faceec80a844ca6262f200c17bcdf22f65
 }
 .about-content {
   position: absolute;
