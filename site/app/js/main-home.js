@@ -976,13 +976,17 @@ Scene3d = (function(_super) {
         vector.unproject(Stage3d.camera);
         raycaster = new THREE.Raycaster(Stage3d.camera.position, vector.sub(Stage3d.camera.position).normalize());
         if (_this.hitboxs) {
-          console.log('bouboup');
           intersects = raycaster.intersectObjects(_this.hitboxs, false);
           if (intersects.length > 0) {
-            document.body.style.cursor = 'pointer';
             frag = intersects[0].object.fragment;
             _this.currentFragment = frag;
             return _this.gotoXP(frag.name);
+          } else if (_this.diamond && _this.mirror) {
+            intersects = raycaster.intersectObjects([_this.diamond, _this.mirror], false);
+            if (intersects.length > 0) {
+              console.log('touche', _this.currentFragment, _this.currentFragment.name);
+              return _this.gotoXP(_this.currentFragment.name);
+            }
           }
         }
       };
@@ -1154,6 +1158,7 @@ Scene3d = (function(_super) {
       this.positions.base.fragments.push(o.position.clone());
       this.computeGeometry(o.geometry);
       this.fragments.push(o);
+      this.currentFragment = o;
       Stage3d.add(o);
     }
     for (i = _i = 0; _i < 24; i = _i += 1) {
@@ -1420,15 +1425,28 @@ Scene3d = (function(_super) {
       if (intersects.length > 0) {
         document.body.style.cursor = 'pointer';
         frag = intersects[0].object.fragment;
-        this.currentFragment = frag;
-        this.showXP(frag.name);
+        if (parseInt(frag.name) < this.maxDate) {
+          this.currentFragment = frag;
+          this.showXP(frag.name);
+        } else if (this.isOver) {
+          this.isOver = false;
+          this.emit("out");
+        }
       } else {
         if (this.isOver) {
           this.isOver = false;
           this.emit("out");
         }
-        document.body.style.cursor = 'auto';
-        this.currentFragment = null;
+        if (this.diamond && this.mirror) {
+          intersects = raycaster.intersectObjects([this.diamond, this.mirror], false);
+          if (intersects.length > 0) {
+            document.body.style.cursor = 'pointer';
+          } else {
+            document.body.style.cursor = 'auto';
+          }
+        } else {
+          document.body.style.cursor = 'auto';
+        }
       }
     }
     if (this.currentFragment) {

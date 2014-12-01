@@ -384,13 +384,18 @@ class Scene3d extends Emitter
 			vector.unproject( Stage3d.camera )
 			raycaster = new THREE.Raycaster( Stage3d.camera.position, vector.sub( Stage3d.camera.position ).normalize() )
 			if(@hitboxs)
-				console.log('bouboup')
 				intersects = raycaster.intersectObjects( @hitboxs, false )
 				if( intersects.length > 0 )
-					document.body.style.cursor = 'pointer'
 					frag = intersects[0].object.fragment
 					@currentFragment = frag
 					@gotoXP(frag.name)
+				else if(@diamond && @mirror)
+					intersects = raycaster.intersectObjects([@diamond,@mirror] , false )
+					if intersects.length > 0
+						console.log('touche',@currentFragment,@currentFragment.name)
+						@gotoXP(@currentFragment.name)
+
+					
 		, false)
 
 		if window.DeviceMotionEvent != undefined
@@ -532,6 +537,7 @@ class Scene3d extends Emitter
 
 			@computeGeometry(o.geometry)
 			@fragments.push(o)
+			@currentFragment = o
 			Stage3d.add(o)
 		
 		for i in [0...24] by 1
@@ -786,17 +792,31 @@ class Scene3d extends Emitter
 		
 		if(@hitboxs)
 			intersects = raycaster.intersectObjects( @hitboxs, false )
-			if( intersects.length > 0 )
+			if( intersects.length > 0)
 				document.body.style.cursor = 'pointer'
 				frag = intersects[0].object.fragment
-				@currentFragment = frag
-				@showXP(frag.name)
+				if parseInt(frag.name) < @maxDate
+					@currentFragment = frag
+					@showXP(frag.name)
+				else if(@isOver)
+					@isOver = false
+					@emit "out"
 			else
 				if(@isOver)
 					@isOver = false
 					@emit "out"
-				document.body.style.cursor = 'auto'
-				@currentFragment = null
+				if @diamond && @mirror
+					intersects = raycaster.intersectObjects([@diamond,@mirror] , false )
+					if intersects.length > 0
+						document.body.style.cursor = 'pointer'
+					else
+						document.body.style.cursor = 'auto'
+						# @currentFragment = null
+				else
+					document.body.style.cursor = 'auto'
+					# @currentFragment = null
+				
+
 
 		if @currentFragment
 			@currentFragment.scale.x += (1.4-@currentFragment.scale.x)*.05
