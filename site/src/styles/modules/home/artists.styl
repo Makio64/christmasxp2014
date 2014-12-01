@@ -218,20 +218,28 @@
   margin 20px auto 0
   // backface-visibility hidden
 
+.artists-entry-day-fu
+  position relative
+  width 32px
+  height 32px
+
 .artists-entry-day
   position relative
   display inline-block
+  overflow hidden
   margin-top 15px
+  display block
   background-color red
   width 30px
   height 30px
+  margin 0 auto
   border-radius 20px
   font normal 12px/30px bold
   color #fff
   letter-spacing 1px
   text-decoration none
-  // overflow hidden
   transition width .25s cubic-bezier(0.645, 0.045, 0.355, 1.000)
+  backface-visibility hidden
   span
     display inline-block
   .artists-entry-day-holder

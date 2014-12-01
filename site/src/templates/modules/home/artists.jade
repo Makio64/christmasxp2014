@@ -48,6 +48,7 @@ mixin _artists-entry-holder( i )
         a.artists-entry-author(href=artists[ i ].site, target="_blank")= artists[ i ].author
         span.artists-entry-desc= artists[ i ].bio
         a.artists-entry-day(href="/experiments/#{artists[ i ].idx}", target="_blank", class= artists[ i ].idx > idx ? "not-released" : "" )
+          //- spam.artists-entry-day-fu
           - if ( artists[ i ].idx > idx )
             span.artists-entry-day-holder
               span.name NOT RELEASED - 

@@ -1276,13 +1276,21 @@ position relative {
   width: 155px;
   margin: 20px auto 0;
 }
+.artists-entry-day-fu {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
 .artists-entry-day {
   position: relative;
   display: inline-block;
+  overflow: hidden;
   margin-top: 15px;
+  display: block;
   background-color: #f75568;
   width: 30px;
   height: 30px;
+  margin: 0 auto;
   -webkit-border-radius: 20px;
   border-radius: 20px;
   font: normal 12px/30px "uni_sansheavy_caps";
@@ -1294,6 +1302,10 @@ position relative {
   -o-transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   -ms-transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .artists-entry-day span {
   display: inline-block;
