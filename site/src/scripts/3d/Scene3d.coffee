@@ -190,7 +190,7 @@ class Scene3d extends Emitter
 	createParticles:()->
 		geometry = new THREE.BufferGeometry();
 		
-		triangles = 200
+		triangles = 400
 		vertices = new THREE.BufferAttribute( new Float32Array( triangles * 3 * 3 ), 3 );
 		
 
@@ -202,7 +202,7 @@ class Scene3d extends Emitter
 
 			x = radius * Math.sin( phi ) * Math.cos( theta ) + Math.random()*2
 			y = radius * Math.cos( phi ) + Math.random()*2
-			z = radius * Math.sin( phi ) * Math.sin( theta ) + Math.random()*2
+			z = radius/2 * Math.sin( phi ) * Math.sin( theta ) + Math.random()*2
 
 			vertices.setXYZ( i, x, y, z );
 

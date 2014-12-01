@@ -777,7 +777,7 @@ Scene3d = (function(_super) {
   Scene3d.prototype.createParticles = function() {
     var geometry, i, material, phi, radius, theta, triangles, vertices, x, y, z, _i, _ref;
     geometry = new THREE.BufferGeometry();
-    triangles = 200;
+    triangles = 400;
     vertices = new THREE.BufferAttribute(new Float32Array(triangles * 3 * 3), 3);
     for (i = _i = 0, _ref = vertices.length; _i < _ref; i = _i += 1) {
       if (i % 3 === 0) {
@@ -787,7 +787,7 @@ Scene3d = (function(_super) {
       }
       x = radius * Math.sin(phi) * Math.cos(theta) + Math.random() * 2;
       y = radius * Math.cos(phi) + Math.random() * 2;
-      z = radius * Math.sin(phi) * Math.sin(theta) + Math.random() * 2;
+      z = radius / 2 * Math.sin(phi) * Math.sin(theta) + Math.random() * 2;
       vertices.setXYZ(i, x, y, z);
     }
     geometry.addAttribute('position', vertices);
