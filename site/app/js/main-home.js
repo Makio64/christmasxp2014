@@ -585,7 +585,7 @@ Scene3d = (function(_super) {
     this.loadImagesHight = __bind(this.loadImagesHight, this);
     this.parseAtlas = __bind(this.parseAtlas, this);
     this.loadImagesLow = __bind(this.loadImagesLow, this);
-    var i, _i;
+    var i, xp, xps, _i, _j, _len;
     Scene3d.__super__.constructor.apply(this, arguments);
     this.isOver = false;
     this.isReady = false;
@@ -605,7 +605,14 @@ Scene3d = (function(_super) {
     this.opacity = 1;
     this.fragments = [];
     this.hitboxs = [];
-    this.maxDate = 2;
+    this.maxDate = 0;
+    xps = require("data.json").experiments;
+    for (_i = 0, _len = xps.length; _i < _len; _i++) {
+      xp = xps[_i];
+      if (xp.isAvailable) {
+        this.maxDate++;
+      }
+    }
     this.positions = {};
     this.positions.base = {
       fragments: [],
@@ -619,7 +626,7 @@ Scene3d = (function(_super) {
       mirror: null
     };
     this.images = [];
-    for (i = _i = 0; _i < 24; i = _i += 1) {
+    for (i = _j = 0; _j < 24; i = _j += 1) {
       this.currentPosition.fragments[i] = new THREE.Vector3();
     }
     this.currentPosition.diamond = new THREE.Vector3();
@@ -943,17 +950,25 @@ Scene3d = (function(_super) {
           return num2;
         };
       })(this);
-      window.ondevicemotion = (function(_this) {
+      return window.ondevicemotion = (function(_this) {
         return function(evt) {
-          var ax, mx;
+          var ax, ay, mx, my;
           ax = event.accelerationIncludingGravity.x;
+          ay = event.accelerationIncludingGravity.y;
           if (ax >= 5) {
             ax = 5;
           } else if (ax <= -5) {
             ax = -5;
           }
+          if (ay >= 6) {
+            ay = 6;
+          } else if (ay <= -6) {
+            ay = -6;
+          }
           mx = map(ax, 5, -5, 0, window.innerWidth);
-          return _this.mouse.x = (mx / window.innerWidth) * 2 - 1;
+          my = map(ay, 6, -6, 0, window.innerHeight);
+          _this.mouse.x = (mx / window.innerWidth) * 2 - 1;
+          return _this.mouse.y = (my / window.innerHeight) * 2 - 1;
         };
       })(this);
     }
@@ -1433,7 +1448,7 @@ module.exports = Scene3d;
 
 
 
-},{"3d/Stage3d":5}],5:[function(require,module,exports){
+},{"3d/Stage3d":5,"data.json":2}],5:[function(require,module,exports){
 var Scene3d, Stage3d;
 
 Scene3d = require("home/Home");

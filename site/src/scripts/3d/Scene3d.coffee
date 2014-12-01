@@ -28,7 +28,7 @@ class Scene3d extends Emitter
     @hitboxs = []
 
     @maxDate = 0
-    xps = require( "datas.json" ).experiments
+    xps = require( "data.json" ).experiments
     for xp in xps
       if(xp.isAvailable)
         @maxDate++
@@ -365,14 +365,20 @@ class Scene3d extends Emitter
         return num2
 
       window.ondevicemotion = ( evt ) =>
-        ax = event.accelerationIncludingGravity.x;
+        ax = event.accelerationIncludingGravity.x
+        ay = event.accelerationIncludingGravity.y
         # console.log ax
         if ax >= 5 then ax = 5
         else if ax <= -5 then ax = -5
 
+        if ay >= 6 then ay = 6
+        else if ay <= -6 then ay = -6
+
         mx = map ax, 5, -5, 0, window.innerWidth
+        my = map ay, 6, -6, 0, window.innerHeight
 
         @mouse.x = (mx / window.innerWidth) * 2 - 1
+        @mouse.y = (my / window.innerHeight) * 2 - 1
       
 
   onDiamondLoad:(geometry)=>
