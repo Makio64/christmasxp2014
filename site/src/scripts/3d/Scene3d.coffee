@@ -1,4 +1,5 @@
 Stage3d = require "3d/Stage3d"
+nav = require "common/nav"
 
 class Scene3d extends Emitter
 
@@ -402,24 +403,22 @@ class Scene3d extends Emitter
 				return num2
 
 			window.ondevicemotion = ( evt ) =>
-        ax = event.accelerationIncludingGravity.x
-        ay = event.accelerationIncludingGravity.y
-        # console.log ax
-        if ax >= 5 then ax = 5
-        else if ax <= -5 then ax = -5
+		        ax = event.accelerationIncludingGravity.x
+		        ay = event.accelerationIncludingGravity.y
+		        # console.log ax
+		        if ax >= 5 then ax = 5
+		        else if ax <= -5 then ax = -5
 
-        if ay >= 6 then ay = 6
-        else if ay <= -6 then ay = -6
+		        if ay >= 6 then ay = 6
+		        else if ay <= -6 then ay = -6
 
-        mx = map ax, 5, -5, 0, window.innerWidth
-        my = map ay, 6, -6, 0, window.innerHeight
+		        mx = map ax, 5, -5, 0, window.innerWidth
+		        my = map ay, 6, -6, 0, window.innerHeight
 
-        @mouse.x = (mx / window.innerWidth) * 2 - 1
-        @mouse.y = (my / window.innerHeight) * 2 - 1
-        
-		return
-
-
+		        @mouse.x = (mx / window.innerWidth) * 2 - 1
+		        @mouse.y = (my / window.innerHeight) * 2 - 1
+		        
+				return
 
 	onDiamondLoad:(geometry)=>
 		@computeGeometry(geometry)

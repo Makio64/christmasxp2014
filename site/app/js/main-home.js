@@ -556,12 +556,14 @@ module.exports = Main3d;
 
 
 },{"3d/Scene3d":4,"3d/Stage3d":5}],4:[function(require,module,exports){
-var Scene3d, Stage3d,
+var Scene3d, Stage3d, nav,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 Stage3d = require("3d/Stage3d");
+
+nav = require("common/nav");
 
 Scene3d = (function(_super) {
   __extends(Scene3d, _super);
@@ -1502,7 +1504,7 @@ module.exports = Scene3d;
 
 
 
-},{"3d/Stage3d":5,"data.json":2}],5:[function(require,module,exports){
+},{"3d/Stage3d":5,"common/nav":9,"data.json":2}],5:[function(require,module,exports){
 var Scene3d, Stage3d;
 
 Scene3d = require("home/Home");
