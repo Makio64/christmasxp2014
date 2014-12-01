@@ -1266,9 +1266,10 @@ position relative {
 .artists-entry-desc {
   font: normal 12px "source_sans_proregular";
   color: #051d6b;
-  margin-top: 20px;
   height: 40px;
   display: block;
+  width: 155px;
+  margin: 20px auto 0;
 }
 .artists-entry-day {
   position: relative;
@@ -1282,6 +1283,7 @@ position relative {
   font: normal 12px/30px "uni_sansheavy_caps";
   color: #fff;
   letter-spacing: 1px;
+  text-decoration: none;
 }
 @media screen and (max-width: 640px) {
   .artists {

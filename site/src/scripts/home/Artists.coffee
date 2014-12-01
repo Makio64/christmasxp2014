@@ -19,7 +19,7 @@ class Artists
             interactions.on @_domEntries, "down", @_onDragStart, false
         @_py = 0
         @_pyCurrent = 0
-        @_yMaxRelative = Math.round( @_countEntries / 6 ) + 2
+        @_yMaxRelative = Math.ceil( @_countEntries / 6 ) + 2
         @_yMax = -@_yMaxRelative * ( document.body.offsetHeight * .5 ) >> 0
         @_lastY = 0
 
@@ -135,7 +135,7 @@ class Artists
             dAdd *= .9
             dAdd = .025 if dAdd < .025
 
-        @_idTimeout = setTimeout @_update, 2000
+        @_idTimeout = setTimeout @_update, 500
 
     _update: =>
         @_pyCurrent += ( @_py - @_pyCurrent ) * .1
