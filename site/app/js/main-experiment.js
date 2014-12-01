@@ -789,6 +789,11 @@ Menu = (function() {
   };
 
   Menu.prototype.update = function(idx) {
+    if (this._domSelected) {
+      this._domSelected.classList.remove("activated");
+    }
+    this._domSelected = this._domItems[idx - 1].querySelector("a");
+    this._domSelected.classList.add("activated");
     this._domCnt.removeChild(this._domItemActivated);
     return this._domCnt.insertBefore(this._domItemActivated, this._domItems[idx - 1]);
   };

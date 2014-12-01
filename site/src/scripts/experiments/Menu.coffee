@@ -17,6 +17,10 @@ class Menu
         page( "/experiments/#{idx + 1}" )
 
     update: ( idx ) ->
+        @_domSelected.classList.remove "activated" if @_domSelected
+        @_domSelected = @_domItems[ idx - 1 ].querySelector "a"
+        @_domSelected.classList.add "activated"
+
         @_domCnt.removeChild @_domItemActivated
         @_domCnt.insertBefore @_domItemActivated, @_domItems[ idx - 1 ]
 

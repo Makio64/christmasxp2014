@@ -1057,7 +1057,7 @@ body {
 }
 @media screen and (max-width: 640px) {
   .artists-content.no-mobile {
-    display: none;
+    display: none !important;
   }
   .artists-content.mobile {
     display: block;
