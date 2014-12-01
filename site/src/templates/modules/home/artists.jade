@@ -47,10 +47,7 @@ mixin _artists-entry-holder( i )
       span.artists-entry-content
         span.artists-entry-author= experiments[ i ].author
         span.artists-entry-desc= experiments[ i ].bio
-        - if ( i <= 10 )
-          span.artists-entry-day 0#{i + 1}
-        - else
-          span.artists-entry-day= i + 1
+        span.artists-entry-day= experiments[ i ].idx
 
 mixin _mobile-artists-entry-holder( i )
   img.artists-entry-avatar(src="img/avatars/#{i + 1}.png", width="155", height="155")
@@ -58,7 +55,4 @@ mixin _mobile-artists-entry-holder( i )
     a.artists-entry-author(href=experiments[ i ].author)
       span= experiments[ i ].author
     span.artists-entry-desc= experiments[ i ].bio
-    - if ( i < 10 )
-      span.artists-entry-day 0#{i + 1}
-    - else
-      span.artists-entry-day= i + 1
+    span.artists-entry-day= experiments[ i ].idx
