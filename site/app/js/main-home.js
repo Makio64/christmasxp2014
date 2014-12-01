@@ -2194,10 +2194,11 @@ Artists = (function() {
     this._onDragMove = __bind(this._onDragMove, this);
     this._onDragStart = __bind(this._onDragStart, this);
     this.dom = document.querySelector(".artists");
-    this._domEntries = document.querySelector(".artists-entries");
-    this._domEntriesItems = document.querySelectorAll(".artists-entry");
-    this._domEntriesHolders = this.dom.querySelectorAll(".artists-entry-holder");
-    this._domBtClose = this.dom.querySelector(".bt-close-holder");
+    this.domNoMobile = this.dom.querySelector(".artists-content.no-mobile");
+    this._domEntries = this.domNoMobile.querySelector(".artists-entries");
+    this._domEntriesItems = this.domNoMobile.querySelectorAll(".artists-entry");
+    this._domEntriesHolders = this.domNoMobile.querySelectorAll(".artists-entry-holder");
+    this._domBtClose = this.domNoMobile.querySelector(".bt-close-holder");
     this._countEntries = this._domEntriesItems.length;
     this._domEntries.addEventListener("mousewheel", this._onMouseWheel, false);
     if (interactions.isTouchDevice) {
@@ -2205,7 +2206,7 @@ Artists = (function() {
     }
     this._py = 0;
     this._pyCurrent = 0;
-    this._yMaxRelative = Math.round(this._countEntries / 6);
+    this._yMaxRelative = Math.round(this._countEntries / 6) + 2;
     this._yMax = -this._yMaxRelative * (document.body.offsetHeight * .5) >> 0;
     this._lastY = 0;
     this._idRaf = -1;

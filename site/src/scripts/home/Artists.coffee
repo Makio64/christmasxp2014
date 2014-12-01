@@ -6,11 +6,12 @@ class Artists
 
     constructor: ->
         @dom = document.querySelector ".artists"
+        @domNoMobile = @dom.querySelector ".artists-content.no-mobile"
 
-        @_domEntries = document.querySelector ".artists-entries"
-        @_domEntriesItems = document.querySelectorAll ".artists-entry"
-        @_domEntriesHolders = @dom.querySelectorAll ".artists-entry-holder"
-        @_domBtClose = @dom.querySelector ".bt-close-holder"
+        @_domEntries = @domNoMobile.querySelector ".artists-entries"
+        @_domEntriesItems = @domNoMobile.querySelectorAll ".artists-entry"
+        @_domEntriesHolders = @domNoMobile.querySelectorAll ".artists-entry-holder"
+        @_domBtClose = @domNoMobile.querySelector ".bt-close-holder"
 
         @_countEntries = @_domEntriesItems.length
         @_domEntries.addEventListener "mousewheel", @_onMouseWheel, false
@@ -18,7 +19,7 @@ class Artists
             interactions.on @_domEntries, "down", @_onDragStart, false
         @_py = 0
         @_pyCurrent = 0
-        @_yMaxRelative = Math.round @_countEntries / 6
+        @_yMaxRelative = Math.round( @_countEntries / 6 ) + 2
         @_yMax = -@_yMaxRelative * ( document.body.offsetHeight * .5 ) >> 0
         @_lastY = 0
 
