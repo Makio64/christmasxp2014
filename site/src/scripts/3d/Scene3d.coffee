@@ -369,6 +369,26 @@ class Scene3d extends Emitter
 					@currentFragment = frag
 					@gotoXP(frag.name)
 		, false)
+
+		if window.DeviceMotionEvent != undefined
+
+			map = ( num, min1, max1, min2, max2, round ) =>
+
+				num1 = ( num - min1 ) / ( max1 - min1 )
+				num2 = ( num1 * ( max2 - min2 ) ) + min2
+
+				return num2
+
+			window.ondevicemotion = ( evt ) =>
+				ax = event.accelerationIncludingGravity.x;
+				# console.log ax
+				if ax >= 5 then ax = 5
+				else if ax <= -5 then ax = -5
+
+				mx = map ax, 5, -5, 0, window.innerWidth
+
+				@mouse.x = (mx / window.innerWidth) * 2 - 1
+				return
 		return
 
 	onDiamondLoad:(geometry)=>
