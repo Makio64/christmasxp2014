@@ -1344,6 +1344,9 @@ position relative {
     display: table;
   }
 }
+.about-content.mobile {
+  display: none;
+}
 .about-infos {
   position: relative;
   width: 33%;
