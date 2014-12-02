@@ -734,7 +734,7 @@ body {
 }
 @media screen and (max-width: 640px) {
   .error {
-    display: table;
+    display: none;
     left: 0;
     z-index: 2;
   }
