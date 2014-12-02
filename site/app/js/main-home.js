@@ -30,6 +30,7 @@ loading.start();
 
 },{"3d/Main3d":3,"home/Home":13,"home/Loading":14,"home/MobileMenu":16}],2:[function(require,module,exports){
 module.exports={
+    "idx": 1,
     "experiments": [
         {
             "idx": 1,
@@ -468,16 +469,190 @@ module.exports={
             ]
         }
     ],
-    "tpl": {
-        "author": "",
-        "title": "",
-        "subtitle": "",
-        "desc": "",
-        "site": "#",
-        "isWebGL": false,
-        "isMobile": false,
-        "details": []
-    }
+    "artists": [
+        {
+            "idx": 1,
+            "author": "Guillaume Gouessan",
+            "bio": "Interactive Developer @hellohikimori",
+            "site": "https://twitter.com/superguigui",
+            "preview": "1.png"
+        },
+        {
+            "idx": 2,
+            "author": "Felix Turner",
+            "bio": "Developer @ Airtight Interactive",
+            "site": "https://twitter.com/felixturner",
+            "preview": "2.png"
+        },
+        {
+            "idx": 3,
+            "author": "Nathan Gordon",
+            "bio": "Creative Developer @utlranoir",
+            "site": "https://twitter.com/gordonnl",
+            "preview": "3.png"
+        },
+        {
+            "idx": 4,
+            "author": "David Rosser",
+            "bio": "Programmer and artist @HiReSLondon",
+            "site": "http://twitter.com/davidpaulrosser",
+            "preview": "4.png"
+        },
+        {
+            "idx": 5,
+            "author": "Bruno Simon",
+            "bio": "Developer @AgenceUzik & teacher at @Hetic",
+            "site": "http://bruno-simon.com",
+            "preview": "5.png"
+        },
+        {
+            "idx": 6,
+            "author": "Hector Arellano",
+            "bio": "-",
+            "site": "https://twitter.com/hector_arellano",
+            "preview": "6.png"
+        },
+        {
+            "idx": 7,
+            "author": "Michael Anthony",
+            "bio": "Interactive Director at @active_theory",
+            "site": "http://twitter.com/michaeltheory",
+            "preview": "7.png"
+        },
+        {
+            "idx": 8,
+            "author": "Lin Yi-Wen",
+            "bio": "Coder. Father.",
+            "site": "https://twitter.com/yiwen_lin",
+            "preview": "8.png"
+        },
+        {
+            "idx": 9,
+            "author": "Klas",
+            "bio": "-",
+            "site": "#",
+            "preview": "9.png"
+        },
+        {
+            "idx": 10,
+            "author": "eiji muroichi",
+            "bio": "Visual Designer & Technologist @prty_ny",
+            "site": "http://eiji.muroichi.info/",
+            "preview": "10.png"
+        },
+        {
+            "idx": 11,
+            "author": "Damien Mortini",
+            "bio": "Freelance intern",
+            "site": "https://twitter.com/dmmn_",
+            "preview": "11.png"
+        },
+        {
+            "idx": 12,
+            "author": "Mat Groves",
+            "bio": "Co-founder of @goodboydigital and creator of pixi.js",
+            "site": "https://twitter.com/Doormat23",
+            "preview": "12.png"
+        },
+        {
+            "idx": 13,
+            "author": "William Mapan",
+            "bio": "Coding and plopping stuff",
+            "site": "https://twitter.com/williamapan",
+            "preview": "13.png"
+        },
+        {
+            "idx": 14,
+            "author": "Matt DesLauriers",
+            "bio": "Creative Developer @Jam3",
+            "site": "https://twitter.com/mattdesl",
+            "preview": "14.png"
+        },
+        {
+            "idx": 15,
+            "author": "Floz",
+            "bio": "-",
+            "site": "https://twitter.com/florianzumbrunn",
+            "preview": "15a.png"
+        },
+        {
+            "idx": 15,
+            "author": "FilsDeGraphiste",
+            "bio": "-",
+            "site": "https://twitter.com/filsdegraphiste",
+            "preview": "15b.png"
+        },
+        {
+            "idx": 16,
+            "author": "Silvio",
+            "bio": "Brain-fuck @unit9 ",
+            "site": "https://twitter.com/silviopaganini",
+            "preview": "16.png"
+        },
+        {
+            "idx": 17,
+            "author": "Nicolas Barradeau",
+            "bio": "I do graphics.",
+            "site": "http://barradeau.com/blog/?page_id=6",
+            "preview": "17.png"
+        },
+        {
+            "idx": 18,
+            "author": "David Li",
+            "bio": "-",
+            "site": "http://david.li",
+            "preview": "18.png"
+        },
+        {
+            "idx": 19,
+            "author": "Makio64",
+            "bio": "Initiator of the project & digital crafter",
+            "site": "https://twitter.com/Makio64",
+            "preview": "19.png"
+        },
+        {
+            "idx": 20,
+            "author": "Grgrdvrt",
+            "bio": "-",
+            "site": "https://twitter.com/grgrdvrt",
+            "preview": "20.png"
+        },
+        {
+            "idx": 21,
+            "author": "Is_real",
+            "bio": "Creative technology and a nickel bag of funk at Apple",
+            "site": "https://twitter.com/is__real",
+            "preview": "21.png"
+        },
+        {
+            "idx": 22,
+            "author": "Edan Kwan",
+            "bio": "Author of penis.js and vagina.js. Editor of asshole.io",
+            "site": "https://twitter.com/edankwan",
+            "preview": "22.png"
+        },
+        {
+            "idx": 23,
+            "author": "Bartek",
+            "bio": "I like to code.",
+            "site": "https://twitter.com/bartekd",
+            "preview": "23.png"
+        },
+        {
+            "idx": 24,
+            "author": "Cabibbo",
+            "bio": "Long Live Synesthesia",
+            "site": "https://twitter.com/Cabbibo",
+            "preview": "24a.png"
+        },
+        {
+            "idx": 24,
+            "author": "The Spite",
+            "bio": "Working since the last century to bring new ideas to the web",
+            "site": "https://twitter.com/thespite",
+            "preview": "24b.png"
+        }
+    ]
 }
 
 },{}],3:[function(require,module,exports){
@@ -2413,17 +2588,18 @@ Artists = (function() {
     this.dom = document.querySelector(".artists");
     this.domNoMobile = this.dom.querySelector(".artists-content.no-mobile");
     this._domEntries = this.domNoMobile.querySelector(".artists-entries");
+    this._domEntriesHolder = this.domNoMobile.querySelector(".artists-entries-holder");
     this._domEntriesItems = this.domNoMobile.querySelectorAll(".artists-entry");
     this._domEntriesHolders = this.domNoMobile.querySelectorAll(".artists-entry-holder");
     this._domBtClose = this.domNoMobile.querySelector(".bt-close-holder");
     this._countEntries = this._domEntriesItems.length;
-    this._domEntries.addEventListener("mousewheel", this._onMouseWheel, false);
+    this._domEntriesHolder.addEventListener("mousewheel", this._onMouseWheel, false);
     if (interactions.isTouchDevice) {
       interactions.on(this._domEntries, "down", this._onDragStart, false);
     }
     this._py = 0;
     this._pyCurrent = 0;
-    this._yMaxRelative = Math.round(this._countEntries / 6) + 2;
+    this._yMaxRelative = Math.ceil(this._countEntries / 6) + 2;
     this._yMax = -this._yMaxRelative * (document.body.offsetHeight * .5) >> 0;
     this._lastY = 0;
     this._idRaf = -1;
@@ -2562,7 +2738,7 @@ Artists = (function() {
         dAdd = .025;
       }
     }
-    return this._idTimeout = setTimeout(this._update, 2000);
+    return this._idTimeout = setTimeout(this._update, 500);
   };
 
   Artists.prototype._update = function() {
@@ -3244,12 +3420,14 @@ Share = (function() {
   }
 
   Share.prototype._onFB = function(e) {
-    var url;
     e.preventDefault();
-    url = "https://www.facebook.com/sharer/sharer.php";
-    url += "?u=" + encodeURIComponent("http://christmasexperiments.com/");
-    url += "&message=" + encodeURIComponent("Christmas Experiments 2014, discover the best experiments of the winter!");
-    this._openPopup(url);
+    FB.ui({
+      method: 'feed',
+      name: "Christmas Experiments - 2014",
+      caption: "Christmas Experiments 2014, discover the best experiments of the winter!",
+      link: "http://christmasexperiments.com/",
+      picture: "http://christmasexperiments.com/share.jpg"
+    }, function(response) {});
   };
 
   Share.prototype._onTwitter = function(e) {

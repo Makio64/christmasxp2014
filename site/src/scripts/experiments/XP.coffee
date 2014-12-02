@@ -1,3 +1,5 @@
+webGLDetector = require "common/webGLDetector"
+
 class XP
 
     constructor: ( @_data ) ->
@@ -10,7 +12,7 @@ class XP
 
         if @_data.isAvailable
             if @_data.isWebGL 
-                if window.WebGLRenderingContext
+                if webGLDetector.isAvailable()
                     @_createIframe()
                 else
                     @_createNoWebGL()

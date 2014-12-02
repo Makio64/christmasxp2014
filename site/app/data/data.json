@@ -1,4 +1,5 @@
 {
+    "idx": 1,
     "experiments": [
         {
             "idx": 1,
@@ -437,14 +438,188 @@
             ]
         }
     ],
-    "tpl": {
-        "author": "",
-        "title": "",
-        "subtitle": "",
-        "desc": "",
-        "site": "#",
-        "isWebGL": false,
-        "isMobile": false,
-        "details": []
-    }
+    "artists": [
+        {
+            "idx": 1,
+            "author": "Guillaume Gouessan",
+            "bio": "Interactive Developer @hellohikimori",
+            "site": "https://twitter.com/superguigui",
+            "preview": "1.png"
+        },
+        {
+            "idx": 2,
+            "author": "Felix Turner",
+            "bio": "Developer @ Airtight Interactive",
+            "site": "https://twitter.com/felixturner",
+            "preview": "2.png"
+        },
+        {
+            "idx": 3,
+            "author": "Nathan Gordon",
+            "bio": "Creative Developer @utlranoir",
+            "site": "https://twitter.com/gordonnl",
+            "preview": "3.png"
+        },
+        {
+            "idx": 4,
+            "author": "David Rosser",
+            "bio": "Programmer and artist @HiReSLondon",
+            "site": "http://twitter.com/davidpaulrosser",
+            "preview": "4.png"
+        },
+        {
+            "idx": 5,
+            "author": "Bruno Simon",
+            "bio": "Developer @AgenceUzik & teacher at @Hetic",
+            "site": "http://bruno-simon.com",
+            "preview": "5.png"
+        },
+        {
+            "idx": 6,
+            "author": "Hector Arellano",
+            "bio": "-",
+            "site": "https://twitter.com/hector_arellano",
+            "preview": "6.png"
+        },
+        {
+            "idx": 7,
+            "author": "Michael Anthony",
+            "bio": "Interactive Director at @active_theory",
+            "site": "http://twitter.com/michaeltheory",
+            "preview": "7.png"
+        },
+        {
+            "idx": 8,
+            "author": "Lin Yi-Wen",
+            "bio": "Coder. Father.",
+            "site": "https://twitter.com/yiwen_lin",
+            "preview": "8.png"
+        },
+        {
+            "idx": 9,
+            "author": "Klas",
+            "bio": "-",
+            "site": "#",
+            "preview": "9.png"
+        },
+        {
+            "idx": 10,
+            "author": "eiji muroichi",
+            "bio": "Visual Designer & Technologist @prty_ny",
+            "site": "http://eiji.muroichi.info/",
+            "preview": "10.png"
+        },
+        {
+            "idx": 11,
+            "author": "Damien Mortini",
+            "bio": "Freelance intern",
+            "site": "https://twitter.com/dmmn_",
+            "preview": "11.png"
+        },
+        {
+            "idx": 12,
+            "author": "Mat Groves",
+            "bio": "Co-founder of @goodboydigital and creator of pixi.js",
+            "site": "https://twitter.com/Doormat23",
+            "preview": "12.png"
+        },
+        {
+            "idx": 13,
+            "author": "William Mapan",
+            "bio": "Coding and plopping stuff",
+            "site": "https://twitter.com/williamapan",
+            "preview": "13.png"
+        },
+        {
+            "idx": 14,
+            "author": "Matt DesLauriers",
+            "bio": "Creative Developer @Jam3",
+            "site": "https://twitter.com/mattdesl",
+            "preview": "14.png"
+        },
+        {
+            "idx": 15,
+            "author": "Floz",
+            "bio": "-",
+            "site": "https://twitter.com/florianzumbrunn",
+            "preview": "15a.png"
+        },
+        {
+            "idx": 15,
+            "author": "FilsDeGraphiste",
+            "bio": "-",
+            "site": "https://twitter.com/filsdegraphiste",
+            "preview": "15b.png"
+        },
+        {
+            "idx": 16,
+            "author": "Silvio",
+            "bio": "Brain-fuck @unit9 ",
+            "site": "https://twitter.com/silviopaganini",
+            "preview": "16.png"
+        },
+        {
+            "idx": 17,
+            "author": "Nicolas Barradeau",
+            "bio": "I do graphics.",
+            "site": "http://barradeau.com/blog/?page_id=6",
+            "preview": "17.png"
+        },
+        {
+            "idx": 18,
+            "author": "David Li",
+            "bio": "-",
+            "site": "http://david.li",
+            "preview": "18.png"
+        },
+        {
+            "idx": 19,
+            "author": "Makio64",
+            "bio": "Initiator of the project & digital crafter",
+            "site": "https://twitter.com/Makio64",
+            "preview": "19.png"
+        },
+        {
+            "idx": 20,
+            "author": "Grgrdvrt",
+            "bio": "-",
+            "site": "https://twitter.com/grgrdvrt",
+            "preview": "20.png"
+        },
+        {
+            "idx": 21,
+            "author": "Is_real",
+            "bio": "Creative technology and a nickel bag of funk at Apple",
+            "site": "https://twitter.com/is__real",
+            "preview": "21.png"
+        },
+        {
+            "idx": 22,
+            "author": "Edan Kwan",
+            "bio": "Author of penis.js and vagina.js. Editor of asshole.io",
+            "site": "https://twitter.com/edankwan",
+            "preview": "22.png"
+        },
+        {
+            "idx": 23,
+            "author": "Bartek",
+            "bio": "I like to code.",
+            "site": "https://twitter.com/bartekd",
+            "preview": "23.png"
+        },
+        {
+            "idx": 24,
+            "author": "Cabibbo",
+            "bio": "Long Live Synesthesia",
+            "site": "https://twitter.com/Cabbibo",
+            "preview": "24a.png"
+        },
+        {
+            "idx": 24,
+            "author": "The Spite",
+            "bio": "Working since the last century to bring new ideas to the web",
+            "site": "https://twitter.com/thespite",
+            "preview": "24b.png"
+        }
+    ]
 }
