@@ -82,7 +82,7 @@ a { color: #fff; }
 
 #music-toggle{
 	position:absolute;
-	top:0;
+	bottom:0;
 	right:0;
 	margin:10px;
 	width:40px;

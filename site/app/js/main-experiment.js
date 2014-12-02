@@ -841,7 +841,7 @@ var WebGLDetector;
 WebGLDetector = (function() {
   function WebGLDetector() {
     this._canvasDetector = document.createElement("canvas");
-    this._isAvailable = this._check();
+    this._isAvailable = true;
   }
 
   WebGLDetector.prototype._check = function() {
