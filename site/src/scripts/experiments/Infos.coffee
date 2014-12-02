@@ -35,6 +35,7 @@ class Infos
             @_domIdx.innerHTML = data.idx
         @_domTitle.innerHTML = data.title
         @_domAuthor.innerHTML = data.author
+        @_domAuthor.href = data.site
         @_domSubtitle.innerHTML = data.subtitle
         @_domDesc.innerHTML = data.desc
 
