@@ -40,8 +40,7 @@ class Scene3d extends Emitter
 		xps = require( "data.json" ).experiments
 		for xp in xps
 			if(xp.isAvailable)
-				@maxDate++
-		
+				@maxDate++		
 		
 		@positions = {};
 		@positions.base = {
@@ -747,7 +746,6 @@ class Scene3d extends Emitter
 		return
 
 	gotoXP:(index)=>
-		console.log(index)
 		if parseInt(index) > @maxDate
 			return
 
@@ -778,9 +776,6 @@ class Scene3d extends Emitter
 					@map.needsUpdate = true
 					@envMap.needsUpdate = true
 
-		vector = new THREE.Vector3( @mouse.x, @mouse.y, .5 )
-		vector.unproject( Stage3d.camera )
-		raycaster = new THREE.Raycaster( Stage3d.camera.position, vector.sub( Stage3d.camera.position ).normalize() )
 		t = @time
 
 		if(@diamond && @currentPosition.diamond)
@@ -828,18 +823,24 @@ class Scene3d extends Emitter
 			@fragments[i].position.x = @hitboxs[i].position.x+Math.cos(t/450*@speedScale)*.5*@movementScale
 			@fragments[i].position.z = @hitboxs[i].position.z
 		
+		vector = new THREE.Vector3( @mouse.x, @mouse.y, .5 )
+		vector.unproject( Stage3d.camera )
+		raycaster = new THREE.Raycaster( Stage3d.camera.position, vector.sub( Stage3d.camera.position ).normalize() )
+
 		if(@hitboxs)
 			intersects = raycaster.intersectObjects( @hitboxs, false )
 			if( intersects.length > 0)
 				document.body.style.cursor = 'pointer'
 				frag = intersects[0].object.fragment
-				if parseInt(frag.name) < @maxDate
+				if parseInt(frag.name) <= @maxDate
 					@lastFragment = @currentFragment = frag
-				if(!@isOver)
-					@showXP(frag.name)
+					if(!@isOver || @lastRollOnDiamand)
+						@lastRollOnDiamand = false
+						@showXP(frag.name)
 			else if @diamond && @mirror
 				intersects = raycaster.intersectObjects([@diamond,@mirror] , false )
 				if intersects.length > 0
+					@lastRollOnDiamand = true
 					if(@currentFragment)
 						@showXP(@currentFragment.name)
 					else if(@lastFragment)

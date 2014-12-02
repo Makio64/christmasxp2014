@@ -1590,7 +1590,6 @@ Scene3d = (function(_super) {
   };
 
   Scene3d.prototype.gotoXP = function(index) {
-    console.log(index);
     if (parseInt(index) > this.maxDate) {
       return;
     }
@@ -1619,9 +1618,6 @@ Scene3d = (function(_super) {
         }
       }
     }
-    vector = new THREE.Vector3(this.mouse.x, this.mouse.y, .5);
-    vector.unproject(Stage3d.camera);
-    raycaster = new THREE.Raycaster(Stage3d.camera.position, vector.sub(Stage3d.camera.position).normalize());
     t = this.time;
     if (this.diamond && this.currentPosition.diamond) {
       this.diamond.position.copy(this.currentPosition.diamond);
@@ -1664,20 +1660,25 @@ Scene3d = (function(_super) {
       this.fragments[i].position.x = this.hitboxs[i].position.x + Math.cos(t / 450 * this.speedScale) * .5 * this.movementScale;
       this.fragments[i].position.z = this.hitboxs[i].position.z;
     }
+    vector = new THREE.Vector3(this.mouse.x, this.mouse.y, .5);
+    vector.unproject(Stage3d.camera);
+    raycaster = new THREE.Raycaster(Stage3d.camera.position, vector.sub(Stage3d.camera.position).normalize());
     if (this.hitboxs) {
       intersects = raycaster.intersectObjects(this.hitboxs, false);
       if (intersects.length > 0) {
         document.body.style.cursor = 'pointer';
         frag = intersects[0].object.fragment;
-        if (parseInt(frag.name) < this.maxDate) {
+        if (parseInt(frag.name) <= this.maxDate) {
           this.lastFragment = this.currentFragment = frag;
-        }
-        if (!this.isOver) {
-          this.showXP(frag.name);
+          if (!this.isOver || this.lastRollOnDiamand) {
+            this.lastRollOnDiamand = false;
+            this.showXP(frag.name);
+          }
         }
       } else if (this.diamond && this.mirror) {
         intersects = raycaster.intersectObjects([this.diamond, this.mirror], false);
         if (intersects.length > 0) {
+          this.lastRollOnDiamand = true;
           if (this.currentFragment) {
             this.showXP(this.currentFragment.name);
           } else if (this.lastFragment) {
