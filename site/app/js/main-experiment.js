@@ -22,6 +22,8 @@ module.exports={
             "site": "https://twitter.com/superguigui",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"Polar a beautiful experiments by @superguigui #christmasxp",
+            "msgFacebook":"Polar a beautiful experiments by @superguigui #christmasxp",
             "details": [
                 {
                     "title": "controls",
@@ -44,6 +46,8 @@ module.exports={
             "site": "https://twitter.com/felixturner",
             "isWebGL": true,
             "isMobile": true,
+            "msgTwitter":"Discover Winter Rush a #webgl game by @felixturner! #christmasxp",
+            "msgFacebook":"Discover Winter Rush a #webgl game by @felixturner! #christmasxp",
             "details": [
                 {
                     "title": "controls",
@@ -62,6 +66,8 @@ module.exports={
             "site": "https://twitter.com/gordonnl",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -80,6 +86,8 @@ module.exports={
             "site": "http://twitter.com/davidpaulrosser",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -98,6 +106,8 @@ module.exports={
             "site": "http://bruno-simon.com",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -116,6 +126,8 @@ module.exports={
             "site": "https://twitter.com/hector_arellano",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -134,6 +146,8 @@ module.exports={
             "site": "http://twitter.com/michaeltheory",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -152,6 +166,8 @@ module.exports={
             "site": "https://twitter.com/yiwen_lin",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -170,6 +186,8 @@ module.exports={
             "site": "#",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -188,6 +206,8 @@ module.exports={
             "site": "http://eiji.muroichi.info/",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -206,6 +226,8 @@ module.exports={
             "site": "https://twitter.com/dmmn_",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -224,6 +246,8 @@ module.exports={
             "site": "https://twitter.com/Doormat23",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -242,6 +266,8 @@ module.exports={
             "site": "https://twitter.com/williamapan",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -260,6 +286,8 @@ module.exports={
             "site": "https://twitter.com/mattdesl",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -278,6 +306,8 @@ module.exports={
             "site": "https://twitter.com/florianzumbrunn",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -296,6 +326,8 @@ module.exports={
             "site": "https://twitter.com/silviopaganini",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -314,6 +346,8 @@ module.exports={
             "site": "http://barradeau.com/blog/?page_id=6",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -332,6 +366,8 @@ module.exports={
             "site": "http://david.li",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -350,6 +386,8 @@ module.exports={
             "site": "https://twitter.com/Makio64",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -368,6 +406,8 @@ module.exports={
             "site": "https://twitter.com/grgrdvrt",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -386,6 +426,8 @@ module.exports={
             "site": "https://twitter.com/is__real",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -404,6 +446,8 @@ module.exports={
             "site": "https://twitter.com/edankwan",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -422,6 +466,8 @@ module.exports={
             "site": "https://twitter.com/bartekd",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
@@ -440,6 +486,8 @@ module.exports={
             "site": "https://twitter.com/Cabbibo",
             "isWebGL": true,
             "isMobile": false,
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
                     "title": "controls",
