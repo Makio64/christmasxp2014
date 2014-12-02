@@ -362,7 +362,7 @@ module.exports={
         {
             "idx": 19,
             "isAvailable": false,
-            "author": "Makio64",
+            "author": "David Ronai",
             "bio": "Initiator of the project & digital crafter",
             "title": "Polar",
             "subtitle": "",

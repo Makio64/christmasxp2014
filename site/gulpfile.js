@@ -103,6 +103,18 @@ gulp.task( "template-home", function() {
 
 });
 
+gulp.task( "template-404", function() {
+
+  gulp.src( src.templates + "404.jade")
+      .pipe( plumber() )
+      .pipe( data( getDataXPs() ) )
+      .pipe( jade( { pretty: true, buffer: true, basedir: "src/templates/" } ) )
+        .on( "error", gutil.log )
+        .on( "error", gutil.beep )
+      .pipe( gulp.dest( "app/" ) );
+
+});
+
 gulp.task( "template-experiments", function() {
 
   gulp.src( src.templates + "experiment.jade")
@@ -185,7 +197,7 @@ gulp.task( "watch", function() {
 });
 
 
-gulp.task( "default", [ "bower-install", "browser-sync", "styles", "template-home", "template-experiments", "scripts", "watch", "data" ] );
+gulp.task( "default", [ "bower-install", "browser-sync", "styles", "template-404", "template-home", "template-experiments", "scripts", "watch", "data" ] );
 
 
 
