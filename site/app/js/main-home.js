@@ -1399,7 +1399,9 @@ Scene3d = (function(_super) {
       this.positions.base.fragments.push(o.position.clone());
       this.computeGeometry(o.geometry);
       this.fragments.push(o);
-      this.lastFragment = this.currentFragment = o;
+      if (parseInt(o.name) <= this.maxDate && this.lastFragment === void 0) {
+        this.lastFragment = this.currentFragment = o;
+      }
       Stage3d.add(o, false);
     }
     for (i = _i = 0; _i < 24; i = _i += 1) {

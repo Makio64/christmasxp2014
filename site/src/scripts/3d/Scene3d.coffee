@@ -571,7 +571,9 @@ class Scene3d extends Emitter
 
 			@computeGeometry(o.geometry)
 			@fragments.push(o)
-			@lastFragment = @currentFragment = o
+			if( parseInt(o.name)<=@maxDate && @lastFragment == undefined)
+				@lastFragment = @currentFragment = o
+				# @currentIndex = parseInt(o.name)-1
 			Stage3d.add(o,false)
 		
 		for i in [0...24] by 1
