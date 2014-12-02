@@ -32,6 +32,7 @@ class Experiments
     _showXP: ( idx ) ->
         data = datas[ idx - 1 ]
 
+        @_share.update data
         @_infos.update data
         @_menu.update idx
 
