@@ -105,7 +105,7 @@ class Scene3d extends Emitter
 			if(@debug)
 				@createGUI()
 			@loadImagesHight()
-		@atlas.src = './3d/textures/atlas_low_512.jpg'
+		@atlas.src = './3d/textures/atlas_low_512.jpg?v='+@maxDate
 		return
 
 	parseAtlas:()=>
@@ -134,9 +134,9 @@ class Scene3d extends Emitter
 		@atlas.onload = ()=>
 			@parseAtlas()
 		if(isMobile.any)
-			@atlas.src = './3d/textures/atlas_low_1024.jpg'
+			@atlas.src = './3d/textures/atlas_low_1024.jpg?v='+@maxDate
 		else
-			@atlas.src = './3d/textures/atlas_low_2048.jpg'
+			@atlas.src = './3d/textures/atlas_low_2048.jpg?v='+@maxDate
 		return
 
 	loadMesh:()=>
@@ -556,7 +556,7 @@ class Scene3d extends Emitter
 
 
 			# else
-			# 	material.map = THREE.ImageUtils.loadTexture("./3d/textures/preview"+o.name+".jpg")
+			# 	material.map = THREE.ImageUtils.loadTexture("./3d/textures/preview"+o.name+".jpg?v="+@maxDate)
 			
 
 			hitbox = new THREE.Mesh(hitboxGeo,hitboxMaterial)

@@ -908,7 +908,7 @@ Scene3d = (function(_super) {
         return _this.loadImagesHight();
       };
     })(this);
-    this.atlas.src = './3d/textures/atlas_low_512.jpg';
+    this.atlas.src = './3d/textures/atlas_low_512.jpg?v=' + this.maxDate;
   };
 
   Scene3d.prototype.parseAtlas = function() {
@@ -943,9 +943,9 @@ Scene3d = (function(_super) {
       };
     })(this);
     if (isMobile.any) {
-      this.atlas.src = './3d/textures/atlas_low_1024.jpg';
+      this.atlas.src = './3d/textures/atlas_low_1024.jpg?v=' + this.maxDate;
     } else {
-      this.atlas.src = './3d/textures/atlas_low_2048.jpg';
+      this.atlas.src = './3d/textures/atlas_low_2048.jpg?v=' + this.maxDate;
     }
   };
 

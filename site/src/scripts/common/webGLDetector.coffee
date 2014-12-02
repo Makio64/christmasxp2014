@@ -2,7 +2,7 @@ class WebGLDetector
 
     constructor: ->
         @_canvasDetector = document.createElement "canvas"
-        @_isAvailable = @_check()
+        @_isAvailable = true#@_check()
 
     _check: ->
         try
