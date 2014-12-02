@@ -9,7 +9,7 @@ experiments = new Experiments();
 
 },{"experiments/Experiments":5}],2:[function(require,module,exports){
 module.exports={
-    "idx": 1,
+    "idx": 2,
     "experiments": [
         {
             "idx": 1,
@@ -47,7 +47,7 @@ module.exports={
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Touch or move your mouse to avoid tree and get crystal!"
                 }
             ]
         },

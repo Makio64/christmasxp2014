@@ -8,20 +8,14 @@ block style
   link(rel="stylesheet", href="../css/main-experiment.css")
 
 block content
-  .error.no-webgl
-    .error-bg
-      .error-bg-text
-    .error-content
-      .error-content-icon
-      .error-content-text.error-content-text--too-soon.
-        Ho!Ho!Hol! Looks like you are too greedy!<br />
-        Come back later to see that
-        delicious experiment.
-      a.error-bt(href="/")
-        span.error-bt-bg-hover
-        span.error-bt-icon
-        span.error-bt-text HOME
-        span.error-bt-shadow
+  .experiments-content
+    include modules/experiments/error
+    include modules/experiments/not-released
+    include modules/experiments/preview
+    include modules/experiments/experiment
+  include modules/experiments/menu
+  include modules/experiments/infos
+
 
 
 

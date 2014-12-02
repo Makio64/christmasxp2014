@@ -30,7 +30,7 @@ loading.start();
 
 },{"3d/Main3d":3,"home/Home":13,"home/Loading":14,"home/MobileMenu":16}],2:[function(require,module,exports){
 module.exports={
-    "idx": 1,
+    "idx": 2,
     "experiments": [
         {
             "idx": 1,
@@ -68,7 +68,7 @@ module.exports={
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Touch or move your mouse to avoid tree and get crystal!"
                 }
             ]
         },
