@@ -1262,17 +1262,7 @@ XP = (function() {
     this._domXP = document.createElement("div");
     this._domXP.classList.add("experiment-entry");
     if (this._data.isAvailable) {
-      if (this._data.isWebGL) {
-        if (webGLDetector.isAvailable()) {
-          return this._createIframe();
-        } else {
-          return this._createNoWebGL();
-        }
-      } else {
-        return this._createIframe();
-      }
-    } else {
-      return this._createNotReleased();
+      return this._createIframe();
     }
   };
 

@@ -11,15 +11,16 @@ class XP
         @_domXP.classList.add "experiment-entry"
 
         if @_data.isAvailable
-            if @_data.isWebGL 
-                if webGLDetector.isAvailable()
-                    @_createIframe()
-                else
-                    @_createNoWebGL()
-            else
-                @_createIframe()
-        else
-            @_createNotReleased()
+            @_createIframe()
+        #     if @_data.isWebGL 
+        #         if webGLDetector.isAvailable()
+        #             @_createIframe()
+        #         else
+        #             @_createNoWebGL()
+        #     else
+        #         @_createIframe()
+        # else
+        #     @_createNotReleased()
 
     _createIframe: ->
         dom = document.createElement "iframe"
