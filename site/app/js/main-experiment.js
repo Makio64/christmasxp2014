@@ -1263,6 +1263,8 @@ XP = (function() {
     this._domXP.classList.add("experiment-entry");
     if (this._data.isAvailable) {
       return this._createIframe();
+    } else {
+      return this._createNotReleased();
     }
   };
 

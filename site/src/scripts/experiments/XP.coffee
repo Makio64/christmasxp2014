@@ -19,8 +19,8 @@ class XP
         #             @_createNoWebGL()
         #     else
         #         @_createIframe()
-        # else
-        #     @_createNotReleased()
+        else
+            @_createNotReleased()
 
     _createIframe: ->
         dom = document.createElement "iframe"
