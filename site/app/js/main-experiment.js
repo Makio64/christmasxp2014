@@ -1180,8 +1180,8 @@ Share = (function() {
       this._data.idx = 1;
     }
     url = "https://twitter.com/share?";
-    url += "text=" + encodeURIComponent("Polar a beautiful experiments by @superguigui for @christmasxp");
-    url += "&url=" + encodeURIComponent("http://christmasexperiments.com/experiments/1/");
+    url += "text=" + encodeURIComponent(this._data.msgTwitter);
+    url += "&url=" + encodeURIComponent("http://christmasexperiments.com/experiments/" + this._data.idx + "/");
     return this._openPopup(url);
   };
 

@@ -42,8 +42,8 @@ class Share
             @_data.idx = 1
 
         url = "https://twitter.com/share?"
-        url += "text="  + encodeURIComponent( "Polar a beautiful experiments by @superguigui for @christmasxp" )
-        url += "&url=" + encodeURIComponent( "http://christmasexperiments.com/experiments/1/" )
+        url += "text="  + encodeURIComponent( @_data.msgTwitter )
+        url += "&url=" + encodeURIComponent( "http://christmasexperiments.com/experiments/"+@_data.idx+"/" )
         @_openPopup url
 
     _openPopup: ( url ) ->
