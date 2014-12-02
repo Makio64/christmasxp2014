@@ -56,7 +56,7 @@ module.exports={
         },
         {
             "idx": 2,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "Felix Turner",
             "bio": "Developer @ Airtight Interactive",
             "title": "Winter Rush",
@@ -64,7 +64,7 @@ module.exports={
             "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
             "site": "https://twitter.com/felixturner",
             "isWebGL": true,
-            "isMobile": false,
+            "isMobile": true,
             "details": [
                 {
                     "title": "controls",
