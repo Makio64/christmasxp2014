@@ -214,6 +214,10 @@ class Stage3d
 			@camera.aspect = w / h
 			@camera.updateProjectionMatrix()
 			@renderer.setSize( w, h )
+		if(isMobile.any)
+			@renderer.domElement.style.width = Math.ceil(w*2)+'px'
+			@renderer.domElement.style.height = Math.ceil(h*2)+'px'
+
 		return
 
 module.exports = Stage3d
