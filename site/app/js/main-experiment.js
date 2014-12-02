@@ -40,14 +40,14 @@ module.exports={
             "bio": "Developer @ Airtight Interactive",
             "title": "Winter Rush",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "Collect the crystals before the dawn comes! Try it on Mobile.",
             "site": "https://twitter.com/felixturner",
             "isWebGL": true,
             "isMobile": true,
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Touch or move your mouse to avoid tree and get crystal!"
+                    "desc": "Use arrow keys or tap to move left and right."
                 }
             ]
         },
