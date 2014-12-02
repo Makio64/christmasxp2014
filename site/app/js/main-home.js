@@ -2013,6 +2013,10 @@ Stage3d = (function() {
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(w, h);
     }
+    if (isMobile.any) {
+      this.renderer.domElement.style.width = Math.ceil(w * 2) + 'px';
+      this.renderer.domElement.style.height = Math.ceil(h * 2) + 'px';
+    }
   };
 
   return Stage3d;

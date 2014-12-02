@@ -975,6 +975,7 @@ Infos = (function() {
     }
     this._domTitle.innerHTML = data.title;
     this._domAuthor.innerHTML = data.author;
+    this._domAuthor.href = data.site;
     this._domSubtitle.innerHTML = data.subtitle;
     this._domDesc.innerHTML = data.desc;
     while (this._domParts.firstChild) {
