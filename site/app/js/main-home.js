@@ -30,7 +30,7 @@ loading.start();
 
 },{"3d/Main3d":3,"home/Home":13,"home/Loading":14,"home/MobileMenu":16}],2:[function(require,module,exports){
 module.exports={
-    "idx": 2,
+    "idx": 3,
     "experiments": [
         {
             "idx": 1,
@@ -78,21 +78,21 @@ module.exports={
         },
         {
             "idx": 3,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "Nathan Gordon",
             "bio": "Creative Developer @utlranoir",
-            "title": "Polar",
+            "title": "The Cheeky Orphan",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "It's early christmas morning, and Dion is far too excited to sleep. Direct him quietly so he can be the first to open his presents. Stay out of the light and watch for toys!",
             "site": "https://twitter.com/gordonnl",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Back to your childhood with the Cheeky Orphan. An interactive piece made by @gordonnl #christmasxp #day3",
+            "msgFacebook":"Back to your childhood with the Cheeky Orphan. An interactive piece made by @gordonnl #christmasxp #day3. We all did it, right ? ;D",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Move your mouse to control the speed and direction."
                 }
             ]
         },
@@ -199,7 +199,7 @@ module.exports={
         {
             "idx": 9,
             "isAvailable": false,
-            "author": "Klas",
+            "author": "oosmoxiecode",
             "bio": "-",
             "title": "Polar",
             "subtitle": "",
@@ -576,9 +576,9 @@ module.exports={
         },
         {
             "idx": 9,
-            "author": "Klas",
+            "author": "oosmoxiecode",
             "bio": "-",
-            "site": "#",
+            "site": "https://twitter.com/oosmoxiecode",
             "preview": "9.png"
         },
         {
@@ -653,7 +653,7 @@ module.exports={
         },
         {
             "idx": 19,
-            "author": "Makio64",
+            "author": "David Ronai",
             "bio": "Initiator of the project & digital crafter",
             "site": "https://twitter.com/Makio64",
             "preview": "19.png"
