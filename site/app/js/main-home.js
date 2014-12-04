@@ -93,6 +93,10 @@ module.exports={
                 {
                     "title": "controls",
                     "desc": "Move your mouse to control the speed and direction."
+                },
+                {
+                    "title": "song",
+                    "desc": "made by <a href='https://anposttv-lisahannigan.bandcamp.com/', target='_blank'>LISA HANNIGAN</a>"
                 }
             ]
         },
@@ -2648,7 +2652,7 @@ Artists = (function() {
     this._domEntriesHolders = this.domNoMobile.querySelectorAll(".artists-entry-holder");
     this._domBtClose = this.domNoMobile.querySelector(".bt-close-holder");
     this._countEntries = this._domEntriesItems.length;
-    this._domEntriesHolder.addEventListener("mousewheel", this._onMouseWheel, false);
+    this.dom.addEventListener("mousewheel", this._onMouseWheel, false);
     if (interactions.isTouchDevice) {
       interactions.on(this._domEntries, "down", this._onDragStart, false);
     }

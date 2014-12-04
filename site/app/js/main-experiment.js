@@ -72,6 +72,10 @@ module.exports={
                 {
                     "title": "controls",
                     "desc": "Move your mouse to control the speed and direction."
+                },
+                {
+                    "title": "song",
+                    "desc": "made by <a href='https://anposttv-lisahannigan.bandcamp.com/', target='_blank'>LISA HANNIGAN</a>"
                 }
             ]
         },
@@ -953,7 +957,7 @@ Infos = (function() {
     this._domSubtitle = document.querySelector(".infos-subtitle");
     this._domDesc = document.querySelector(".infos-desc");
     this._domParts = document.querySelector(".infos-parts");
-    this._domExperiment = document.querySelector(".experiment");
+    this._domExperiment = document.querySelector(".experiment-holder");
   }
 
   Infos.prototype._onOpen = function(e) {

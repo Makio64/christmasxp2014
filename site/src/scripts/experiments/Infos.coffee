@@ -18,7 +18,7 @@ class Infos
         @_domDesc = document.querySelector ".infos-desc"
         @_domParts = document.querySelector ".infos-parts"
 
-        @_domExperiment = document.querySelector ".experiment"
+        @_domExperiment = document.querySelector ".experiment-holder"
 
     _onOpen: ( e ) =>
         e.preventDefault()
