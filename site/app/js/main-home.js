@@ -93,6 +93,10 @@ module.exports={
                 {
                     "title": "controls",
                     "desc": "Move your mouse to control the speed and direction."
+                },
+                {
+                    "title": "song",
+                    "desc": "made by <a href='https://anposttv-lisahannigan.bandcamp.com/', target='_blank'>LISA HANNIGAN</a>"
                 }
             ]
         },
@@ -855,10 +859,10 @@ Scene3d = (function(_super) {
     };
     if (window.innerWidth <= 640) {
       this.offsetX = 0;
-      this.offsetY = 0;
+      this.offsetY = 10;
     } else {
       this.offsetX = 10;
-      this.offsetY = 5;
+      this.offsetY = -5;
     }
     this.currentPosition = {
       fragments: [],
@@ -1003,7 +1007,7 @@ Scene3d = (function(_super) {
     this.backgroundLine.position.y += 10;
     Stage3d.add(this.backgroundLine);
     TweenLite.to(material, .4, {
-      opacity: .1,
+      opacity: .05,
       delay: 0.01
     });
     this.backgroundGeometry = geometry;
@@ -1206,6 +1210,12 @@ Scene3d = (function(_super) {
         return _this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
       };
     })(this), false);
+    window.addEventListener('touchmove', (function(_this) {
+      return function(e) {
+        _this.mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+        return _this.mouse.y = -(e.touches[0].clientX.clientY / window.innerHeight) * 2 + 1;
+      };
+    })(this), false);
     window.addEventListener('click', (function(_this) {
       return function(e) {
         var frag, intersects, raycaster, vector;
@@ -1223,6 +1233,36 @@ Scene3d = (function(_super) {
             frag = intersects[0].object.fragment;
             _this.currentFragment = frag;
             return _this.gotoXP(frag.name);
+          } else if (_this.diamond && _this.mirror) {
+            intersects = raycaster.intersectObjects([_this.diamond, _this.mirror], false);
+            if (intersects.length > 0) {
+              if (_this.currentFragment) {
+                return _this.gotoXP(_this.currentFragment.name);
+              } else if (_this.lastFragment) {
+                return _this.gotoXP(_this.lastFragment.name);
+              }
+            }
+          }
+        }
+      };
+    })(this), false);
+    window.addEventListener('touchend', (function(_this) {
+      return function(e) {
+        var frag, intersects, raycaster, vector;
+        _this.mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+        _this.mouse.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
+        if (!_this.isActivate) {
+          return;
+        }
+        vector = new THREE.Vector3(_this.mouse.x, _this.mouse.y, .5);
+        vector.unproject(Stage3d.camera);
+        raycaster = new THREE.Raycaster(Stage3d.camera.position, vector.sub(Stage3d.camera.position).normalize());
+        if (_this.hitboxs) {
+          intersects = raycaster.intersectObjects(_this.hitboxs, false);
+          if (intersects.length > 0) {
+            frag = intersects[0].object.fragment;
+            _this.currentFragment = frag;
+            return _this.showXP(frag.name);
           } else if (_this.diamond && _this.mirror) {
             intersects = raycaster.intersectObjects([_this.diamond, _this.mirror], false);
             if (intersects.length > 0) {
@@ -1416,6 +1456,7 @@ Scene3d = (function(_super) {
       matrix.makeScale(.2, .2, .2);
       o.geometry.applyMatrix(matrix);
       o.position.multiplyScalar(.21);
+      o.position.x *= 1.1;
       o.position.y -= 20;
       o.position.z += 5;
       delay = Math.random() * .6;
@@ -1628,12 +1669,12 @@ Scene3d = (function(_super) {
     if (parseInt(index) > this.maxDate) {
       return;
     }
+    if (index === this.currentIndex) {
+      return;
+    }
     if (!this.isOver) {
       this.isOver = true;
       this.emit("over", parseInt(index));
-    }
-    if (index === this.currentIndex) {
-      return;
     }
     this.currentIndex = index;
     this.globalAlpha = 0.01;
@@ -1702,6 +1743,7 @@ Scene3d = (function(_super) {
         this.hitboxs[i].position.z = Math.max(this.hitboxs[i].position.z, (1 - (distance.x - 10.5) / 10.5) * 15 + 2);
       }
       this.hitboxs[i].position.x += this.offsetX;
+      this.hitboxs[i].position.y -= this.offsetY;
     }
     t = this.time;
     for (i = _j = 0, _ref1 = this.fragments.length; _j < _ref1; i = _j += 1) {

@@ -24,6 +24,15 @@ class XP
 
     _createIframe: ->
         dom = document.createElement "iframe"
+
+        # Fix ios
+        if( isMobile.apple ) 
+            console.log(isMobile.apple)
+            dom.addEventListener( 'load', ( event )->
+                dom.contentWindow.innerWidth -= 1
+                dom.contentWindow.innerHeight -= 2
+            )
+
         dom.src = "./xps/#{@_data.idx}/"
         @_domXP.appendChild dom
 

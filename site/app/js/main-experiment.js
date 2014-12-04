@@ -72,6 +72,10 @@ module.exports={
                 {
                     "title": "controls",
                     "desc": "Move your mouse to control the speed and direction."
+                },
+                {
+                    "title": "song",
+                    "desc": "made by <a href='https://anposttv-lisahannigan.bandcamp.com/', target='_blank'>LISA HANNIGAN</a>"
                 }
             ]
         },
@@ -1272,6 +1276,13 @@ XP = (function() {
   XP.prototype._createIframe = function() {
     var dom;
     dom = document.createElement("iframe");
+    if (isMobile.apple) {
+      console.log(isMobile.apple);
+      dom.addEventListener('load', function(event) {
+        dom.contentWindow.innerWidth -= 1;
+        return dom.contentWindow.innerHeight -= 2;
+      });
+    }
     dom.src = "./xps/" + this._data.idx + "/";
     return this._domXP.appendChild(dom);
   };

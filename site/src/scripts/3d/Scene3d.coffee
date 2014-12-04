@@ -50,10 +50,10 @@ class Scene3d extends Emitter
 		}
 		if window.innerWidth <= 640
 			@offsetX = 0 
-			@offsetY = 0 
+			@offsetY = 10
 		else 
 			@offsetX = 10 
-			@offsetY = 5
+			@offsetY = -5
 
 		@currentPosition = {
 			fragments : []
@@ -190,7 +190,7 @@ class Scene3d extends Emitter
 		@backgroundLine.position.z = -950
 		@backgroundLine.position.y += 10
 		Stage3d.add(@backgroundLine)
-		TweenLite.to(material, .4, {opacity:.1, delay:0.01})
+		TweenLite.to(material, .4, {opacity:.05, delay:0.01})
 
 		@backgroundGeometry = geometry
 
@@ -379,6 +379,10 @@ class Scene3d extends Emitter
 			@mouse.x = (e.clientX / window.innerWidth) * 2 - 1
 			@mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
 		,false)
+		window.addEventListener('touchmove',(e)=>
+			@mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1
+			@mouse.y = -(e.touches[0].clientX.clientY / window.innerHeight) * 2 + 1
+		,false)
 		window.addEventListener( 'click', (e)=>
 
 			@mouse.x = (e.clientX / window.innerWidth) * 2 - 1
@@ -402,9 +406,31 @@ class Scene3d extends Emitter
 							@gotoXP(@currentFragment.name)
 						else if @lastFragment
 							@gotoXP(@lastFragment.name)
+		, false)
 
+		window.addEventListener( 'touchend', (e)=>
 
-					
+			@mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1
+			@mouse.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1
+			if(!@isActivate)
+				return
+
+			vector = new THREE.Vector3( @mouse.x, @mouse.y, .5 )
+			vector.unproject( Stage3d.camera )
+			raycaster = new THREE.Raycaster( Stage3d.camera.position, vector.sub( Stage3d.camera.position ).normalize() )
+			if(@hitboxs)
+				intersects = raycaster.intersectObjects( @hitboxs, false )
+				if( intersects.length > 0 )
+					frag = intersects[0].object.fragment
+					@currentFragment = frag
+					@showXP(frag.name)
+				else if(@diamond && @mirror)
+					intersects = raycaster.intersectObjects([@diamond,@mirror] , false )
+					if intersects.length > 0
+						if(@currentFragment)
+							@gotoXP(@currentFragment.name)
+						else if @lastFragment
+							@gotoXP(@lastFragment.name)
 		, false)
 
 		if window.DeviceMotionEvent != undefined
@@ -540,6 +566,7 @@ class Scene3d extends Emitter
 			matrix.makeScale( .2, .2, .2 )
 			o.geometry.applyMatrix( matrix )
 			o.position.multiplyScalar(.21)
+			o.position.x *= 1.1
 			o.position.y -= 20
 			o.position.z += 5
 
@@ -736,13 +763,13 @@ class Scene3d extends Emitter
 		if parseInt(index) > @maxDate
 			return
 
+		if(index == @currentIndex)
+			return
+
 		if(!@isOver)
 			@isOver = true
 			@emit "over", parseInt(index)
-		
-		if(index == @currentIndex)
-			return
-		
+				
 		@currentIndex = index
 		@globalAlpha = 0.01
 		return
@@ -817,6 +844,7 @@ class Scene3d extends Emitter
 			# @hitboxs[i].position.y += (@currentPosition.fragments[i].y - @hitboxs[i].position.y)*.05
 			# @hitboxs[i].position.z += (@currentPosition.fragments[i].z - @hitboxs[i].position.z)*.05
 			@hitboxs[i].position.x += @offsetX
+			@hitboxs[i].position.y -= @offsetY
 
 		t = @time
 		for i in [0...@fragments.length] by 1
