@@ -1007,7 +1007,7 @@ Scene3d = (function(_super) {
     this.backgroundLine.position.y += 10;
     Stage3d.add(this.backgroundLine);
     TweenLite.to(material, .4, {
-      opacity: .05,
+      opacity: .1,
       delay: 0.01
     });
     this.backgroundGeometry = geometry;
@@ -1026,6 +1026,8 @@ Scene3d = (function(_super) {
         _this.bufferGeometry = new THREE.BufferGeometry();
         _this.bufferGeometry.fromGeometry(_this.backgroundGeometry);
         material = new THREE.PointCloudMaterial({
+          light: false,
+          lights: false,
           depthTest: false,
           transparent: true,
           map: map,
@@ -1041,7 +1043,7 @@ Scene3d = (function(_super) {
         _this.pointcloud = new THREE.PointCloud(_this.bufferGeometry, material);
         _this.pointcloud.position.z -= 945.999;
         _this.pointcloud.position.y += 10;
-        return Stage3d.add(_this.pointcloud);
+        return Stage3d.add(_this.pointcloud, true);
       };
     })(this);
     image.src = './3d/textures/circle.png';
@@ -1212,47 +1214,59 @@ Scene3d = (function(_super) {
     })(this), false);
     window.addEventListener('touchmove', (function(_this) {
       return function(e) {
-        _this.mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
-        return _this.mouse.y = -(e.touches[0].clientX.clientY / window.innerHeight) * 2 + 1;
+        if (e.changedTouches && e.changedTouches.length > 0) {
+          _this.mouse.x = (e.changedTouches[0].clientX / window.innerWidth) * 2 - 1;
+          return _this.mouse.y = -(e.changedTouches[0].clientY / window.innerHeight) * 2 + 1;
+        } else if (e.touches && e.touches.length > 0) {
+          _this.mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+          return _this.mouse.y = -(e.touches[0].clientX.clientY / window.innerHeight) * 2 + 1;
+        }
       };
     })(this), false);
-    window.addEventListener('click', (function(_this) {
-      return function(e) {
-        var frag, intersects, raycaster, vector;
-        _this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-        _this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-        if (!_this.isActivate) {
-          return;
-        }
-        vector = new THREE.Vector3(_this.mouse.x, _this.mouse.y, .5);
-        vector.unproject(Stage3d.camera);
-        raycaster = new THREE.Raycaster(Stage3d.camera.position, vector.sub(Stage3d.camera.position).normalize());
-        if (_this.hitboxs) {
-          intersects = raycaster.intersectObjects(_this.hitboxs, false);
-          if (intersects.length > 0) {
-            frag = intersects[0].object.fragment;
-            _this.currentFragment = frag;
-            return _this.gotoXP(frag.name);
-          } else if (_this.diamond && _this.mirror) {
-            intersects = raycaster.intersectObjects([_this.diamond, _this.mirror], false);
+    if (!isMobile.any) {
+      window.addEventListener('click', (function(_this) {
+        return function(e) {
+          var frag, intersects, raycaster, vector;
+          if (!_this.isActivate) {
+            return;
+          }
+          _this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+          _this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+          vector = new THREE.Vector3(_this.mouse.x, _this.mouse.y, .5);
+          vector.unproject(Stage3d.camera);
+          raycaster = new THREE.Raycaster(Stage3d.camera.position, vector.sub(Stage3d.camera.position).normalize());
+          if (_this.hitboxs) {
+            intersects = raycaster.intersectObjects(_this.hitboxs, false);
             if (intersects.length > 0) {
-              if (_this.currentFragment) {
-                return _this.gotoXP(_this.currentFragment.name);
-              } else if (_this.lastFragment) {
-                return _this.gotoXP(_this.lastFragment.name);
+              frag = intersects[0].object.fragment;
+              _this.currentFragment = frag;
+              return _this.gotoXP(frag.name);
+            } else if (_this.diamond && _this.mirror) {
+              intersects = raycaster.intersectObjects([_this.diamond, _this.mirror], false);
+              if (intersects.length > 0) {
+                if (_this.currentFragment) {
+                  return _this.gotoXP(_this.currentFragment.name);
+                } else if (_this.lastFragment) {
+                  return _this.gotoXP(_this.lastFragment.name);
+                }
               }
             }
           }
-        }
-      };
-    })(this), false);
+        };
+      })(this), false);
+    }
     window.addEventListener('touchend', (function(_this) {
       return function(e) {
         var frag, intersects, raycaster, vector;
-        _this.mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
-        _this.mouse.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
         if (!_this.isActivate) {
           return;
+        }
+        if (e.changedTouches && e.changedTouches.length > 0) {
+          _this.mouse.x = (e.changedTouches[0].clientX / window.innerWidth) * 2 - 1;
+          _this.mouse.y = -(e.changedTouches[0].clientY / window.innerHeight) * 2 + 1;
+        } else if (e.touches && e.touches.length > 0) {
+          _this.mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
+          _this.mouse.y = -(e.touches[0].clientX.clientY / window.innerHeight) * 2 + 1;
         }
         vector = new THREE.Vector3(_this.mouse.x, _this.mouse.y, .5);
         vector.unproject(Stage3d.camera);
@@ -1324,6 +1338,9 @@ Scene3d = (function(_super) {
       depthTest: true
     });
     material.map = this.map;
+    if (isMobile.any) {
+      material.envMap = null;
+    }
     material.shading = this.shading;
     material.opacity = 0;
     material.side = THREE.DoubleSide;
@@ -1379,6 +1396,9 @@ Scene3d = (function(_super) {
       depthWrite: true,
       depthTest: true
     });
+    if (isMobile.any) {
+      material.envMap = null;
+    }
     material.map = this.map;
     material.shading = this.shading;
     material.side = THREE.DoubleSide;
@@ -1446,6 +1466,9 @@ Scene3d = (function(_super) {
         depthWrite: true,
         depthTest: true
       });
+      if (isMobile.any) {
+        material.envMap = null;
+      }
       material.shading = this.shading;
       material.side = THREE.DoubleSide;
       material.combine = THREE.AddOperation;
@@ -2690,7 +2713,7 @@ Artists = (function() {
     this._domEntriesHolders = this.domNoMobile.querySelectorAll(".artists-entry-holder");
     this._domBtClose = this.domNoMobile.querySelector(".bt-close-holder");
     this._countEntries = this._domEntriesItems.length;
-    this._domEntriesHolder.addEventListener("mousewheel", this._onMouseWheel, false);
+    this.dom.addEventListener("mousewheel", this._onMouseWheel, false);
     if (interactions.isTouchDevice) {
       interactions.on(this._domEntries, "down", this._onDragStart, false);
     }

@@ -190,7 +190,7 @@ class Scene3d extends Emitter
 		@backgroundLine.position.z = -950
 		@backgroundLine.position.y += 10
 		Stage3d.add(@backgroundLine)
-		TweenLite.to(material, .4, {opacity:.05, delay:0.01})
+		TweenLite.to(material, .4, {opacity:.1, delay:0.01})
 
 		@backgroundGeometry = geometry
 
@@ -207,12 +207,12 @@ class Scene3d extends Emitter
 			map = THREE.ImageUtils.loadTexture('./3d/textures/circle.png')
 			@bufferGeometry = new THREE.BufferGeometry()
 			@bufferGeometry.fromGeometry(@backgroundGeometry)
-			material = new THREE.PointCloudMaterial({depthTest:false,transparent:true, map:map, color:0xFFFFFF,size:64,sizeAttenuation:true,fog:false,opacity:0})
+			material = new THREE.PointCloudMaterial({light:false,lights:false,depthTest:false,transparent:true, map:map, color:0xFFFFFF,size:64,sizeAttenuation:true,fog:false,opacity:0})
 			TweenLite.to(material, 1.5, {opacity:.1})
 			@pointcloud = new THREE.PointCloud(@bufferGeometry,material)
 			@pointcloud.position.z -= 945.999
 			@pointcloud.position.y += 10
-			Stage3d.add(@pointcloud)
+			Stage3d.add(@pointcloud,true)
 		image.src = './3d/textures/circle.png'
 		return
 
@@ -380,40 +380,50 @@ class Scene3d extends Emitter
 			@mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
 		,false)
 		window.addEventListener('touchmove',(e)=>
-			@mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1
-			@mouse.y = -(e.touches[0].clientX.clientY / window.innerHeight) * 2 + 1
+			if(e.changedTouches&&e.changedTouches.length>0)
+				@mouse.x = (e.changedTouches[0].clientX / window.innerWidth) * 2 - 1
+				@mouse.y = -(e.changedTouches[0].clientY / window.innerHeight) * 2 + 1
+			else if(e.touches && e.touches.length>0)
+				@mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1
+				@mouse.y = -(e.touches[0].clientX.clientY / window.innerHeight) * 2 + 1
+
 		,false)
-		window.addEventListener( 'click', (e)=>
+		if !isMobile.any
+			window.addEventListener( 'click', (e)=>
+				if(!@isActivate)
+					return
 
-			@mouse.x = (e.clientX / window.innerWidth) * 2 - 1
-			@mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
-			if(!@isActivate)
-				return
+				@mouse.x = (e.clientX / window.innerWidth) * 2 - 1
+				@mouse.y = -(e.clientY / window.innerHeight) * 2 + 1
 
-			vector = new THREE.Vector3( @mouse.x, @mouse.y, .5 )
-			vector.unproject( Stage3d.camera )
-			raycaster = new THREE.Raycaster( Stage3d.camera.position, vector.sub( Stage3d.camera.position ).normalize() )
-			if(@hitboxs)
-				intersects = raycaster.intersectObjects( @hitboxs, false )
-				if( intersects.length > 0 )
-					frag = intersects[0].object.fragment
-					@currentFragment = frag
-					@gotoXP(frag.name)
-				else if(@diamond && @mirror)
-					intersects = raycaster.intersectObjects([@diamond,@mirror] , false )
-					if intersects.length > 0
-						if(@currentFragment)
-							@gotoXP(@currentFragment.name)
-						else if @lastFragment
-							@gotoXP(@lastFragment.name)
-		, false)
+				vector = new THREE.Vector3( @mouse.x, @mouse.y, .5 )
+				vector.unproject( Stage3d.camera )
+				raycaster = new THREE.Raycaster( Stage3d.camera.position, vector.sub( Stage3d.camera.position ).normalize() )
+				if(@hitboxs)
+					intersects = raycaster.intersectObjects( @hitboxs, false )
+					if( intersects.length > 0 )
+						frag = intersects[0].object.fragment
+						@currentFragment = frag
+						@gotoXP(frag.name)
+					else if(@diamond && @mirror)
+						intersects = raycaster.intersectObjects([@diamond,@mirror] , false )
+						if intersects.length > 0
+							if(@currentFragment)
+								@gotoXP(@currentFragment.name)
+							else if @lastFragment
+								@gotoXP(@lastFragment.name)
+			, false)
 
 		window.addEventListener( 'touchend', (e)=>
-
-			@mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1
-			@mouse.y = -(e.touches[0].clientY / window.innerHeight) * 2 + 1
 			if(!@isActivate)
 				return
+
+			if(e.changedTouches&&e.changedTouches.length>0)
+				@mouse.x = (e.changedTouches[0].clientX / window.innerWidth) * 2 - 1
+				@mouse.y = -(e.changedTouches[0].clientY / window.innerHeight) * 2 + 1
+			else if(e.touches && e.touches.length>0)
+				@mouse.x = (e.touches[0].clientX / window.innerWidth) * 2 - 1
+				@mouse.y = -(e.touches[0].clientX.clientY / window.innerHeight) * 2 + 1				
 
 			vector = new THREE.Vector3( @mouse.x, @mouse.y, .5 )
 			vector.unproject( Stage3d.camera )
@@ -469,6 +479,9 @@ class Scene3d extends Emitter
 		material = new THREE.MeshLambertMaterial({color: 0xffffff, transparent:true, light:false, envMap:@envMap, depthWrite:true, depthTest:true})
 		
 		material.map = @map
+		if(isMobile.any)
+			material.envMap = null
+
 		material.shading = @shading
 		material.opacity = 0
 		material.side = THREE.DoubleSide
@@ -507,6 +520,9 @@ class Scene3d extends Emitter
 		geometry.applyMatrix ( matrix )
 
 		material = new THREE.MeshLambertMaterial({color: 0xffffff, light:false, transparent:true, envMap:@envMap, depthWrite:true, depthTest:true})
+		if(isMobile.any)
+			material.envMap = null
+
 		material.map = @map
 		material.shading = @shading
 		material.side = THREE.DoubleSide
@@ -555,6 +571,8 @@ class Scene3d extends Emitter
 
 			@computeGeometry(o.geometry)
 			material = new THREE.MeshLambertMaterial({color: 0xffffff, transparent:true, envMap:@envMap, depthWrite:true, depthTest:true})
+			if(isMobile.any)
+				material.envMap = null
 			material.shading = @shading
 			material.side = THREE.DoubleSide
 			material.combine = THREE.AddOperation

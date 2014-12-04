@@ -15,7 +15,7 @@ class Artists
         @_domBtClose = @domNoMobile.querySelector ".bt-close-holder"
 
         @_countEntries = @_domEntriesItems.length
-        @_domEntriesHolder.addEventListener "mousewheel", @_onMouseWheel, false
+        @dom.addEventListener "mousewheel", @_onMouseWheel, false
         if interactions.isTouchDevice
             interactions.on @_domEntries, "down", @_onDragStart, false
         @_py = 0
