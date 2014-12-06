@@ -1,0 +1,12 @@
+precision mediump float;
+precision mediump sampler2D;
+uniform sampler2D uPyT;
+uniform float uSize;
+void main(void) {
+    float k = 0.5 * uSize;
+    vec2 position = floor(vec2(gl_FragCoord.x, gl_FragCoord.y)) * uSize;
+    float dist = max(texture2D(uPyT,  position + vec2(0., 0.)).a, texture2D(uPyT,  position + vec2(0., k)).a);
+    dist = max(dist, texture2D(uPyT,  position + vec2(k, 0.)).a);
+    dist = max(dist, texture2D(uPyT,  position + vec2(k, k)).a);
+    gl_FragColor = vec4(dist);
+}

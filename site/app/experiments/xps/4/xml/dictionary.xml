@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dictiomary>
+
+	<title><![CDATA[Kreepy Krampus]]></title>
+
+	<start_screen_loading><![CDATA[Loading]]></start_screen_loading>
+
+	<start_screen_intro_0><![CDATA[Krampus is cruel, malevolent and spite]]></start_screen_intro_0>
+	<start_screen_intro_1><![CDATA[disguised as another he hides out of sight]]></start_screen_intro_1>
+	<start_screen_intro_2><![CDATA[if he finds you your in for a fright]]></start_screen_intro_2>
+	<start_screen_intro_3><![CDATA[so save yourself by making it to midnight]]></start_screen_intro_3>
+
+	<start_screen_btn><![CDATA[Start]]></start_screen_btn>
+	<end_screen_btn><![CDATA[Replay]]></end_screen_btn>
+
+	<unsupported_screen_intro_0><![CDATA[Your browser is not supported]]></unsupported_screen_intro_0>
+	<unsupported_screen_intro_1><![CDATA[Please use Google Chrome]]></unsupported_screen_intro_1>
+	<unsupported_screen_intro_2><![CDATA[on a Desktop computer to play.]]></unsupported_screen_intro_2>
+
+	<success_title><![CDATA[You made it!]]></success_title>
+	<success_text_0><![CDATA[You managed to escape before it was too late]]></success_text_0>
+	<success_text_1><![CDATA[unfortunately not all come to the same fate]]></success_text_1>
+	
+	<fail_title><![CDATA[You failed!]]></fail_title>
+	<fail_text_0><![CDATA[You've been taken to Krampus's lair]]></fail_text_0>
+	<fail_text_1><![CDATA[where you'll be spending the rest of your Christmas there...]]></fail_text_1>
+
+	<social_network_success><![CDATA[I made it to midnight! #ChristmasExperiments #KreepyKrampus]]></social_network_success>
+
+	<social_network_fail><![CDATA[Can you make it to midnight? #ChristmasExperiments #KreepyKrampus]]></social_network_fail>
+
+</dictiomary>

@@ -1,5 +1,5 @@
 {
-    "idx": 3,
+    "idx": 6,
     "experiments": [
         {
             "idx": 1,
@@ -56,8 +56,8 @@
             "site": "https://twitter.com/gordonnl",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"Back to your childhood with the Cheeky Orphan. An interactive piece made by @gordonnl #christmasxp #day3",
-            "msgFacebook":"Back to your childhood with the Cheeky Orphan. An interactive piece made by @gordonnl #christmasxp #day3. We all did it, right ? ;D",
+            "msgTwitter":"Back to your childhood with the Cheeky Orphan. An interactive piece crafted by @gordonnl #christmasxp #day3",
+            "msgFacebook":"Back to your childhood with the Cheeky Orphan. An interactive piece crafted by @gordonnl #christmasxp #day3. We all did it, right ? ;D",
             "details": [
                 {
                     "title": "controls",
@@ -71,61 +71,70 @@
         },
         {
             "idx": 4,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "David Rosser",
             "bio": "Programmer and artist @HiReSLondon",
-            "title": "Polar",
+            "title": "Kreepy Krampus",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "A webgl game inspired by <a href='http://en.wikipedia.org/wiki/Krampus' target='_blank'>a christmas fairytale from alpine countries</a>, make it to midnight to save yourself from the clutches of Krampus.",
             "site": "http://twitter.com/davidpaulrosser",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Discover Kreepy Krampus, a #webgl game based on a christmas fairytale from alpine countries by @davidpaulrosser! #christmasxp #day4",
+            "msgFacebook":"Kreepy Krampus an interactive christmas experiment based on a christmas fairytale!",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Click on the skulls when they're highlighted."
+                },
+                {
+                    "title": "Source",
+                    "desc":"<a href='https://github.com/IVXVIXVIII/kreepy-krampus' target='_blank'>Github source</a>"
                 }
             ]
         },
         {
             "idx": 5,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "Bruno Simon",
             "bio": "Developer @AgenceUzik & teacher at @Hetic",
-            "title": "Polar",
+            "title": "Santa Workout",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "Get santa to the end as fast as possible. Don't loose too many elves to be a good Santa ;)",
             "site": "http://bruno-simon.com",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Santa Workout, a super funny little #webgl game by @bruno_simon for @christmasxp, enjoy!",
+            "msgFacebook":"Santa Workout, a super funny little game for christmasexperiments, enjoy!",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Click on the screen to make santa move. The elves will follow."
+                },
+                {
+                    "title": "Source",
+                    "desc":"<a href='https://github.com/brunosimon/christmas-experiment-2014' target='_blank'>Github source</a>"
                 }
+
             ]
         },
         {
             "idx": 6,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "Hector Arellano",
             "bio": "-",
-            "title": "Polar",
+            "title": "Christmas Star",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "Simple simulation of a christmas star explosion, rendering using a ray tracer in real time.",
             "site": "https://twitter.com/hector_arellano",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Simple simulation of a christmas star explosion by @hector_arellano for @christmasxp #raytracer #realtime #webgl",
+            "msgFacebook":"Check this simulation of a christmas star explosion by @hector_arellano #raytracer #realtime #webgl #geeks",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Play with the parameters & click on the restart button to see the new simulation"
                 }
             ]
         },

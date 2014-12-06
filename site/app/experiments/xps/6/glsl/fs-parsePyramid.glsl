@@ -1,0 +1,56 @@
+precision mediump float;
+precision mediump sampler2D;
+uniform sampler2D uPyramid;
+uniform sampler2D uBase;
+varying float vVI;
+void main(void) {
+    vec2 relativePosition = vec2(0.);
+    vec2 position = vec2(0.);
+    float start = 0.;
+    float end = 0.;
+    vec4 starts = vec4(0.);
+    vec3 ends = vec3(0.);
+    float offset = 2046.;
+    float k = 0.00048828125;
+    float aVI = vVI;
+    for(int i = 1; i < 11; i++) {
+        offset -= pow(2., float(i));
+        relativePosition = position + k * vec2(offset, 0.);
+        end = start + texture2D(uPyramid, relativePosition).r;
+        vec2 pos1 = relativePosition;
+        starts.x= start;
+        ends.x = end;
+        vec2 pos2 = relativePosition + vec2(k, 0.);
+        starts.y = ends.x;
+        ends.y = ends.x + texture2D(uPyramid, pos2).r;
+        vec2 pos3 = relativePosition + vec2(0., k);
+        starts.z = ends.y;
+        ends.z = ends.y + texture2D(uPyramid, pos3).r;
+        vec2 pos4 = relativePosition + vec2(k, k);
+        starts.w = ends.z;
+        vec3 mask = vec3(greaterThanEqual(vec3(aVI), starts.rgb)) * vec3(lessThan(vec3(aVI), ends));
+        vec4 m = vec4(mask, 1. - length(mask));
+        relativePosition = m.x * pos1 + m.y * pos2 + m.z * pos3 + m.w * pos4;
+        start = m.x * starts.x + m.y * starts.y  + m.z * starts.z + m.w * starts.w;
+        position = relativePosition - k * vec2(offset, 0.);
+        position *= 2.;
+    }
+    end = start + texture2D(uBase, position).r;
+    vec2 pos1 = position;
+    starts.x= start;
+    ends.x = end;
+    vec2 pos2 = position + vec2(k, 0.);
+    starts.y = ends.x;
+    ends.y = ends.x + texture2D(uBase, pos2).r;
+    vec2 pos3 = position + vec2(0., k);
+    starts.z = ends.y;
+    ends.z = ends.y + texture2D(uBase, pos3).r;
+    vec2 pos4 = position + vec2(k, k);
+    starts.w = ends.z;
+    vec3 mask = vec3(greaterThanEqual(vec3(aVI), starts.rgb)) * vec3(lessThan(vec3(aVI), ends));
+    vec4 m = vec4(mask, 1. - length(mask));
+    position = m.x * pos1 + m.y * pos2 + m.z * pos3 + m.w * pos4;
+    vec2 index = position * 2048.;
+    float div0 = 0.0078125;
+    gl_FragColor = vec4(div0 * vec3(mod(index.x, 128.), mod(index.y, 128.), 16. * floor(index.y * div0) + floor(index.x * div0)), texture2D(uBase, position).a);
+}

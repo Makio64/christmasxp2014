@@ -1,0 +1,36 @@
+precision lowp float;
+precision lowp sampler2D;
+uniform sampler2D uPot;
+uniform sampler2D marchTex;
+uniform sampler2D uTI;
+uniform float uRange;
+uniform float uLimit;
+varying float vVI;
+vec2 index2D(vec3 pos) {
+    return 0.0009765625 * (pos.xy + 128. * vec2(mod(pos.z, 8.), floor(pos.z * 0.125)) + vec2(0.5));
+}
+void main(void) {
+    float div1 = 0.0009765625;
+    float marchVI = floor(vVI * 0.08333333333);
+    float k = 0.0078125;
+    vec3 color = vec3(0.);
+    vec4 data = texture2D(marchTex, vec2(mod(marchVI, 1024.) + 0.5, 0.5 + floor(marchVI * div1)) * div1);
+    float vIx = 12. * data.a + mod(vVI, 12.);
+    div1 = 0.015625;
+    vIx = texture2D(uTI, div1 * vec2(mod(vIx, 64.) + 0.5, floor(vIx * div1) + 0.5)).r;
+    bvec4 mask1 = equal(vec4(vIx), vec4(0., 1., 2., 3.));
+    bvec4 mask2 = equal(vec4(vIx), vec4(4., 5., 6., 7.));
+    bvec4 mask3 = equal(vec4(vIx), vec4(8., 9., 10., 11.));
+    vec4 m1 = vec4(mask1);
+    vec4 m2 = vec4(mask2);
+    vec4 m3 = vec4(mask3);
+    vec3 b0 = data.rgb + m1.x * vec3(0., 0., 0.) + m1.y * vec3(k, 0., 0.) + m1.z * vec3(k, k, 0.) + m1.w * vec3(0., k, 0.) + m2.x * vec3(0., 0., k) + m2.y * vec3(k, 0., k) + m2.z * vec3(k, k, k) + m2.w * vec3(0., k, k) + m3.x * vec3(0., 0., 0.) + m3.y * vec3(k, 0., 0.) + m3.z * vec3(k, k, 0.) + m3.w * vec3(0., k, 0.);
+    vec3 b1 = data.rgb + m1.x * vec3(k, 0., 0.) + m1.y * vec3(k, k, 0.) + m1.z * vec3(0., k, 0.) + m1.w * vec3(0., 0., 0.) + m2.x * vec3(k, 0., k) + m2.y * vec3(k, k, k) + m2.z * vec3(0., k, k) + m2.w * vec3(0., 0., k) + m3.x * vec3(0., 0., k) + m3.y * vec3(k, 0., k) + m3.z * vec3(k, k, k) + m3.w * vec3(0., k, k);
+    float n0 = texture2D(uPot, index2D(128. * b0)).r;
+    float n1 = texture2D(uPot, index2D(128. * b1)).r;
+    color = mix(b0, b1, (uRange - n0) / (n1 - n0));
+    color += (b0 - color) * step(abs(uRange - n0), uLimit);
+    color += (b1 - color) * step(abs(uRange - n1), uLimit);
+    color += (b0 - color) * step(abs(n0 - n1), uLimit);
+    gl_FragColor = vec4(color, 1.);
+}
