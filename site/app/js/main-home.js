@@ -30,7 +30,7 @@ loading.start();
 
 },{"3d/Main3d":3,"home/Home":13,"home/Loading":14,"home/MobileMenu":16}],2:[function(require,module,exports){
 module.exports={
-    "idx": 6,
+    "idx": 7,
     "experiments": [
         {
             "idx": 1,
@@ -171,12 +171,12 @@ module.exports={
         },
         {
             "idx": 7,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "Michael Anthony",
             "bio": "Interactive Director at @active_theory",
             "title": "Polar",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "An interactive journey through land and sky",
             "site": "http://twitter.com/michaeltheory",
             "isWebGL": true,
             "isMobile": false,
@@ -185,7 +185,10 @@ module.exports={
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Move your mouse or touch to interact"
+                },{
+                    "title":"song",
+                    "desc":"Tycho - Awake"
                 }
             ]
         },
