@@ -570,7 +570,7 @@ class Scene3d extends Emitter
 			o.name = o.name.substring(o.name.length-2)
 
 			@computeGeometry(o.geometry)
-			material = new THREE.MeshLambertMaterial({color: 0xffffff, transparent:true, envMap:@envMap, depthWrite:true, depthTest:true})
+			material = new THREE.MeshLambertMaterial({color: 0xffffff, transparent:true, depthWrite:true, depthTest:true})
 			if(isMobile.any)
 				material.envMap = null
 			material.shading = @shading
@@ -595,7 +595,8 @@ class Scene3d extends Emitter
 				TweenLite.to(o.material,duration,{opacity:.1,delay:delay})
 			else 
 				TweenLite.to(o.material,duration,{opacity:.8, delay:delay})
-
+				# material.map = new THREE.Texture(@images[parseInt(o.name)], THREE.UVMapping, THREE.ClampToEdgeWrapping, THREE.ClampToEdgeWrapping, THREE.LinearFilter, THREE.LinearMipMapLinearFilter, THREE.RGBFormat, THREE.UnsignedByteType, 1 )
+				# material.map.needUpdate
 			o.scale.set(1.4,1.4,1.4)
 			TweenLite.to(o.scale,duration,{x:1,y:1,z:1, delay:delay})
 
@@ -881,6 +882,9 @@ class Scene3d extends Emitter
 				document.body.style.cursor = 'pointer'
 				frag = intersects[0].object.fragment
 				if parseInt(frag.name) <= @maxDate
+					if(frag != @lastFragment && @isOver)
+						@isOver = false
+						@emit "out"
 					@lastFragment = @currentFragment = frag
 					if(!@isOver || @lastRollOnDiamand)
 						@lastRollOnDiamand = false

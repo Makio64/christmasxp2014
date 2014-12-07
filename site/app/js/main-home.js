@@ -174,14 +174,14 @@ module.exports={
             "isAvailable": true,
             "author": "Michael Anthony",
             "bio": "Interactive Director at @active_theory",
-            "title": "Polar",
+            "title": "Finding Home",
             "subtitle": "",
             "desc": "An interactive journey through land and sky",
             "site": "http://twitter.com/michaeltheory",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Finding Home, a beautiful interactive journey through land and sky by @active_theory for @christmas",
+            "msgFacebook":"Finding Home, a beautiful interactive journey through land and sky made with love by Active Theory",
             "details": [
                 {
                     "title": "controls",
@@ -197,7 +197,7 @@ module.exports={
             "isAvailable": false,
             "author": "Lin Yi-Wen",
             "bio": "Coder. Father.",
-            "title": "Polar",
+            "title": "Blow",
             "subtitle": "",
             "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
             "site": "https://twitter.com/yiwen_lin",
@@ -217,7 +217,7 @@ module.exports={
             "isAvailable": false,
             "author": "oosmoxiecode",
             "bio": "-",
-            "title": "Polar",
+            "title": "Replicate",
             "subtitle": "",
             "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
             "site": "#",
@@ -237,7 +237,7 @@ module.exports={
             "isAvailable": false,
             "author": "eiji muroichi",
             "bio": "Visual Designer & Technologist @prty_ny",
-            "title": "Polar",
+            "title": "The Twelve Month of Christmas",
             "subtitle": "",
             "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
             "site": "http://eiji.muroichi.info/",
@@ -257,7 +257,7 @@ module.exports={
             "isAvailable": false,
             "author": "Damien Mortini",
             "bio": "Freelance intern",
-            "title": "Polar",
+            "title": "Christmas Quest",
             "subtitle": "",
             "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
             "site": "https://twitter.com/dmmn_",
@@ -1474,7 +1474,6 @@ Scene3d = (function(_super) {
       material = new THREE.MeshLambertMaterial({
         color: 0xffffff,
         transparent: true,
-        envMap: this.envMap,
         depthWrite: true,
         depthTest: true
       });
@@ -1796,6 +1795,10 @@ Scene3d = (function(_super) {
         document.body.style.cursor = 'pointer';
         frag = intersects[0].object.fragment;
         if (parseInt(frag.name) <= this.maxDate) {
+          if (frag !== this.lastFragment && this.isOver) {
+            this.isOver = false;
+            this.emit("out");
+          }
           this.lastFragment = this.currentFragment = frag;
           if (!this.isOver || this.lastRollOnDiamand) {
             this.lastRollOnDiamand = false;
