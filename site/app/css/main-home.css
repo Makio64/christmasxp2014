@@ -769,6 +769,16 @@ body {
 .menu-top:hover .menu-title {
   color: #ff265d;
 }
+.gridButton {
+  display: block;
+  position: absolute;
+  bottom: 17%;
+  left: 0;
+  margin-left: 78px;
+  width: 40px;
+  height: 40px;
+  background: background-size: 41px 41px;;
+}
 .menu-logo {
   width: 37px;
   height: 38px;

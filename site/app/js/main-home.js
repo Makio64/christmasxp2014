@@ -1136,15 +1136,15 @@ Scene3d = (function(_super) {
       diamond: this.diamond.position.clone(),
       mirror: this.mirror.position.clone()
     };
+    p.diamond.x -= 5;
+    p.mirror.x -= 5;
     for (i = _i = 0; _i < 24; i = _i += 1) {
       v = new THREE.Vector3();
-      v.x = (-8 * (i % 8)) + 28;
-      v.y = Math.floor(i / 8) * 8 - 10;
-      v.z = 0;
+      v.x = (-6 * (i % 12)) + 36;
+      v.y = Math.floor(i / 12) * 7 - 17;
+      v.z = 5;
       p.fragments.push(v);
     }
-    p.diamond.y += 15;
-    p.mirror.y += 15;
   };
 
   Scene3d.prototype.createGrids3 = function() {
@@ -1354,9 +1354,10 @@ Scene3d = (function(_super) {
       material.envMap = null;
     }
     material.shading = this.shading;
-    material.opacity = 0;
+    material.opacity = 0.0;
     material.side = THREE.DoubleSide;
     material.combine = THREE.MixOperation;
+    material.reflectivity = 0.7;
     matrix = new THREE.Matrix4();
     matrix.makeScale(.23, .23, .23);
     geometry.applyMatrix(matrix);
@@ -1366,8 +1367,8 @@ Scene3d = (function(_super) {
       folder = this.gui.addFolder('diamond');
       folder.add(material, 'depthWrite');
       folder.add(material, 'depthTest');
-      folder.add(material, 'opacity', 0, 1);
-      folder.add(material, 'reflectivity', 0, 1);
+      folder.add(material, 'opacity', 0.001, 1.0).step(0.001);
+      folder.add(material, 'reflectivity', 0.001, 1.0).step(0.001);
       this.diamondColor = 0xffffff;
       folder.add(this.diamond.material, 'combine', {
         multiply: THREE.Multiply,
@@ -1383,7 +1384,7 @@ Scene3d = (function(_super) {
     this.diamond.scale.set(0.8, 0.8, 0.8);
     TweenLite.to(this.diamond.material, .8, {
       ease: Quad.easeIn,
-      opacity: .65
+      opacity: .4
     });
     TweenLite.to(this.diamond.scale, .8, {
       ease: Quad.easeOut,
@@ -1415,16 +1416,16 @@ Scene3d = (function(_super) {
     material.shading = this.shading;
     material.side = THREE.DoubleSide;
     material.combine = THREE.AddOperation;
-    material.reflectivity = .1;
-    material.opacity = 0;
+    material.reflectivity = 0.2;
+    material.opacity = 0.0;
     this.mirror = new THREE.Mesh(geometry, material);
     this.container.add(this.mirror);
     if (this.debug) {
       folder = this.gui.addFolder('mirror');
       folder.add(this.mirror.material, 'depthWrite');
       folder.add(this.mirror.material, 'depthTest');
-      folder.add(this.mirror.material, 'opacity', 0, 1);
-      folder.add(this.mirror.material, 'reflectivity', 0, 1);
+      folder.add(this.mirror.material, 'opacity', 0.01, 1.0).step(0.01);
+      folder.add(this.mirror.material, 'reflectivity', 0.01, 1.0).step(0.01);
       this.mirrorColor = 0xffffff;
       folder.add(this.mirror.material, 'combine', {
         multiply: THREE.Multiply,
@@ -1440,7 +1441,7 @@ Scene3d = (function(_super) {
     this.mirror.scale.set(0.8, 0.8, 0.8);
     TweenLite.to(this.mirror.material, .8, {
       ease: Quad.easeIn,
-      opacity: .55
+      opacity: .5
     });
     TweenLite.to(this.mirror.scale, .8, {
       ease: Quad.easeOut,

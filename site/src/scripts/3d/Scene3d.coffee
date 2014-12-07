@@ -296,15 +296,14 @@ class Scene3d extends Emitter
 			diamond:@diamond.position.clone()
 			mirror:@mirror.position.clone()
 		}
+		p.diamond.x -= 5
+		p.mirror.x -= 5
 		for i in [0...24] by 1
 			v = new THREE.Vector3()
-			v.x = (-8*(i%8))+28
-			v.y = Math.floor(i/8)*8-10
-			v.z = 0
+			v.x = (-6*(i%12))+36
+			v.y = Math.floor(i/12)*7-17
+			v.z = 5
 			p.fragments.push(v)
-
-		p.diamond.y += 15
-		p.mirror.y += 15
 		return
 
 	createGrids3:()=>
@@ -483,9 +482,10 @@ class Scene3d extends Emitter
 			material.envMap = null
 
 		material.shading = @shading
-		material.opacity = 0
+		material.opacity = 0.0
 		material.side = THREE.DoubleSide
 		material.combine = THREE.MixOperation
+		material.reflectivity = 0.7
 
 		matrix = new THREE.Matrix4()
 		matrix.makeScale( .23, .23, .23 )
@@ -497,8 +497,8 @@ class Scene3d extends Emitter
 			folder = @gui.addFolder('diamond')
 			folder.add(material, 'depthWrite')
 			folder.add(material, 'depthTest')
-			folder.add(material, 'opacity', 0, 1)
-			folder.add(material, 'reflectivity',0,1)
+			folder.add(material, 'opacity', 0.001, 1.0).step(0.001)
+			folder.add(material, 'reflectivity',0.001,1.0).step(0.001)
 			@diamondColor = 0xffffff
 			folder.add(@diamond.material, 'combine', {multiply:THREE.Multiply,mix:THREE.MixOperation,add:THREE.AddOperation})
 			folder.addColor(@, 'diamondColor').onChange(()=>
@@ -506,7 +506,7 @@ class Scene3d extends Emitter
 			)
 
 		@diamond.scale.set(0.8,0.8,0.8)
-		TweenLite.to(@diamond.material,.8,{ease:Quad.easeIn,opacity:.65})
+		TweenLite.to(@diamond.material,.8,{ease:Quad.easeIn,opacity:.4})
 		TweenLite.to(@diamond.scale,.8,{ease:Quad.easeOut,x:1,y:1,z:1})
 
 		@positions.base.diamond = @diamond.position.clone()
@@ -527,8 +527,8 @@ class Scene3d extends Emitter
 		material.shading = @shading
 		material.side = THREE.DoubleSide
 		material.combine = THREE.AddOperation
-		material.reflectivity = .1
-		material.opacity = 0
+		material.reflectivity = 0.2
+		material.opacity = 0.0
 
 		@mirror = new THREE.Mesh(geometry,material)
 		@container.add(@mirror)
@@ -537,8 +537,8 @@ class Scene3d extends Emitter
 			folder = @gui.addFolder('mirror')
 			folder.add(@mirror.material, 'depthWrite')
 			folder.add(@mirror.material, 'depthTest')
-			folder.add(@mirror.material, 'opacity', 0, 1)
-			folder.add(@mirror.material, 'reflectivity',0,1)
+			folder.add(@mirror.material, 'opacity', 0.01, 1.0).step(0.01)
+			folder.add(@mirror.material, 'reflectivity',0.01,1.0).step(0.01)
 
 			@mirrorColor = 0xffffff
 			folder.add(@mirror.material, 'combine', {multiply:THREE.Multiply,mix:THREE.MixOperation,add:THREE.AddOperation})
@@ -547,7 +547,7 @@ class Scene3d extends Emitter
 			)
 
 		@mirror.scale.set(0.8,0.8,0.8)
-		TweenLite.to(@mirror.material,.8,{ease:Quad.easeIn,opacity:.55})
+		TweenLite.to(@mirror.material,.8,{ease:Quad.easeIn,opacity:.5})
 		TweenLite.to(@mirror.scale,.8,{ease:Quad.easeOut,x:1,y:1,z:1})
 
 		@positions.base.mirror = @mirror.position.clone()
