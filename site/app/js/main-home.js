@@ -792,6 +792,7 @@ Main3d = (function() {
     width = window.innerWidth;
     height = window.innerHeight;
     Stage3d.resize();
+    this.scene.resize();
   };
 
   return Main3d;
@@ -816,6 +817,7 @@ Scene3d = (function(_super) {
   __extends(Scene3d, _super);
 
   function Scene3d() {
+    this.resize = __bind(this.resize, this);
     this.gotoXP = __bind(this.gotoXP, this);
     this.showXP = __bind(this.showXP, this);
     this.createGUI = __bind(this.createGUI, this);
@@ -861,6 +863,7 @@ Scene3d = (function(_super) {
     this.opacity = 1;
     this.fragments = [];
     this.hitboxs = [];
+    this.isGrid = false;
     this.maxDate = 0;
     xps = require("data.json").experiments;
     for (_i = 0, _len = xps.length; _i < _len; _i++) {
@@ -982,6 +985,7 @@ Scene3d = (function(_super) {
   };
 
   Scene3d.prototype.setGrid = function(value) {
+    this.isGrid = value;
     if (value) {
       this.grid2();
     } else {
@@ -1134,13 +1138,13 @@ Scene3d = (function(_super) {
     };
     for (i = _i = 0; _i < 24; i = _i += 1) {
       v = new THREE.Vector3();
-      v.x = -8 * ((i + 1) % 5);
-      v.y = Math.floor((i + 1) / 5) * 8 - 16.5;
+      v.x = (-7 * ((i + 1) % 5)) + 13;
+      v.y = Math.floor((i + 1) / 5) * 7 - 20.5;
       v.z = 0;
       p.fragments.push(v);
     }
-    p.diamond.x += 20;
-    p.mirror.x += 20;
+    p.diamond.y += 35;
+    p.mirror.y += 35;
   };
 
   Scene3d.prototype.createGrids2 = function() {
@@ -1554,6 +1558,7 @@ Scene3d = (function(_super) {
     this.createGrids4();
     this.createMobilePosition();
     this.createPortraitPosition();
+    this.resize();
   };
 
   Scene3d.prototype.createGUI = function() {
@@ -1641,7 +1646,6 @@ Scene3d = (function(_super) {
       };
     })(this));
     lights.add(this.cameraLight4, 'intensity', 0, 3).step(0.01).name('intensity 4');
-    lights.open();
   };
 
   Scene3d.prototype.tweenTo = function(positions) {
@@ -1909,6 +1913,23 @@ Scene3d = (function(_super) {
         this.pointcloud.position.copy(vector);
         this.pointcloud.lookAt(Stage3d.camera.position);
       }
+    }
+  };
+
+  Scene3d.prototype.resize = function() {
+    if (window.innerWidth <= 640) {
+      this.offsetX = 0;
+      this.offsetY = 10;
+    } else {
+      this.offsetX = 10;
+      this.offsetY = -5;
+    }
+    if (window.innerWidth <= 600) {
+      return this.grid1();
+    } else if (window.innerWidth <= 704) {
+      return this.grid4();
+    } else {
+      return this.setGrid(this.isGrid);
     }
   };
 

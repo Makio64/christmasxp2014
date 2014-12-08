@@ -36,6 +36,8 @@ class Scene3d extends Emitter
 		@fragments = []
 		@hitboxs = []
 
+		@isGrid = false
+
 		@maxDate = 0
 		xps = require( "data.json" ).experiments
 		for xp in xps
@@ -152,6 +154,7 @@ class Scene3d extends Emitter
 		return
 
 	setGrid:(value)=>
+		@isGrid = value
 		if(value)
 			@grid2()
 		else 
@@ -288,13 +291,15 @@ class Scene3d extends Emitter
 		}
 		for i in [0...24] by 1
 			v = new THREE.Vector3()
-			v.x = (-8*((i+1)%5))
-			v.y = Math.floor((i+1)/5)*8-16.5
+			v.x = (-7*((i+1)%5))+13
+			v.y = Math.floor((i+1)/5)*7-20.5
 			v.z = 0
 			p.fragments.push(v)
 
-		p.diamond.x += 20
-		p.mirror.x += 20
+		p.diamond.y += 35
+		p.mirror.y += 35
+		# p.diamond.x += 20
+		# p.mirror.x += 20
 		return
 
 	createGrids2:()=>
@@ -643,6 +648,8 @@ class Scene3d extends Emitter
 		@createGrids4()
 		@createMobilePosition()
 		@createPortraitPosition()
+		# @grid1()
+		@resize()
 		return
 
 	createGUI:()=>
@@ -726,7 +733,7 @@ class Scene3d extends Emitter
 		)
 		lights.add(@cameraLight4,'intensity',0,3).step(0.01).name('intensity 4')
 
-		lights.open()
+		# lights.open()
 
 		# Stage3d.initPostprocessing(@gui)
 
@@ -1000,5 +1007,21 @@ class Scene3d extends Emitter
 		# @container.rotation.x += (@mouse.y*Math.PI/16 - @container.rotation.x)*.03
 		# @lightContainer.rotation.x += (@mouse.y*Math.PI/16 - @container.rotation.x)*.03
 		return
+
+	resize:()=>
+		if window.innerWidth <= 640
+			@offsetX = 0 
+			@offsetY = 10
+		else 
+			@offsetX = 10 
+			@offsetY = -5
+		if(window.innerWidth<=600)
+			@grid1()
+		else if window.innerWidth <= 704
+			@grid4()
+		else 
+			@setGrid(@isGrid)
+		
+		# else
 
 module.exports = Scene3d
