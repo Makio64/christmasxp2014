@@ -1148,22 +1148,31 @@ module.exports = Menu;
 
 
 },{"common/interactions":3,"experiments/Preview":8}],8:[function(require,module,exports){
-var Preview, datas;
+var Preview, datas,
+  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 datas = require("data.json").experiments;
 
 Preview = (function() {
   function Preview() {
+    this._onPreviewLoaded = __bind(this._onPreviewLoaded, this);
     this._dom = document.querySelector(".preview");
     this._domTitle = this._dom.querySelector(".preview-title");
     this._domAuthor = this._dom.querySelector(".preview-author");
+    this._domImage = this._dom.querySelector(".preview-image");
   }
 
   Preview.prototype.update = function(idx) {
     var data;
     data = datas[idx];
     this._domTitle.innerHTML = data.isAvailable ? data.title : "NOT RELEASED YET";
-    return this._domAuthor.innerHTML = data.author;
+    this._domAuthor.innerHTML = data.author;
+    return this._url = "/img/experiments/" + (idx + 1) + "/preview.png";
+  };
+
+  Preview.prototype._onPreviewLoaded = function() {
+    console.log("yo");
+    return this._domImage.src = this._url;
   };
 
   Preview.prototype.show = function() {
