@@ -39,9 +39,30 @@
   bottom 17%
   left 0
   margin-left 78px
-  width 40px
-  height 40px
-  background bg('bt-grid.png')
+  width 42px
+  height 42px
+  .grid
+    bg('bt-grid.png')
+    top 0 
+    left 0
+    position absolute
+    width 42px
+    height 42px
+  .circle
+    transition all .15s linear
+    opacity .35
+    bg('bt-grid-circle.png')
+    top 0 
+    left 0
+    position absolute
+    width 42px
+    height 42px
+  &:hover
+    .circle
+      opacity 1
+  &:activated
+    .circle
+      opacity .5
 
 .menu-logo
   bg( "logo-blue.png" )

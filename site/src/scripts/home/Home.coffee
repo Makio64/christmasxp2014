@@ -21,7 +21,7 @@ class Home
         domHomeDetails.parentNode.removeChild domHomeDetails
         @_titleAnim = null
 
-        @_menu = new Menu
+        @_menu = new Menu(@scene3d)
 
         # modules with show/hide
         @_artists = new Artists

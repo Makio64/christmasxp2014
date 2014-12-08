@@ -30,7 +30,7 @@ loading.start();
 
 },{"3d/Main3d":3,"home/Home":13,"home/Loading":14,"home/MobileMenu":16}],2:[function(require,module,exports){
 module.exports={
-    "idx": 7,
+    "idx": 8,
     "experiments": [
         {
             "idx": 1,
@@ -179,7 +179,7 @@ module.exports={
             "desc": "An interactive journey through land and sky",
             "site": "http://twitter.com/michaeltheory",
             "isWebGL": true,
-            "isMobile": false,
+            "isMobile": true,
             "msgTwitter":"Finding Home, a beautiful interactive journey through land and sky by @active_theory for @christmas",
             "msgFacebook":"Finding Home, a beautiful interactive journey through land and sky made with love by Active Theory",
             "details": [
@@ -194,22 +194,27 @@ module.exports={
         },
         {
             "idx": 8,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "Lin Yi-Wen",
             "bio": "Coder. Father.",
             "title": "Blow",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "Blow the gold.",
             "site": "https://twitter.com/yiwen_lin",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Blow the gold, a beautiful experiments by @yiwen_lin for @christmasxp",
+            "msgFacebook":"Blow the gold, a beautiful experiments by the artist Lin Yi-Wen",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Activate your microphone or press the space bar"
+                },
+                {
+                    "title": "Source",
+                    "desc": "<a href='https://github.com/yiwenl/Christmas_Experiment_2014' target='_blank'>Github source</a>"
                 }
+                
             ]
         },
         {
@@ -826,6 +831,7 @@ Scene3d = (function(_super) {
     this.createGrids1 = __bind(this.createGrids1, this);
     this.createLight = __bind(this.createLight, this);
     this.createBackground = __bind(this.createBackground, this);
+    this.setGrid = __bind(this.setGrid, this);
     this.loadMesh = __bind(this.loadMesh, this);
     this.loadImagesHight = __bind(this.loadImagesHight, this);
     this.parseAtlas = __bind(this.parseAtlas, this);
@@ -973,6 +979,14 @@ Scene3d = (function(_super) {
     loader.load('./3d/json/mirror.js', this.onMirrorLoad);
     loader = new THREE.SceneLoader();
     loader.load('./3d/json/fragments.js', this.onFragmentLoaded);
+  };
+
+  Scene3d.prototype.setGrid = function(value) {
+    if (value) {
+      this.grid2();
+    } else {
+      this.noGrid();
+    }
   };
 
   Scene3d.prototype.createBackground = function() {
@@ -1136,11 +1150,13 @@ Scene3d = (function(_super) {
       diamond: this.diamond.position.clone(),
       mirror: this.mirror.position.clone()
     };
-    p.diamond.x -= 5;
-    p.mirror.x -= 5;
+    p.diamond.copy(this.positions.base.diamond);
+    p.mirror.copy(this.positions.base.mirror);
+    p.diamond.y += 3;
+    p.mirror.y += 3;
     for (i = _i = 0; _i < 24; i = _i += 1) {
       v = new THREE.Vector3();
-      v.x = (-6 * (i % 12)) + 36;
+      v.x = (-6 * (i % 12)) + 32;
       v.y = Math.floor(i / 12) * 7 - 17;
       v.z = 5;
       p.fragments.push(v);
@@ -3098,7 +3114,7 @@ Home = (function() {
     this._domHomeDetails = domHomeDetails.cloneNode(true);
     domHomeDetails.parentNode.removeChild(domHomeDetails);
     this._titleAnim = null;
-    this._menu = new Menu;
+    this._menu = new Menu(this.scene3d);
     this._artists = new Artists;
     this._about = new About;
     this._share = new Share;
@@ -3259,43 +3275,60 @@ IceAnim = require("common/anim/IceAnim");
 Credits = require("home/Credits");
 
 Menu = (function() {
-  function Menu() {
+  function Menu(scene3d) {
+    var domBtAbout, domBtArtists, domBtCredits, domBtLogo, domBtsGrid, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _ref, _ref1, _ref2, _ref3, _ref4;
+    this.scene3d = scene3d;
     this._onNavChange = __bind(this._onNavChange, this);
     this._onBtLogo = __bind(this._onBtLogo, this);
     this._onBtCredits = __bind(this._onBtCredits, this);
     this._onBtAbout = __bind(this._onBtAbout, this);
     this._onBtArtists = __bind(this._onBtArtists, this);
-    var domBtAbout, domBtArtists, domBtCredits, domBtLogo, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3;
+    this._onBtGrid = __bind(this._onBtGrid, this);
     this.dom = document.querySelector(".menu");
     this._credits = new Credits;
     this._domMenuLight = document.querySelector(".menu--light");
     this._menuLightVisible = false;
+    this.gridActivate = false;
+    this._domBtsGrid = document.querySelectorAll(".gridButton");
     this._domBtsLogo = document.querySelectorAll(".menu-top");
     this._domBtsArtists = document.querySelectorAll(".menu-entry--artists a");
     this._domBtsAbout = document.querySelectorAll(".menu-entry--about a");
     this._domBtsCredits = document.querySelectorAll(".menu-subentry--credits a");
-    _ref = this._domBtsLogo;
+    _ref = this._domBtsGrid;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      domBtLogo = _ref[_i];
+      domBtsGrid = _ref[_i];
+      interactions.on(domBtsGrid, "click", this._onBtGrid);
+    }
+    _ref1 = this._domBtsLogo;
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      domBtLogo = _ref1[_j];
       interactions.on(domBtLogo, "click", this._onBtLogo);
     }
-    _ref1 = this._domBtsArtists;
-    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-      domBtArtists = _ref1[_j];
+    _ref2 = this._domBtsArtists;
+    for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+      domBtArtists = _ref2[_k];
       interactions.on(domBtArtists, "click", this._onBtArtists);
     }
-    _ref2 = this._domBtsAbout;
-    for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-      domBtAbout = _ref2[_k];
+    _ref3 = this._domBtsAbout;
+    for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
+      domBtAbout = _ref3[_l];
       interactions.on(domBtAbout, "click", this._onBtAbout);
     }
-    _ref3 = this._domBtsCredits;
-    for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
-      domBtCredits = _ref3[_l];
+    _ref4 = this._domBtsCredits;
+    for (_m = 0, _len4 = _ref4.length; _m < _len4; _m++) {
+      domBtCredits = _ref4[_m];
       interactions.on(domBtCredits, "click", this._onBtCredits);
     }
     nav.on("change", this._onNavChange);
   }
+
+  Menu.prototype._onBtGrid = function(e) {
+    console.log('hihi');
+    this.gridActivate = !this.gridActivate;
+    this.scene3d.setGrid(this.gridActivate);
+    e.preventDefault();
+    return nav.set("");
+  };
 
   Menu.prototype._onBtArtists = function(e) {
     e.preventDefault();

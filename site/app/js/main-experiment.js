@@ -9,7 +9,7 @@ experiments = new Experiments();
 
 },{"experiments/Experiments":5}],2:[function(require,module,exports){
 module.exports={
-    "idx": 7,
+    "idx": 8,
     "experiments": [
         {
             "idx": 1,
@@ -158,7 +158,7 @@ module.exports={
             "desc": "An interactive journey through land and sky",
             "site": "http://twitter.com/michaeltheory",
             "isWebGL": true,
-            "isMobile": false,
+            "isMobile": true,
             "msgTwitter":"Finding Home, a beautiful interactive journey through land and sky by @active_theory for @christmas",
             "msgFacebook":"Finding Home, a beautiful interactive journey through land and sky made with love by Active Theory",
             "details": [
@@ -173,22 +173,27 @@ module.exports={
         },
         {
             "idx": 8,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "Lin Yi-Wen",
             "bio": "Coder. Father.",
             "title": "Blow",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "Blow the gold.",
             "site": "https://twitter.com/yiwen_lin",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Blow the gold, a beautiful experiments by @yiwen_lin for @christmasxp",
+            "msgFacebook":"Blow the gold, a beautiful experiments by the artist Lin Yi-Wen",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Activate your microphone or press the space bar"
+                },
+                {
+                    "title": "Source",
+                    "desc": "<a href='https://github.com/yiwenl/Christmas_Experiment_2014' target='_blank'>Github source</a>"
                 }
+                
             ]
         },
         {

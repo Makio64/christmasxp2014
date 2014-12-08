@@ -151,6 +151,13 @@ class Scene3d extends Emitter
 		loader.load( './3d/json/fragments.js', @onFragmentLoaded )
 		return
 
+	setGrid:(value)=>
+		if(value)
+			@grid2()
+		else 
+			@noGrid()
+		return
+
 	createBackground:()=>
 		material = new THREE.MeshLambertMaterial({ wireframe:false,color:0xFFFFFF, transparent:true, opacity:0})
 		material.shading = THREE.FlatShading
@@ -296,11 +303,15 @@ class Scene3d extends Emitter
 			diamond:@diamond.position.clone()
 			mirror:@mirror.position.clone()
 		}
-		p.diamond.x -= 5
-		p.mirror.x -= 5
+		p.diamond.copy(@positions.base.diamond)
+		p.mirror.copy(@positions.base.mirror)
+		p.diamond.y += 3
+		p.mirror.y += 3
+
+
 		for i in [0...24] by 1
 			v = new THREE.Vector3()
-			v.x = (-6*(i%12))+36
+			v.x = (-6*(i%12))+32
 			v.y = Math.floor(i/12)*7-17
 			v.z = 5
 			p.fragments.push(v)
