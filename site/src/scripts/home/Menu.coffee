@@ -5,27 +5,35 @@ Credits = require "home/Credits"
 
 class Menu
 
-    constructor: ->
+    constructor:(@scene3d) ->
         @dom = document.querySelector ".menu"
-
-
 
         @_credits = new Credits
 
         @_domMenuLight = document.querySelector ".menu--light"
         @_menuLightVisible = false
 
+        @gridActivate = false
+        @_domBtsGrid = document.querySelectorAll ".gridButton"
         @_domBtsLogo = document.querySelectorAll ".menu-top"
         @_domBtsArtists = document.querySelectorAll ".menu-entry--artists a"
         @_domBtsAbout = document.querySelectorAll ".menu-entry--about a"
         @_domBtsCredits = document.querySelectorAll ".menu-subentry--credits a"
 
+        interactions.on domBtsGrid, "click", @_onBtGrid for domBtsGrid in @_domBtsGrid
         interactions.on domBtLogo, "click", @_onBtLogo for domBtLogo in @_domBtsLogo
         interactions.on domBtArtists, "click", @_onBtArtists for domBtArtists in @_domBtsArtists
         interactions.on domBtAbout, "click", @_onBtAbout for domBtAbout in @_domBtsAbout
         interactions.on domBtCredits, "click", @_onBtCredits for domBtCredits in @_domBtsCredits
 
         nav.on "change", @_onNavChange
+
+    _onBtGrid: ( e ) =>
+        console.log('hihi')
+        @gridActivate = !@gridActivate
+        @scene3d.setGrid(@gridActivate)
+        e.preventDefault()
+        nav.set ""
 
     _onBtArtists: ( e ) =>
         e.preventDefault()

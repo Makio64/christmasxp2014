@@ -53,7 +53,7 @@ class Main3d
 		width 	= window.innerWidth
 		height 	= window.innerHeight
 		Stage3d.resize()
-		# @scene.resize()
+		@scene.resize()
 		return
 
 
