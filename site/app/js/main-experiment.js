@@ -9,7 +9,7 @@ experiments = new Experiments();
 
 },{"experiments/Experiments":5}],2:[function(require,module,exports){
 module.exports={
-    "idx": 8,
+    "idx": 9,
     "experiments": [
         {
             "idx": 1,
@@ -198,21 +198,21 @@ module.exports={
         },
         {
             "idx": 9,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "oosmoxiecode",
             "bio": "-",
             "title": "Replicate",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "Well.. this started out as some snowy-forest-using-billboards-test. Then sidetracked to some kinda music visualization for the song \"jaHer\" by \"Skinny Puppy\". ",
             "site": "#",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Replicate. A trippy music visualization by @oosmoxiecode for @christmasxp",
+            "msgFacebook":"Replicate. A trippy music visualization by oosmoxiecode for #christmasxp #day9",
             "details": [
                 {
-                    "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "title": "music",
+                    "desc": "jaHer by Skinny Puppy"
                 }
             ]
         },
@@ -339,7 +339,7 @@ module.exports={
         {
             "idx": 16,
             "isAvailable": false,
-            "author": "Silvio",
+            "author": "Silvio Paganini",
             "bio": "Brain-fuck @unit9 ",
             "title": "Polar",
             "subtitle": "",
@@ -632,7 +632,7 @@ module.exports={
         },
         {
             "idx": 16,
-            "author": "Silvio",
+            "author": "Silvio Paganini",
             "bio": "Brain-fuck @unit9 ",
             "site": "https://twitter.com/silviopaganini",
             "preview": "16.png"
@@ -1287,9 +1287,29 @@ XP = (function() {
     this._data = _data;
     this._domCnt = document.querySelector(".experiment-holder");
     this._createXP();
+    window.onresize = (function(_this) {
+      return function() {
+        var h, w;
+        w = window.innerWidth;
+        h = window.innerHeight;
+        if (w > 640) {
+          w -= 40;
+        }
+        if (isMobile.apple.device) {
+          w -= 1;
+          h -= 2;
+        }
+        _this.iframe.style.height = h + 'px';
+        _this.iframe.style.width = w + 'px';
+        _this.iframe.contentWindow.innerWidth = w;
+        _this.iframe.contentWindow.innerHeight = h;
+        _this.iframe.contentWindow.resizeTo(w, h);
+      };
+    })(this);
   }
 
   XP.prototype._createXP = function() {
+    document.win;
     this._domXP = document.createElement("div");
     this._domXP.classList.add("experiment-entry");
     if (this._data.isAvailable) {
@@ -1300,17 +1320,16 @@ XP = (function() {
   };
 
   XP.prototype._createIframe = function() {
-    var dom;
-    dom = document.createElement("iframe");
-    if (isMobile.apple) {
-      console.log(isMobile.apple);
-      dom.addEventListener('load', function(event) {
-        dom.contentWindow.innerWidth -= 1;
-        return dom.contentWindow.innerHeight -= 2;
+    this.iframe = document.createElement("iframe");
+    if (isMobile.apple.device) {
+      console.log(isMobile.apple.device.device);
+      this.iframe.addEventListener('load', function(event) {
+        this.iframe.contentWindow.innerWidth -= 1;
+        return this.iframe.contentWindow.innerHeight -= 2;
       });
     }
-    dom.src = "./xps/" + this._data.idx + "/";
-    return this._domXP.appendChild(dom);
+    this.iframe.src = "./xps/" + this._data.idx + "/";
+    return this._domXP.appendChild(this.iframe);
   };
 
   XP.prototype._createNoWebGL = function() {
@@ -1335,7 +1354,6 @@ XP = (function() {
     if (!animated) {
       return this._domCnt.appendChild(this._domXP);
     } else {
-      console.log(document.body.offsetWidth);
       TweenLite.set(this._domXP, {
         css: {
           x: -document.body.offsetWidth,

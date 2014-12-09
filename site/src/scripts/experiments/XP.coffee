@@ -5,8 +5,23 @@ class XP
     constructor: ( @_data ) ->
         @_domCnt = document.querySelector ".experiment-holder"
         @_createXP()
+        window.onresize = ()=>
+            w = window.innerWidth
+            h = window.innerHeight
+            if(w > 640)
+                w -= 40
+            if( isMobile.apple.device ) 
+               w -= 1
+               h -= 2
+            @iframe.style.height = h + 'px'
+            @iframe.style.width = w + 'px'
+            @iframe.contentWindow.innerWidth = w
+            @iframe.contentWindow.innerHeight = h
+            @iframe.contentWindow.resizeTo(w,h)
+            return
 
     _createXP: ->
+        document.win
         @_domXP = document.createElement "div"
         @_domXP.classList.add "experiment-entry"
 
@@ -23,18 +38,18 @@ class XP
             @_createNotReleased()
 
     _createIframe: ->
-        dom = document.createElement "iframe"
+        @iframe = document.createElement "iframe"
 
         # Fix ios
-        if( isMobile.apple ) 
-            console.log(isMobile.apple)
-            dom.addEventListener( 'load', ( event )->
-                dom.contentWindow.innerWidth -= 1
-                dom.contentWindow.innerHeight -= 2
+        if( isMobile.apple.device ) 
+            console.log(isMobile.apple.device.device)
+            @iframe.addEventListener( 'load', ( event )->
+                @iframe.contentWindow.innerWidth -= 1
+                @iframe.contentWindow.innerHeight -= 2
             )
 
-        dom.src = "./xps/#{@_data.idx}/"
-        @_domXP.appendChild dom
+        @iframe.src = "./xps/#{@_data.idx}/"
+        @_domXP.appendChild @iframe
 
     _createNoWebGL: ->
         dom = document.querySelector( ".error.no-webgl" ).cloneNode true
@@ -51,7 +66,6 @@ class XP
         if !animated
             @_domCnt.appendChild @_domXP
         else
-            console.log document.body.offsetWidth
             TweenLite.set @_domXP,
                 css:
                     x: -document.body.offsetWidth

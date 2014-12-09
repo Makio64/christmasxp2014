@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Replicate</title>
+  		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+		<style type="text/css">
+			body { background:#000000; }
+			canvas { z-index: 1; position: absolute; }
+			#end_credits { text-align:center; font-family: Verdana, Arial, Helvetica, Sans-Serif, cursive; font-size: 10px; color:#ddd; overflow: auto; margin: auto; position: absolute; display: none; top: 0; left: 0; bottom: 0; right: 0; z-index:10; width: 256px; height: 256px; }
+			#touch_start { text-align:center; color:#ddd; opacity: 0.5; overflow: auto; margin: auto; position: absolute; display: none; top: 0; left: 0; bottom: 0; right: 0; z-index:11; width: 300px; height: 240px; }
+			#logo { text-align:center; overflow: auto; margin: auto; position: absolute; display: block; top: 0; left: 0; bottom: 0; right: 0; z-index:8; width: 256px; height: 256px; }
+
+			a:link {color: #fff; text-decoration: none;}
+			a:visited {color: #fff; text-decoration: none;}
+			a:active {color: #fff; text-decoration: none;}
+
+			.loader {
+			  width: 20px;
+			  height: 20px;
+			  border-style: solid;
+			  border-color: rgba(0,0,0,0);
+			  border-top-color: #ffffff;
+			  border-width: 1px 1px 0px 0px;
+			  
+			  overflow: auto;
+			  margin: auto;
+			  position: absolute;
+			  top: 0; left: 0; bottom: 0; right: 0;
+			  z-index:9;
+
+			  -webkit-border-radius: 50%;
+			     -moz-border-radius: 50%;
+			          border-radius: 50%;
+			  
+			  -webkit-animation: spin 1.0s infinite linear;
+			     -moz-animation: spin 1.0s infinite linear;
+			       -o-animation: spin 1.0s infinite linear;
+			          animation: spin 1.0s infinite linear;
+			}
+
+			@-webkit-keyframes spin {
+			  from {-webkit-transform: rotate(0deg);}
+			  to   {-webkit-transform: rotate(359deg);}
+			}
+
+			@-moz-keyframes spin {
+			  from {-moz-transform: rotate(0deg);}
+			  to   {-moz-transform: rotate(359deg);}
+			}
+
+			@-o-keyframes spin {
+			  from {-o-transform: rotate(0deg);}
+			  to   {-o-transform: rotate(359deg);}
+			}
+
+			@keyframes spin{
+			  from {transform: rotate(0deg);}
+			  to   {transform: rotate(359deg);}
+			}
+
+		</style>
+
+ </head>
+
+<body>
+
+	<script src="js/three.min.js"></script>
+	<script src="js/tween.min.js"></script>
+	<script src="js/seedrandom.js"></script>
+
+	<script src="js/loaders/ctm/lzma.js"></script>
+	<script src="js/loaders/ctm/ctm.js"></script>
+	<script src="js/loaders/ctm/CTMLoader.js"></script>
+
+	<script src="js/shaders/CopyShader.js"></script>
+	<script src="js/shaders/FilmGrainShader.js"></script>
+	<script src="js/shaders/WaveShader.js"></script>
+	<script src="js/shaders/RollShader.js"></script>
+
+	<script src="js/postprocessing/EffectComposer.js"></script>
+	<script src="js/postprocessing/MaskPass.js"></script>
+	<script src="js/postprocessing/RenderPass.js"></script>
+	<script src="js/postprocessing/ShaderPass.js"></script>
+	
+	<script src="js/Replicate.js"></script>
+
+	<!-- trees -->
+
+	<script id="vertexshader_tree" type="x-shader/x-vertex">
+
+		uniform float globalTime;
+		attribute float time;
+		attribute vec3 customColor;
+		attribute float index;
+		
+		varying vec2 vUv;
+		varying vec3 vColor;
+		varying float vIndex;
+
+		void main() {
+
+			vColor = customColor;
+			vIndex = index;
+
+			vec3 animated = position;
+
+			// time
+			float localTime = time + globalTime;
+			float modTime = mod( localTime, 1.0 );
+			float accTime = modTime * modTime;
+
+			animated.z += accTime*-3000.0;
+
+			vUv = uv;
+
+			vec4 mvPosition = modelViewMatrix * vec4( animated, 1.0 );
+
+			gl_Position = projectionMatrix * mvPosition;
+
+		}
+
+	</script>
+
+	<script id="fragmentshader_tree" type="x-shader/x-fragment">
+
+		uniform sampler2D map0;
+		uniform sampler2D map1;
+		
+		uniform vec3 color;
+
+		uniform vec3 fogColor;
+		uniform float fogNear;
+		uniform float fogFar;
+
+		varying vec2 vUv;
+		varying vec3 vColor;
+		varying float vIndex;
+
+		void main() {
+
+			float depth = gl_FragCoord.z / gl_FragCoord.w;
+			float fogFactor = smoothstep( fogNear, fogFar, depth );
+
+			vec4 mapColor;
+
+			if (vIndex < 0.5) {
+				mapColor = texture2D( map0, vUv );
+			} else {
+				mapColor = texture2D( map1, vUv );
+			}
+
+			gl_FragColor.xyz = mix( mapColor.xyz*color, fogColor, fogFactor );
+			gl_FragColor.w = mapColor.w;
+
+			if (gl_FragColor.w < 0.4) {
+				discard;
+			}
+
+		}
+
+	</script>
+
+	<!-- snow -->
+
+	<script type="x-shader/x-vertex" id="vertexshader_snow">
+
+		attribute float size;
+		attribute float time;
+		attribute vec3 customColor;
+		uniform float globalTime;
+		uniform vec2 force;
+		uniform float scale;
+
+		varying vec3 vColor;
+
+		void main() {
+
+			vColor = customColor;
+
+			vec3 pos = position; 
+
+			// time
+			float localTime = time + globalTime;
+			float modTime = mod( localTime, 1.0 );
+			float accTime = modTime * modTime;
+
+			pos.x += cos(modTime*8.0 + (position.z))*170.0*vColor.x + (force.x*600.0)*accTime; 
+			pos.z += sin(modTime*6.0 + (position.x))*200.0*vColor.x + (force.y*600.0)*accTime; 
+
+			vec3 animated = vec3( pos.x, pos.y * accTime, pos.z );
+
+			vec4 mvPosition = modelViewMatrix * vec4( animated, 1.0 );
+
+			gl_PointSize = size * ( scale / length( mvPosition.xyz ) );
+
+			gl_Position = projectionMatrix * mvPosition;
+
+		}
+
+	</script>
+
+	<script type="x-shader/x-fragment" id="fragmentshader_snow">
+
+		uniform vec3 color;
+		uniform sampler2D texture;
+
+		varying vec3 vColor;
+
+		uniform vec3 fogColor;
+		uniform float fogNear;
+		uniform float fogFar;
+		uniform float opacity;
+
+
+		void main() {
+
+			float depth = gl_FragCoord.z / gl_FragCoord.w;
+			float fogFactor = smoothstep( fogNear, fogFar, depth );
+
+			vec4 tex = texture2D( texture, gl_PointCoord );
+
+			gl_FragColor = vec4( mix( tex.xyz*vColor*color, fogColor, fogFactor ), tex.x*vColor.x*opacity);
+
+		}
+
+	</script>
+
+	<!-- text -->
+
+		<script type="x-shader/x-vertex" id="vertexshader_text">
+
+			attribute float size;
+			attribute float time;
+			attribute vec3 customColor;
+			attribute vec3 end;
+			attribute float xx;
+			uniform float globalTime;
+			uniform float morph;
+			uniform vec3 bullet;
+			uniform vec2 force;
+			uniform float scale;
+
+			varying vec3 vColor;
+			varying float vXx;
+
+			void main() {
+
+				vColor = customColor;
+				vXx = xx;
+
+				// time
+				float localTime = time + globalTime;
+				float modTime = mod( localTime, 1.0 );
+				float accTime = modTime * modTime;
+
+				vec3 norm = vec3(position.x, 0.0, 0.0) - position;
+
+				vec3 animated = mix(position, end, max(0.0, morph-xx));
+				vec3 dif = bullet - position;
+
+				float distance = dif.x * dif.x;
+				
+				float invDistance = max(0.0, 200000.0-distance);
+
+				if (bullet.x > position.x) {
+					invDistance = 200000.0+distance*0.0002;
+				}
+
+				animated -= normalize(norm)*(invDistance*0.0002);
+
+				animated.z += sin(animated.x*0.09)*200.0*max(0.0, morph-xx);
+				animated.x += cos(animated.y*0.05)*100.0*max(0.0, morph-xx);
+				animated.y += cos(animated.x*0.03)*100.0*max(0.0, morph-xx);
+
+				animated.x += cos(localTime*8.0 + (position.z))*1.0; 
+				animated.z += sin(localTime*6.0 + (position.x))*2.0; 
+				animated.y += cos(localTime*6.0 + (position.x))*2.0; 
+
+				vec4 mvPosition = modelViewMatrix * vec4( animated, 1.0 );
+
+				gl_PointSize = size * ( scale / length( mvPosition.xyz ) );
+
+				gl_Position = projectionMatrix * mvPosition;
+
+			}
+
+		</script>
+
+		<script type="x-shader/x-fragment" id="fragmentshader_text">
+
+			uniform vec3 color;
+			uniform sampler2D texture;
+
+			varying vec3 vColor;
+			varying float vXx;
+
+			uniform vec3 fogColor;
+			uniform float fogNear;
+			uniform float fogFar;
+			uniform float opacity;
+			uniform float morph;
+
+
+			void main() {
+
+				float depth = gl_FragCoord.z / gl_FragCoord.w;
+				float fogFactor = smoothstep( fogNear, fogFar, depth );
+
+				vec4 tex = texture2D( texture, gl_PointCoord );
+
+				gl_FragColor = vec4( mix(tex.xyz*vColor*color, fogColor, fogFactor), (tex.w*opacity)*(1.0-(morph+(0.5-vXx))*0.5));
+
+			}
+
+		</script>
+
+	<div id="end_credits">
+		<p>
+		<br><a href="http://open.spotify.com/album/52MlFHZmMGAYbGtPyXG0WX" target="_blank">Music by:
+		<p><b>Skinny Puppy</b><br>
+		The song <b>"jaHer"</b>.<br>
+		From the album <b>"Mythmaker"</b>.</a></p>
+		</p>
+		<div id="logo">
+			<a href="http://open.spotify.com/album/52MlFHZmMGAYbGtPyXG0WX" target="_blank"><img src="assets/spotify.png" width="110" height="110" border="0" /></a>
+		</div>
+
+
+	</div>
+
+	<div id="touch_start">
+		<img src="assets/touch.png" width="110" height="110" border="0" />
+	</div>
+
+	<div id="loading_spinner" class="loader"></div>
+
+	<script>
+		
+		Replicate.init();
+
+	</script>
+	
+</body>
+</html>

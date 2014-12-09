@@ -30,7 +30,7 @@ loading.start();
 
 },{"3d/Main3d":3,"home/Home":13,"home/Loading":14,"home/MobileMenu":16}],2:[function(require,module,exports){
 module.exports={
-    "idx": 8,
+    "idx": 9,
     "experiments": [
         {
             "idx": 1,
@@ -219,21 +219,21 @@ module.exports={
         },
         {
             "idx": 9,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "oosmoxiecode",
             "bio": "-",
             "title": "Replicate",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "Well.. this started out as some snowy-forest-using-billboards-test. Then sidetracked to some kinda music visualization for the song \"jaHer\" by \"Skinny Puppy\". ",
             "site": "#",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Replicate. A trippy music visualization by @oosmoxiecode for @christmasxp",
+            "msgFacebook":"Replicate. A trippy music visualization by oosmoxiecode for #christmasxp #day9",
             "details": [
                 {
-                    "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "title": "music",
+                    "desc": "jaHer by Skinny Puppy"
                 }
             ]
         },
@@ -360,7 +360,7 @@ module.exports={
         {
             "idx": 16,
             "isAvailable": false,
-            "author": "Silvio",
+            "author": "Silvio Paganini",
             "bio": "Brain-fuck @unit9 ",
             "title": "Polar",
             "subtitle": "",
@@ -653,7 +653,7 @@ module.exports={
         },
         {
             "idx": 16,
-            "author": "Silvio",
+            "author": "Silvio Paganini",
             "bio": "Brain-fuck @unit9 ",
             "site": "https://twitter.com/silviopaganini",
             "preview": "16.png"
