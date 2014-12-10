@@ -659,9 +659,16 @@
         {
             "idx": 21,
             "author": "Is_real",
-            "bio": "Creative technology and a nickel bag of funk at Apple",
+            "bio": "Creative Technologist & fan of all the artist involved in this project.",
             "site": "https://twitter.com/is__real",
-            "preview": "21.png"
+            "preview": "21-a.png"
+        },
+        {
+            "idx": 21,
+            "author": "Emil Karlsson",
+            "bio": "Motion designer @ b-reel nyc.",
+            "site": "https://emilkarlsson.se",
+            "preview": "21-b.png"
         },
         {
             "idx": 22,
