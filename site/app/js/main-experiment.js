@@ -9,7 +9,7 @@ experiments = new Experiments();
 
 },{"experiments/Experiments":5}],2:[function(require,module,exports){
 module.exports={
-    "idx": 9,
+    "idx": 10,
     "experiments": [
         {
             "idx": 1,
@@ -110,7 +110,7 @@ module.exports={
             "bio": "Developer @AgenceUzik & teacher at @Hetic",
             "title": "Santa Workout",
             "subtitle": "",
-            "desc": "Get santa to the end as fast as possible. Don't loose too many elves to be a good Santa ;)",
+            "desc": "Get Santa to the end as fast as possible. Don't lose too many elves to be a good Santa ;)",
             "site": "http://bruno-simon.com",
             "isWebGL": true,
             "isMobile": false,
@@ -218,21 +218,21 @@ module.exports={
         },
         {
             "idx": 10,
-            "isAvailable": false,
-            "author": "eiji muroichi",
-            "bio": "Visual Designer & Technologist @prty_ny",
-            "title": "The Twelve Month of Christmas",
+            "isAvailable": true,
+            "author": "Silvio Paganini",
+            "bio": "Brain-fuck @unit9 ",
+            "title": "PIXMAS",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
-            "site": "http://eiji.muroichi.info/",
+            "desc": "Explode your Xmas heros.",
+            "site": "https://twitter.com/silviopaganini",
             "isWebGL": true,
-            "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "isMobile": true,
+            "msgTwitter":"Pixmax, explode your xmas heros by @silviopaganini for @christmasxp",
+            "msgFacebook":"Pixmax, explode your xmas heros by @silviopaganini for @christmasxp",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Move your mouse or use your gyro to control the camera and click/tap to explode"
                 }
             ]
         },
@@ -339,12 +339,12 @@ module.exports={
         {
             "idx": 16,
             "isAvailable": false,
-            "author": "Silvio Paganini",
-            "bio": "Brain-fuck @unit9 ",
-            "title": "Polar",
+            "author": "eiji muroichi",
+            "bio": "Visual Designer & Technologist @prty_ny",
+            "title": "The Twelve Month of Christmas",
             "subtitle": "",
             "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
-            "site": "https://twitter.com/silviopaganini",
+            "site": "http://eiji.muroichi.info/",
             "isWebGL": true,
             "isMobile": false,
             "msgTwitter":"",
@@ -583,24 +583,24 @@ module.exports={
         },
         {
             "idx": 10,
-            "author": "eiji muroichi",
-            "bio": "Visual Designer & Technologist @prty_ny",
-            "site": "http://eiji.muroichi.info/",
-            "preview": "10.png"
+            "author": "Silvio Paganini",
+            "bio": "Brain-fuck @unit9 ",
+            "site": "https://twitter.com/silviopaganini",
+            "preview": "16.png"
         },
         {
             "idx": 11,
-            "author": "Damien Mortini",
-            "bio": "Freelance intern",
-            "site": "https://twitter.com/dmmn_",
-            "preview": "11.png"
-        },
-        {
-            "idx": 12,
             "author": "Mat Groves",
             "bio": "Co-founder of @goodboydigital and creator of pixi.js",
             "site": "https://twitter.com/Doormat23",
             "preview": "12.png"
+        }, 
+        {
+            "idx": 12,
+            "author": "Damien Mortini",
+            "bio": "Freelance intern",
+            "site": "https://twitter.com/dmmn_",
+            "preview": "11.png"
         },
         {
             "idx": 13,
@@ -632,11 +632,12 @@ module.exports={
         },
         {
             "idx": 16,
-            "author": "Silvio Paganini",
-            "bio": "Brain-fuck @unit9 ",
-            "site": "https://twitter.com/silviopaganini",
-            "preview": "16.png"
+            "author": "eiji muroichi",
+            "bio": "Visual Designer & Technologist @prty_ny",
+            "site": "http://eiji.muroichi.info/",
+            "preview": "10.png"
         },
+        
         {
             "idx": 17,
             "author": "Nicolas Barradeau",
