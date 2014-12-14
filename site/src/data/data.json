@@ -1,5 +1,5 @@
 {
-    "idx": 10,
+    "idx": 14,
     "experiments": [
         {
             "idx": 1,
@@ -223,57 +223,61 @@
                 {
                     "title": "controls",
                     "desc": "Move your mouse or use your gyro to control the camera and click/tap to explode"
+                },
+                {
+                    "title": "Source",
+                    "desc": "<a href='https://github.com/silviopaganini/xmas' target='_blank'>Github source</a>"
                 }
             ]
         },
         {
             "idx": 11,
-            "isAvailable": false,
-            "author": "Damien Mortini",
-            "bio": "Freelance intern",
-            "title": "Christmas Quest",
+            "isAvailable": true,
+            "author": "Mat Groves",
+            "bio": "Co-founder of @goodboydigital and creator of pixi.js",
+            "title": "Pixilights",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
-            "site": "https://twitter.com/dmmn_",
+            "desc": "Presents are more dangerous than you think! A game made in 2d using pixi.js",
+            "site": "https://twitter.com/Doormat23",
             "isWebGL": true,
-            "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "isMobile": true,
+            "msgTwitter":"Pixilights, a super cute game by @Doormat23 for @christmasxp #pixijs",
+            "msgFacebook":"Pixilights, a super cute game to feel the christmas spirit! #christmasxp #day11",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Move your mouse to move and avoid the presents!"
                 }
             ]
         },
         {
             "idx": 12,
-            "isAvailable": false,
-            "author": "Mat Groves",
-            "bio": "Co-founder of @goodboydigital and creator of pixi.js",
-            "title": "Polar",
+            "isAvailable": true,
+            "author": "Damien Mortini",
+            "bio": "Freelance intern",
+            "title": "Christmas Quest",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
-            "site": "https://twitter.com/Doormat23",
+            "desc": "Follow the light to find all the gifts and discover the real magic of Christmas!",
+            "site": "https://twitter.com/dmmn_",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Christmas Quest, an epileptic santa quest by @dmmn_ for @christmasxp",
+            "msgFacebook":"Discover Christmas Quest, an epileptic santa quest by Damien Mortini #day12",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Move with your keyboard arrows"
                 }
             ]
         },
         {
             "idx": 13,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "William Mapan",
             "bio": "Coding and plopping stuff",
-            "title": "Polar",
+            "title": "Snuset gift",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "An exploration of Santa's gift dimension. Help him to catch those cheeky gifts.",
             "site": "https://twitter.com/williamapan",
             "isWebGL": true,
             "isMobile": false,
@@ -282,27 +286,27 @@
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Hit your space bar / screen to move forward"
                 }
             ]
         },
         {
             "idx": 14,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "Matt DesLauriers",
             "bio": "Creative Developer @Jam3",
-            "title": "Polar",
+            "title": "hot cocoa",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "",
             "site": "https://twitter.com/mattdesl",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Hot cocoa by @mattdesl for @christmasxp ",
+            "msgFacebook":"Hot cocoa, a pretty #christmasxp",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "tap the Earth to find some hot cocoa"
                 }
             ]
         },
@@ -311,7 +315,7 @@
             "isAvailable": false,
             "author": "Floz",
             "bio": "-",
-            "title": "Polar",
+            "title": "",
             "subtitle": "",
             "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
             "site": "https://twitter.com/florianzumbrunn",

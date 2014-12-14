@@ -1,0 +1,30 @@
+{"frames": {
+
+"blurSnow.png":
+{
+	"frame": {"x":0,"y":0,"w":41,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":41,"h":41},
+	"sourceSize": {"w":41,"h":41},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"sharpSnow.png":
+{
+	"frame": {"x":43,"y":0,"w":26,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":25},
+	"sourceSize": {"w":26,"h":25},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "snowFlakes.png",
+	"format": "RGBA8888",
+	"size": {"w":69,"h":41},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1920ffad3233518bdc6ec52cb741601d:1665acea1433cf52b2f003da420c95be:9088279533d1f0aef6ddb5aeeaff355a$"
+}
+}
