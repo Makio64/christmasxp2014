@@ -1,5 +1,5 @@
 {
-    "idx": 14,
+    "idx": 15,
     "experiments": [
         {
             "idx": 1,
@@ -313,20 +313,20 @@
         {
             "idx": 15,
             "isAvailable": false,
-            "author": "FZFS",
+            "author": "Floz",
             "bio": "-",
-            "title": "NorthPole",
+            "title": "",
             "subtitle": "",
-            "desc": "Travel to the North Pole and enjoy a lyric journey through time... Yes, there is seasons now in NorthPole. Damn climat change.",
+            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
             "site": "https://twitter.com/florianzumbrunn",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"Yes, there is seasons now in NorthPole.. Damn you climat change...",
-            "msgFacebook":"Yes, there is seasons now in NorthPole.. Damn you climat change...",
+            "msgTwitter":"",
+            "msgFacebook":"",
             "details": [
                 {
-                    "title": "Drag the screen",
-                    "desc": "And travel through time."
+                    "title": "controls",
+                    "desc": "Click and drag to clear the window"
                 }
             ]
         },
