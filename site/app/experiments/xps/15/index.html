@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:site_name" content="TemplateSiteName">
+    <meta property="og:title" content="TemplateTitle">
+    <meta property="og:description" content="TemplateDescription">
+    <meta property="og:type" content="TemplateType">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <title>NorthPole</title>
+    <link href="http://fonts.googleapis.com/css?family=Roboto:900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div class="experiment">
+      <div id="scene"></div>
+      <div class="layers">
+        <div class="layer layer--autumn"></div>
+        <div class="layer layer--winter"></div>
+      </div>
+      <div class="experiment-anims">
+        <div class="experiment-anim experiment-anim--autumn"></div>
+        <div class="experiment-anim experiment-anim--winter"></div>
+        <div class="experiment-anim experiment-anim--summer"></div>
+        <div class="experiment-anim experiment-anim--spring"></div>
+      </div>
+    </div>
+    <div class="loading">
+      <div class="loading-title"></div>
+      <div class="loading-content">
+        <div class="loading-sun"></div>
+        <div class="loading-bg"></div>
+        <div class="loading-before-qualities">
+          <div class="loading-anims">
+            <div class="loading-anim loading-anim--autumn"></div>
+            <div class="loading-anim loading-anim--winter"></div>
+            <div class="loading-anim loading-anim--summer"></div>
+            <div class="loading-anim loading-anim--spring"></div>
+          </div>
+          <div class="loading-percent">
+            <div class="loading-percent-bg"></div>
+            <div class="loading-percent-progress"></div>
+          </div>
+        </div>
+        <div class="loading-qualities">
+          <div class="loading-qualities-instructions">rotate the scene to change the season</div>
+          <div class="loading-qualities-bts-title">SELECT QUALITY</div>
+          <div class="loading-qualities-bts">
+            <div class="loading-quality-bt loading-quality-bt--lq"></div>
+            <div class="loading-quality-bt loading-quality-bt--hq"></div>
+          </div>
+        </div>
+        <div class="loading-credits">
+          <div class="loading-credits-title">PRODUCED BY</div>
+          <div class="loading-credits-authors"><a href="http://twitter.com/florianzumbrunn" target="_blank">FLOZ</a> & <a href="http://twitter.com/filsdegraphiste" target="_blank">FILSDEGRAPHISTE</a></div>
+        </div>
+      </div>
+    </div>
+    <script src="js/bower_components/PxLoader/PxLoader.js"></script>
+    <script src="js/bower_components/PxLoader/PxLoaderImage.js"></script>
+    <script src="js/bower_components/PxLoader/PxLoaderSound.js"></script>
+    <script src="js/bower_components/dat-gui/build/dat.gui.js"></script>
+    <script src="js/bower_components/emitter/emitter.js"></script>
+    <script src="js/bower_components/gsap/src/minified/easing/EasePack.min.js"></script>
+    <script src="js/bower_components/gsap/src/minified/plugins/CSSPlugin.min.js"></script>
+    <script src="js/bower_components/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="js/bower_components/threejs/build/three.js"></script>
+    <script src="js/threejs/postprocessing/EffectComposer.js"></script>
+    <script src="js/threejs/postprocessing/RenderPass.js"></script>
+    <script src="js/threejs/postprocessing/ShaderPass.js"></script>
+    <script src="js/threejs/postprocessing/MaskPass.js"></script>
+    <script src="js/threejs/shaders/CopyShader.js"></script>
+    <script src="js/threejs/shaders/FXAAShader.js"></script>
+    <script src="js/threejs/shaders/SSAOShader.js"></script>
+    <script src="js/threejs/shaders/BokehShader.js"></script>
+    <script src="js/threejs/loaders/OBJLoader.js"></script>
+    <script src="js/threejs/loaders/MTLLoader.js"></script>
+    <script src="js/threejs/loaders/OBJMTLLoader.js"></script>
+    <script src="js/vendors/soundmanager2-jsmin.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
