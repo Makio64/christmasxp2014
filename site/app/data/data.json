@@ -313,20 +313,20 @@
         {
             "idx": 15,
             "isAvailable": false,
-            "author": "Floz",
+            "author": "FZFS",
             "bio": "-",
-            "title": "",
+            "title": "NorthPole",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "Travel to the North Pole and enjoy a lyric journey through time... Yes, there is seasons now in NorthPole. Damn climat change.",
             "site": "https://twitter.com/florianzumbrunn",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Yes, there is seasons now in NorthPole.. Damn you climat change...",
+            "msgFacebook":"Yes, there is seasons now in NorthPole.. Damn you climat change...",
             "details": [
                 {
-                    "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "title": "Drag the screen",
+                    "desc": "And travel through time."
                 }
             ]
         },
