@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+	<title>Little Gif Girl</title>
+	<meta charset="utf-8">
+
+	<script src="js/libs/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/stats.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/three.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/dat.gui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/TimelineMax.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/easing/EasePack.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/SimplexNoise.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="js/main.min.js" type="text/javascript" charset="utf-8"></script>
+	<link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<script type="x-shader/x-vertex" id="vertexshader">
+
+	uniform float time;
+	attribute float size;
+
+	void main() {
+		vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+		gl_PointSize = size * ( 300.0 / length( mvPosition.xyz ) );
+		gl_Position = projectionMatrix * mvPosition;
+	}
+
+	</script>
+
+	<script type="x-shader/x-fragment" id="fragmentshader">
+
+	uniform vec3 color;
+	uniform sampler2D texture;
+
+
+	void main() {
+		gl_FragColor = vec4( color, 1 );
+		gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+	}
+
+	</script>
+
+
+	<div id="intro">
+		<h1><img src="img/the-little-match-girl.jpg"></h1>
+		<button id="start">Start</button>
+		<p>This experiment is best viewed on Google Chrome.<br>
+		To enjoy the full experience, allow access of your microphone and turn up your volume.</p>
+	</div>
+
+	<div id="prologue">
+		<p>On a cold winter night, a little girl is trying to sell matchsticks in the street.</p>
+	</div>
+
+	<div id="intro_script" >
+		<p>Matches?</p>
+		<p>Does anyone want any matches?</p>
+		<p>Brr... It’s so cold and lonely out here...</p>
+		<p>Maybe I can light up one of my matches to warm me up...?</p>
+		<p>OK. Let's try it.</p>
+	</div>
+
+	<div id="intro_script2" >
+		<p>Wow! What a beautiful Christmas tree!</p>
+		<p>Those matches are magical :)</p>
+		<p>I want to see more!!!</p>
+	</div>
+
+	<audio id="howling" src="sound/howling.mp3" autobuffer loop autoplay></audio>
+	<audio id="bgm"  src="sound/littlelight.mp3" autobuffer loop></audio>
+	<audio id="light"  src="sound/match_light.mp3" autobuffer></audio>
+	<audio id="blow"  src="sound/match_blow.mp3" autobuffer></audio>
+	<audio id="santavoice"  src="sound/satavoice.mp3" autobuffer loop></audio>
+	<audio id="wow"  src="sound/wow.mp3" autobuffer></audio>
+
+	<div id="container">
+		
+	</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+html, body{
+	background-color: #000;
+	margin: 0;
+	padding: 0;
+	color: white;
+	font-family: 'Comfortaa', cursive;
+}
+
+body{
+	overflow: hidden;
+}
+
+#intro{
+	position: absolute;
+	width: 480px;
+	height: 550px;
+	/*height: auto;*/
+	text-align: center;
+	margin: auto;
+	top:0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+    -webkit-animation: fadein 5s; /* Chrome, Safari, Opera */
+    animation: fadein 5s;
+
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Standard syntax */
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+h1{
+	width: 480px;
+	margin:0;
+}
+
+h1>img{
+	width: 100%;
+	height: auto;
+}
+
+
+#intro button{
+	width: 100px;
+	height: 40px;
+	margin-bottom: 30px;
+	margin-top: 20px;
+	cursor: pointer;
+	border: none;
+	background-color: #d1caba;
+	padding: 0;
+	outline: none;
+	font-size: 15px;
+	position: relative;
+}
+
+#intro button:hover{
+	background-color: #fff;
+}
+
+
+#intro button.loading{
+	font-size: 15px;
+	color: #fff;
+	width: 100px;
+	height: 40px;
+	margin-bottom: 30px;
+	cursor: wait;
+	border: none;
+	background-color: transparent;
+	padding: 0;
+}
+
+#intro button:hover.loading{
+}
+
+
+#intro p{
+	font-size: 13px;
+	line-height: 18px;
+	color: #666;
+	width: 70%;
+	margin: auto;
+
+}
+
+
+#prologue{
+	display: none;
+}
+
+#intro_script{
+	display: none;
+}
+
+#intro_script2{
+	display: none;
+}
+
+#container{
+	width: 100%;
+	/*height: 100%;*/
+	position: relative;
+}
+
+
+.text_outline{
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+
+
+#logo{
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}

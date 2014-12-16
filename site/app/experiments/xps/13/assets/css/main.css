@@ -184,6 +184,7 @@ canvas {
   -webkit-transition: opacity 3s linear 0.5s;
   transition: opacity 3s linear 0.5s;
   opacity: 0;
+  z-index: 5;
 }
 
 canvas.transitionIn {
@@ -191,16 +192,31 @@ canvas.transitionIn {
 }
 
 .mute {
+  -webkit-transition: opacity 0.5s linear 2.5s;
+  transition: opacity 0.5s linear 2.5s;
   width: 40px;
   height: 40px;
   border: 1px solid #fff;
   border-radius: 25px;
   position: absolute;
-  bottom: 23px;
-  right: 20px;
+  bottom: 20px;
+  left: 50%;
   cursor: pointer;
   z-index: 11;
-  fill: #ffffff;
+  margin-left: -20px;
+  opacity: 0;
+}
+
+.mute.transitionIn {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 640px) {
+  .mute {
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+  }
 }
 
 .mute.unmute-mode {
@@ -223,47 +239,189 @@ canvas.transitionIn {
   background: url("../images/unmute.svg") no-repeat 100% 140%;
 }
 
-.score {
+.lifeBar {
+  -webkit-transition: width 0.15s linear;
+  transition: width 0.15s linear;
   position: absolute;
-  font-family: "Courier";
-  left: 20px;
-  bottom: 30px;
-  color: #fff;
+  left: 0px;
+  bottom: 0px;
+  background: #FE5B35;
   z-index: 10;
+  width: 0%;
+  height: 20px;
+  opacity: 0;
 }
 
-@media only screen and (max-width: 640px) {
-  .score {
-    font-size: 10px;
-  }
-}
-
-.instructions {
+.lifeBar.transitionIn {
+  opacity: 0.6;
   width: 100%;
-  position: absolute;
-  font-family: "Courier";
-  left: 20px;
-  bottom: 20px;
+}
+
+.info {
+  -webkit-transition: opacity 0.5s linear 2s;
+  transition: opacity 0.5s linear 2s;
   color: #fff;
-  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 100px;
+  width: 100%;
+  font-family: "Courier New", "Courier", "Times New Roman";
   z-index: 10;
-  line-height: 25px;
+  text-align: center;
+  opacity: 0;
 }
 
-@media only screen and (max-width: 640px) {
-  .instructions {
-    font-size: 10px;
-  }
+.info.transitionIn {
+  opacity: 1;
 }
 
-.instructions span:nth-child(2) {
-  color: #02730f;
-}
-
-.instructions span:nth-child(3) {
-  color: #d62822;
+.info span.time {
+  font-size: 2em;
+  font-weight: bold;
 }
 
 .selector {
   width: 126px !important;
+}
+
+.restart {
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  font-family: "Courier New", "Courier", "Times New Roman";
+  position: absolute;
+  bottom: 200px;
+  color: #fff;
+  font-size: 0.7em;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+}
+
+.restart.transitionIn {
+  opacity: 1;
+}
+
+.restart.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 640px) {
+  .restart.no-mobile {
+    display: none;
+  }
+
+  .restart.mobile {
+    display: block;
+  }
+
+  .restart.mobile.transitionIn {
+    opacity: 1;
+  }
+}
+
+.instructions {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 450px;
+  margin: -250px 0 0 -200px;
+  text-align: center;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}
+
+@media only screen and (max-width: 640px) {
+  .instructions {
+    width: 300px;
+    height: 320px;
+    margin: -160px 0 0 -150px;
+  }
+}
+
+.instructions.transitionOut {
+  opacity: 0;
+}
+
+.instructions .imgContainer {
+  position: absolute;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  color: #fff;
+  font-family: "Courier New", "Courier", "Times New Roman";
+  opacity: 0;
+}
+
+.instructions .imgContainer img {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.instructions .imgContainer.instruction1 {
+  -webkit-animation: fade 12s linear 0s infinite;
+  animation: fade 12s linear 0s infinite;
+}
+
+.instructions .imgContainer.instruction2 {
+  -webkit-animation: fade 12s linear 4s infinite;
+  animation: fade 12s linear 4s infinite;
+}
+
+.instructions .imgContainer.instruction3 {
+  -webkit-animation: fade 12s linear 8s infinite;
+  animation: fade 12s linear 8s infinite;
+}
+
+.loading {
+  position: absolute;
+  opacity: 1;
+  bottom: 20px;
+  right: 20px;
+  color: #fff;
+  text-align: right;
+  font-family: "Courier New", "Courier", "Times New Roman";
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}
+
+.loading.transitionOut {
+  opacity: 0;
+}
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 0;
+  }
 }

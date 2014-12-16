@@ -30,7 +30,7 @@ loading.start();
 
 },{"3d/Main3d":3,"home/Home":13,"home/Loading":14,"home/MobileMenu":16}],2:[function(require,module,exports){
 module.exports={
-    "idx": 14,
+    "idx": 16,
     "experiments": [
         {
             "idx": 1,
@@ -306,7 +306,7 @@ module.exports={
             "isAvailable": true,
             "author": "William Mapan",
             "bio": "Coding and plopping stuff",
-            "title": "Snuset gift",
+            "title": "Sunset gift",
             "subtitle": "",
             "desc": "An exploration of Santa's gift dimension. Help him to catch those cheeky gifts.",
             "site": "https://twitter.com/williamapan",
@@ -343,41 +343,41 @@ module.exports={
         },
         {
             "idx": 15,
-            "isAvailable": false,
-            "author": "Floz",
+            "isAvailable": true,
+            "author": "FZFS",
             "bio": "-",
-            "title": "",
+            "title": "NorthPole",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "Travel to the North Pole and enjoy a lyric journey through time... Yes, there is seasons now in NorthPole. Damn climat change.",
             "site": "https://twitter.com/florianzumbrunn",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Yes, there is seasons now in NorthPole.. Damn you climat change...",
+            "msgFacebook":"Yes, there is seasons now in NorthPole.. Damn you climat change...",
             "details": [
                 {
-                    "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "title": "Drag the screen",
+                    "desc": "And travel through time."
                 }
             ]
         },
         {
             "idx": 16,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "eiji muroichi",
             "bio": "Visual Designer & Technologist @prty_ny",
-            "title": "The Twelve Month of Christmas",
+            "title": "The Little Match Girl",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "An interactive version of a classic story, The Little Match Girl. <http://en.wikipedia.org/wiki/The_Little_Match_Girl>.",
             "site": "http://eiji.muroichi.info/",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Discover an interactive version of a classic story, The Little Match Girl by @muroicci for @christmasxp",
+            "msgFacebook":"Discover an interactive version of a classic story, The Little Match Girl made by Eiji Muroicci",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Click the little match girl to strike a match. Blow to your microphone to blow it out."
                 }
             ]
         },

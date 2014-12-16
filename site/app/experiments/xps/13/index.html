@@ -7,24 +7,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="./assets/css/main.css">
-
     </head>
     <body>
 
 
         <div id="app">
+            
+            <div class="loading">loading...</div>
 
-        <div class="mute mute-mode"> </div>
+            <div class="instructions">
+                <div class="imgContainer instruction1">
+                    <img src="./assets/images/run.png" alt="">
+                    <span>Hit the space key to run</span>
+                </div>
+                <div class="imgContainer instruction2">
+                    <img src="./assets/images/phew.png" alt="">
+                    <span>Stay in the sunlight</span>
+                </div>
+                <div class="imgContainer instruction3">
+                    <img src="./assets/images/loose.png" alt="">
+                    <span>Otherwise.... :s</span>
+                </div>
+            </div>
+            
+            <div class="restart no-mobile">Hit space key to run</div>
+            <div class="restart mobile">Tap the screen to run</div>
 
-        <div class="score">
-            Scores : <span>0</span>
-        </div>
 
-        <div class="instructions">
-            Hit the space bar to run<br/>
-            <span>Green gift = 1pt</span>
-            <span>Red gift = -1pt</span>
-        </div>
+            <div class="mute mute-mode"> </div>
+
+            <div class="info">
+                <span class="besttime"> Best time : <span class="value">0.00s</span></span> <br/>
+                <span class="time"> Time : <span class="value">0.00s</span></span> <br/>
+                <span class="wind"> Wind force : <span class="value">0 km/h</span> </span>
+            </div>
+
+            <audio src="./assets/sounds/alice.mp3" loop class="alice" > </audio>
+            <audio src="./assets/sounds/glitch.wav" class="glitch" > </audio>
 
         </div>
 
