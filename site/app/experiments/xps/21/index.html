@@ -1,0 +1,126 @@
+<html>
+	<head>
+		<title>boXmas</title>
+		<meta charset="utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans'>
+		<link rel="stylesheet" href="assets/css/reset.css">
+		<link rel="stylesheet" href="assets/css/style.css">
+	</head>
+
+	<body class="preload-load preload">
+
+		<div id="loader-load"></div>
+
+		<div id="loader">
+			<div class="container">
+				<div class="logo"></div>
+				<div class="claim"></div>
+				<div class="line left"></div>
+				<div class="line right"></div>
+				<div class="instructions"></div>
+				<div class="instructions-text"><span>Loading...</span><br>Throw stuff by pressing space</div>
+			</div>
+			<a href="#" class="btn start">START!</a>
+		</div>
+
+		<div id="container"></div>
+		<div id="msg">
+			<div class="bg"></div>
+			<div class="win"></div>
+			<div class="lose"></div>
+			<div class="deer"></div>
+			<a href="#" class="btn reset">AGAIN!</a>
+		</div>
+
+		<div id="logo"></div>
+
+		<div class="up-block hold">
+
+			<div id="press-space"></div>
+
+			<div id="strength">
+				<div class="gradient-right"></div>
+				<div class="strength-alpha"></div>
+			</div>
+
+			<div id="strength-position"></div>
+			<div id="strength-helper"></div>
+		</div>
+
+		<div id="lives">
+			<div class="lives-icon"></div>
+			<div class="lives-x">x</div>
+			<div class="lives-number">9</div>
+			<div class="gradient-up"></div>
+			<div class="gradient-down"></div>
+		</div>
+
+		<div id="audio-toggle"></div>
+		<div id="hint"><span>Hints</span><div></div></div>
+
+		<canvas class="angle-canvas"></canvas>
+		<canvas class="strength-canvas"></canvas>
+
+		<div id="arrow-pointer-box"></div>
+
+
+		<div id="not-supported-generic" class="not-supported">
+			<div class="logo"></div>
+			<div class="not-supported-text">
+				This is a just-for-fun experiment.<br>
+				It is recommended to be viewed in a desktop computer with the latest Chrome.<br><br>
+				Hope you can forgive us... it's Christmas time!!
+			</div>
+		</div>
+
+		<div id="not-supported-mobile" class="not-supported">
+			<div id="webgl-mobile" class="webglmobile"></div>
+			<div class="logo"></div>
+			<div class="not-supported-text">
+				We know 2015 is going to be all about mobile WebGL...<br>Unfortunately we did not have the time to code a mobile friendly version of the experiment.<br><br>
+				We added a little WebGL in the background... just for the love!<br><br>
+				Hope you can forgive us... it's Christmas time!!
+			</div>
+		</div>
+
+		<div id="not-supported-safari" class="not-supported">
+			<div id="webgl-safari" class="webglmobile"></div>
+			<div class="logo"></div>
+			<div class="not-supported-text">
+				Although the experiment runs in Safari WebGL,<br>the physics engine is slow in here, and we did not have the time to optimize the code.<br>Chrome is recomended...<br><br>
+				Hope you can forgive us... it's Christmas time!!
+			</div>
+		</div>
+
+		<div id="block-ui"></div>
+
+		<footer>made by <a href="https://twitter.com/is__real" target="_blank">@is__real</a> & <a href="https://twitter.com/Sejnulla" target="_blank">@sejnulla</a></footer>
+
+
+		<script src="assets/js/libs/three.js"></script>
+		<script src="assets/js/libs/ThreeAddOns.js"></script>
+		<script src="assets/js/libs/ColladaLoader.js"></script>
+		<script src="assets/js/libs/Oimo.js"></script>
+		<script src="assets/js/libs/TweenMax.js"></script>
+		<script src="assets/js/libs/signals.js"></script>
+		<script src="assets/js/libs/howler.js"></script>
+
+		<script src="assets/js/Scene.js"></script>
+
+		<script src="assets/js/Physics.js"></script>
+		<script src="assets/js/ColliderBox.js"></script>
+
+		<script src="assets/js/TopElement.js"></script>
+		<script src="assets/js/BoxPointer.js"></script>
+		<script src="assets/js/PositionHelper.js"></script>
+		<script src="assets/js/ThrowUI.js"></script>
+		<script src="assets/js/GameState.js"></script>
+
+		<script src="assets/js/Audio.js"></script>
+		<script src="assets/js/Decoration.js"></script>
+		<script src="assets/js/Detector.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

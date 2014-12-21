@@ -1,5 +1,5 @@
 {
-    "idx": 16,
+    "idx": 21,
     "experiments": [
         {
             "idx": 1,
@@ -352,12 +352,12 @@
         },
         {
             "idx": 17,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "Nicolas Barradeau",
             "bio": "I do graphics.",
-            "title": "Polar",
+            "title": "Harriet",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "I wanted to create a vintage toy generator which turned into a vintage plane generator. <a href='http://en.wikipedia.org/wiki/Harriet_Quimby' target='_blank'>\"Harriet\"</a> is a tribute to Harriet Quimby, the first US woman pilot. now you can follow her around some famous landmarks of the world.",
             "site": "http://barradeau.com/blog/?page_id=6",
             "isWebGL": true,
             "isMobile": false,
@@ -366,87 +366,91 @@
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "spin the plane or use the arrows to regenerate. click / tap the arrow at the bottom of the screen to fly around the world or come back to the plane view. there's no way to control the plane & it's still very buggy, sorry about that..."
+                },
+                {
+                    "title": "links",
+                    "desc": "blog post : <a href='http://barradeau.com/blog/?p=428' target='_blank'>http://barradeau.com/blog/?p=428</a><br/>Source: <a href='https://github.com/nicoptere/harriet' target='_blank'>Github source</a>"
                 }
             ]
         },
         {
             "idx": 18,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "David Li",
             "bio": "-",
-            "title": "Polar",
+            "title": "Snowdrops",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "A tranquil winter scene.",
             "site": "http://david.li",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Discover this quiet winter scene by @daviddotli for @christmasxp #webgl",
+            "msgFacebook":"Discover this quiet winter scene by David.li",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Drag to rotate the camera"
                 }
             ]
         },
         {
             "idx": 19,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "David Ronai",
             "bio": "Initiator of the project & digital crafter",
-            "title": "Polar",
+            "title": "Golem",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "I love fantasy, and during the winter i was drawing a lot of Golem in my childhood. Here it's my dynamic ice golem made by code :).< Physics is made with oimojs.",
             "site": "https://twitter.com/Makio64",
             "isWebGL": true,
-            "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "isMobile": true,
+            "msgTwitter":"Golem, a poetic experiment by @makio64 for @christmasxp #oimojs #webgl",
+            "msgFacebook":"Golem a poetic web experiment whitch invite you to met the golem..",
             "details": [
                 {
-                    "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "title": "Music",
+                    "desc": "Le jardinier celeste by Hirundo°"
                 }
             ]
         },
         {
             "idx": 20,
-            "isAvailable": false,
+            "isAvailable": true,
             "author": "Grgrdvrt",
             "bio": "-",
-            "title": "Polar",
+            "title": "(de)generative snowman",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "Building a snowman with the \"Diffusion Limited Aggregation\" algorithm.",
             "site": "https://twitter.com/grgrdvrt",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"(de)generative snowman by @grgrdvrt",
+            "msgFacebook":"(de)generative snowman by @grgrdvrt",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Click"
                 }
             ]
         },
         {
             "idx": 21,
-            "isAvailable": false,
-            "author": "Is_real",
-            "bio": "Creative technology and a nickel bag of funk at Apple",
-            "title": "Polar",
+            "isAvailable": true,
+            "author": "Is-real / Emil Karlsson",
+            "bio": "Creative Technologist & fan of all the artists involved in this project. / Motion designer @ b-reel nyc.",
+            "title": "boXmas",
             "subtitle": "",
-            "desc": "Hop aboard the Polar Express. Travel through windy plains covered in snow, enter the tunnel to switch from Polar to Solar.",
+            "desc": "boXmas is a game where the objective is to throw stuff in to boxes. Don't miss!",
             "site": "https://twitter.com/is__real",
             "isWebGL": true,
             "isMobile": false,
-            "msgTwitter":"",
-            "msgFacebook":"",
+            "msgTwitter":"Prepare your gifts with boXmas by @is__real & @sejnulla for @christmasxp!",
+            "msgFacebook":"boXmas, prepare your gifts with this xmas game!",
             "details": [
                 {
                     "title": "controls",
-                    "desc": "Click and drag to clear the window"
+                    "desc": "Aim by rotating around the scene with your mouse. Hold down spacebar to throw. The longer you hold the further you throw. Toggle the 'hints' for help. Music: Christmas Holidays by Akashic Records"
                 }
             ]
         },
@@ -635,7 +639,7 @@
         {
             "idx": 17,
             "author": "Nicolas Barradeau",
-            "bio": "I do graphics.",
+            "bio": "I code graphics",
             "site": "http://barradeau.com/blog/?page_id=6",
             "preview": "17.png"
         },
